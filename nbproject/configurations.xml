@@ -12,6 +12,26 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="demo" displayName="demo" projectFiles="true">
+        <logicalFolder name="resources" displayName="resources" projectFiles="true">
+          <itemPath>demo/resources/particle1.png</itemPath>
+          <itemPath>demo/resources/starship.png</itemPath>
+        </logicalFolder>
+        <itemPath>demo/CustomScript.cpp</itemPath>
+        <itemPath>demo/CustomScript.hpp</itemPath>
+        <itemPath>demo/JetParticle.cpp</itemPath>
+        <itemPath>demo/JetParticle.hpp</itemPath>
+        <itemPath>demo/MyGame.cpp</itemPath>
+        <itemPath>demo/MyGame.hpp</itemPath>
+        <itemPath>demo/Starship.cpp</itemPath>
+        <itemPath>demo/Starship.hpp</itemPath>
+        <itemPath>demo/mainScene.cpp</itemPath>
+        <itemPath>demo/mainScene.hpp</itemPath>
+        <itemPath>demo/particleDecay.cpp</itemPath>
+        <itemPath>demo/particleDecay.hpp</itemPath>
+        <itemPath>demo/scriptDePrueba.cpp</itemPath>
+        <itemPath>demo/scriptDePrueba.hpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="engine" displayName="engine" projectFiles="true">
         <logicalFolder name="components" displayName="components" projectFiles="true">
           <itemPath>engine/components/BoxCollider.cpp</itemPath>
@@ -81,6 +101,7 @@
   <sourceRootList>
     <Elem>engine</Elem>
     <Elem>hito1</Elem>
+    <Elem>demo</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -109,6 +130,38 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/JetParticle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/JetParticle.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/MyGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/MyGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/Starship.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Starship.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/mainScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/mainScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/particleDecay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/particleDecay.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/resources/particle1.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/resources/starship.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/scriptDePrueba.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/scriptDePrueba.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/Component.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/Component.hpp" ex="false" tool="3" flavor2="0">
@@ -222,6 +275,38 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/JetParticle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/JetParticle.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/MyGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/MyGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/Starship.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Starship.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/mainScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/mainScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/particleDecay.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/particleDecay.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/resources/particle1.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/resources/starship.png" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="demo/scriptDePrueba.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/scriptDePrueba.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/Component.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/Component.hpp" ex="false" tool="3" flavor2="0">
