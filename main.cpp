@@ -1,9 +1,15 @@
 #include <SFML/Graphics.hpp>
 
 #include "engine/GMEngine.hpp"
+#include "hito1/hito1Game.hpp"
 
 int main() {
-    float f = gme::Game::deltaTime.asSeconds();
-    //TODO
+    gme::Game *H1G = new hito1Game(sf::Vector2f(640, 480), "hito1 game");
+    
+    H1G->run();
+    
+    delete H1G;
+    
+    return 0;
 }
 

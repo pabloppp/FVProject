@@ -60,6 +60,10 @@
         <itemPath>engine/Scene.cpp</itemPath>
         <itemPath>engine/Scene.hpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f1" displayName="hito1" projectFiles="true">
+        <itemPath>hito1/hito1Game.cpp</itemPath>
+        <itemPath>hito1/hito1Game.hpp</itemPath>
+      </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -76,6 +80,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>engine</Elem>
+    <Elem>hito1</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -190,6 +195,10 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -298,6 +307,10 @@
       <item path="engine/gameobjects/Camera.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

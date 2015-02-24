@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
+	${OBJECTDIR}/hito1/hito1Game.o \
 	${OBJECTDIR}/main.o
 
 
@@ -175,6 +176,11 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${MKDIR} -p ${OBJECTDIR}/engine/gameobjects
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
+
+${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
