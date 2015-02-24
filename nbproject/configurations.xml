@@ -12,6 +12,54 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="engine" displayName="engine" projectFiles="true">
+        <logicalFolder name="components" displayName="components" projectFiles="true">
+          <itemPath>engine/components/BoxCollider.cpp</itemPath>
+          <itemPath>engine/components/BoxCollider.hpp</itemPath>
+          <itemPath>engine/components/CircleCollider.cpp</itemPath>
+          <itemPath>engine/components/CircleCollider.hpp</itemPath>
+          <itemPath>engine/components/Collider.cpp</itemPath>
+          <itemPath>engine/components/Collider.hpp</itemPath>
+          <itemPath>engine/components/Renderer.cpp</itemPath>
+          <itemPath>engine/components/Renderer.hpp</itemPath>
+          <itemPath>engine/components/RigidBody.cpp</itemPath>
+          <itemPath>engine/components/RigidBody.hpp</itemPath>
+          <itemPath>engine/components/Script.cpp</itemPath>
+          <itemPath>engine/components/Script.hpp</itemPath>
+          <itemPath>engine/components/Transform.cpp</itemPath>
+          <itemPath>engine/components/Transform.hpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="facade" displayName="facade" projectFiles="true">
+          <itemPath>engine/facade/Clock.cpp</itemPath>
+          <itemPath>engine/facade/Clock.hpp</itemPath>
+          <itemPath>engine/facade/Keyboard.cpp</itemPath>
+          <itemPath>engine/facade/Keyboard.hpp</itemPath>
+          <itemPath>engine/facade/Mouse.cpp</itemPath>
+          <itemPath>engine/facade/Mouse.hpp</itemPath>
+          <itemPath>engine/facade/Texture.cpp</itemPath>
+          <itemPath>engine/facade/Texture.hpp</itemPath>
+          <itemPath>engine/facade/Time.cpp</itemPath>
+          <itemPath>engine/facade/Time.hpp</itemPath>
+          <itemPath>engine/facade/Vector2.cpp</itemPath>
+          <itemPath>engine/facade/Vector2.hpp</itemPath>
+          <itemPath>engine/facade/Window.cpp</itemPath>
+          <itemPath>engine/facade/Window.hpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="gameobjects" displayName="gameobjects" projectFiles="true">
+          <itemPath>engine/gameobjects/.gitkeep</itemPath>
+          <itemPath>engine/gameobjects/Camera.cpp</itemPath>
+          <itemPath>engine/gameobjects/Camera.hpp</itemPath>
+        </logicalFolder>
+        <itemPath>engine/Component.cpp</itemPath>
+        <itemPath>engine/Component.hpp</itemPath>
+        <itemPath>engine/GMEngine.hpp</itemPath>
+        <itemPath>engine/Game.cpp</itemPath>
+        <itemPath>engine/Game.hpp</itemPath>
+        <itemPath>engine/GameObject.cpp</itemPath>
+        <itemPath>engine/GameObject.hpp</itemPath>
+        <itemPath>engine/Scene.cpp</itemPath>
+        <itemPath>engine/Scene.hpp</itemPath>
+      </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -26,6 +74,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>engine</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -53,6 +104,92 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="engine/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/GMEngine.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Game.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/GameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/GameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/Scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Scene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/BoxCollider.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/BoxCollider.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/CircleCollider.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="engine/components/CircleCollider.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="engine/components/Collider.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/RigidBody.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/RigidBody.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Transform.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Clock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Clock.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Keyboard.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Keyboard.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Texture.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Time.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Time.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Vector2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Vector2.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Window.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Window.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/.gitkeep" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -76,6 +213,92 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="engine/Component.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/GMEngine.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/Game.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Game.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/GameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/GameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/Scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/Scene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/BoxCollider.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/BoxCollider.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/CircleCollider.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="engine/components/CircleCollider.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="engine/components/Collider.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/RigidBody.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/RigidBody.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/Transform.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Clock.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Clock.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Keyboard.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Keyboard.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Texture.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Time.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Time.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Vector2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Vector2.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Window.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Window.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/.gitkeep" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/Camera.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
