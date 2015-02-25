@@ -74,9 +74,13 @@ void Scene::update(){
     Game::getWindow()->setView(mainView);
      
             
-    float updateT = 1.0/20.0;
+    float updateTime = 1.0/30.0;
+    float now = updateClock.currentTime().asSeconds();
+    float frameTime = now - lastTime;
     
-    if(updateClock.currentTime().asSeconds() > updateT){      
+    while(frameTime > updateTime){   
+        
+        Game::deltaTime = updateTime;
         for(int i = gameObjects.size()-1; i >= 0; i--){  
             if(gameObjects.at(i)->isActive()) gameObjects.at(i)->fixedUpdate();
             
@@ -90,11 +94,13 @@ void Scene::update(){
             
             if(gameObjects.at(i)->isActive()) gameObjects.at(i)->update();
         }
-        Game::deltaTime = updateClock.restart();
+        frameTime -= updateTime;
    
     }
+    
+    lastTime = now - frameTime;
         
-    Game::ticPercent = fmin(1.f, updateClock.currentTime().asSeconds()/updateT);     
+    Game::ticPercent = fmin(1.f, updateClock.currentTime().asSeconds()/frameTime);     
     //RENDER 
     Game::getWindow()->clear();
     for(int i = gameObjects.size()-1; i >= 0; i--){

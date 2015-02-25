@@ -29,6 +29,7 @@ private:
     std::string name;
     sf::View mainView;
     Clock updateClock;
+    float lastTime;
 };
 
 }
