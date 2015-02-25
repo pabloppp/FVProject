@@ -27,6 +27,7 @@ public:
     GameObject(const GameObject& orig);
     virtual ~GameObject();
     void update();
+    void fixedUpdate();
     void drawGui();
     virtual void setup() = 0;
     void componentSetup();

@@ -11,16 +11,36 @@ void Renderer::setup() {
 }
 
 void Renderer::update() {
+    gme::Vector2 f_pos = Vector2(0.f,0.f);
+    gme::Vector2 i_pos = Vector2(0.f,0.f);
     gme::Vector2 pos = Vector2(0.f,0.f);
     gme::Vector2 scl = Vector2(1,1);
     float rot = 0;
+    float ticPercent = Game::ticPercent;
+    float invTicPercent = 1-ticPercent;
     if(gameObject() != NULL){
-        pos = gameObject()->getTransform()->getPosition();
+        f_pos = gameObject()->getTransform()->getPosition();
+        i_pos = gameObject()->getTransform()->o_position;
+        
+        float dx = f_pos.x-i_pos.x;
+        float dy = f_pos.y-i_pos.y;
+        
+        if((dx*dx + dy*dy) < 320*320){
+            pos.x = (invTicPercent*i_pos.x) + (ticPercent*f_pos.x);
+            pos.y = (invTicPercent*i_pos.y) + (ticPercent*f_pos.y);
+        }
+        else{
+            pos = f_pos;
+        }
+
+        //std::cout << f_pos.x << std::endl;
+        
         rot = gameObject()->getTransform()->getRotation();
         scl = gameObject()->getTransform()->getScale();
     }
     if(drawable != NULL){
         if(dynamic_cast<sf::Sprite*>(drawable)){
+         
             ((sf::Sprite*)drawable)->setPosition(pos.x, pos.y);
             ((sf::Sprite*)drawable)->setRotation(rot);
             ((sf::Sprite*)drawable)->setScale(scl.x, scl.y);

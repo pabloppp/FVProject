@@ -7,6 +7,7 @@ using namespace gme;
 Game::Game(sf::Vector2f windowSize, std::string name){
     window = new Window(windowSize.x, windowSize.y, name);
     window->setVerticalSyncEnabled(true);
+    window->setFrameLimit(60);
     currentScene = NULL;
     deltaTime.Zero();
 }
@@ -52,20 +53,21 @@ void Game::run(){
     setup();
     while(window->isOpen()){
 
-        deltaTime = deltaClock.restart();
-        
+        unfixedDeltaTime = deltaClock.restart();
+        //deltaTime = unfixedDeltaTime;
+                
         sf::Event event;
         while (window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed) window->close();
         }
         
-        window->clear();
+        //window->clear();
         
         if(currentScene != NULL) currentScene->update();  
         
         
-        window->display();
+        //window->display();
     }
     delete window;
 }
@@ -87,7 +89,45 @@ Texture *Game::getTexture(const std::string &name){
     return NULL;
 }
 
+void Game::newSound(const std::string& path, const std::string& name){
+    Sound newSound;
+    if(!newSound.loadFromFile(path)){
+        std::cout << "error loading sound from: " << path << std::endl;
+        return;
+    }
+    newSound.setName(name);
+    sounds.push_back(newSound);
+}
+
+Sound *Game::getSound(const std::string& name){
+    for(int i=0;i<sounds.size();i++){
+        if(sounds.at(i).getName().compare(name) == 0) return &sounds.at(i);
+    }
+    return NULL;
+}
+
+
+
+void Game::newMusic(const std::string& path, const std::string& name){
+    Music newMusic;
+    if(!newMusic.openFromFile(path)){
+        std::cout << "error loading music from: " << path << std::endl;
+        return;
+    }
+    newMusic.setName(name);
+    musics.push_back(&newMusic);
+}
+
+Music *Game::getMusic(const std::string& name){
+    for(int i=0;i<musics.size();i++){
+        if(musics.at(i)->getName().compare(name) == 0) return musics.at(i);
+    }
+    return NULL;
+}
+
 Time Game::deltaTime;
+
+Time Game::unfixedDeltaTime;
  
 Window *Game::window = NULL;
 
@@ -99,5 +139,11 @@ std::vector<Scene*> Game::scenes;
 
 std::vector<Texture> Game::textures;
 
+std::vector<Sound> Game::sounds;
+std::vector<Music*> Game::musics;
+
 bool Game::debugColliders = false;
 
+Clock Game::updateClock;
+
+float Game::ticPercent = 0;

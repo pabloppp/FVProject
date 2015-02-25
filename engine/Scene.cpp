@@ -3,12 +3,15 @@
 #include "Game.hpp"
 #include "gameobjects/Camera.hpp"
 
+#include <math.h>
+
 using namespace gme;
 
 Scene::Scene(std::string n){
     name = n;
     Game::addScene(this);
     Game::mainCamera = new Camera("mainCamera");
+    updateClock.restart();
 }
 
 Scene::Scene(const Scene& orig) {
@@ -69,29 +72,43 @@ void Scene::update(){
     mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
         
     Game::getWindow()->setView(mainView);
-    for(int i = gameObjects.size()-1; i >= 0; i--){       
-        if(gameObjects.at(i)->getCollider() != NULL){
-                for(int j = i-1; j >= 0; j--){
-                    if(gameObjects.at(j) != NULL && gameObjects.at(j)->getCollider() != NULL){
-                        gameObjects.at(i)->getCollider()->checkCollision(gameObjects.at(j)->getCollider());
+     
+            
+    float updateT = 1.0/20.0;
+    
+    if(updateClock.currentTime().asSeconds() > updateT){      
+        for(int i = gameObjects.size()-1; i >= 0; i--){  
+            if(gameObjects.at(i)->isActive()) gameObjects.at(i)->fixedUpdate();
+            
+            if(gameObjects.at(i)->getCollider() != NULL){
+                    for(int j = 0; j < i; j++){
+                        if(gameObjects.at(j) != NULL && gameObjects.at(j)->getCollider() != NULL){
+                            gameObjects.at(i)->getCollider()->checkCollision(gameObjects.at(j)->getCollider());
+                        }
                     }
-                }
+            }
+            
+            if(gameObjects.at(i)->isActive()) gameObjects.at(i)->update();
         }
-        if(gameObjects.at(i)->isActive()) gameObjects.at(i)->update();
-    } 
-    
-    
-    
+        Game::deltaTime = updateClock.restart();
+   
+    }
+        
+    Game::ticPercent = fmin(1.f, updateClock.currentTime().asSeconds()/updateT);     
     //RENDER 
+    Game::getWindow()->clear();
     for(int i = gameObjects.size()-1; i >= 0; i--){
          if(gameObjects.at(i)->isActive()) gameObjects.at(i)->getRenderer()->update();
     }
-    
+
     Game::getWindow()->setView(Game::getWindow()->getDefaultView());
     for(int i = gameObjects.size()-1; i >= 0; i--){     
         if(gameObjects.at(i)->isActive()) gameObjects.at(i)->drawGui();
     }
+    Game::getWindow()->display();
     
+    std::cout << "fixed fps: " << 1.0/Game::deltaTime.asSeconds() << std::endl;
+    std::cout << "fps: " << 1.0/Game::unfixedDeltaTime.asSeconds() << std::endl;
 
 }
 

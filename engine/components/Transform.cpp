@@ -48,15 +48,18 @@ float Transform::getZIndex(){
 }
 
 void Transform::setPosition(gme::Vector2 v){
-  position = v;  
+  position = v; 
+  o_position = v;
 }
 
 void Transform::setRotation(float f){
-  rotation = f;  
+  rotation = f; 
+  o_rotation = f;
 }
 
 void Transform::setScale(gme::Vector2 v){
-  scale = v;  
+  scale = v; 
+  o_scale = v;
 }
 
 void Transform::setZIndex(float f){
@@ -85,6 +88,9 @@ void Transform::setup(){
     if(scale.x == 0 || scale.y == 0){
         scale = gme::Vector2(1,1);
     }
+    o_position = position;
+    o_rotation = rotation;
+    o_scale = scale;
 }
 
 Vector2 Transform::forward(){
@@ -93,6 +99,8 @@ Vector2 Transform::forward(){
 }
 
 void Transform::update(){
-    
+    o_position = position;
+    o_rotation = rotation;
+    o_scale = scale;
 }
 

@@ -40,12 +40,16 @@
           <itemPath>engine/components/CircleCollider.hpp</itemPath>
           <itemPath>engine/components/Collider.cpp</itemPath>
           <itemPath>engine/components/Collider.hpp</itemPath>
+          <itemPath>engine/components/MusicPlayer.cpp</itemPath>
+          <itemPath>engine/components/MusicPlayer.hpp</itemPath>
           <itemPath>engine/components/Renderer.cpp</itemPath>
           <itemPath>engine/components/Renderer.hpp</itemPath>
           <itemPath>engine/components/RigidBody.cpp</itemPath>
           <itemPath>engine/components/RigidBody.hpp</itemPath>
           <itemPath>engine/components/Script.cpp</itemPath>
           <itemPath>engine/components/Script.hpp</itemPath>
+          <itemPath>engine/components/SoundPlayer.cpp</itemPath>
+          <itemPath>engine/components/SoundPlayer.hpp</itemPath>
           <itemPath>engine/components/Transform.cpp</itemPath>
           <itemPath>engine/components/Transform.hpp</itemPath>
         </logicalFolder>
@@ -56,6 +60,10 @@
           <itemPath>engine/facade/Keyboard.hpp</itemPath>
           <itemPath>engine/facade/Mouse.cpp</itemPath>
           <itemPath>engine/facade/Mouse.hpp</itemPath>
+          <itemPath>engine/facade/Music.cpp</itemPath>
+          <itemPath>engine/facade/Music.hpp</itemPath>
+          <itemPath>engine/facade/Sound.cpp</itemPath>
+          <itemPath>engine/facade/Sound.hpp</itemPath>
           <itemPath>engine/facade/Texture.cpp</itemPath>
           <itemPath>engine/facade/Texture.hpp</itemPath>
           <itemPath>engine/facade/Time.cpp</itemPath>
@@ -202,6 +210,10 @@
       </item>
       <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="engine/components/MusicPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/MusicPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
@@ -213,6 +225,10 @@
       <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -229,6 +245,14 @@
       <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -351,6 +375,10 @@
       </item>
       <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="engine/components/MusicPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/MusicPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
@@ -362,6 +390,10 @@
       <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -378,6 +410,14 @@
       <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>

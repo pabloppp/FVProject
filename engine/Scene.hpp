@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "GameObject.hpp"
+#include "facade/Clock.hpp"
 
 namespace gme{
 
@@ -27,6 +28,7 @@ private:
     std::vector<GameObject*> gameObjects;
     std::string name;
     sf::View mainView;
+    Clock updateClock;
 };
 
 }
