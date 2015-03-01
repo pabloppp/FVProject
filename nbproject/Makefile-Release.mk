@@ -65,7 +65,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
+	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
+	${OBJECTDIR}/hito1/pruebaGameObject.o \
+	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/main.o
 
@@ -244,10 +247,25 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
+${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
+
 ${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
+
+${OBJECTDIR}/hito1/pruebaGameObject.o: hito1/pruebaGameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/pruebaGameObject.o hito1/pruebaGameObject.cpp
+
+${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
 
 ${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1

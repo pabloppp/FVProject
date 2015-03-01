@@ -113,8 +113,8 @@ void Scene::update(){
     }
     Game::getWindow()->display();
     
-    std::cout << "fixed fps: " << 1.0/Game::deltaTime.asSeconds() << std::endl;
-    std::cout << "fps: " << 1.0/Game::unfixedDeltaTime.asSeconds() << std::endl;
+    //std::cout << "fixed fps: " << 1.0/Game::deltaTime.asSeconds() << std::endl;
+    //std::cout << "fps: " << 1.0/Game::unfixedDeltaTime.asSeconds() << std::endl;
 
 }
 
