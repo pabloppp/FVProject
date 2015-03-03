@@ -40,12 +40,16 @@
           <itemPath>engine/components/CircleCollider.hpp</itemPath>
           <itemPath>engine/components/Collider.cpp</itemPath>
           <itemPath>engine/components/Collider.hpp</itemPath>
+          <itemPath>engine/components/MusicPlayer.cpp</itemPath>
+          <itemPath>engine/components/MusicPlayer.hpp</itemPath>
           <itemPath>engine/components/Renderer.cpp</itemPath>
           <itemPath>engine/components/Renderer.hpp</itemPath>
           <itemPath>engine/components/RigidBody.cpp</itemPath>
           <itemPath>engine/components/RigidBody.hpp</itemPath>
           <itemPath>engine/components/Script.cpp</itemPath>
           <itemPath>engine/components/Script.hpp</itemPath>
+          <itemPath>engine/components/SoundPlayer.cpp</itemPath>
+          <itemPath>engine/components/SoundPlayer.hpp</itemPath>
           <itemPath>engine/components/Transform.cpp</itemPath>
           <itemPath>engine/components/Transform.hpp</itemPath>
         </logicalFolder>
@@ -56,6 +60,10 @@
           <itemPath>engine/facade/Keyboard.hpp</itemPath>
           <itemPath>engine/facade/Mouse.cpp</itemPath>
           <itemPath>engine/facade/Mouse.hpp</itemPath>
+          <itemPath>engine/facade/Music.cpp</itemPath>
+          <itemPath>engine/facade/Music.hpp</itemPath>
+          <itemPath>engine/facade/Sound.cpp</itemPath>
+          <itemPath>engine/facade/Sound.hpp</itemPath>
           <itemPath>engine/facade/Texture.cpp</itemPath>
           <itemPath>engine/facade/Texture.hpp</itemPath>
           <itemPath>engine/facade/Time.cpp</itemPath>
@@ -81,6 +89,14 @@
         <itemPath>engine/Scene.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="hito1" projectFiles="true">
+        <logicalFolder name="f2" displayName="entregable3" projectFiles="true">
+          <itemPath>hito1/generaPosicion.cpp</itemPath>
+          <itemPath>hito1/generaPosicion.hpp</itemPath>
+          <itemPath>hito1/pruebaGameObject.cpp</itemPath>
+          <itemPath>hito1/pruebaGameObject.hpp</itemPath>
+          <itemPath>hito1/sceneEntregable3.cpp</itemPath>
+          <itemPath>hito1/sceneEntregable3.hpp</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="entregable4" projectFiles="true">
           <itemPath>hito1/sceneEntregable4.cpp</itemPath>
           <itemPath>hito1/sceneEntregable4.hpp</itemPath>
