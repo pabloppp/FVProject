@@ -22,8 +22,8 @@ void RigidBody::update(){
     float deltaTime = Game::deltaTime.asSeconds();
     
     if(gravity){
-        speed.x += weight*gravityDirection.normalized().x*gravityForce*100*deltaTime;
-        speed.y += weight*gravityDirection.normalized().y*gravityForce*100*deltaTime;
+        speed.x += weight*gravityDirection.normalized().x*gravityForce*deltaTime*5;
+        speed.y += weight*gravityDirection.normalized().y*gravityForce*deltaTime*5;
     }  
     
     float frictionAngular = 0;
@@ -35,25 +35,27 @@ void RigidBody::update(){
     
     if(gameObject()!= NULL){
         Vector2 p = gameObject()->getTransform()->getPosition();
-        gameObject()->getTransform()->position.x += speed.x*deltaTime;
-        gameObject()->getTransform()->position.y += speed.y*deltaTime;
-        if(!fixedRotation) gameObject()->getTransform()->rotation += angularSpeed*100*deltaTime;
+        gameObject()->getTransform()->position.x += speed.x*deltaTime*10;
+        gameObject()->getTransform()->position.y += speed.y*deltaTime*10;
+        if(!fixedRotation) gameObject()->getTransform()->rotation += angularSpeed*deltaTime*10;
     }
         
-    speed.x += acceleration.x-frictionV.x;
-    speed.y += acceleration.y-frictionV.y;
-    angularSpeed += angularAcceleration-frictionAngular;
+    speed.x += acceleration.x*deltaTime-frictionV.x;
+    speed.y += acceleration.y*deltaTime-frictionV.y;
+    angularSpeed += angularAcceleration*deltaTime-frictionAngular;
    
     //p->x += speed.x;
     //p->y += speed.y;
 }
 
 void RigidBody::push(Vector2 vector){
-    speed.x += vector.x*100;
-    speed.y += vector.y*100;
+    float deltaTime = Game::deltaTime.asSeconds();
+    speed.x += vector.x;
+    speed.y += vector.y;
 }
 
 void RigidBody::push(Vector2 direction, float force){
+    float deltaTime = Game::deltaTime.asSeconds();
     Vector2 vector = direction.normalized();
     vector.x *= force;
     vector.y *= force;

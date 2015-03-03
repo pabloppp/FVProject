@@ -9,6 +9,7 @@ namespace gme{
 class Clock{
 public:
     Clock();
+    Time currentTime();
     Time restart();
 private:
     sf::Clock clock;

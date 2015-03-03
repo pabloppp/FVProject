@@ -10,6 +10,7 @@
 #include "components/Collider.hpp"
 #include "components/RigidBody.hpp"
 #include "components/Script.hpp"
+#include "components/SoundPlayer.hpp"
 
 using namespace gme;
 
@@ -53,11 +54,18 @@ GameObject::~GameObject() {
 }
 
 void GameObject::update(){
+    
+    if(transform != NULL) transform->update();
+    
     for(int i = components.size()-1; i >= 0; i--){
         if(components.at(i)->isActive()) components.at(i)->update();
     }
+    
     if(rigidBody != NULL) rigidBody->update();
-    if(collider != NULL) collider->update();
+}
+
+void GameObject::fixedUpdate() {
+     if(collider != NULL) collider->update();      
 }
 
 void GameObject::drawGui(){
@@ -117,11 +125,7 @@ void GameObject::broadcastMessage(std::string s, float f){
 //~~~~
 
 void GameObject::addComponent(Component* c){
-    if(dynamic_cast<Script*>(c)){
-        c->setGameObject(this);
-        components.push_back(c);
-    }
-    else if(dynamic_cast<Transform*>(c)){
+    if(dynamic_cast<Transform*>(c)){
         std::cout << "GameObject already owns a transform" << std::endl;
     }
     else if(dynamic_cast<Renderer*>(c)){
@@ -136,7 +140,9 @@ void GameObject::addComponent(Component* c){
         rigidBody = (RigidBody*)c;
     }
     else{
-        std::cout << "Unknown component type" << std::endl; 
+        c->setGameObject(this);
+        components.push_back(c);
+        //std::cout << "Unknown component type" << std::endl; 
     }
 }
 

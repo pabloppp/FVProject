@@ -17,6 +17,7 @@ public:
     void display();
     void close();
     void setVerticalSyncEnabled(bool b);
+    void setFrameLimit(int l);
     bool pollEvent(sf::Event &e);
     void setView(const sf::View &v);
     const sf::View &getDefaultView();

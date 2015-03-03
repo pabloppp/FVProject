@@ -10,3 +10,8 @@ Time Clock::restart(){
     return Time(clock.restart());
 }
 
+Time Clock::currentTime() {
+    return Time(clock.getElapsedTime());
+}
+
+

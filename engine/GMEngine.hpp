@@ -23,6 +23,8 @@
 //#include "components/Collider.hpp"  //???
 #include "components/BoxCollider.hpp"
 #include "components/CircleCollider.hpp"
+#include "components/MusicPlayer.hpp"
+#include "components/SoundPlayer.hpp"
 
 //FACADES
 #include "facade/Time.hpp"

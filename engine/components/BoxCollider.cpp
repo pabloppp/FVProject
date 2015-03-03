@@ -13,7 +13,10 @@ void BoxCollider::setup(){
 }
 
 void BoxCollider::update(){
-    if(!colliding) debugColor = sf::Color::Yellow;
+    
+    if(!colliding){
+        debugColor = sf::Color::Yellow;
+    }
     colliding = false;
 }
 

@@ -56,3 +56,8 @@ gme::Vector2 Window::getSize(){
 sf::RenderWindow *Window::getRWindow(){
     return rwindow;
 }
+
+void Window::setFrameLimit(int l) {
+    rwindow->setFramerateLimit(l);
+}
+

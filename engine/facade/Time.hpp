@@ -9,6 +9,8 @@ class Time{
 public:
     Time();
     Time(sf::Time t);
+    Time(float t);
+    Time multiply(float s);
     float asSeconds();
     void Zero();
     void set(sf::Time time);

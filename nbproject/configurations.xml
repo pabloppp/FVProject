@@ -81,6 +81,10 @@
         <itemPath>engine/Scene.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="hito1" projectFiles="true">
+        <logicalFolder name="f1" displayName="entregable4" projectFiles="true">
+          <itemPath>hito1/sceneEntregable4.cpp</itemPath>
+          <itemPath>hito1/sceneEntregable4.hpp</itemPath>
+        </logicalFolder>
         <itemPath>hito1/hito1Game.cpp</itemPath>
         <itemPath>hito1/hito1Game.hpp</itemPath>
       </logicalFolder>
@@ -97,8 +101,22 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
   </logicalFolder>
   <sourceRootList>
+    <Elem>engine</Elem>
+    <Elem>hito1</Elem>
+    <Elem>demo</Elem>
     <Elem>engine</Elem>
     <Elem>hito1</Elem>
     <Elem>demo</Elem>
@@ -198,6 +216,10 @@
       </item>
       <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="engine/components/MusicPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/MusicPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
@@ -209,6 +231,10 @@
       <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -225,6 +251,14 @@
       <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -248,9 +282,25 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -343,6 +393,10 @@
       </item>
       <item path="engine/components/Collider.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="engine/components/MusicPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/MusicPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/components/Renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Renderer.hpp" ex="false" tool="3" flavor2="0">
@@ -354,6 +408,10 @@
       <item path="engine/components/Script.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/components/Script.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/components/SoundPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/components/Transform.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -370,6 +428,14 @@
       <item path="engine/facade/Mouse.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/facade/Mouse.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Music.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/facade/Sound.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/facade/Texture.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -393,9 +459,25 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

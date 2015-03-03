@@ -27,8 +27,11 @@ public:
     void setup();
     void update();
     gme::Vector2 position;
+    gme::Vector2 o_position;
     float rotation;
+    float o_rotation;
     gme::Vector2 scale;
+    gme::Vector2 o_scale;
     gme::Vector2 forward();
 private:
     float zIndex;

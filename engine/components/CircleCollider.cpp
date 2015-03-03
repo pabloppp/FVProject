@@ -15,8 +15,12 @@ void CircleCollider::setup(){
 
 void CircleCollider::update(){ //Check collisions
     //reset debug color
-    if(!colliding) debugColor = sf::Color::Yellow;
-    colliding = false;
+    if(!colliding){
+        debugColor = sf::Color::Yellow;
+    }
+    if(colliding){
+        colliding = false;
+    }
 }
 
 void CircleCollider::setRadius(float f){

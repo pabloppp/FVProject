@@ -49,19 +49,27 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/components/BoxCollider.o \
 	${OBJECTDIR}/engine/components/CircleCollider.o \
 	${OBJECTDIR}/engine/components/Collider.o \
+	${OBJECTDIR}/engine/components/MusicPlayer.o \
 	${OBJECTDIR}/engine/components/Renderer.o \
 	${OBJECTDIR}/engine/components/RigidBody.o \
 	${OBJECTDIR}/engine/components/Script.o \
+	${OBJECTDIR}/engine/components/SoundPlayer.o \
 	${OBJECTDIR}/engine/components/Transform.o \
 	${OBJECTDIR}/engine/facade/Clock.o \
 	${OBJECTDIR}/engine/facade/Keyboard.o \
 	${OBJECTDIR}/engine/facade/Mouse.o \
+	${OBJECTDIR}/engine/facade/Music.o \
+	${OBJECTDIR}/engine/facade/Sound.o \
 	${OBJECTDIR}/engine/facade/Texture.o \
 	${OBJECTDIR}/engine/facade/Time.o \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
+	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
+	${OBJECTDIR}/hito1/pruebaGameObject.o \
+	${OBJECTDIR}/hito1/sceneEntregable3.o \
+	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/main.o
 
 
@@ -159,6 +167,11 @@ ${OBJECTDIR}/engine/components/Collider.o: engine/components/Collider.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Collider.o engine/components/Collider.cpp
 
+${OBJECTDIR}/engine/components/MusicPlayer.o: engine/components/MusicPlayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/MusicPlayer.o engine/components/MusicPlayer.cpp
+
 ${OBJECTDIR}/engine/components/Renderer.o: engine/components/Renderer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
@@ -173,6 +186,11 @@ ${OBJECTDIR}/engine/components/Script.o: engine/components/Script.cpp
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Script.o engine/components/Script.cpp
+
+${OBJECTDIR}/engine/components/SoundPlayer.o: engine/components/SoundPlayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine/components
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/SoundPlayer.o engine/components/SoundPlayer.cpp
 
 ${OBJECTDIR}/engine/components/Transform.o: engine/components/Transform.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
@@ -193,6 +211,16 @@ ${OBJECTDIR}/engine/facade/Mouse.o: engine/facade/Mouse.cpp
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Mouse.o engine/facade/Mouse.cpp
+
+${OBJECTDIR}/engine/facade/Music.o: engine/facade/Music.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine/facade
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Music.o engine/facade/Music.cpp
+
+${OBJECTDIR}/engine/facade/Sound.o: engine/facade/Sound.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine/facade
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Sound.o engine/facade/Sound.cpp
 
 ${OBJECTDIR}/engine/facade/Texture.o: engine/facade/Texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
@@ -219,10 +247,30 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
+${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
+
 ${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
+
+${OBJECTDIR}/hito1/pruebaGameObject.o: hito1/pruebaGameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/pruebaGameObject.o hito1/pruebaGameObject.cpp
+
+${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
+
+${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
