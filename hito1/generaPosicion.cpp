@@ -1,8 +1,10 @@
 #include "generaPosicion.hpp"
 #include "pruebaGameObject.hpp"
+#include "../engine/Game.hpp"
+
 
 void generaPosicion::setup(){
-    gme::Window *w = gme::Game::getWindow();
+    w = gme::Game::getWindow();
     v = w->getSize();
     clk.restart();
 }
@@ -21,6 +23,18 @@ void generaPosicion::update() {
     }
     
 
+    
+}
+
+void generaPosicion::position(int x, int y,int rat){
+    std::cout << x << " " << y << " " << rat << std::endl;
+  
+    area.setOrigin(x,y);
+    area.setPosition(x,y);
+    area.setRadius(rat);
+    area.setOutlineThickness(1);
+    area.setFillColor(sf::Color::White);
+    area.setOutlineColor(sf::Color::Red);
     
 }
 

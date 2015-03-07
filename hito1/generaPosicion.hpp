@@ -14,11 +14,15 @@ class generaPosicion : public gme::Script {
 public:
     void setup();
     void update();
+    void position(int x, int y,int rat);
     virtual ~generaPosicion();
 private:
     gme::Vector2 v;
+    gme::Vector2 p;
     int posX;
     gme::Clock clk;
+    sf::CircleShape area;
+    gme::Window *w;
 };
 
 #endif	/* GENERAPOSICION_HPP */
