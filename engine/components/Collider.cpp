@@ -1,22 +1,21 @@
+#include <unordered_map>
+
 #include "Collider.hpp"
 #include "Transform.hpp"
 
 #include "../GameObject.hpp"
 #include "math.h"
+#include "BoxCollider.hpp"
+#define PI  3.14159265 
 
 using namespace gme;
 
 void Collider::addFilterTag(const std::string& tag){
-    tags.push_back(tag);
+    tagmap.insert(std::pair<std::string, std::string>(tag, tag));
 }
 
 void Collider::removeFilterTag(const std::string& tag){
-    for(int i=0;i<tags.size();i++){
-        if(tags.at(i).compare(tag) == 0){
-            tags.erase(tags.begin()+i);
-            return;
-        }
-    }
+    tagmap.erase(tag);
 }
 
 void Collider::inheritRotation(bool b){
@@ -24,33 +23,72 @@ void Collider::inheritRotation(bool b){
 }
 
 Vector2 Collider::getGlobalCenter(){
-    float PI = 3.14159265;
-    float rot = gameObject()->getTransform()->getRotation();
-    float cosRot = cos(rot*PI/180);
-    float sinRot = sin(rot*PI/180);
-    //std::cout << rot << " : " << cosRot << std::endl;
-    Vector2 c(cosRot*center.x-sinRot*(-center.y), cosRot*(-center.y)+sinRot*center.x);
     
-    if(gameObject() != NULL){
-        c.x += gameObject()->getTransform()->position.x;
-        c.y += gameObject()->getTransform()->position.y;
-    }
-    return c;
+    return gameObject()->getTransform()->position;
+    
 }
 
 void Collider::noticeCollision(Collider* col){
     debugColor = sf::Color::Red;
     colliding = true;
+    gameObject()->onCollision(col);
 }
 
 bool Collider::checkTags(Collider *col){
     if(gameObject() != NULL && col->gameObject() != NULL){
-        for(int i=0;i<tags.size();i++){
-            for(int j=0;j<col->gameObject()->getTags()->size();j++){
-                if(tags.at(i).compare(col->gameObject()->getTags()->at(j)) == 0) return true;
-            }
+        for ( auto it = tagmap.begin(); it != tagmap.end(); ++it ){
+            if(col->gameObject()->getTags()->find(it->second) != col->gameObject()->getTags()->end()) return true;
         }
     }
     return false;
 }
+
+void Collider::isTrigger(bool b) {
+    
+    if(gameObject() != NULL && gameObject()->getRigidBody() != NULL){
+        int count = 0;
+        for (b2Fixture *ce = gameObject()->getRigidBody()->b2body->GetFixtureList(); ce != NULL; ce = ce->GetNext())
+        {
+            if(count == 0) ce->SetSensor(b);
+        }
+    }
+    else{
+        fixtureDef.isSensor = b;
+    }
+}
+
+Vector2 Collider::getRelativePosition(Collider* col) {    
+    Vector2 positionA = gameObject()->getTransform()->position;
+    Vector2 positionB = col->gameObject()->getTransform()->position;
+    Vector2 sizeA(0,0);
+    Vector2 sizeB(0,0);
+    float r = col->gameObject()->getTransform()->rotation;
+    r = r*PI/180.f;
+    if(dynamic_cast<BoxCollider*>(this)){
+        std::vector<Vector2> points = ((BoxCollider*)(this))->getRotatedPoints();
+        for(int i=0;i<4;i++){
+            if(points.at(i).x-positionA.x > sizeA.x) sizeA.x = points.at(i).x-positionA.x;
+            if(points.at(i).y-positionA.y > sizeA.y) sizeA.y = points.at(i).y-positionA.y;
+        }
+    }
+    
+    if(dynamic_cast<BoxCollider*>(col)){
+        std::vector<Vector2> points = ((BoxCollider*)(col))->getRotatedPoints();
+        for(int i=0;i<4;i++){
+            if(points.at(i).x-positionB.x > sizeB.x) sizeB.x = points.at(i).x-positionB.x;
+            if(points.at(i).y-positionB.y > sizeB.y) sizeB.y = points.at(i).y-positionB.y;
+        }
+    }
+    
+    Vector2 result(0,0);
+    
+    if(positionA.y+sizeA.y/2.f < positionB.y-sizeB.y/2.f) result.y = -1;
+    else if(positionA.y-sizeA.y/2.f > positionB.y+sizeB.y/2.f) result.y = 1;
+    
+    if(positionA.x+sizeA.x/2.f < positionB.x-sizeB.x/2.f) result.x = -1;
+    else if(positionA.x-sizeA.x/2.f > positionB.x+sizeB.x/2.f) result.x = 1;  
+        
+    return result;
+}
+
 

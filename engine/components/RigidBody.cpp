@@ -4,73 +4,193 @@
 #include "Transform.hpp"
 #include "../GameObject.hpp"
 #include "../Game.hpp"
+#include "BoxCollider.hpp"
+
+#define SCALE 30.0f
+#define PI  3.14159265 
 
 using namespace gme;
 
 RigidBody::RigidBody() : Component::Component(){
-    gravity = true;
     weight = 1;
-    friction = 0.05;
-    speed = 0;
-    angularSpeed = 0;
+    friction = 0.1;
+    
+    b2def.position.Set(0.0f, 0.0f);
+    b2def.type = b2_dynamicBody;
+
+    b2body = Game::getCurrentScene()->boxWorld->CreateBody(&b2def);
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(1.0f, 1.0f);
+    fixtureDef.density = weight;
+    fixtureDef.shape = &dynamicBox; 
+    fixtureDef.isSensor = true;
+    fixtureDef.filter.maskBits = 0x0000;
+    b2body->CreateFixture(&fixtureDef);
+    
+    fixedRotation = false;
 }
 
+RigidBody::~RigidBody() {
+    Game::getCurrentScene()->boxWorld->DestroyBody(b2body);
+}
+
+
 void RigidBody::setup(){
+    if(gameObject() != NULL && gameObject()->getTransform() != NULL){
+        b2def.position.Set(gameObject()->getTransform()->position.x/SCALE, gameObject()->getTransform()->position.y/SCALE);
+        //b2body = Game::getCurrentScene()->boxWorld->CreateBody(&b2def);
+    }
 }
 
 void RigidBody::update(){
-    float deltaTime = Game::deltaTime.asSeconds();
+    b2body->SetTransform(b2Vec2(gameObject()->getTransform()->position.x/SCALE, 
+            gameObject()->getTransform()->position.y/SCALE), 
+            gameObject()->getTransform()->rotation*PI/180.f);
     
-    if(gravity){
-        speed.x += weight*gravityDirection.normalized().x*gravityForce*deltaTime*5;
-        speed.y += weight*gravityDirection.normalized().y*gravityForce*deltaTime*5;
-    }  
+    b2body->SetLinearDamping(friction*10);
     
-    float frictionAngular = 0;
-    if(friction != 0){   
-        frictionV.x = speed.x*friction;
-        frictionV.y = speed.y*friction;
-        frictionAngular = angularSpeed*friction;       
-    }
-    
-    if(gameObject()!= NULL){
-        Vector2 p = gameObject()->getTransform()->getPosition();
-        gameObject()->getTransform()->position.x += speed.x*deltaTime*10;
-        gameObject()->getTransform()->position.y += speed.y*deltaTime*10;
-        if(!fixedRotation) gameObject()->getTransform()->rotation += angularSpeed*deltaTime*10;
-    }
-        
-    speed.x += acceleration.x*deltaTime-frictionV.x;
-    speed.y += acceleration.y*deltaTime-frictionV.y;
-    angularSpeed += angularAcceleration*deltaTime-frictionAngular;
-   
-    //p->x += speed.x;
-    //p->y += speed.y;
+    b2body->SetAngularDamping(friction*10);
 }
 
+void RigidBody::updatep(){
+    if(gameObject()!= NULL){
+        gameObject()->getTransform()->position.x = b2body->GetPosition().x*SCALE;
+
+        gameObject()->getTransform()->position.y = b2body->GetPosition().y*SCALE;
+        
+        if(!fixedRotation) gameObject()->getTransform()->rotation = b2body->GetTransform().q.GetAngle()*180.f/PI;
+    }
+}
+
+void RigidBody::setSpeed(float x, float y) {
+    b2body->SetLinearVelocity(b2Vec2(x, y));
+}
+
+void RigidBody::setSpeed(Vector2 direction, float force){
+    Vector2 vector = direction.normalized();
+    vector.x *= force;
+    vector.y *= force;
+    setSpeed(vector.x, vector.y);
+}
+
+void RigidBody::setAngularSpeed(float f) {
+
+}
+
+
+
 void RigidBody::push(Vector2 vector){
-    float deltaTime = Game::deltaTime.asSeconds();
-    speed.x += vector.x;
-    speed.y += vector.y;
+    b2body->ApplyForceToCenter(b2Vec2(vector.x, vector.y), true);
 }
 
 void RigidBody::push(Vector2 direction, float force){
-    float deltaTime = Game::deltaTime.asSeconds();
     Vector2 vector = direction.normalized();
     vector.x *= force;
     vector.y *= force;
     push(vector);
 }
 
+void RigidBody::pushImmediate(Vector2 direction, float force) {
+    Vector2 vector = direction.normalized();
+    vector.x *= force;
+    vector.y *= force;
+    b2body->ApplyLinearImpulse(b2Vec2(vector.x, vector.y), b2body->GetTransform().p, true);
+}
+
+
+void RigidBody::rotateImmediate(float force) {
+    b2body->ApplyAngularImpulse(force, true);
+    //b2body->ApplyTorque(20, true);
+}
+
+void RigidBody::rotate(float force) {
+    b2body->ApplyTorque(force, true);
+}
+
+
+
 void RigidBody::setGravity(bool g){
-    gravity = g;
+    if(g){
+        b2body->SetGravityScale(1);
+        b2body->SetAwake(true);
+    }
+    else b2body->SetGravityScale(0);
 }
 
 bool RigidBody::hasGravity(){
-    return gravity;
+    if(b2body->GetGravityScale() != 0) return true;
+    else return false;
 }
 
-float RigidBody::gravityForce = 9.81;
+void RigidBody::onCollision(Collider* c) {
+    
+}
 
-Vector2 RigidBody::gravityDirection(0,1);
+void RigidBody::isKinematic() {
+    b2body->SetType(b2_kinematicBody);
+}
+
+void RigidBody::isDynamic() {
+    b2body->SetType(b2_dynamicBody); 
+}
+
+void RigidBody::isStatic() {
+    b2body->SetType(b2_staticBody);
+}
+
+
+void RigidBody::setFixedRot(bool b) {
+    fixedRotation = b;
+    b2body->SetFixedRotation(b);
+}
+
+void RigidBody::setFriction(float f) {
+    friction = f;
+    for (b2Fixture *ce = b2body->GetFixtureList(); ce != NULL; ce = ce->GetNext())
+    {
+        ce->SetFriction(f);
+    }
+}
+
+
+void RigidBody::setWeight(float f) {
+    weight = f;
+    for (b2Fixture *ce = b2body->GetFixtureList(); ce != NULL; ce = ce->GetNext())
+    {
+        ce->SetDensity(f);
+    }
+}
+
+void RigidBody::setElasticity(float f) {
+    elasticity = f;
+    for (b2Fixture *ce = b2body->GetFixtureList(); ce != NULL; ce = ce->GetNext())
+    {
+        ce->SetRestitution(elasticity);
+    }
+}
+
+
+float RigidBody::getElasticity() {
+    return elasticity;
+}
+
+float RigidBody::getFriction() {
+    return friction;
+}
+
+float RigidBody::getWeight() {
+    return weight;
+}
+
+float RigidBody::getAngularSpeed() {
+    return b2body->GetAngularVelocity();
+}
+
+Vector2 RigidBody::getSpeed() {
+    return Vector2(b2body->GetLinearVelocity().x, b2body->GetLinearVelocity().y); 
+}
+
+
+
+
 

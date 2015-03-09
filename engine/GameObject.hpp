@@ -26,14 +26,14 @@ public:
     GameObject(std::string n = "gameObject");
     GameObject(const GameObject& orig);
     virtual ~GameObject();
-    virtual void update();
+    void update();
     void fixedUpdate();
-    virtual void drawGui();
-    virtual void setup() = 0;
+    void drawGui();
+    virtual void setup(){};
     void componentSetup();
     void addTag(std::string t);
     bool hasTag(const std::string &t);
-    std::vector<std::string> *getTags();
+    std::unordered_map<std::string, std::string> *getTags();
     static std::vector<GameObject*> findWithTag(std::string s);
     static std::vector<GameObject*> find(std::string s);
     static void sendMessage(std::string s, float f);
@@ -52,6 +52,7 @@ public:
     Transform *getTransform();
     Collider *getCollider();
     Renderer *getRenderer();
+    void onCollision(Collider *col);
     template <class T> 
     inline Component *getComponent(){
         for(int i=0;i<components.size();i++){
@@ -65,6 +66,7 @@ private:
     std::vector<GameObject*> children;
     std::vector<Component*> components;
     std::vector<std::string> tags;
+    std::unordered_map<std::string, std::string> tagmap;
     std::string name;
     bool active;
     Transform *transform;

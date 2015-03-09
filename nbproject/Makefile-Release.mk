@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/demo/Asteroid.o \
 	${OBJECTDIR}/demo/CustomScript.o \
 	${OBJECTDIR}/demo/JetParticle.o \
 	${OBJECTDIR}/demo/MyGame.o \
@@ -96,6 +97,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/demo/Asteroid.o: demo/Asteroid.cpp 
+	${MKDIR} -p ${OBJECTDIR}/demo
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/Asteroid.o demo/Asteroid.cpp
 
 ${OBJECTDIR}/demo/CustomScript.o: demo/CustomScript.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo

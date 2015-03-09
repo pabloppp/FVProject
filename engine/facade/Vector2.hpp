@@ -11,6 +11,7 @@ public:
     float x, y;
     Vector2 normalized();
     float magnitude();
+    float angle();
     float magnitude2();
 private:
     //sf::Vector2f vector;

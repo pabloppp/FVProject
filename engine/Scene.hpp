@@ -5,6 +5,8 @@
 
 #include "GameObject.hpp"
 #include "facade/Clock.hpp"
+#include "CollisionGrid.hpp"
+#include <Box2D/Box2D.h>
 
 namespace gme{
 
@@ -23,6 +25,7 @@ public:
     void superSetup();
     void update();
     std::string getName();
+    b2World *boxWorld;
     
 private:
     std::vector<GameObject*> gameObjects;
@@ -30,6 +33,9 @@ private:
     sf::View mainView;
     Clock updateClock;
     float lastTime;
+    int testCount;
+    float test1;
+    float test2;    
 };
 
 }
