@@ -26,9 +26,9 @@ public:
     GameObject(std::string n = "gameObject");
     GameObject(const GameObject& orig);
     virtual ~GameObject();
-    void update();
+    virtual void update();
     void fixedUpdate();
-    void drawGui();
+    virtual void drawGui();
     virtual void setup() = 0;
     void componentSetup();
     void addTag(std::string t);
