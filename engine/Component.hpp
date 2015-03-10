@@ -13,6 +13,7 @@ public:
     Component(const Component& orig);
     virtual ~Component();
     virtual void update() = 0;
+    virtual void fixedUpdate(){};
     virtual void setup() = 0;
     void setActive(bool b);
     bool isActive();

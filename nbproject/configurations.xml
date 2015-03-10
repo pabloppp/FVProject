@@ -195,13 +195,16 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <standard>8</standard>
           <incDir>
             <pElem>libs/SFML-2.1/include</pElem>
+            <pElem>libs/Box2D/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
             <pElem>libs/SFML-2.1/lib</pElem>
+            <pElem>libs/Box2D/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
@@ -209,9 +212,14 @@
             <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
+            <linkerLibLibItem>Box2D</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="demo/Asteroid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Asteroid.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">
@@ -346,6 +354,14 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -354,9 +370,21 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -365,6 +393,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -381,6 +413,11 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>libs/SFML-2.1/include</pElem>
+            <pElem>libs/Box2D/include</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -388,7 +425,25 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>libs/SFML-2.1/lib</pElem>
+            <pElem>libs/Box2D/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system</linkerLibLibItem>
+            <linkerLibLibItem>sfml-audio</linkerLibLibItem>
+            <linkerLibLibItem>sfml-network</linkerLibLibItem>
+            <linkerLibLibItem>Box2D</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
+      <item path="demo/Asteroid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Asteroid.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">
@@ -523,6 +578,14 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -531,9 +594,21 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -542,6 +617,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

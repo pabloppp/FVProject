@@ -10,7 +10,9 @@ public:
     void update();
     virtual ~CustomScript();
     void onGui();
-    void onMessage(std::string s, float f);
+    virtual void onMessage(std::string m, float v);
+    virtual void onCollision(gme::Collider* c);
+
 private:
     float timeOut;
     float timeLapse;
