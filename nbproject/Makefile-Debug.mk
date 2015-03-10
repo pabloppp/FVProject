@@ -74,6 +74,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/player.o \
 	${OBJECTDIR}/hito1/pruebaGameObject.o \
 	${OBJECTDIR}/hito1/scene51.o \
+	${OBJECTDIR}/hito1/sceneEntregable2.o \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/hito1/tile.o \
@@ -298,6 +299,11 @@ ${OBJECTDIR}/hito1/scene51.o: hito1/scene51.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/scene51.o hito1/scene51.cpp
+
+${OBJECTDIR}/hito1/sceneEntregable2.o: hito1/sceneEntregable2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable2.o hito1/sceneEntregable2.cpp
 
 ${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
