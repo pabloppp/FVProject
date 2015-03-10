@@ -37,7 +37,7 @@ void BoxCollider::update(){
         for (b2ContactEdge *ce = gameObject()->getRigidBody()->b2body->GetContactList(); ce != NULL; ce = ce->next)
         {
             if(ce->contact->IsTouching()){
-                BoxCollider *c = (BoxCollider*)(ce->contact->GetFixtureA()->GetUserData());
+                BoxCollider *c = (BoxCollider*)(ce->contact->GetFixtureB()->GetUserData());
                 if(!c->checkTags(this))
                     noticeCollision(c);
             }
