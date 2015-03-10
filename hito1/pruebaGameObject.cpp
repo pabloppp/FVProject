@@ -18,7 +18,8 @@ void pruebaGameObject::setup(){
     //addComponent(new gme::RigidBody);
     
     generaPosicion *gP = new generaPosicion();
-    gP->position(200,200,10);
+    gP->position(320,90,80);
+    addComponent(gP);
    
     
     

@@ -87,7 +87,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network
+LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network -lm
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

@@ -15,13 +15,13 @@ public:
     void setup();
     void update();
     void position(int x, int y,int rat);
+    virtual void onGui();
     virtual ~generaPosicion();
 private:
     gme::Vector2 v;
-    gme::Vector2 p;
-    int posX;
+    double angle;
     gme::Clock clk;
-    sf::CircleShape area;
+    sf::CircleShape ratio;
     gme::Window *w;
 };
 

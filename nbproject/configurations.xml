@@ -161,6 +161,7 @@
             <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
+            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
