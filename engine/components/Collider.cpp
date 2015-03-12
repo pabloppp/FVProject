@@ -12,7 +12,10 @@
 using namespace gme;
 
 void Collider::setup() {
+    debugColor = sf::Color::Yellow;
     fixtureDef.filter.categoryBits = 0;
+    fixtureDef.density = 1.f;
+
     if(gameObject() != NULL){
         std::unordered_map<std::string, unsigned int> *tags = gameObject()->getTags();
         if(tags->empty()) fixtureDef.filter.categoryBits |= 1;
@@ -20,6 +23,12 @@ void Collider::setup() {
             
             fixtureDef.filter.categoryBits |= 1 << it->second;
             
+        }
+        
+        if(gameObject()->getRigidBody() != NULL){
+            fixtureDef.density = gameObject()->getRigidBody()->fixtureDef.density;
+            fixtureDef.friction = gameObject()->getRigidBody()->getFriction();
+            fixtureDef.restitution = gameObject()->getRigidBody()->getElasticity();
         }
     }
 }
