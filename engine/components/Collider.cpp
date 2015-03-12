@@ -4,14 +4,47 @@
 #include "Transform.hpp"
 
 #include "../GameObject.hpp"
+#include "../Game.hpp"
 #include "math.h"
 #include "BoxCollider.hpp"
 #define PI  3.14159265 
 
 using namespace gme;
 
+void Collider::setup() {
+    fixtureDef.filter.categoryBits = 0;
+    if(gameObject() != NULL){
+        std::unordered_map<std::string, unsigned int> *tags = gameObject()->getTags();
+        if(tags->empty()) fixtureDef.filter.categoryBits |= 1;
+        for ( auto it = tags->begin(); it != tags->end(); ++it ){
+            
+            fixtureDef.filter.categoryBits |= 1 << it->second;
+            
+        }
+    }
+}
+
+
 void Collider::addFilterTag(const std::string& tag){
-    tagmap.insert(std::pair<std::string, std::string>(tag, tag));
+    
+    int tagIndex = Game::addTag(tag);
+    tagmap.insert(std::pair<std::string, unsigned int>(tag, 0));
+    
+    if(tagIndex != -1){
+        
+        if(gameObject() != NULL && gameObject()->getRigidBody() != NULL && gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext()){
+            b2Filter filter;
+            filter = gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext()->GetFilterData();            
+            filter.maskBits &= ~(1 << tagIndex);
+            gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext()->SetFilterData(filter);
+        }
+        else{  
+            //std::cout << fixtureDef.filter.maskBits << std::endl;
+            fixtureDef.filter.maskBits &= ~(1 << tagIndex);
+            //std::cout << fixtureDef.filter.maskBits << std::endl;
+        }
+    }
+
 }
 
 void Collider::removeFilterTag(const std::string& tag){
@@ -37,7 +70,7 @@ void Collider::noticeCollision(Collider* col){
 bool Collider::checkTags(Collider *col){
     if(gameObject() != NULL && col->gameObject() != NULL){
         for ( auto it = tagmap.begin(); it != tagmap.end(); ++it ){
-            if(col->gameObject()->getTags()->find(it->second) != col->gameObject()->getTags()->end()) return true;
+            if(col->gameObject()->getTags()->find(it->first) != col->gameObject()->getTags()->end()) return true;
         }
     }
     return false;

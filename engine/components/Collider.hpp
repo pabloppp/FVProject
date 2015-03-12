@@ -10,6 +10,7 @@ namespace gme{
     
 class Collider : public Component{
 public:
+    void setup();
     void inheritRotation(bool b);
     void addFilterTag(const std::string &tag);
     void removeFilterTag(const std::string &tag);
@@ -26,7 +27,7 @@ protected:
     bool canRotate;
     bool colliding;
     sf::Color debugColor;
-    std::unordered_map<std::string, std::string> tagmap;
+    std::unordered_map<std::string, unsigned int> tagmap;
     float ownerRot;
     Vector2 ownerRotDisp;
     b2FixtureDef fixtureDef;   
