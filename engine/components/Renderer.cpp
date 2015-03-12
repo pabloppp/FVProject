@@ -83,3 +83,37 @@ void Renderer::setFrame(gme::Vector2 f){
 void Renderer::setCenter(gme::Vector2 f){
     center = f;
 }
+
+void Renderer::setColor(int r, int g, int b, int a) {
+    if(dynamic_cast<sf::Sprite*>(drawable)){
+        return ((sf::Sprite*)drawable)->setColor(sf::Color(r,g,b,a));
+    }
+}
+
+int Renderer::getColorR() {
+    if(dynamic_cast<sf::Sprite*>(drawable)){
+        return ((sf::Sprite*)drawable)->getColor().r;
+    }
+    return -1;
+}
+
+int Renderer::getColorG() {
+    if(dynamic_cast<sf::Sprite*>(drawable)){
+        return ((sf::Sprite*)drawable)->getColor().g;
+    }
+    return -1;
+}
+
+int Renderer::getColorB() {
+    if(dynamic_cast<sf::Sprite*>(drawable)){
+        return ((sf::Sprite*)drawable)->getColor().b;
+    }
+    return -1;
+}
+
+int Renderer::getColorA() {
+    if(dynamic_cast<sf::Sprite*>(drawable)){
+        return ((sf::Sprite*)drawable)->getColor().a;
+    }
+    return -1;
+}
