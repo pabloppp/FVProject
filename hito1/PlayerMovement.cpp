@@ -63,6 +63,7 @@ void PlayerMovement::update() {
 }
 
 void PlayerMovement::onCollision(gme::Collider* c) {
+    std::cout << c->gameObject()->getName() << std::endl;
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
     if(c->gameObject()->hasTag("limit") || c->gameObject()->hasTag("floor")){
         

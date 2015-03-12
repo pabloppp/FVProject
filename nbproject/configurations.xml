@@ -101,12 +101,16 @@
             <itemPath>hito1/player.hpp</itemPath>
             <itemPath>hito1/tile.cpp</itemPath>
             <itemPath>hito1/tile.hpp</itemPath>
+            <itemPath>hito1/tileMapGenerator.cpp</itemPath>
+            <itemPath>hito1/tileMapGenerator.hpp</itemPath>
           </logicalFolder>
           <logicalFolder name="f1" displayName="scripts" projectFiles="true">
             <itemPath>hito1/BackgroundParallax.cpp</itemPath>
             <itemPath>hito1/BackgroundParallax.hpp</itemPath>
             <itemPath>hito1/CameraFollowPlayer.cpp</itemPath>
             <itemPath>hito1/CameraFollowPlayer.hpp</itemPath>
+            <itemPath>hito1/MakeMapFromFile.cpp</itemPath>
+            <itemPath>hito1/MakeMapFromFile.hpp</itemPath>
             <itemPath>hito1/PlayerMovement.cpp</itemPath>
             <itemPath>hito1/PlayerMovement.hpp</itemPath>
           </logicalFolder>
