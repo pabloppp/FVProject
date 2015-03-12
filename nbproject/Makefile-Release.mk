@@ -66,11 +66,19 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
+	${OBJECTDIR}/hito1/BackgroundParallax.o \
+	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
+	${OBJECTDIR}/hito1/PlayerMovement.o \
+	${OBJECTDIR}/hito1/backgroundLayer.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
+	${OBJECTDIR}/hito1/limit.o \
+	${OBJECTDIR}/hito1/player.o \
 	${OBJECTDIR}/hito1/pruebaGameObject.o \
+	${OBJECTDIR}/hito1/scene51.o \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
+	${OBJECTDIR}/hito1/tile.o \
 	${OBJECTDIR}/main.o
 
 
@@ -88,7 +96,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -Llibs/Box2D/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network -lBox2D
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -101,187 +109,227 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject: ${OBJECTFILES}
 ${OBJECTDIR}/demo/Asteroid.o: demo/Asteroid.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/Asteroid.o demo/Asteroid.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/Asteroid.o demo/Asteroid.cpp
 
 ${OBJECTDIR}/demo/CustomScript.o: demo/CustomScript.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/CustomScript.o demo/CustomScript.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/CustomScript.o demo/CustomScript.cpp
 
 ${OBJECTDIR}/demo/JetParticle.o: demo/JetParticle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/JetParticle.o demo/JetParticle.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/JetParticle.o demo/JetParticle.cpp
 
 ${OBJECTDIR}/demo/MyGame.o: demo/MyGame.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/MyGame.o demo/MyGame.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/MyGame.o demo/MyGame.cpp
 
 ${OBJECTDIR}/demo/Starship.o: demo/Starship.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/Starship.o demo/Starship.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/Starship.o demo/Starship.cpp
 
 ${OBJECTDIR}/demo/mainScene.o: demo/mainScene.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/mainScene.o demo/mainScene.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/mainScene.o demo/mainScene.cpp
 
 ${OBJECTDIR}/demo/particleDecay.o: demo/particleDecay.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/particleDecay.o demo/particleDecay.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/particleDecay.o demo/particleDecay.cpp
 
 ${OBJECTDIR}/demo/scriptDePrueba.o: demo/scriptDePrueba.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/scriptDePrueba.o demo/scriptDePrueba.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/demo/scriptDePrueba.o demo/scriptDePrueba.cpp
 
 ${OBJECTDIR}/engine/Component.o: engine/Component.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Component.o engine/Component.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Component.o engine/Component.cpp
 
 ${OBJECTDIR}/engine/Game.o: engine/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Game.o engine/Game.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Game.o engine/Game.cpp
 
 ${OBJECTDIR}/engine/GameObject.o: engine/GameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GameObject.o engine/GameObject.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GameObject.o engine/GameObject.cpp
 
 ${OBJECTDIR}/engine/Scene.o: engine/Scene.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Scene.o engine/Scene.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Scene.o engine/Scene.cpp
 
 ${OBJECTDIR}/engine/components/BoxCollider.o: engine/components/BoxCollider.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/BoxCollider.o engine/components/BoxCollider.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/BoxCollider.o engine/components/BoxCollider.cpp
 
 ${OBJECTDIR}/engine/components/CircleCollider.o: engine/components/CircleCollider.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/CircleCollider.o engine/components/CircleCollider.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/CircleCollider.o engine/components/CircleCollider.cpp
 
 ${OBJECTDIR}/engine/components/Collider.o: engine/components/Collider.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Collider.o engine/components/Collider.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Collider.o engine/components/Collider.cpp
 
 ${OBJECTDIR}/engine/components/MusicPlayer.o: engine/components/MusicPlayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/MusicPlayer.o engine/components/MusicPlayer.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/MusicPlayer.o engine/components/MusicPlayer.cpp
 
 ${OBJECTDIR}/engine/components/Renderer.o: engine/components/Renderer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Renderer.o engine/components/Renderer.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Renderer.o engine/components/Renderer.cpp
 
 ${OBJECTDIR}/engine/components/RigidBody.o: engine/components/RigidBody.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/RigidBody.o engine/components/RigidBody.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/RigidBody.o engine/components/RigidBody.cpp
 
 ${OBJECTDIR}/engine/components/Script.o: engine/components/Script.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Script.o engine/components/Script.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Script.o engine/components/Script.cpp
 
 ${OBJECTDIR}/engine/components/SoundPlayer.o: engine/components/SoundPlayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/SoundPlayer.o engine/components/SoundPlayer.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/SoundPlayer.o engine/components/SoundPlayer.cpp
 
 ${OBJECTDIR}/engine/components/Transform.o: engine/components/Transform.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/components
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Transform.o engine/components/Transform.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/components/Transform.o engine/components/Transform.cpp
 
 ${OBJECTDIR}/engine/facade/Clock.o: engine/facade/Clock.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Clock.o engine/facade/Clock.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Clock.o engine/facade/Clock.cpp
 
 ${OBJECTDIR}/engine/facade/Keyboard.o: engine/facade/Keyboard.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Keyboard.o engine/facade/Keyboard.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Keyboard.o engine/facade/Keyboard.cpp
 
 ${OBJECTDIR}/engine/facade/Mouse.o: engine/facade/Mouse.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Mouse.o engine/facade/Mouse.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Mouse.o engine/facade/Mouse.cpp
 
 ${OBJECTDIR}/engine/facade/Music.o: engine/facade/Music.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Music.o engine/facade/Music.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Music.o engine/facade/Music.cpp
 
 ${OBJECTDIR}/engine/facade/Sound.o: engine/facade/Sound.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Sound.o engine/facade/Sound.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Sound.o engine/facade/Sound.cpp
 
 ${OBJECTDIR}/engine/facade/Texture.o: engine/facade/Texture.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Texture.o engine/facade/Texture.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Texture.o engine/facade/Texture.cpp
 
 ${OBJECTDIR}/engine/facade/Time.o: engine/facade/Time.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Time.o engine/facade/Time.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Time.o engine/facade/Time.cpp
 
 ${OBJECTDIR}/engine/facade/Vector2.o: engine/facade/Vector2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Vector2.o engine/facade/Vector2.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Vector2.o engine/facade/Vector2.cpp
 
 ${OBJECTDIR}/engine/facade/Window.o: engine/facade/Window.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/facade
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Window.o engine/facade/Window.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/facade/Window.o engine/facade/Window.cpp
 
 ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine/gameobjects
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
+
+${OBJECTDIR}/hito1/BackgroundParallax.o: hito1/BackgroundParallax.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/BackgroundParallax.o hito1/BackgroundParallax.cpp
+
+${OBJECTDIR}/hito1/CameraFollowPlayer.o: hito1/CameraFollowPlayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/CameraFollowPlayer.o hito1/CameraFollowPlayer.cpp
+
+${OBJECTDIR}/hito1/PlayerMovement.o: hito1/PlayerMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/PlayerMovement.o hito1/PlayerMovement.cpp
+
+${OBJECTDIR}/hito1/backgroundLayer.o: hito1/backgroundLayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/backgroundLayer.o hito1/backgroundLayer.cpp
 
 ${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
 
 ${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
+
+${OBJECTDIR}/hito1/limit.o: hito1/limit.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/limit.o hito1/limit.cpp
+
+${OBJECTDIR}/hito1/player.o: hito1/player.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/player.o hito1/player.cpp
 
 ${OBJECTDIR}/hito1/pruebaGameObject.o: hito1/pruebaGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/pruebaGameObject.o hito1/pruebaGameObject.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/pruebaGameObject.o hito1/pruebaGameObject.cpp
+
+${OBJECTDIR}/hito1/scene51.o: hito1/scene51.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/scene51.o hito1/scene51.cpp
 
 ${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
 
 ${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
+
+${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tile.o hito1/tile.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
