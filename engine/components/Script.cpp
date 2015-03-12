@@ -33,3 +33,16 @@ void Script::instantiate(GameObject* g){
     }
 }
 
+void Script::broadcastMessage(std::string s, float f) {
+    if(gameObject() != NULL) gameObject()->broadcastMessage(s,f);
+}
+
+void Script::sendMessage(std::string s, float f) {
+    if(gameObject() != NULL) gameObject()->sendMessage(s,f);
+}
+
+void Script::sendMessageUpward(std::string s, float f) {
+    if(gameObject() != NULL) gameObject()->sendMessageUpward(s,f);
+}
+
+

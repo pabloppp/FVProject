@@ -43,29 +43,36 @@ GameObject::~GameObject() {
     transform = NULL;
     delete transform;
     if(rigidBody != NULL){
-        rigidBody = NULL;
         delete rigidBody;
+        rigidBody = NULL;       
     }
     if(collider != NULL){
-        collider = NULL;
-        delete collider;
+        delete collider;       
+        collider = NULL;       
     }
     //std::cout << "Destroying object " << name << std::endl;
 }
 
 void GameObject::update(){
     
-    if(transform != NULL) transform->update();
-    
+    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->updatep(); 
     for(int i = components.size()-1; i >= 0; i--){
         if(components.at(i)->isActive()) components.at(i)->update();
     }
-    
-    if(rigidBody != NULL) rigidBody->update();
+
 }
 
-void GameObject::fixedUpdate() {
-     if(collider != NULL) collider->update();      
+void GameObject::earlyUpdate() {
+    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->update();
+    if(collider != NULL && collider->isActive() ) collider->update(); 
+    if(transform != NULL && transform->isActive()) transform->update();
+}
+
+
+void GameObject::fixedUpdate() {    
+    for(int i = components.size()-1; i >= 0; i--){
+        if(components.at(i)->isActive()) components.at(i)->fixedUpdate();
+    }
 }
 
 void GameObject::drawGui(){
@@ -75,17 +82,17 @@ void GameObject::drawGui(){
 }
 
 void GameObject::addTag(std::string t){
-    tags.push_back(t);
+    int getTagIndex = Game::addTag(t);
+    if(getTagIndex != -1) tagmap[t] = getTagIndex;
+    else std::cout << "ERROR: cannot add tag " << t << ". Tag container is FULL" << std::endl;
 }
 
-std::vector<std::string> *GameObject::getTags(){
-    return &tags;
+std::unordered_map<std::string, unsigned int> *GameObject::getTags(){
+    return &tagmap;
 }
 
 bool GameObject::hasTag(const std::string& t){
-    for(int i=0; i<tags.size();i++){
-        if(tags.at(i).compare(t) == 0) return true;
-    }
+    if(tagmap.find(t) != tagmap.end()) return true;
     return false;
 }
 
@@ -95,10 +102,7 @@ std::vector<GameObject*> GameObject::findWithTag(std::string s){
     vect = Game::getCurrentScene()->getGameObjects();
     
     for(int i=0;i<vect->size();i++){
-        std::vector<std::string> *tags = vect->at(i)->getTags();
-        for(int j=0;j<tags->size();j++){
-            if(tags->at(j).compare(s) == 0) result.push_back(vect->at(i));
-        }
+        if(vect->at(i)->getTags()->find(s) != vect->at(i)->getTags()->end()) result.push_back(vect->at(i));
     }
     return result;
 }
@@ -114,15 +118,26 @@ std::vector<GameObject*> GameObject::find(std::string s){
     return result;
 }
 
-// TO DO
+
 void GameObject::sendMessage(std::string s, float f){
-    //...
+    for(int i = components.size()-1; i >= 0; i--){
+        if(dynamic_cast<Script*>(components.at(i)) && components.at(i)->isActive()) ((Script*)(components.at(i)))->onMessage(s, f);
+    }
 }
 
 void GameObject::broadcastMessage(std::string s, float f){
-    //...
+    for(int i =0; i < children.size(); i++){
+        children.at(i)->broadcastMessage(s,f);
+    }    
+    sendMessage(s,f);
 }
-//~~~~
+
+void GameObject::sendMessageUpward(std::string s, float f) {
+    if(parent != NULL) parent->sendMessageUpward(s,f);   
+    sendMessage(s,f);
+}
+
+
 
 void GameObject::addComponent(Component* c){
     if(dynamic_cast<Transform*>(c)){
@@ -132,8 +147,14 @@ void GameObject::addComponent(Component* c){
         std::cout << "GameObject already owns a renderer" << std::endl;
     }
     else if(dynamic_cast<Collider*>(c)){
-        c->setGameObject(this);
-        collider = (Collider*)c;
+        if(getRigidBody() != NULL){
+            c->setGameObject(this);
+            collider = (Collider*)c;
+        }
+        else{
+            std::cout << "NO COLLIDER WITHOUT RIGIDBODY" << std::endl;
+            delete c;
+        }
     }
     else if(dynamic_cast<RigidBody*>(c)){
         c->setGameObject(this);
@@ -222,4 +243,16 @@ Renderer *GameObject::getRenderer(){
 
 Collider *GameObject::getCollider(){
     return collider;
+}
+
+void GameObject::onCollision(Collider* col) {
+    
+    if(getRigidBody() != NULL) getRigidBody()->onCollision(col);
+    
+    for(int i = components.size()-1; i >= 0; i--){
+        if(components.at(i)->isActive()){
+            if( dynamic_cast<Script*>(components.at(i)) )
+                ((Script*)components.at(i))->onCollision(col);
+        }
+    }
 }

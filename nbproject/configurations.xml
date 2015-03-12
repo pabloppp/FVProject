@@ -17,6 +17,8 @@
           <itemPath>demo/resources/particle1.png</itemPath>
           <itemPath>demo/resources/starship.png</itemPath>
         </logicalFolder>
+        <itemPath>demo/Asteroid.cpp</itemPath>
+        <itemPath>demo/Asteroid.hpp</itemPath>
         <itemPath>demo/CustomScript.cpp</itemPath>
         <itemPath>demo/CustomScript.hpp</itemPath>
         <itemPath>demo/JetParticle.cpp</itemPath>
@@ -89,6 +91,8 @@
         <itemPath>engine/Scene.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="hito1" projectFiles="true">
+        <logicalFolder name="f3" displayName="entregable1" projectFiles="true">
+        </logicalFolder>
         <logicalFolder name="f2" displayName="entregable3" projectFiles="true">
           <itemPath>hito1/generaPosicion.cpp</itemPath>
           <itemPath>hito1/generaPosicion.hpp</itemPath>
@@ -149,11 +153,13 @@
         <ccTool>
           <incDir>
             <pElem>libs/SFML-2.1/include</pElem>
+            <pElem>libs/Box2D/include</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
             <pElem>libs/SFML-2.1/lib</pElem>
+            <pElem>libs/Box2D/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
@@ -161,10 +167,14 @@
             <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
-            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
+            <linkerLibLibItem>Box2D</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="demo/Asteroid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Asteroid.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">
@@ -342,6 +352,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="demo/Asteroid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="demo/Asteroid.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="demo/CustomScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="demo/CustomScript.hpp" ex="false" tool="3" flavor2="0">

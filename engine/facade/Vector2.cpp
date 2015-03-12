@@ -3,6 +3,7 @@
 
 using namespace gme;
 
+#define PI  3.14159265 
 
 Vector2::Vector2(float nx, float ny) {
     //vector = sf::Vector2f(x, y);
@@ -23,4 +24,9 @@ float Vector2::magnitude(){
 float Vector2::magnitude2(){
     return (x*x + y*y);
 }
+
+float Vector2::angle() {
+    return atan2(y,x)*180/PI;
+}
+
 

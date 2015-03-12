@@ -6,7 +6,7 @@ void particleDecay::setup(){
 }
 
 void particleDecay::update(){   
-    std::cout << gme::GameObject::findWithTag("particle").size() << std::endl;
+    //std::cout << gme::GameObject::findWithTag("particle").size() << std::endl;
     float deltaTime = gme::Game::deltaTime.asSeconds();
     elapsedTime += deltaTime;
     if(elapsedTime >= 1.0/fps && frameCount < frames){        

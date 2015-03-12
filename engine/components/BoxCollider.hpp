@@ -11,12 +11,13 @@ public:
     void update();
     void setSize(Vector2 s);
     void setSize(float x, float y);
-    void checkCollision(Collider *col);
     void render();
+    std::vector<Vector2> getRotatedPoints();
     Vector2 getSize();
 private:
-    sf::RectangleShape rectangle;
+    sf::ConvexShape rectangle;
     Vector2 size;
+    b2PolygonShape b2shape;    
 };
 
 }

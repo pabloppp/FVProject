@@ -14,6 +14,7 @@ void CircleCollider::setup(){
 }
 
 void CircleCollider::update(){ //Check collisions
+    checked = false;
     //reset debug color
     if(!colliding){
         debugColor = sf::Color::Yellow;
@@ -33,18 +34,18 @@ float CircleCollider::getRadius(){
     return radius;
 }
 
-void CircleCollider::checkCollision(Collider* col){
-    if(checkTags(col) || col->checkTags(this)) return;
+void CircleCollider::checkCollision(Collider* col){    
+    checked = true;
+    if(checkTags(col) || col->checkTags(this)) return; 
     if(dynamic_cast<CircleCollider*>(col)){
-        Vector2 cA = getGlobalCenter();
+        
+        Vector2 cA = getGlobalCenter();   
         Vector2 cB = col->getGlobalCenter();
         float rA = radius;
         float rB = ((CircleCollider*)col)->radius;
-        
         Vector2 AB(cB.x-cA.x, cB.y-cA.y);
         float d2 = AB.magnitude2();
         float r2 = (rA+rB)*(rA+rB);
-        
         if(d2 < r2){
             noticeCollision(col);
             col->noticeCollision(this);

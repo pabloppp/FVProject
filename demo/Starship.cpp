@@ -15,7 +15,16 @@ void Starship::setup(){
     addComponent(new scriptDePrueba());
     
     addComponent(new gme::RigidBody());
-    addComponent(new gme::CircleCollider());
+    addComponent(new gme::BoxCollider());
+    getRigidBody()->setElasticity(1);
+   
+    gme::SoundPlayer *sp = new gme::SoundPlayer();
+    
+    sp->setSound("sound1");
+    //sp->autoplay = true;
+    sp->setVolume(0);
+    sp->loop(true);
+    addComponent(sp);
     
     getTransform()->scale = gme::Vector2(3,3);  
     
