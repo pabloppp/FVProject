@@ -34,11 +34,12 @@ public:
     void componentSetup();
     void addTag(std::string t);
     bool hasTag(const std::string &t);
-    std::unordered_map<std::string, std::string> *getTags();
+    std::unordered_map<std::string, unsigned int> *getTags();
     static std::vector<GameObject*> findWithTag(std::string s);
     static std::vector<GameObject*> find(std::string s);
-    static void sendMessage(std::string s, float f);
-    static void broadcastMessage(std::string s, float f);
+    void sendMessage(std::string s, float f);
+    void sendMessageUpward(std::string s, float f);
+    void broadcastMessage(std::string s, float f);
     void addComponent(Component* c);
     //template <class T> Component *getComponent();
     void setActive(bool b);
@@ -67,7 +68,7 @@ private:
     std::vector<GameObject*> children;
     std::vector<Component*> components;
     std::vector<std::string> tags;
-    std::unordered_map<std::string, std::string> tagmap;
+    std::unordered_map<std::string, unsigned int> tagmap;
     std::string name;
     bool active;
     Transform *transform;

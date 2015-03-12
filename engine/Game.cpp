@@ -125,6 +125,22 @@ Music *Game::getMusic(const std::string& name){
     return NULL;
 }
 
+int Game::addTag(const std::string& s) {
+    if(tagmap.find(s) != tagmap.end()) return tagmap[s];
+    if(tagCount >= 15) return -1;
+    else{
+        tagCount++;
+        tagmap[s] = tagCount;       
+        return tagmap[s];
+    }
+}
+
+std::unordered_map<std::string, unsigned int>* Game::getTags() {
+    return &tagmap;
+}
+
+
+
 Time Game::deltaTime;
 
 Time Game::unfixedDeltaTime;
@@ -147,3 +163,7 @@ bool Game::debugColliders = false;
 Clock Game::updateClock;
 
 float Game::ticPercent = 0;
+
+std::unordered_map<std::string, unsigned int> Game::tagmap;
+
+char Game::tagCount = 0;
