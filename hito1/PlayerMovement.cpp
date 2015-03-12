@@ -14,14 +14,20 @@ void PlayerMovement::update() {
     float speedY = getRigidBody()->getSpeed().y;
     
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
-        getRigidBody()->setSpeed(-walkingSpeed*deltaTime, speedY);
+        if(gme::Keyboard::isKeyPressed(downKey))
+            getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
+        else 
+            getRigidBody()->setSpeed(-walkingSpeed*deltaTime, speedY);
         if(!flipped){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = true;
         }
     }
     else if(gme::Keyboard::isKeyPressed(rightKey) && !hitWallRight){
-        getRigidBody()->setSpeed(walkingSpeed*deltaTime, speedY);
+        if(gme::Keyboard::isKeyPressed(downKey))
+            getRigidBody()->setSpeed((walkingSpeed/2.f)*deltaTime, speedY);
+        else 
+            getRigidBody()->setSpeed(walkingSpeed*deltaTime, speedY);
         if(flipped){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = false;
@@ -75,7 +81,10 @@ void PlayerMovement::animate() {
             animClock.restart();
             walkFrameCount++;
             if(walkFrameCount >= 8) walkFrameCount = 0;
-            getRenderer()->setFrame(gme::Vector2(walkFrameCount,1));
+            if(gme::Keyboard::isKeyPressed(downKey)) 
+                getRenderer()->setFrame(gme::Vector2(8+walkFrameCount,1));
+            else 
+                getRenderer()->setFrame(gme::Vector2(walkFrameCount,1));
         }
         
     }
