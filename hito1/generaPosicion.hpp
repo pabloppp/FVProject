@@ -14,7 +14,9 @@ class generaPosicion : public gme::Script {
 public:
     void setup();
     void update();
-    void position(int x, int y,int rat);
+    void position(int x, int y,int rat, std::string tipo,int state);
+    void setState(int i);
+    int getState();
     virtual void onGui();
     virtual ~generaPosicion();
 private:
@@ -23,6 +25,8 @@ private:
     gme::Clock clk;
     sf::CircleShape ratio;
     gme::Window *w;
+    std::string tipoObjeto;
+    int stateObjeto;
 };
 
 #endif	/* GENERAPOSICION_HPP */
