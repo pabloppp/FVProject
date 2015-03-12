@@ -63,7 +63,7 @@ Vector2 Collider::getRelativePosition(Collider* col) {
     Vector2 sizeA(0,0);
     Vector2 sizeB(0,0);
     float r = col->gameObject()->getTransform()->rotation;
-    r = r*PI/180.f;
+
     if(dynamic_cast<BoxCollider*>(this)){
         std::vector<Vector2> points = ((BoxCollider*)(this))->getRotatedPoints();
         for(int i=0;i<4;i++){
@@ -82,11 +82,11 @@ Vector2 Collider::getRelativePosition(Collider* col) {
     
     Vector2 result(0,0);
     
-    if(positionA.y+sizeA.y/2.f < positionB.y-sizeB.y/2.f) result.y = -1;
-    else if(positionA.y-sizeA.y/2.f > positionB.y+sizeB.y/2.f) result.y = 1;
+    if(positionA.y+sizeA.y < positionB.y-sizeB.y) result.y = -1;
+    else if(positionA.y-sizeA.y > positionB.y+sizeB.y) result.y = 1;
     
-    if(positionA.x+sizeA.x/2.f < positionB.x-sizeB.x/2.f) result.x = -1;
-    else if(positionA.x-sizeA.x/2.f > positionB.x+sizeB.x/2.f) result.x = 1;  
+    if(positionA.x+sizeA.x < positionB.x-sizeB.x) result.x = -1;
+    else if(positionA.x-sizeA.x > positionB.x+sizeB.x) result.x = 1;  
         
     return result;
 }

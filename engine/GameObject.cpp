@@ -54,17 +54,25 @@ GameObject::~GameObject() {
 }
 
 void GameObject::update(){
+    
     if(rigidBody != NULL) rigidBody->updatep(); 
     for(int i = components.size()-1; i >= 0; i--){
         if(components.at(i)->isActive()) components.at(i)->update();
     }
-    
+
 }
 
+void GameObject::earlyUpdate() {
+    if(rigidBody != NULL) rigidBody->update();
+    if(collider != NULL) collider->update(); 
+    if(transform != NULL) transform->update();
+}
+
+
 void GameObject::fixedUpdate() {    
-     if(rigidBody != NULL) rigidBody->update();
-     if(collider != NULL) collider->update(); 
-     if(transform != NULL) transform->update();          
+    for(int i = components.size()-1; i >= 0; i--){
+        if(components.at(i)->isActive()) components.at(i)->fixedUpdate();
+    }
 }
 
 void GameObject::drawGui(){

@@ -19,6 +19,7 @@ Scene::Scene(std::string n){
     
     b2Vec2 gravity(0.0f, 9.81f);
     boxWorld = new b2World(gravity);
+    addGameObject(Game::mainCamera);
 }
 
 
@@ -79,11 +80,10 @@ void Scene::update(){
     while(frameTime > updateTime){   
         
         Game::deltaTime = updateTime;
-        //Fixed update
         
         for(int i = gameObjects.size()-1; i >= 0; i--){
             if(gameObjects.at(i)->isActive()){
-                gameObjects.at(i)->fixedUpdate();
+                gameObjects.at(i)->earlyUpdate();
             }
         }
         
@@ -98,6 +98,24 @@ void Scene::update(){
         frameTime -= updateTime;
    
     }
+    
+    //Fixed update
+
+    for(int i = gameObjects.size()-1; i >= 0; i--){
+        if(gameObjects.at(i)->isActive()){
+            gameObjects.at(i)->fixedUpdate();
+        }
+    }
+    
+    mainCenter = Vector2( ((Camera*)Game::mainCamera)->getPosition().x, ((Camera*)Game::mainCamera)->getPosition().y );
+    mainSize = ((Camera*)Game::mainCamera)->getSize();
+    
+    mainView.setCenter(mainCenter.x+windowSize.x/2, mainCenter.y+windowSize.y/2);
+    mainView.setSize(640, 480);
+    //std::cout << mainSize.x << " WOWOWOWOW" << std::endl;
+    mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
+        
+    Game::getWindow()->setView(mainView);
     
     
     lastTime = now - frameTime;

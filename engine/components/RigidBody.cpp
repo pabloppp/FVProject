@@ -117,6 +117,11 @@ void RigidBody::setGravity(bool g){
     else b2body->SetGravityScale(0);
 }
 
+void RigidBody::gravityMultiplier(float f) {
+    b2body->SetGravityScale(f);
+}
+
+
 bool RigidBody::hasGravity(){
     if(b2body->GetGravityScale() != 0) return true;
     else return false;

@@ -21,6 +21,7 @@ public:
     void rotate(float force);
     void rotateImmediate(float force);
     void setGravity(bool g);
+    void gravityMultiplier(float f);
     bool hasGravity();
     void onCollision(Collider *c);
     void isKinematic();
