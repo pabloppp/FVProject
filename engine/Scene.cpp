@@ -123,12 +123,12 @@ void Scene::update(){
     Game::ticPercent = fmin(1.f, updateClock.currentTime().asSeconds()/frameTime);     
     //RENDER 
     Game::getWindow()->clear();
-    for(int i = gameObjects.size()-1; i >= 0; i--){
+    for(int i = 0; i < gameObjects.size(); i++){
          if(gameObjects.at(i)->isActive()) gameObjects.at(i)->getRenderer()->update();
     }
 
     Game::getWindow()->setView(Game::getWindow()->getDefaultView());
-    for(int i = gameObjects.size()-1; i >= 0; i--){     
+    for(int i = 0; i < gameObjects.size(); i++){     
         if(gameObjects.at(i)->isActive()) gameObjects.at(i)->drawGui();
     }
 

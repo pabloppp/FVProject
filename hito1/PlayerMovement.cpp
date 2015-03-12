@@ -13,6 +13,13 @@ void PlayerMovement::update() {
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
     
+    if(grounded && gme::Keyboard::isKeyPressed(downKey)){
+        //
+    }
+    else{
+        //
+    }
+    
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);

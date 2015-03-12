@@ -12,6 +12,7 @@ public:
     gme::Vector2 limitX, limitY;   
 private:
     gme::GameObject *player;
+    gme::GameObject *player2;
     gme::Vector2 currentPos;
     gme::Vector2 objPos;
     gme::Vector2 getObjPos();

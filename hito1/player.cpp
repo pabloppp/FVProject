@@ -20,7 +20,8 @@ void player::setup() {
     addComponent(rigidbody);
     
     gme::BoxCollider *collider = new gme::BoxCollider;
-    collider->setSize(15*3,19*3);
+    collider->setSize(10*3,19*3);
+    collider->addFilterTag("player");
     addComponent(collider);
     
     PlayerMovement *playerMovement = new PlayerMovement;
@@ -33,6 +34,9 @@ void player::setup() {
         playerMovement->weaponKey = weaponKey;
         playerMovement->actionKey = actionKey;
     }
+    playerMovement->agachadoCollider = new gme::BoxCollider; 
+    playerMovement->agachadoCollider->setSize(15*3,16*3);
+    
     addComponent(playerMovement);
 }
 

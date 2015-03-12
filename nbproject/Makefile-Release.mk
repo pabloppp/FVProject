@@ -68,6 +68,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/hito1/BackgroundParallax.o \
 	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
+	${OBJECTDIR}/hito1/MakeMapFromFile.o \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
 	${OBJECTDIR}/hito1/backgroundLayer.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
@@ -79,6 +80,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/hito1/tile.o \
+	${OBJECTDIR}/hito1/tileMapGenerator.o \
 	${OBJECTDIR}/main.o
 
 
@@ -271,6 +273,11 @@ ${OBJECTDIR}/hito1/CameraFollowPlayer.o: hito1/CameraFollowPlayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/CameraFollowPlayer.o hito1/CameraFollowPlayer.cpp
 
+${OBJECTDIR}/hito1/MakeMapFromFile.o: hito1/MakeMapFromFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/MakeMapFromFile.o hito1/MakeMapFromFile.cpp
+
 ${OBJECTDIR}/hito1/PlayerMovement.o: hito1/PlayerMovement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
@@ -325,6 +332,11 @@ ${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tile.o hito1/tile.cpp
+
+${OBJECTDIR}/hito1/tileMapGenerator.o: hito1/tileMapGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tileMapGenerator.o hito1/tileMapGenerator.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

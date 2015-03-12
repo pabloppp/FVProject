@@ -8,7 +8,12 @@
 #include "CameraFollowPlayer.hpp"
 
 void CameraFollowPlayer::setup() {
-    player = gme::GameObject::findWithTag("player").front();
+    player2 = NULL;
+    std::vector<gme::GameObject*> found = gme::GameObject::findWithTag("player");
+    player = found.front();
+    if(found.size() > 1){
+        player2 = found.back();
+    }
     std::cout << "Camera following player: " << player->getName() << std::endl;
     currentPos = getObjPos();
 }
@@ -17,6 +22,7 @@ void CameraFollowPlayer::update() {
     objPos = getObjPos();
     float lerpFactor = 0.2;
     currentPos.x = currentPos.x*(1-lerpFactor)+objPos.x*lerpFactor;
+    currentPos.y = currentPos.y*(1-lerpFactor)+objPos.y*lerpFactor;
     getTransform()->setPosition(currentPos);
 }
 
@@ -24,7 +30,16 @@ void CameraFollowPlayer::update() {
 gme::Vector2 CameraFollowPlayer::getObjPos() {
     gme::Vector2 screenSize = gme::Game::getWindow()->getSize();
     
-    gme::Vector2 gotoPos = player->getTransform()->position;
+    gme::Vector2 gotoPos(0,0);
+    if(player2 == NULL)
+        gotoPos = player->getTransform()->position;
+    else{
+        gotoPos = gme::Vector2(player->getTransform()->position.x+player2->getTransform()->position.x,
+                               player->getTransform()->position.y+player2->getTransform()->position.y);
+        
+        gotoPos.x /= 2.f;
+        gotoPos.y /= 2.f;
+    }
     gotoPos.x -= screenSize.x/2.f;
     gotoPos.y -= screenSize.y/2.f;
     

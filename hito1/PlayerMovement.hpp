@@ -35,6 +35,7 @@ public:
     gme::Keyboard::Key jumpKey;
     gme::Keyboard::Key weaponKey;
     gme::Keyboard::Key actionKey;
+    gme::BoxCollider *agachadoCollider;
 private:
     bool jumped;
     float walkingSpeed;
@@ -43,6 +44,8 @@ private:
     int walkFPS;
     int walkFrameCount;
     gme::Clock animClock;
+    gme::BoxCollider *temporalCollider;
+    
 };
 
 #endif	/* PLAYERMOVEMENT_HPP */

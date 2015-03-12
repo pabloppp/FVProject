@@ -5,21 +5,31 @@
 #include "PlayerMovement.hpp"
 #include "tile.hpp"
 #include "backgroundLayer.hpp"
+#include "tileMapGenerator.hpp"
+
 
 void scene51::setup() {
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
+
+    
+    setupBg();
     
     setupLimits();
     
-    setupTileMap();
+    //setupTileMap();
+    tileMapGenerator *mapGen = new tileMapGenerator("mapGenerator");
+    mapGen->mainMapFile = "hito1/recursos/maptest1.csv";
+    mapGen->mainTexture = "templeTexture";
+    mapGen->tileColumns = 27;
+    mapGen->origin = gme::Vector2(0,-windowSize.y);
     
     //ADD PLAYER
     player *player1 = new player("player_1");
     player1->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
     
-    /*
+    
     player *player2 = new player("player_2");
-    player2->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
+    player2->getTransform()->setPosition(gme::Vector2(windowSize.x/2+50, windowSize.y/2));
     player2->overrideKeys = true;
     player2->upKey = gme::Keyboard::Up;
     player2->downKey = gme::Keyboard::Down;
@@ -28,9 +38,8 @@ void scene51::setup() {
     player2->jumpKey = gme::Keyboard::Space;
     player2->weaponKey = gme::Keyboard::RSystem;
     player2->actionKey = gme::Keyboard::RAlt;
-    */
-        
-    setupBg();
+
+    
     
     //SETUP CAMERA
     CameraFollowPlayer *cameraFollow = new CameraFollowPlayer;
@@ -46,7 +55,7 @@ void scene51::setupLimits() {
     limit *lup = new limit("limit_up");
     lup->width = windowSize.x*2;
     lup->height = 1;
-    lup->position = gme::Vector2(windowSize.x, 1);
+    lup->position = gme::Vector2(windowSize.x, 1-windowSize.y);
     
     limit *ldown = new limit("limit_down");
     ldown->width = windowSize.x*2;
@@ -55,13 +64,13 @@ void scene51::setupLimits() {
     
     limit *lleft = new limit("limit_left");
     lleft->width = 1;
-    lleft->height = windowSize.y;
-    lleft->position = gme::Vector2(1, windowSize.y/2);
+    lleft->height = windowSize.y*2;
+    lleft->position = gme::Vector2(1, 0);
     
     limit *lright = new limit("limit_right");
     lright->width = 1;
-    lright->height = windowSize.y;
-    lright->position = gme::Vector2(2*windowSize.x-1, windowSize.y/2);
+    lright->height = windowSize.y*2;
+    lright->position = gme::Vector2(2*windowSize.x-1, 0);
 }
 
 void scene51::setupTileMap() {
@@ -86,21 +95,16 @@ void scene51::setupBg() {
     
     float yDisp = 50.f;
     
-    backgroundLayer *bgLayerA = new backgroundLayer("BGFrontA");
-    bgLayerA->texture = "bgFrontATexture";
-    bgLayerA->getTransform()->position = gme::Vector2(0, windowSize.y+yDisp);
-    bgLayerA->parallaxFactor = 0.4;
-    
-    backgroundLayer *bgLayerB = new backgroundLayer("BGFrontB");
-    bgLayerB->texture = "bgFrontBTexture";
-    bgLayerB->getTransform()->position = gme::Vector2(rand() % (int)(windowSize.x/3.f)+windowSize.x/3.f, windowSize.y+yDisp);
-    bgLayerB->parallaxFactor = 0.4;
-    std::cout << bgLayerB->getTransform()->position.x << std::endl;
-    
-    backgroundLayer *bgLayerC = new backgroundLayer("BGFrontC");
-    bgLayerC->texture = "bgFrontCTexture";
-    bgLayerC->getTransform()->position = gme::Vector2(windowSize.x, windowSize.y+yDisp);
-    bgLayerC->parallaxFactor = 0.4;
+    //SKY
+    float bgWidth = gme::Game::getTexture("skyTexture")->getTexture().getSize().x;
+    int howMany = windowSize.x/bgWidth;
+    std::cout << bgWidth << " " << howMany << std::endl;
+    for(int i=0;i<howMany;i++){
+        backgroundLayer *bgSkyLayer = new backgroundLayer("BGSky");
+        bgSkyLayer->texture = "skyTexture";
+        bgSkyLayer->parallaxFactor = 1; //fixed
+        bgSkyLayer->getTransform()->position = gme::Vector2((i*bgWidth) + bgWidth/2, windowSize.y);
+    }
     
     backgroundLayer *bgLayerMidA = new backgroundLayer("BGMidA");
     bgLayerMidA->texture = "bgMidATexture";
@@ -117,16 +121,22 @@ void scene51::setupBg() {
     bgLayerMidC->getTransform()->position = gme::Vector2(windowSize.x, windowSize.y+yDisp);
     bgLayerMidC->parallaxFactor = 0.8;
     
-    //SKY
-    float bgWidth = gme::Game::getTexture("skyTexture")->getTexture().getSize().x;
-    int howMany = windowSize.x/bgWidth;
-    std::cout << bgWidth << " " << howMany << std::endl;
-    for(int i=0;i<howMany;i++){
-        backgroundLayer *bgSkyLayer = new backgroundLayer("BGSky");
-        bgSkyLayer->texture = "skyTexture";
-        bgSkyLayer->parallaxFactor = 1; //fixed
-        bgSkyLayer->getTransform()->position = gme::Vector2((i*bgWidth) + bgWidth/2, windowSize.y);
-    }
+    
+    backgroundLayer *bgLayerA = new backgroundLayer("BGFrontA");
+    bgLayerA->texture = "bgFrontATexture";
+    bgLayerA->getTransform()->position = gme::Vector2(0, windowSize.y+yDisp);
+    bgLayerA->parallaxFactor = 0.4;
+    
+    backgroundLayer *bgLayerB = new backgroundLayer("BGFrontB");
+    bgLayerB->texture = "bgFrontBTexture";
+    bgLayerB->getTransform()->position = gme::Vector2(rand() % (int)(windowSize.x/3.f)+windowSize.x/3.f, windowSize.y+yDisp);
+    bgLayerB->parallaxFactor = 0.4;
+    std::cout << bgLayerB->getTransform()->position.x << std::endl;
+    
+    backgroundLayer *bgLayerC = new backgroundLayer("BGFrontC");
+    bgLayerC->texture = "bgFrontCTexture";
+    bgLayerC->getTransform()->position = gme::Vector2(windowSize.x, windowSize.y+yDisp);
+    bgLayerC->parallaxFactor = 0.4;
 }
 
 
