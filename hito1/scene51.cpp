@@ -38,6 +38,7 @@ void scene51::setup() {
     player2->jumpKey = gme::Keyboard::Space;
     player2->weaponKey = gme::Keyboard::RSystem;
     player2->actionKey = gme::Keyboard::RAlt;
+    
 
     
     

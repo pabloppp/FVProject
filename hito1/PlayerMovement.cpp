@@ -13,11 +13,17 @@ void PlayerMovement::update() {
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
     
-    if(grounded && gme::Keyboard::isKeyPressed(downKey)){
-        //
+    if(!down && grounded && gme::Keyboard::isKeyPressed(downKey)){
+        ((gme::BoxCollider*)getCollider())->setSize(10*3, 13*3);
+        ((gme::BoxCollider*)getCollider())->setCenter(0,(3.f*6)/2.0f);
+        down = true;
+        animGraceTimeClock.restart();
     }
-    else{
-        //
+    else if(down && !gme::Keyboard::isKeyPressed(downKey) ){
+        ((gme::BoxCollider*)getCollider())->setSize(10*3,19*3);
+        ((gme::BoxCollider*)getCollider())->setCenter(0.f,0.f);
+        down = false;
+        animGraceTimeClock.restart();
     }
     
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
@@ -63,7 +69,6 @@ void PlayerMovement::update() {
 }
 
 void PlayerMovement::onCollision(gme::Collider* c) {
-    std::cout << c->gameObject()->getName() << std::endl;
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
     if(c->gameObject()->hasTag("limit") || c->gameObject()->hasTag("floor")){
         
@@ -83,6 +88,7 @@ void PlayerMovement::onCollision(gme::Collider* c) {
 }
 
 void PlayerMovement::animate() {
+    if(animGraceTimeClock.currentTime().asSeconds() < animGraceTime) return;
     if(grounded && getRigidBody()->getSpeed().x != 0){
         
         if(animClock.currentTime().asSeconds() > 1.0f/walkFPS){

@@ -13,6 +13,8 @@ public:
     std::string mainMapFile;
     int tileColumns;
     gme::Vector2 origin;
+    void addRow(float cx, float cy, float tsize);
+    std::vector<gme::GameObject*> tRowV;
 private:
 
 };

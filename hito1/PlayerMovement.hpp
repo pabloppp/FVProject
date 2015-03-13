@@ -17,6 +17,8 @@ public:
         jumpKey = gme::Keyboard::F;
         weaponKey = gme::Keyboard::G;
         actionKey = gme::Keyboard::H;
+        
+        animGraceTime = 0.01;
     };
     void setup();
     void update();   
@@ -24,6 +26,7 @@ public:
     virtual ~PlayerMovement();
     int state; //0: idle, 1: walking
     bool grounded;
+    bool down; //agachado
     bool hitWallRight;
     bool hitWallLeft;
     bool flipped;
@@ -44,6 +47,8 @@ private:
     int walkFPS;
     int walkFrameCount;
     gme::Clock animClock;
+    gme::Clock animGraceTimeClock;
+    float animGraceTime;
     gme::BoxCollider *temporalCollider;
     
 };

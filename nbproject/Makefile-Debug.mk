@@ -70,6 +70,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
 	${OBJECTDIR}/hito1/MakeMapFromFile.o \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
+	${OBJECTDIR}/hito1/TileRowGenerator.o \
 	${OBJECTDIR}/hito1/backgroundLayer.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
@@ -81,6 +82,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/hito1/tile.o \
 	${OBJECTDIR}/hito1/tileMapGenerator.o \
+	${OBJECTDIR}/hito1/tileRow.o \
 	${OBJECTDIR}/main.o
 
 
@@ -283,6 +285,11 @@ ${OBJECTDIR}/hito1/PlayerMovement.o: hito1/PlayerMovement.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/PlayerMovement.o hito1/PlayerMovement.cpp
 
+${OBJECTDIR}/hito1/TileRowGenerator.o: hito1/TileRowGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/TileRowGenerator.o hito1/TileRowGenerator.cpp
+
 ${OBJECTDIR}/hito1/backgroundLayer.o: hito1/backgroundLayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
@@ -337,6 +344,11 @@ ${OBJECTDIR}/hito1/tileMapGenerator.o: hito1/tileMapGenerator.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tileMapGenerator.o hito1/tileMapGenerator.cpp
+
+${OBJECTDIR}/hito1/tileRow.o: hito1/tileRow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tileRow.o hito1/tileRow.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

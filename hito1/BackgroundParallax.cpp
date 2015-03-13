@@ -18,7 +18,7 @@ void BackgroundParallax::fixedUpdate() {
     
     gme::Vector2 difference(cameraTransform->getPosition().x-initialPosition.x, cameraTransform->getPosition().y-initialPosition.y);
     
-    gme::Vector2 currentPosition(initialPosition.x+difference.x*parallaxFactor-initialDifference.x, initialPosition.y+difference.y-initialDifference.y);
+    gme::Vector2 currentPosition(initialPosition.x+difference.x*parallaxFactor-initialDifference.x, initialPosition.y+(difference.y-initialDifference.y)*parallaxFactor);
     
     getTransform()->setPosition(currentPosition);
 }
