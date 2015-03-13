@@ -19,6 +19,11 @@ public:
     void setSize(Vector2 f);
     void setFrame(Vector2 f);
     void setCenter(Vector2 f);
+    void setColor(int r, int g, int b, int a = 255);
+    int getColorR();
+    int getColorG();
+    int getColorB();
+    int getColorA();
 private:
     Vector2 size;
     Vector2 center;
