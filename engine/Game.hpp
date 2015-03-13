@@ -38,11 +38,16 @@ public:
     static void newMusic(const std::string &path, const std::string &name);
     static Sound *getSound(const std::string &name);
     static Music *getMusic(const std::string &name);
+    
     Clock deltaClock;
     static Clock updateClock;
     static bool debugColliders;
     static GameObject *mainCamera;
-private:   
+    static int addTag(const std::string &s);
+    static std::unordered_map<std::string, unsigned int> *getTags();
+private:  
+    static std::unordered_map<std::string, unsigned int> tagmap;
+    static char tagCount;
     static std::vector<Scene*> scenes;
     static std::vector<Texture> textures;
     static std::vector<Sound> sounds;
