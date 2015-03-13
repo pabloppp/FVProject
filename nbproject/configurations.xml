@@ -121,6 +121,10 @@
           <itemPath>hito1/sceneEntregable4.cpp</itemPath>
           <itemPath>hito1/sceneEntregable4.hpp</itemPath>
         </logicalFolder>
+        <logicalFolder name="f4" displayName="entregable5" projectFiles="true">
+          <itemPath>hito1/sceneEntregable5.cpp</itemPath>
+          <itemPath>hito1/sceneEntregable5.hpp</itemPath>
+        </logicalFolder>
         <itemPath>hito1/hito1Game.cpp</itemPath>
         <itemPath>hito1/hito1Game.hpp</itemPath>
       </logicalFolder>
@@ -175,16 +179,16 @@
         </ccTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>libs/SFML-2.1/lib</pElem>
             <pElem>libs/Box2D/lib</pElem>
+            <pElem>libs/SFML-2.1/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
+            <linkerLibLibItem>Box2D</linkerLibLibItem>
             <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
             <linkerLibLibItem>sfml-window</linkerLibLibItem>
             <linkerLibLibItem>sfml-system</linkerLibLibItem>
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
-            <linkerLibLibItem>Box2D</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -365,6 +369,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable5.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -589,6 +597,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneEntregable5.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>

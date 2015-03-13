@@ -76,6 +76,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/scene51.o \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
+	${OBJECTDIR}/hito1/sceneEntregable5.o \
 	${OBJECTDIR}/hito1/tile.o \
 	${OBJECTDIR}/main.o
 
@@ -94,7 +95,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -Llibs/Box2D/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network -lBox2D
+LDLIBSOPTIONS=-Llibs/Box2D/lib -Llibs/SFML-2.1/lib -lBox2D -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -308,6 +309,11 @@ ${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
+
+${OBJECTDIR}/hito1/sceneEntregable5.o: hito1/sceneEntregable5.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable5.o hito1/sceneEntregable5.cpp
 
 ${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
