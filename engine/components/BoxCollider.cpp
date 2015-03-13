@@ -62,7 +62,7 @@ void BoxCollider::setSize(Vector2 s){
     //std::cout << "enters 1" << std::endl;
     if(gameObject() != NULL && gameObject()->getRigidBody() != NULL){       
         if(gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext()){
-            b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext();
+            b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList();
             gameObject()->getRigidBody()->b2body->DestroyFixture(fixture);
             setup();
         }
@@ -74,9 +74,10 @@ void BoxCollider::setCenter(float x, float y) {
     
     if(gameObject() != NULL && gameObject()->getRigidBody() != NULL){       
         if(gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext()){
-            b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList()->GetNext();
+            b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList();
             gameObject()->getRigidBody()->b2body->DestroyFixture(fixture);
             setup();
+            std::cout << "entra" << std::endl;
         }
     }
 }

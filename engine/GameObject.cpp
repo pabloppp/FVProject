@@ -204,7 +204,11 @@ void GameObject::setParent(GameObject *g){
         }
     }
     if(!isChidren) g->addChild(this);
-    parent = g;   
+    parent = g;
+    
+    getTransform()->position.x -= parent->getTransform()->position.x;
+    getTransform()->position.y -= parent->getTransform()->position.y;
+    
 }
 
 GameObject *GameObject::getParent(){
