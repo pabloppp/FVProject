@@ -98,11 +98,11 @@ LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -Llibs/Box2D/lib -lsfml-graphics -lsfml-window
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/demo/Asteroid.o: demo/Asteroid.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
@@ -325,7 +325,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv
 
 # Subprojects
 .clean-subprojects:
