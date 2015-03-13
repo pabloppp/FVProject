@@ -34,8 +34,6 @@ void player::setup() {
         playerMovement->weaponKey = weaponKey;
         playerMovement->actionKey = actionKey;
     }
-    playerMovement->agachadoCollider = new gme::BoxCollider; 
-    playerMovement->agachadoCollider->setSize(15*3,16*3);
     
     addComponent(playerMovement);
 }

@@ -77,7 +77,6 @@ void BoxCollider::setCenter(float x, float y) {
             b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList();
             gameObject()->getRigidBody()->b2body->DestroyFixture(fixture);
             setup();
-            std::cout << "entra" << std::endl;
         }
     }
 }

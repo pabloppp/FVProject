@@ -49,7 +49,6 @@ private:
     gme::Clock animClock;
     gme::Clock animGraceTimeClock;
     float animGraceTime;
-    gme::BoxCollider *temporalCollider;
     
 };
 
