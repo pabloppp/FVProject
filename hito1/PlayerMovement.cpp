@@ -70,21 +70,22 @@ void PlayerMovement::update() {
 
 void PlayerMovement::onCollision(gme::Collider* c) {
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
-    if(c->gameObject()->hasTag("limit") || c->gameObject()->hasTag("floor")){
-        
+    if(c->gameObject()->hasTag("floor")){       
         if(relativePosition.y == -1){ //si golpea el suelo
             grounded = true;
         }
-        
-        //si golpea las paredes
-        if(relativePosition.x == 1){
-            hitWallLeft = true;
-        }
-        else if(relativePosition.x == -1){
-            hitWallRight = true;
-        }
-
     }
+    //si golpea las paredes
+    if(relativePosition.x == 1){
+        hitWallLeft = true;
+    }
+    else if(relativePosition.x == -1){
+        hitWallRight = true;
+    }
+    
+    if(c->gameObject()->hasTag("destructible") && relativePosition.y == 1 && relativePosition.x == 0){
+        destroyGameObject(c->gameObject());
+    } 
 }
 
 void PlayerMovement::animate() {

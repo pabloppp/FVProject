@@ -2,6 +2,8 @@
 
 void tile::setup() {
     
+    addTag("destructible");
+    
     if(texture.length() > 0){
         getRenderer()->setTexture(texture);
         getRenderer()->setSize(size);

@@ -10,9 +10,11 @@ public:
     void update();
     virtual void onCollision(gme::Collider* c);
     virtual ~TileRowGenerator();
-    int tileCount;
     float tileSize;
 private:
+    int tileCount;
+    void regenerateRow();
+    void addRow(std::vector<gme::GameObject *> &tiles);
 
 };
 

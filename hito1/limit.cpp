@@ -2,7 +2,7 @@
 
 void limit::setup() {
     
-    addTag("limit");
+    //addTag("limit");
     getTransform()->position = position;
     
     gme::RigidBody *rigidbody = new gme::RigidBody;
