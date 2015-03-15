@@ -80,6 +80,13 @@ void Transform::translate(gme::Vector2 v){
     position.y += v.y;
 }
 
+void Transform::translate(gme::Vector2 dir, float dist) {
+    Vector2 vector = dir.normalized();
+    vector.x *= dist;
+    vector.y *= dist;
+    translate(vector);
+}
+
 void Transform::lookAt(GameObject* g){
     //TO DO
 }
