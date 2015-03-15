@@ -5,7 +5,7 @@
 
 class MyGame : public gme::Game{    
 public:
-    MyGame(sf::Vector2f windowSize, std::string name) : gme::Game(windowSize, name){};
+    MyGame(gme::Vector2 windowSize, std::string name) : gme::Game(windowSize, name){};
     void setup();
 private:
 };

@@ -12,6 +12,7 @@
 #include "GameObject.hpp"
 #include "facade/Sound.hpp"
 #include "facade/Music.hpp"
+#include "facade/Vector2.hpp"
 
 namespace gme{ 
 
@@ -19,7 +20,7 @@ namespace gme{
     
 class Game {
 public:
-    Game(sf::Vector2f windowSize, std::string name) ;
+    Game(Vector2 windowSize, std::string name) ;
     Game(const Game& orig);
     virtual ~Game();
     static void setCurrentScene(Scene *s);

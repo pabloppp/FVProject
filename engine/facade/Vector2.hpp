@@ -13,6 +13,9 @@ public:
     float magnitude();
     float angle();
     float magnitude2();
+    static float distance(Vector2 a, Vector2 b);
+    Vector2 screenToWorld();
+    Vector2 worldToScreen();
 private:
     //sf::Vector2f vector;
 };
