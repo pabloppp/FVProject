@@ -58,17 +58,19 @@ std::vector<GameObject*> *Scene::getGameObjects(){
 }
 
 void Scene::update(){
-    //UPDATE SCRIPTS
+    //UPDATE SCRIPTS   
     Vector2 windowSize = Game::getWindow()->getSize();
-    
+    Vector2 originalSize = Game::getWindow()->getOriginalSize();
+    float stretchX = 1.f*originalSize.x/windowSize.x;
+    float stretchY = 1.f*originalSize.y/windowSize.y;
     
     Vector2 mainCenter( ((Camera*)Game::mainCamera)->getPosition().x, ((Camera*)Game::mainCamera)->getPosition().y );
     Vector2 mainSize = ((Camera*)Game::mainCamera)->getSize();
     
-    mainView.setCenter(mainCenter.x+windowSize.x/2, mainCenter.y+windowSize.y/2);
-    //mainView.setSize(640, 480);
-    //std::cout << mainSize.x << " WOWOWOWOW" << std::endl;
-    mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
+    
+    mainView.setSize(stretchX*mainSize.x*windowSize.x, stretchY*mainSize.y*windowSize.y);
+    mainView.setCenter(mainCenter.x/stretchX+stretchX*windowSize.x/2.0, mainCenter.y/stretchY+stretchY*windowSize.y/2);
+
         
     Game::getWindow()->setView(mainView);
      
@@ -109,11 +111,9 @@ void Scene::update(){
     
     mainCenter = Vector2( ((Camera*)Game::mainCamera)->getPosition().x, ((Camera*)Game::mainCamera)->getPosition().y );
     mainSize = ((Camera*)Game::mainCamera)->getSize();
-    
-    mainView.setCenter(mainCenter.x+windowSize.x/2, mainCenter.y+windowSize.y/2);
-    //mainView.setSize(640, 480);
-    //std::cout << mainSize.x << " WOWOWOWOW" << std::endl;
-    mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
+       
+    mainView.setSize(stretchX*mainSize.x*windowSize.x, stretchY*mainSize.y*windowSize.y);
+    mainView.setCenter(mainCenter.x/stretchX+stretchX*windowSize.x/2.0, mainCenter.y/stretchY+stretchY*windowSize.y/2);
         
     Game::getWindow()->setView(mainView);
     

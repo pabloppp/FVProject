@@ -5,7 +5,7 @@
 
 using namespace gme;
  
-Game::Game(sf::Vector2f windowSize, std::string name){
+Game::Game(Vector2 windowSize, std::string name){
     window = new Window(windowSize.x, windowSize.y, name);
     window->setVerticalSyncEnabled(true);
     window->setFrameLimit(60);
