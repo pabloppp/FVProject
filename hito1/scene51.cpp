@@ -9,6 +9,7 @@
 
 
 void scene51::setup() {
+    
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
 
     
@@ -22,7 +23,6 @@ void scene51::setup() {
     mapGen->mainTexture = "templeTexture";
     mapGen->tileColumns = 27;
     mapGen->origin = gme::Vector2(0,-windowSize.y);
-    
     //ADD PLAYER
     player *player1 = new player("player1");
     player1->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
@@ -39,7 +39,7 @@ void scene51::setup() {
     player2->weaponKey = gme::Keyboard::RSystem;
     player2->actionKey = gme::Keyboard::RAlt;
     
-
+    
     
     
     //SETUP CAMERA

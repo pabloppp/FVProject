@@ -24,11 +24,19 @@ void CameraFollowPlayer::update() {
     currentPos.x = currentPos.x*(1-lerpFactor)+objPos.x*lerpFactor;
     currentPos.y = currentPos.y*(1-lerpFactor)+objPos.y*lerpFactor;
     getTransform()->setPosition(currentPos);
+    
+    /*
+    if(gme::Keyboard::isKeyPressed(gme::Keyboard::LControl) && gme::Keyboard::isKeyPressed(gme::Keyboard::F)){
+        gme::Game::getWindow()->enableFullScreen(true);
+    }*/
 }
 
 
 gme::Vector2 CameraFollowPlayer::getObjPos() {
     gme::Vector2 screenSize = gme::Game::getWindow()->getSize();
+    gme::Vector2 originalSize = gme::Game::getWindow()->getOriginalSize();
+    float stretchX = originalSize.x/screenSize.x;
+    float stretchY = originalSize.y/screenSize.y;
     
     gme::Vector2 gotoPos(0,0);
     if(player2 == NULL)
