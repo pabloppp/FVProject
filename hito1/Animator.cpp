@@ -6,6 +6,7 @@ Animator::Animator() {
     onSecond = 0;
     clock.restart();
     timeLapsed = 0;
+    looping = false;
 }
 
 void Animator::at(float f, void(*fptr)(void*), void* context){
@@ -16,6 +17,7 @@ void Animator::at(float f, void(*fptr)(void*), void* context){
     e.fptr = fptr;
     e.ctx = context;
     events.push_back(e);
+    aux_events.push_back(e);
 }
 
 void Animator::until(float f, void(*fptr)(void*), void* context){
@@ -26,6 +28,7 @@ void Animator::until(float f, void(*fptr)(void*), void* context){
     e.fptr = fptr;
     e.ctx = context;
     events.push_back(e);
+    aux_events.push_back(e);
 }   
 
 void Animator::from(float f){
@@ -33,6 +36,15 @@ void Animator::from(float f){
 }
 
 void Animator::animate(){
+    if(looping){
+        if(events.empty()){
+            for(int i=0; i<aux_events.size(); i++){
+                events.push_back(aux_events.at(i));
+            }
+            timeLapsed = 0;
+            clock.restart();
+        }
+    }
     timeLapsed = clock.currentTime().asSeconds();    
     if(paused || events.empty()) return;
     if(events.front().from <= clock.currentTime().asSeconds() + onSecond){
@@ -40,6 +52,7 @@ void Animator::animate(){
         if(events.front().to <= clock.currentTime().asSeconds() + onSecond)
             events.erase(events.begin());
     }
+    
 }
 
 void Animator::pause(){
@@ -59,6 +72,6 @@ void Animator::restart(){
 }
 
 void Animator::loop(bool b){
-    //TODO
-    
+    if(b) looping = true;
+    else looping = false;
 }

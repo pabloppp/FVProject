@@ -18,6 +18,7 @@ public:
     void loop(bool b);
     float lastTime;
     float timeLapsed;
+    bool looping;
 private:
    struct event {
         float from;
@@ -26,6 +27,7 @@ private:
         void *ctx;   
     };
     std::vector<event> events;
+    std::vector<event> aux_events;
     bool paused;
     gme::Clock clock;
     float onSecond;
