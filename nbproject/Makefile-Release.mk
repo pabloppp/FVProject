@@ -161,11 +161,6 @@ ${OBJECTDIR}/engine/GUI.o: engine/GUI.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GUI.o engine/GUI.cpp
 
-${OBJECTDIR}/engine/GUI.o: engine/GUI.cpp 
-	${MKDIR} -p ${OBJECTDIR}/engine
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GUI.o engine/GUI.cpp
-
 ${OBJECTDIR}/engine/Game.o: engine/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"

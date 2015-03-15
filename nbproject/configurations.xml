@@ -83,6 +83,8 @@
         <itemPath>engine/Component.cpp</itemPath>
         <itemPath>engine/Component.hpp</itemPath>
         <itemPath>engine/GMEngine.hpp</itemPath>
+        <itemPath>engine/GUI.cpp</itemPath>
+        <itemPath>engine/GUI.hpp</itemPath>
         <itemPath>engine/Game.cpp</itemPath>
         <itemPath>engine/Game.hpp</itemPath>
         <itemPath>engine/GameObject.cpp</itemPath>
