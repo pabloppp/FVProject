@@ -5,25 +5,22 @@ void animationTest::setup() {
    resumeKey = gme::Keyboard::R;
    paused = false;
 
+
    animator.at(2, [](void* ctx) {
        animationTest *q = static_cast<animationTest*> (ctx);
-       std::cout << "start animation " << q->animator.timeLapsed << std::endl;
-       q->getTransform()->scale = gme::Vector2(2,2);
+       
    }, this);
-   animator.at(3, [](void* ctx) {
+   animator.until(4, [](void* ctx) {
       animationTest *q = static_cast<animationTest*> (ctx);
-      std::cout << "2 paso " << q->animator.timeLapsed << std::endl;
-      q->getTransform()->scale = gme::Vector2(5,5);
+      q->getTransform()->translate(gme::Vector2(5,0));
    }, this);
-   animator.at(4, [](void* ctx) {
+   animator.at(7, [](void* ctx) {
        animationTest *q = static_cast<animationTest*> (ctx);
-       std::cout << "3 paso " << q->animator.timeLapsed << std::endl;
        q->getTransform()->scale = gme::Vector2(10,10);
    }, this);
-   animator.at(5, [](void* ctx) {
+   animator.at(8, [](void* ctx) {
        animationTest *q = static_cast<animationTest*> (ctx);
-       std::cout << "ending animation " << q->animator.timeLapsed << std::endl;
-       q->getTransform()->scale = gme::Vector2(15,15);
+       q->getTransform()->rotate(90);
    }, this);
 }
 

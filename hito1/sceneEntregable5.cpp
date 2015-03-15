@@ -6,11 +6,11 @@
 void sceneEntregable5::setup() {
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
     
-    //setupTileMap();
+    setupTileMap();
     
     //SETUP ANIMATION
     introManager *introMng = new introManager("intro");
-    introMng->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
+    introMng->getTransform()->setPosition(gme::Vector2(windowSize.x/6, windowSize.y/2));
 }
 
 
