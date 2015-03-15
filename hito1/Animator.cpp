@@ -63,12 +63,15 @@ void Animator::pause(){
 void Animator::resume(){
     paused = false;
     clock.restart();
-    
 }
 
 void Animator::restart(){
+    events.clear();
+    for(int i=0; i<aux_events.size(); i++){
+        events.push_back(aux_events.at(i));
+    }
+    timeLapsed = 0;
     clock.restart();
-    //TODO
 }
 
 void Animator::loop(bool b){
