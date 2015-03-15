@@ -76,11 +76,13 @@ void PlayerMovement::onCollision(gme::Collider* c) {
         }
     }
     //si golpea las paredes
-    if(relativePosition.x == 1){
+    if(relativePosition.x == 1 && relativePosition.y == 0){
         hitWallLeft = true;
+        std::cout << "hit left" << std::endl;
     }
-    else if(relativePosition.x == -1){
+    else if(relativePosition.x == -1 && relativePosition.y == 0){
         hitWallRight = true;
+        std::cout << "hit right" << std::endl;
     }
     
     if(c->gameObject()->hasTag("destructible") && relativePosition.y == 1 && relativePosition.x == 0){

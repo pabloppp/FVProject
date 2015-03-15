@@ -28,7 +28,7 @@ void scene51::setup() {
     player1->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
     
     
-    player *player2 = new player("player2");
+    /*player *player2 = new player("player2");
     player2->getTransform()->setPosition(gme::Vector2(windowSize.x/2+50, windowSize.y/2));
     player2->overrideKeys = true;
     player2->upKey = gme::Keyboard::Up;
@@ -37,7 +37,7 @@ void scene51::setup() {
     player2->rightKey = gme::Keyboard::Right;
     player2->jumpKey = gme::Keyboard::Space;
     player2->weaponKey = gme::Keyboard::RSystem;
-    player2->actionKey = gme::Keyboard::RAlt;
+    player2->actionKey = gme::Keyboard::RAlt;*/
     
     
     
