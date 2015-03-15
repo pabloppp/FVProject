@@ -14,6 +14,7 @@
 #include "GameObject.hpp"
 #include "Component.hpp" //???
 #include "Scene.hpp"
+#include "GUI.hpp"
 
 //COMPONENTS
 #include "components/Script.hpp"

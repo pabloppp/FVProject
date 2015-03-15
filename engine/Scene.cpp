@@ -66,7 +66,7 @@ void Scene::update(){
     Vector2 mainSize = ((Camera*)Game::mainCamera)->getSize();
     
     mainView.setCenter(mainCenter.x+windowSize.x/2, mainCenter.y+windowSize.y/2);
-    mainView.setSize(640, 480);
+    //mainView.setSize(640, 480);
     //std::cout << mainSize.x << " WOWOWOWOW" << std::endl;
     mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
         
@@ -111,7 +111,7 @@ void Scene::update(){
     mainSize = ((Camera*)Game::mainCamera)->getSize();
     
     mainView.setCenter(mainCenter.x+windowSize.x/2, mainCenter.y+windowSize.y/2);
-    mainView.setSize(640, 480);
+    //mainView.setSize(640, 480);
     //std::cout << mainSize.x << " WOWOWOWOW" << std::endl;
     mainView.setSize(mainSize.x*windowSize.x, mainSize.y*windowSize.y);
         

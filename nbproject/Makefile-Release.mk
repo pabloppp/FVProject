@@ -44,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/demo/particleDecay.o \
 	${OBJECTDIR}/demo/scriptDePrueba.o \
 	${OBJECTDIR}/engine/Component.o \
+	${OBJECTDIR}/engine/GUI.o \
 	${OBJECTDIR}/engine/Game.o \
 	${OBJECTDIR}/engine/GameObject.o \
 	${OBJECTDIR}/engine/Scene.o \
@@ -154,6 +155,16 @@ ${OBJECTDIR}/engine/Component.o: engine/Component.cpp
 	${MKDIR} -p ${OBJECTDIR}/engine
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/Component.o engine/Component.cpp
+
+${OBJECTDIR}/engine/GUI.o: engine/GUI.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GUI.o engine/GUI.cpp
+
+${OBJECTDIR}/engine/GUI.o: engine/GUI.cpp 
+	${MKDIR} -p ${OBJECTDIR}/engine
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/GUI.o engine/GUI.cpp
 
 ${OBJECTDIR}/engine/Game.o: engine/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/engine

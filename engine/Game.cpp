@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "Game.hpp"
+#include "GUI.hpp"
 
 using namespace gme;
  
@@ -10,6 +11,7 @@ Game::Game(sf::Vector2f windowSize, std::string name){
     window->setFrameLimit(60);
     currentScene = NULL;
     deltaTime.Zero();
+    GUI::loadFont("engine/resources/mainfont.ttf");
 }
 
 Game::Game(const Game& orig) {
