@@ -9,6 +9,9 @@ public:
     animationTest() : gme::Script(){};
     void setup();
     void update();
+    void onGui();
+    gme::Vector2 textposition;
+    float textsize;
 private:
     Animator animator;
     gme::Keyboard::Key pauseKey;

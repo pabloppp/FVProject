@@ -8,6 +8,7 @@ public:
     sceneEntregable5() : gme::Scene(){};
     sceneEntregable5(std::string n) : gme::Scene(n){};
     void setup();
+
 private:
     void setupTileMap();
 };
