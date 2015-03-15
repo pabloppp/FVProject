@@ -83,6 +83,8 @@
         <itemPath>engine/Component.cpp</itemPath>
         <itemPath>engine/Component.hpp</itemPath>
         <itemPath>engine/GMEngine.hpp</itemPath>
+        <itemPath>engine/GUI.cpp</itemPath>
+        <itemPath>engine/GUI.hpp</itemPath>
         <itemPath>engine/Game.cpp</itemPath>
         <itemPath>engine/Game.hpp</itemPath>
         <itemPath>engine/GameObject.cpp</itemPath>
@@ -151,6 +153,7 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <standard>8</standard>
           <incDir>
             <pElem>libs/SFML-2.1/include</pElem>
             <pElem>libs/Box2D/include</pElem>
@@ -348,6 +351,11 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>libs/SFML-2.1/include</pElem>
+            <pElem>libs/Box2D/include</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -355,6 +363,20 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>libs/SFML-2.1/lib</pElem>
+            <pElem>libs/Box2D/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system</linkerLibLibItem>
+            <linkerLibLibItem>sfml-audio</linkerLibLibItem>
+            <linkerLibLibItem>sfml-network</linkerLibLibItem>
+            <linkerLibLibItem>Box2D</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="demo/Asteroid.cpp" ex="false" tool="1" flavor2="0">
       </item>
