@@ -83,7 +83,6 @@ void GUI::label(Vector2 position, const std::string& txt, Origin origin) {
     if(window == NULL) return;
     sf::Text text;
     text.setFont(font);
-    std::cout << font.getLineSpacing(fontSize) << std::endl;
     text.setCharacterSize(fontSize);
     text.setString(txt);
     text.setColor(sf::Color(contentColor.r, contentColor.g, contentColor.b, contentColor.a));
