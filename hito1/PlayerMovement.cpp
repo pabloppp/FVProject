@@ -128,6 +128,16 @@ void PlayerMovement::animate() {
     }
 }
 
+void PlayerMovement::onGui() {
+    //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50);
+    //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
+    gme::GUI::fontSize = 12;
+    gme::GUI::contentColor = gme::GUI::white;
+    gme::Vector2 pos = getTransform()->getPosition().worldToScreen();
+    pos.y -= 40;
+    gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
+    //std::cout << "ENTERING HERE" << std::endl;
+}
 
 PlayerMovement::~PlayerMovement() {
 

@@ -24,11 +24,11 @@ void scene51::setup() {
     mapGen->origin = gme::Vector2(0,-windowSize.y);
     
     //ADD PLAYER
-    player *player1 = new player("player_1");
+    player *player1 = new player("player1");
     player1->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
     
     
-    player *player2 = new player("player_2");
+    player *player2 = new player("player2");
     player2->getTransform()->setPosition(gme::Vector2(windowSize.x/2+50, windowSize.y/2));
     player2->overrideKeys = true;
     player2->upKey = gme::Keyboard::Up;

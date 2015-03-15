@@ -23,6 +23,7 @@ public:
     void setup();
     void update();   
     virtual void onCollision(gme::Collider *c);
+    virtual void onGui();
     virtual ~PlayerMovement();
     int state; //0: idle, 1: walking
     bool grounded;
