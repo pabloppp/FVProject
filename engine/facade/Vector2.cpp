@@ -1,5 +1,6 @@
 #include "Vector2.hpp"
 #include <math.h>
+#include "../Game.hpp"
 
 using namespace gme;
 
@@ -28,5 +29,30 @@ float Vector2::magnitude2(){
 float Vector2::angle() {
     return atan2(y,x)*180/PI;
 }
+
+float Vector2::distance(Vector2 a, Vector2 b) {
+    float dx2 = b.x-a.x;
+    dx2 *= dx2;
+    float dy2 = b.y-a.y;
+    dy2 *= dy2;
+    return sqrtf(dx2+dy2);   
+}
+
+Vector2 Vector2::screenToWorld() {
+    if(Game::mainCamera != NULL && Game::mainCamera->getTransform() != NULL){
+        Vector2 res = Game::mainCamera->getTransform()->getPosition();
+        return Vector2(x+res.x, y+res.y);
+    }
+    return Vector2(x, y);
+}
+
+Vector2 Vector2::worldToScreen() {
+    if(Game::mainCamera != NULL && Game::mainCamera->getTransform() != NULL){
+        Vector2 res = Game::mainCamera->getTransform()->getPosition();
+        return Vector2(x-res.x, y-res.y);
+    }
+    return Vector2(x, y);
+}
+
 
 

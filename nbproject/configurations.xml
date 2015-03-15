@@ -213,6 +213,10 @@
       </item>
       <item path="engine/GMEngine.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="engine/GUI.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/GUI.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="engine/Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="engine/Game.hpp" ex="false" tool="3" flavor2="0">
@@ -393,6 +397,10 @@
       <item path="engine/Component.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/GMEngine.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="engine/GUI.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="engine/GUI.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="engine/Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
