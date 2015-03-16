@@ -23,6 +23,7 @@ public:
     void rotate(float i);
     void resize(gme::Vector2 v);
     void translate(gme::Vector2 v);
+    void translate(gme::Vector2 dir, float dist);
     void lookAt(GameObject *g);
     void setup();
     void update();

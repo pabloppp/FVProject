@@ -12,6 +12,7 @@
 #include "GameObject.hpp"
 #include "facade/Sound.hpp"
 #include "facade/Music.hpp"
+#include "facade/Vector2.hpp"
 
 namespace gme{ 
 
@@ -19,7 +20,7 @@ namespace gme{
     
 class Game {
 public:
-    Game(sf::Vector2f windowSize, std::string name) ;
+    Game(Vector2 windowSize, std::string name) ;
     Game(const Game& orig);
     virtual ~Game();
     static void setCurrentScene(Scene *s);
@@ -38,11 +39,16 @@ public:
     static void newMusic(const std::string &path, const std::string &name);
     static Sound *getSound(const std::string &name);
     static Music *getMusic(const std::string &name);
+    
     Clock deltaClock;
     static Clock updateClock;
     static bool debugColliders;
     static GameObject *mainCamera;
-private:   
+    static int addTag(const std::string &s);
+    static std::unordered_map<std::string, unsigned int> *getTags();
+private:  
+    static std::unordered_map<std::string, unsigned int> tagmap;
+    static char tagCount;
     static std::vector<Scene*> scenes;
     static std::vector<Texture> textures;
     static std::vector<Sound> sounds;

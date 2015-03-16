@@ -38,10 +38,10 @@ std::string GameObject::getName(){
 
 GameObject::~GameObject() {
     while(!components.empty())delete components.back(), components.pop_back();
-    renderer = NULL;
     delete renderer;
-    transform = NULL;
+    renderer = NULL;
     delete transform;
+    transform = NULL;
     if(rigidBody != NULL){
         delete rigidBody;
         rigidBody = NULL;       
@@ -55,7 +55,7 @@ GameObject::~GameObject() {
 
 void GameObject::update(){
     
-    if(rigidBody != NULL) rigidBody->updatep(); 
+    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->updatep(); 
     for(int i = components.size()-1; i >= 0; i--){
         if(components.at(i)->isActive()) components.at(i)->update();
     }
@@ -63,9 +63,10 @@ void GameObject::update(){
 }
 
 void GameObject::earlyUpdate() {
-    if(rigidBody != NULL) rigidBody->update();
-    if(collider != NULL) collider->update(); 
-    if(transform != NULL) transform->update();
+    if(transform != NULL && transform->isActive()) transform->update();
+    if(collider != NULL && collider->isActive() ) collider->update();  
+    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->update();
+    
 }
 
 
@@ -82,10 +83,12 @@ void GameObject::drawGui(){
 }
 
 void GameObject::addTag(std::string t){
-    tagmap[t] = t;
+    int getTagIndex = Game::addTag(t);
+    if(getTagIndex != -1) tagmap[t] = getTagIndex;
+    else std::cout << "ERROR: cannot add tag " << t << ". Tag container is FULL" << std::endl;
 }
 
-std::unordered_map<std::string, std::string> *GameObject::getTags(){
+std::unordered_map<std::string, unsigned int> *GameObject::getTags(){
     return &tagmap;
 }
 
@@ -116,15 +119,26 @@ std::vector<GameObject*> GameObject::find(std::string s){
     return result;
 }
 
-// TO DO
+
 void GameObject::sendMessage(std::string s, float f){
-    //...
+    for(int i = components.size()-1; i >= 0; i--){
+        if(dynamic_cast<Script*>(components.at(i)) && components.at(i)->isActive()) ((Script*)(components.at(i)))->onMessage(s, f);
+    }
 }
 
 void GameObject::broadcastMessage(std::string s, float f){
-    //...
+    for(int i =0; i < children.size(); i++){
+        children.at(i)->broadcastMessage(s,f);
+    }    
+    sendMessage(s,f);
 }
-//~~~~
+
+void GameObject::sendMessageUpward(std::string s, float f) {
+    if(parent != NULL) parent->sendMessageUpward(s,f);   
+    sendMessage(s,f);
+}
+
+
 
 void GameObject::addComponent(Component* c){
     if(dynamic_cast<Transform*>(c)){
@@ -191,7 +205,11 @@ void GameObject::setParent(GameObject *g){
         }
     }
     if(!isChidren) g->addChild(this);
-    parent = g;   
+    parent = g;
+    
+    getTransform()->position.x -= parent->getTransform()->position.x;
+    getTransform()->position.y -= parent->getTransform()->position.y;
+    
 }
 
 GameObject *GameObject::getParent(){
@@ -210,6 +228,9 @@ std::vector<GameObject*> GameObject::getChildren(){
 void GameObject::removeChild(GameObject* g){
     for(int i=0;i<children.size();i++){
         if(children.at(i) == g){
+            children.at(i)->parent = NULL;
+            children.at(i)->getTransform()->position.x += getTransform()->position.x;
+            children.at(i)->getTransform()->position.y += getTransform()->position.y;
             children.erase(children.begin()+i);
             return;
         }

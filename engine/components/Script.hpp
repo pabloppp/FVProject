@@ -21,6 +21,9 @@ public:
     RigidBody *getRigidBody();
     void destroyGameObject(GameObject * g);
     void instantiate(GameObject * g);
+    void sendMessage(std::string s, float f);
+    void sendMessageUpward(std::string s, float f);
+    void broadcastMessage(std::string s, float f);
 private:
 
 };

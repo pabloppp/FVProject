@@ -1,15 +1,17 @@
 #include <iostream>
 
 #include "Game.hpp"
+#include "GUI.hpp"
 
 using namespace gme;
  
-Game::Game(sf::Vector2f windowSize, std::string name){
+Game::Game(Vector2 windowSize, std::string name){
     window = new Window(windowSize.x, windowSize.y, name);
     window->setVerticalSyncEnabled(true);
     window->setFrameLimit(60);
     currentScene = NULL;
     deltaTime.Zero();
+    GUI::loadFont("engine/resources/mainfont.ttf");
 }
 
 Game::Game(const Game& orig) {
@@ -125,6 +127,22 @@ Music *Game::getMusic(const std::string& name){
     return NULL;
 }
 
+int Game::addTag(const std::string& s) {
+    if(tagmap.find(s) != tagmap.end()) return tagmap[s];
+    if(tagCount >= 15) return -1;
+    else{
+        tagCount++;
+        tagmap[s] = tagCount;       
+        return tagmap[s];
+    }
+}
+
+std::unordered_map<std::string, unsigned int>* Game::getTags() {
+    return &tagmap;
+}
+
+
+
 Time Game::deltaTime;
 
 Time Game::unfixedDeltaTime;
@@ -147,3 +165,7 @@ bool Game::debugColliders = false;
 Clock Game::updateClock;
 
 float Game::ticPercent = 0;
+
+std::unordered_map<std::string, unsigned int> Game::tagmap;
+
+char Game::tagCount = 0;
