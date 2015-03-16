@@ -24,6 +24,7 @@ public:
     int getColorG();
     int getColorB();
     int getColorA();
+    ~Renderer();
 private:
     Vector2 size;
     Vector2 center;

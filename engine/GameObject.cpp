@@ -38,10 +38,10 @@ std::string GameObject::getName(){
 
 GameObject::~GameObject() {
     while(!components.empty())delete components.back(), components.pop_back();
-    renderer = NULL;
     delete renderer;
-    transform = NULL;
+    renderer = NULL;
     delete transform;
+    transform = NULL;
     if(rigidBody != NULL){
         delete rigidBody;
         rigidBody = NULL;       
