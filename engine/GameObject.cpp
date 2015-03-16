@@ -38,10 +38,10 @@ std::string GameObject::getName(){
 
 GameObject::~GameObject() {
     while(!components.empty())delete components.back(), components.pop_back();
-    renderer = NULL;
     delete renderer;
-    transform = NULL;
+    renderer = NULL;
     delete transform;
+    transform = NULL;
     if(rigidBody != NULL){
         delete rigidBody;
         rigidBody = NULL;       
@@ -63,9 +63,10 @@ void GameObject::update(){
 }
 
 void GameObject::earlyUpdate() {
-    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->update();
-    if(collider != NULL && collider->isActive() ) collider->update(); 
     if(transform != NULL && transform->isActive()) transform->update();
+    if(collider != NULL && collider->isActive() ) collider->update();  
+    if(rigidBody != NULL && rigidBody->isActive()) rigidBody->update();
+    
 }
 
 
@@ -204,7 +205,11 @@ void GameObject::setParent(GameObject *g){
         }
     }
     if(!isChidren) g->addChild(this);
-    parent = g;   
+    parent = g;
+    
+    getTransform()->position.x -= parent->getTransform()->position.x;
+    getTransform()->position.y -= parent->getTransform()->position.y;
+    
 }
 
 GameObject *GameObject::getParent(){
@@ -223,6 +228,9 @@ std::vector<GameObject*> GameObject::getChildren(){
 void GameObject::removeChild(GameObject* g){
     for(int i=0;i<children.size();i++){
         if(children.at(i) == g){
+            children.at(i)->parent = NULL;
+            children.at(i)->getTransform()->position.x += getTransform()->position.x;
+            children.at(i)->getTransform()->position.y += getTransform()->position.y;
             children.erase(children.begin()+i);
             return;
         }

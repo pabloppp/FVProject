@@ -12,7 +12,10 @@
 using namespace gme;
 
 void Collider::setup() {
+    debugColor = sf::Color::Yellow;
     fixtureDef.filter.categoryBits = 0;
+    fixtureDef.density = 1.f;
+
     if(gameObject() != NULL){
         std::unordered_map<std::string, unsigned int> *tags = gameObject()->getTags();
         if(tags->empty()) fixtureDef.filter.categoryBits |= 1;
@@ -20,6 +23,13 @@ void Collider::setup() {
             
             fixtureDef.filter.categoryBits |= 1 << it->second;
             
+        }
+        
+        
+        if(gameObject()->getRigidBody() != NULL){
+            fixtureDef.density = gameObject()->getRigidBody()->fixtureDef.density;
+            fixtureDef.friction = gameObject()->getRigidBody()->getFriction();
+            fixtureDef.restitution = gameObject()->getRigidBody()->getElasticity();
         }
     }
 }
@@ -91,11 +101,11 @@ void Collider::isTrigger(bool b) {
 }
 
 Vector2 Collider::getRelativePosition(Collider* col) {    
-    Vector2 positionA = gameObject()->getTransform()->position;
-    Vector2 positionB = col->gameObject()->getTransform()->position;
+    Vector2 positionA = gameObject()->getTransform()->getPosition();
+    Vector2 positionB = col->gameObject()->getTransform()->getPosition();
     Vector2 sizeA(0,0);
     Vector2 sizeB(0,0);
-    float r = col->gameObject()->getTransform()->rotation;
+    float r = col->gameObject()->getTransform()->getRotation();
 
     if(dynamic_cast<BoxCollider*>(this)){
         std::vector<Vector2> points = ((BoxCollider*)(this))->getRotatedPoints();

@@ -37,15 +37,17 @@ RigidBody::~RigidBody() {
 
 void RigidBody::setup(){
     if(gameObject() != NULL && gameObject()->getTransform() != NULL){
-        b2def.position.Set(gameObject()->getTransform()->position.x/SCALE, gameObject()->getTransform()->position.y/SCALE);
+        b2def.position.Set(gameObject()->getTransform()->getPosition().x/SCALE, gameObject()->getTransform()->getPosition().y/SCALE);
         //b2body = Game::getCurrentScene()->boxWorld->CreateBody(&b2def);
     }
 }
 
 void RigidBody::update(){
-    b2body->SetTransform(b2Vec2(gameObject()->getTransform()->position.x/SCALE, 
-            gameObject()->getTransform()->position.y/SCALE), 
-            gameObject()->getTransform()->rotation*PI/180.f);
+    if(gameObject() != NULL && gameObject()->getTransform() != NULL){
+        b2body->SetTransform(b2Vec2(gameObject()->getTransform()->getPosition().x/SCALE, 
+                gameObject()->getTransform()->getPosition().y/SCALE), 
+                gameObject()->getTransform()->getRotation()*PI/180.f);
+    }
     
     b2body->SetLinearDamping(friction*10);
     
@@ -53,12 +55,18 @@ void RigidBody::update(){
 }
 
 void RigidBody::updatep(){
-    if(gameObject()!= NULL){
-        gameObject()->getTransform()->position.x = b2body->GetPosition().x*SCALE;
+    if(gameObject()!= NULL && gameObject()->getTransform() != NULL){
+        Vector2 parentDisp(0,0);
+        float parentRot = 0;
+        if(gameObject()->getParent() != NULL && gameObject()->getParent()->getTransform() != NULL){
+            parentDisp = gameObject()->getParent()->getTransform()->getPosition();
+            parentRot = gameObject()->getParent()->getTransform()->getRotation();
+        }
+        gameObject()->getTransform()->position.x = b2body->GetPosition().x*SCALE - parentDisp.x;
 
-        gameObject()->getTransform()->position.y = b2body->GetPosition().y*SCALE;
+        gameObject()->getTransform()->position.y = b2body->GetPosition().y*SCALE - parentDisp.y;
         
-        if(!fixedRotation) gameObject()->getTransform()->rotation = b2body->GetTransform().q.GetAngle()*180.f/PI;
+        if(!fixedRotation) gameObject()->getTransform()->rotation = b2body->GetTransform().q.GetAngle()*180.f/PI - parentRot;
     }
 }
 
