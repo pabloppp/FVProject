@@ -43,9 +43,11 @@ void RigidBody::setup(){
 }
 
 void RigidBody::update(){
-    b2body->SetTransform(b2Vec2(gameObject()->getTransform()->getPosition().x/SCALE, 
-            gameObject()->getTransform()->getPosition().y/SCALE), 
-            gameObject()->getTransform()->getRotation()*PI/180.f);
+    if(gameObject() != NULL && gameObject()->getTransform() != NULL){
+        b2body->SetTransform(b2Vec2(gameObject()->getTransform()->getPosition().x/SCALE, 
+                gameObject()->getTransform()->getPosition().y/SCALE), 
+                gameObject()->getTransform()->getRotation()*PI/180.f);
+    }
     
     b2body->SetLinearDamping(friction*10);
     
@@ -53,10 +55,10 @@ void RigidBody::update(){
 }
 
 void RigidBody::updatep(){
-    if(gameObject()!= NULL){
+    if(gameObject()!= NULL && gameObject()->getTransform() != NULL){
         Vector2 parentDisp(0,0);
         float parentRot = 0;
-        if(gameObject()->getParent() != NULL){
+        if(gameObject()->getParent() != NULL && gameObject()->getParent()->getTransform() != NULL){
             parentDisp = gameObject()->getParent()->getTransform()->getPosition();
             parentRot = gameObject()->getParent()->getTransform()->getRotation();
         }
