@@ -1,14 +1,16 @@
-/* 
- * File:   sceneEntregable2.hpp
- * Author: Andrea
- *
- * Created on 3 de marzo de 2015, 10:27
- */
-
 #ifndef SCENEENTREGABLE2_HPP
 #define	SCENEENTREGABLE2_HPP
 
+#include "../engine/GMEngine.hpp"
 
+class sceneEntregable2 : public gme::Scene {
+    public:
+        sceneEntregable2() : gme::Scene(){};
+        sceneEntregable2(std::string n) : gme::Scene(n){};
+        void setup();
+    private:
+        void setupTileMap();    
+};
 
 #endif	/* SCENEENTREGABLE2_HPP */
 

@@ -109,6 +109,22 @@
           <itemPath>hito1/scene51.cpp</itemPath>
           <itemPath>hito1/scene51.hpp</itemPath>
         </logicalFolder>
+        <logicalFolder name="f4" displayName="entregable2" projectFiles="true">
+          <logicalFolder name="f1" displayName="objects" projectFiles="true">
+            <itemPath>hito1/bullet.cpp</itemPath>
+            <itemPath>hito1/bullet.hpp</itemPath>
+            <itemPath>hito1/weapon.cpp</itemPath>
+            <itemPath>hito1/weapon.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="scripts" projectFiles="true">
+            <itemPath>hito1/BulletScript.cpp</itemPath>
+            <itemPath>hito1/BulletScript.hpp</itemPath>
+            <itemPath>hito1/ShotScript.cpp</itemPath>
+            <itemPath>hito1/ShotScript.hpp</itemPath>
+          </logicalFolder>
+          <itemPath>hito1/sceneEntregable2.cpp</itemPath>
+          <itemPath>hito1/sceneEntregable2.hpp</itemPath>
+        </logicalFolder>
         <logicalFolder name="f2" displayName="entregable3" projectFiles="true">
           <itemPath>hito1/generaPosicion.cpp</itemPath>
           <itemPath>hito1/generaPosicion.hpp</itemPath>
@@ -354,6 +370,10 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/BulletScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/BulletScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
@@ -361,6 +381,14 @@
       <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/ShotScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/ShotScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/bullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/bullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -401,6 +429,10 @@
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/weapon.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -582,6 +614,10 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/BulletScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/BulletScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
@@ -589,6 +625,14 @@
       <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/ShotScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/ShotScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/bullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/bullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -629,6 +673,10 @@
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/weapon.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

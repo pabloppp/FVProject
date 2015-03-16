@@ -66,8 +66,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
+	${OBJECTDIR}/hito1/BulletScript.o \
 	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
+	${OBJECTDIR}/hito1/ShotScript.o \
+	${OBJECTDIR}/hito1/bullet.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
 	${OBJECTDIR}/hito1/limit.o \
@@ -78,6 +81,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
 	${OBJECTDIR}/hito1/sceneEntregable4.o \
 	${OBJECTDIR}/hito1/tile.o \
+	${OBJECTDIR}/hito1/weapon.o \
 	${OBJECTDIR}/main.o
 
 
@@ -260,6 +264,11 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
+${OBJECTDIR}/hito1/BulletScript.o: hito1/BulletScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/BulletScript.o hito1/BulletScript.cpp
+
 ${OBJECTDIR}/hito1/CameraFollowPlayer.o: hito1/CameraFollowPlayer.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
@@ -269,6 +278,16 @@ ${OBJECTDIR}/hito1/PlayerMovement.o: hito1/PlayerMovement.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/PlayerMovement.o hito1/PlayerMovement.cpp
+
+${OBJECTDIR}/hito1/ShotScript.o: hito1/ShotScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/ShotScript.o hito1/ShotScript.cpp
+
+${OBJECTDIR}/hito1/bullet.o: hito1/bullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/bullet.o hito1/bullet.cpp
 
 ${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
@@ -319,6 +338,11 @@ ${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tile.o hito1/tile.cpp
+
+${OBJECTDIR}/hito1/weapon.o: hito1/weapon.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/weapon.o hito1/weapon.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
