@@ -3,7 +3,7 @@
 
 void hito1Game::setup(){
     
-    //debugColliders = true;
+    debugColliders = true;
     
     gme::Game::newTexture("hito1/recursos/Broniversal Soldier Anim.png", "playerTexture");
     gme::Game::newTexture("hito1/recursos/temple_bricks.png", "templeTexture");
