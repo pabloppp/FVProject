@@ -13,7 +13,6 @@ void moveFondo::setup(){
     gme::Window *w = gme::Game::getWindow();
     vec = w->getSize();
     reloj.restart();
-   
 }
 
 void moveFondo::update(){
@@ -32,7 +31,18 @@ void moveFondo::update(){
 }
 
 void moveFondo::onGui() {
-
+    gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
+    gme::GUI::tintColor = gme::GUI::red;
+    
+    gme::GUI::drawTexture(
+        gme::Vector2(320,240), 
+        gme::Vector2(100,500), 
+        gme::GUI::TextureName("logo"), 
+        gme::GUI::Origin::Center,
+        gme::GUI::ScaleMode::ScaleToFit    
+    );
+    gme::GUI::contentColor = gme::GUI::white;
+    gme::GUI::label(gme::Vector2(gme::Mouse::getPosition().x, gme::Mouse::getPosition().y).worldToScreen(), "MENU 1", gme::GUI::Origin::Center);
 }
 
 moveFondo::~moveFondo(){

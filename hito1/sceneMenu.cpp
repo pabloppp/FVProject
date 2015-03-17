@@ -7,10 +7,7 @@
 
 void sceneMenu::setup(){
     
-   gme::GameObject *logo= new staticObject("logo");
-    logo->getTransform()->setPosition(gme::Vector2(320, 180));
-    logo->getRenderer()->setTexture("logo");
-    //logo->getTransform()->setScale(gme::Vector2(0.35,0.35));
+  
    
    
    
@@ -24,7 +21,10 @@ void sceneMenu::setup(){
    fondo2->getRenderer()->setTexture("fondo_principal");
    
    
-   
+    gme::GameObject *logo= new staticObject("logo");
+    logo->getTransform()->setPosition(gme::Vector2(320, 180));
+    logo->getRenderer()->setTexture("logo");
+    //logo->getTransform()->setScale(gme::Vector2(0.35,0.35));
  
     
     

@@ -1,15 +1,17 @@
 #include <iostream>
 
 #include "Game.hpp"
+#include "GUI.hpp"
 
 using namespace gme;
  
-Game::Game(sf::Vector2f windowSize, std::string name){
+Game::Game(Vector2 windowSize, std::string name){
     window = new Window(windowSize.x, windowSize.y, name);
     window->setVerticalSyncEnabled(true);
     window->setFrameLimit(60);
     currentScene = NULL;
     deltaTime.Zero();
+    GUI::loadFont("engine/resources/mainfont.ttf");
 }
 
 Game::Game(const Game& orig) {
@@ -109,13 +111,13 @@ Sound *Game::getSound(const std::string& name){
 
 
 void Game::newMusic(const std::string& path, const std::string& name){
-    Music newMusic;
-    if(!newMusic.openFromFile(path)){
+    Music *newMusic = new Music();
+    if(!newMusic->openFromFile(path)){
         std::cout << "error loading music from: " << path << std::endl;
         return;
     }
-    newMusic.setName(name);
-    musics.push_back(&newMusic);
+    newMusic->setName(name);
+    musics.push_back(newMusic);
 }
 
 Music *Game::getMusic(const std::string& name){

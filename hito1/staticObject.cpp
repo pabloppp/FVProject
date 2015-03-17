@@ -18,8 +18,10 @@ void staticObject::setup(){
          gme::MusicPlayer *musica = new gme::MusicPlayer();
     
         musica->setMusic("sound");
+
         //musica->play();
         addComponent(musica);
+        musica->play();
         
         splash *accionSplash = new splash();
         addComponent(accionSplash);

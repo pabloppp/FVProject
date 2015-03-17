@@ -117,3 +117,9 @@ int Renderer::getColorA() {
     }
     return -1;
 }
+
+Renderer::~Renderer() {
+    delete drawable;
+    drawable = NULL;
+}
+
