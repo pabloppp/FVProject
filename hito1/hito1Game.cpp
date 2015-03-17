@@ -1,16 +1,25 @@
 #include "hito1Game.hpp"
-#include "scene51.hpp"
+#include "sceneMenu.hpp"
+#include "sceneSplash.hpp"
+//#include "sceneEntregable3.hpp"
 
 void hito1Game::setup(){
     
     //debugColliders = true;
     
-    gme::Game::newTexture("hito1/recursos/Broniversal Soldier Anim.png", "playerTexture");
-    gme::Game::newTexture("hito1/recursos/temple_bricks.png", "templeTexture");
+   gme::Game::newTexture("hito1/recursos/fondoSplash.png", "fondoSplash"); 
     
-    gme::Scene *newScene = new scene51("scene51");
+   gme::Game::newTexture("hito1/recursos/fondonuevo.png", "fondo_principal");
+   gme::Game::newTexture("hito1/recursos/logoFV2.png", "logo");
+   
+   gme::Game::newMusic("hito1/recursos/animals.wav", "sound");
+   
     
-    gme::Game::setCurrentScene("scene51");
+   gme::Scene *sceneM = new sceneMenu("sceneM"); 
+   /*gme::Game::setCurrentScene("sceneM");*/
+   
+   gme::Scene *sceneS = new sceneSplash("sceneS"); 
+   gme::Game::setCurrentScene("sceneS");
 }
 
 

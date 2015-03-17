@@ -26,8 +26,8 @@ void scene51::setup() {
     player2->rightKey = gme::Keyboard::Right;
     player2->jumpKey = gme::Keyboard::Space;
     player2->weaponKey = gme::Keyboard::RSystem;
-    player2->actionKey = gme::Keyboard::RAlt;
-    */ 
+    player2->actionKey = gme::Keyboard::RAlt;*/
+     
     
     //SETUP CAMERA
     CameraFollowPlayer *cameraFollow = new CameraFollowPlayer;

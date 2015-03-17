@@ -118,8 +118,22 @@
           <itemPath>hito1/sceneEntregable3.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f1" displayName="entregable4" projectFiles="true">
-          <itemPath>hito1/sceneEntregable4.cpp</itemPath>
-          <itemPath>hito1/sceneEntregable4.hpp</itemPath>
+          <logicalFolder name="f2" displayName="objects" projectFiles="true">
+            <itemPath>hito1/imagenFondo.cpp</itemPath>
+            <itemPath>hito1/imagenFondo.hpp</itemPath>
+            <itemPath>hito1/staticObject.cpp</itemPath>
+            <itemPath>hito1/staticObject.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f1" displayName="script" projectFiles="true">
+            <itemPath>hito1/moveFondo.cpp</itemPath>
+            <itemPath>hito1/moveFondo.hpp</itemPath>
+            <itemPath>hito1/splash.cpp</itemPath>
+            <itemPath>hito1/splash.hpp</itemPath>
+          </logicalFolder>
+          <itemPath>hito1/sceneMenu.cpp</itemPath>
+          <itemPath>hito1/sceneMenu.hpp</itemPath>
+          <itemPath>hito1/sceneSplash.cpp</itemPath>
+          <itemPath>hito1/sceneSplash.hpp</itemPath>
         </logicalFolder>
         <itemPath>hito1/hito1Game.cpp</itemPath>
         <itemPath>hito1/hito1Game.hpp</itemPath>
@@ -342,9 +356,17 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -362,9 +384,21 @@
       </item>
       <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
+      <item path="hito1/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      <item path="hito1/sceneMenu.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/splash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/staticObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -566,9 +600,17 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -586,9 +628,21 @@
       </item>
       <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
+      <item path="hito1/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      <item path="hito1/sceneMenu.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/splash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/staticObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>

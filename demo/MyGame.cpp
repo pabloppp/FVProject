@@ -12,6 +12,7 @@ void MyGame::setup(){
     
     gme::Game::newSound("demo/resources/in.wav", "sound1");
     
+    
     //Create all the scenes
     gme::Scene *sceneOne = new mainScene("mainScene");
     

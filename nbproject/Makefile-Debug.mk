@@ -70,12 +70,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
+	${OBJECTDIR}/hito1/imagenFondo.o \
 	${OBJECTDIR}/hito1/limit.o \
+	${OBJECTDIR}/hito1/moveFondo.o \
 	${OBJECTDIR}/hito1/player.o \
 	${OBJECTDIR}/hito1/pruebaGameObject.o \
 	${OBJECTDIR}/hito1/scene51.o \
 	${OBJECTDIR}/hito1/sceneEntregable3.o \
-	${OBJECTDIR}/hito1/sceneEntregable4.o \
+	${OBJECTDIR}/hito1/sceneMenu.o \
+	${OBJECTDIR}/hito1/sceneSplash.o \
+	${OBJECTDIR}/hito1/splash.o \
+	${OBJECTDIR}/hito1/staticObject.o \
 	${OBJECTDIR}/hito1/tile.o \
 	${OBJECTDIR}/main.o
 
@@ -279,10 +284,20 @@ ${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
 
+${OBJECTDIR}/hito1/imagenFondo.o: hito1/imagenFondo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/imagenFondo.o hito1/imagenFondo.cpp
+
 ${OBJECTDIR}/hito1/limit.o: hito1/limit.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/limit.o hito1/limit.cpp
+
+${OBJECTDIR}/hito1/moveFondo.o: hito1/moveFondo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/moveFondo.o hito1/moveFondo.cpp
 
 ${OBJECTDIR}/hito1/player.o: hito1/player.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
@@ -304,10 +319,25 @@ ${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
 
-${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp 
+${OBJECTDIR}/hito1/sceneMenu.o: hito1/sceneMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneMenu.o hito1/sceneMenu.cpp
+
+${OBJECTDIR}/hito1/sceneSplash.o: hito1/sceneSplash.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneSplash.o hito1/sceneSplash.cpp
+
+${OBJECTDIR}/hito1/splash.o: hito1/splash.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/splash.o hito1/splash.cpp
+
+${OBJECTDIR}/hito1/staticObject.o: hito1/staticObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/staticObject.o hito1/staticObject.cpp
 
 ${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
