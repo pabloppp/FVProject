@@ -19,6 +19,21 @@ void sceneEntregable2::setup(){
     player1->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
     
     weapon1->setParent(player1);
+    
+    weapon *weapon2 = new weapon("weapon_2");
+    //ADD SECOND PLAYER
+    player *player2 = new player("player_2");
+    player2->getTransform()->setPosition(gme::Vector2(windowSize.x/2, windowSize.y/2));
+    player2->overrideKeys = true;
+    player2->downKey = gme::Keyboard::Down;
+    player2->upKey = gme::Keyboard::Up;
+    player2->leftKey = gme::Keyboard::Left;
+    player2->rightKey = gme::Keyboard::Right;
+    player2->weaponKey = gme::Keyboard::L;
+    player2->jumpKey = gme::Keyboard::Comma;
+    
+    
+    weapon2 ->setParent(player2);
 }
 
 void sceneEntregable2::setupTileMap() {

@@ -22,7 +22,7 @@ public:
     gme::Keyboard::Key keyLeft;
     gme::Keyboard::Key keyRight;
 private:
-
+    bool disparado;
 };
 
 #endif	/* SHOTSCRIPT_HPP */

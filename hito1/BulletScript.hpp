@@ -18,7 +18,9 @@ public:
     void setup();
     void update();
     virtual void onCollision(gme::Collider *c);
+    int direccion;
 private:
+   
     float winSize;
 };
 

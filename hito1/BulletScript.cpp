@@ -17,10 +17,14 @@ void BulletScript::setup(){
 void BulletScript::update(){
     
     //Obtener direccion jugador
-    gme::GameObject *player = gme::GameObject::findWithTag("player_1");
+    //gme::GameObject *player = gme::GameObject::findWithTag("player_1");
     
     
-    getRigidBody()->setSpeed(-6.f,0.0);
+    if(direccion == 0) getRigidBody()->setSpeed(-6.f,0.0);
+    else if(direccion == 1) getRigidBody()->setSpeed(0,-6.f);
+    else if(direccion == 2) getRigidBody()->setSpeed(6.f,0.0);
+    else if(direccion == 3) getRigidBody()->setSpeed(0,6.f);
+    
     
     float posX = getTransform()->getPosition().x;
     if(posX < 0 || posX > winSize){
