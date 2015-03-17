@@ -94,6 +94,22 @@
       </logicalFolder>
       <logicalFolder name="f1" displayName="hito1" projectFiles="true">
         <logicalFolder name="f3" displayName="entregable1" projectFiles="true">
+          <logicalFolder name="f2" displayName="objects" projectFiles="true">
+            <itemPath>hito1/limit.cpp</itemPath>
+            <itemPath>hito1/limit.hpp</itemPath>
+            <itemPath>hito1/player.cpp</itemPath>
+            <itemPath>hito1/player.hpp</itemPath>
+            <itemPath>hito1/tile.cpp</itemPath>
+            <itemPath>hito1/tile.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f1" displayName="scripts" projectFiles="true">
+            <itemPath>hito1/CameraFollowPlayer.cpp</itemPath>
+            <itemPath>hito1/CameraFollowPlayer.hpp</itemPath>
+            <itemPath>hito1/PlayerMovement.cpp</itemPath>
+            <itemPath>hito1/PlayerMovement.hpp</itemPath>
+          </logicalFolder>
+          <itemPath>hito1/scene51.cpp</itemPath>
+          <itemPath>hito1/scene51.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="entregable3" projectFiles="true">
           <itemPath>hito1/generaPosicion.cpp</itemPath>
@@ -316,6 +332,14 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -324,9 +348,21 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -335,6 +371,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -520,6 +560,14 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -528,9 +576,21 @@
       </item>
       <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -539,6 +599,10 @@
       <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
