@@ -13,7 +13,7 @@ void generaPosicion::setup(){
 void generaPosicion::update() {   
     
     int radio = ratio.getRadius();
-    std::cout << stateObjeto << std::endl;
+    
     if(clk.currentTime().asSeconds() > 0.5 && stateObjeto==1){
         
         gme::GameObject *fo = new pruebaGameObject("ObjetoCaida");
