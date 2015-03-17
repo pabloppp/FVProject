@@ -9,6 +9,8 @@ public:
     sceneEntregable3(std::string n) : gme::Scene(n){};
     void setup();
 private:
+    void setupLimits();
+    void setupTileMap();
 
 };
 

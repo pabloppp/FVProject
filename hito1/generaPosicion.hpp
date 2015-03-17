@@ -14,19 +14,25 @@ class generaPosicion : public gme::Script {
 public:
     void setup();
     void update();
-    void position(int x, int y,int rat, std::string tipo,int state);
-    void setState(int i);
-    int getState();
+    bool getColectionable();
+    void setColectionable(bool x);
+    bool getEnemi();
+    void setEnemi(bool x);
     virtual void onGui();
+    void generaColeccionable();
+    void generaEnemigo(int x, int y);
+    generaPosicion(int x,int y);
+    generaPosicion();
     virtual ~generaPosicion();
 private:
     gme::Vector2 v;
-    double angle;
-    gme::Clock clk;
-    sf::CircleShape ratio;
     gme::Window *w;
-    std::string tipoObjeto;
-    int stateObjeto;
+    bool colectionable;
+    bool enemi;
+    gme::Clock clkC;
+    gme::Clock clkE;
+    int posX;
+    int posY;
 };
 
 #endif	/* GENERAPOSICION_HPP */

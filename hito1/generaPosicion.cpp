@@ -1,71 +1,97 @@
 #include "generaPosicion.hpp"
 #include "pruebaGameObject.hpp"
 #include "../engine/Game.hpp"
-#include <math.h>
 
 
 void generaPosicion::setup(){
     w = gme::Game::getWindow();
     v = w->getSize();
-    clk.restart();
+    colectionable = false;
+    enemi = false;
+    clkC.restart();
+    clkE.restart();
 }
 
 void generaPosicion::update() {   
     
-    int radio = ratio.getRadius();
     
-    if(clk.currentTime().asSeconds() > 0.5 && stateObjeto==1){
-        
-        gme::GameObject *fo = new pruebaGameObject("ObjetoCaida");
-        if(tipoObjeto=="enemigo")
-            fo->getRenderer()->setTexture("particle");
-        else
-            fo->getRenderer()->setTexture("prueba");
-        angle=(rand()%360);
-        
-        float percen = 1+((double) rand() / (RAND_MAX+1));
-        float posX  = ratio.getPosition().x+(cos(angle)*(radio*percen));
-        float posY  = ratio.getPosition().y+(sin(angle)*(radio*percen));
-        
-        if(posX>v.x) posX=v.x;
-        if(posX<0) posX=0;
-        if(posY>v.y) posY=v.y;
-        if(posY<0) posY=0;
-        
-        fo->getTransform()->setPosition(gme::Vector2(posX,posY));
-        fo->addComponent(new gme::RigidBody);
-        clk.restart();
+    if(colectionable == true){
+        if(clkC.currentTime().asSeconds() > 1){
+            clkC.restart();
+            generaColeccionable();
+        }
     }
-    
-
+    else{
+        setColectionable(true);
+    }
+   
+    if(enemi == true){
+        if(clkE.currentTime().asSeconds() > 1){
+           clkE.restart();
+            generaEnemigo(posX,posY);
+        }
+    }
+    else{
+        //setEnemi(true);
+    }
     
 }
 
-void generaPosicion::position(int x, int y,int rat,std::string tipo,int state){
+void generaPosicion::generaColeccionable(){
+    
+    int pos = rand();
+    int finalpos = (int)pos%(int)v.x;
+    gme::GameObject *coleccionable = new gme::GameObject("colleccionable");
+    coleccionable->getRenderer()->setTexture("coleccionable"); 
+    coleccionable->getRenderer()->setSize(gme::Vector2(32,32));
+    coleccionable->getRenderer()->setFrame(gme::Vector2(0,0));
+    coleccionable->addComponent(new gme::RigidBody);
+    coleccionable->getTransform()->setPosition(gme::Vector2(finalpos, -3));
    
-    ratio.setOrigin(rat,rat);
-    ratio.setRadius(rat);
-    ratio.setPosition(x,y);
-    ratio.setOutlineThickness(1);
-    ratio.setFillColor(sf::Color::Transparent);
-    if(tipo == "enemigo")
-        ratio.setOutlineColor(sf::Color::Red);
-    if(tipo == "coleccionable")
-        ratio.setOutlineColor(sf::Color::Blue);
-    tipoObjeto=tipo;
-    setState(state);
+    
+    //std::cout << finalpos << std::endl; 
+}
+
+
+void generaPosicion::setColectionable(bool x){
+    colectionable = x;
+}
+bool generaPosicion::getColectionable(){
+    return colectionable;
+}
+
+
+void generaPosicion::generaEnemigo(int x, int y) {
+    std::cout << x << " " << y << std::endl;
+    if (enemi == true){
+        gme::GameObject *enemigo = new gme::GameObject("emenigo");
+        enemigo->getRenderer()->setTexture("coleccionable");
+        enemigo->getRenderer()->setSize(gme::Vector2(32,32));
+        enemigo->getRenderer()->setFrame(gme::Vector2(1,0));
+        enemigo->getTransform()->setPosition(gme::Vector2(x,y));
+    }
+}
+
+void generaPosicion::setEnemi(bool x){
+    enemi = x;
+}
+
+bool generaPosicion::getEnemi(){
+    return enemi;
 }
 
 void generaPosicion::onGui() {
-    gme::Game::getWindow()->draw(ratio);
+    /*
+    gme::Game::getWindow()->draw(ratio);*/
 }
 
-void generaPosicion::setState(int i){
-    stateObjeto=i;
+generaPosicion::generaPosicion(int x, int y) {
+    posX = x;
+    posY = y;
 }
 
-int generaPosicion::getState(){
-    return stateObjeto;
+generaPosicion::generaPosicion() {
+
 }
 
 

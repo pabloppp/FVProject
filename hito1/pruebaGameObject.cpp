@@ -7,16 +7,18 @@
 
 #include "pruebaGameObject.hpp"
 #include "generaPosicion.hpp"
-#include "../demo/CustomScript.hpp"
+#include "player.hpp"
 
 void pruebaGameObject::setup(){
     
     addTag("player");
-    getRenderer()->setTexture("prueba");
+    //getRenderer()->setTexture("playerTexture");
  
     generaPosicion *gP = new generaPosicion();
-    gP->position(620,30,80,"coleccionable",0);
-    gP->setState(1);
+    gP->generaEnemigo(40,76);
+    gP->setEnemi(true);
+    gP->generaEnemigo(300,300);
+   
     addComponent(gP);
    
     
