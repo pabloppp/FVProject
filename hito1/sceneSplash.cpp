@@ -9,12 +9,7 @@
 #include "staticObject.hpp"
 
 void sceneSplash::setup(){
-   
-    /*//sp->autoplay = true;
-    musica->setVolume(0);
-    musica->loop(true);
-   // addComponent(sp);
-    */
+
    gme::GameObject *fondo= new staticObject("fondo");
    fondo->getTransform()->setPosition(gme::Vector2(320, 240));
    fondo->getRenderer()->setTexture("fondoSplash");

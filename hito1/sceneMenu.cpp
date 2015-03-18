@@ -22,9 +22,10 @@ void sceneMenu::setup(){
    
    
     gme::GameObject *logo= new staticObject("logo");
-    logo->getTransform()->setPosition(gme::Vector2(320, 180));
+    logo->getTransform()->setPosition(gme::Vector2(320, 130));
     logo->getRenderer()->setTexture("logo");
-    //logo->getTransform()->setScale(gme::Vector2(0.35,0.35));
+    //logo->getRenderer()->setSize(gme::Vector2(1, 1));
+    logo->getTransform()->setScale(gme::Vector2(0.20,0.20));
  
     
     

@@ -14,6 +14,7 @@ void splash::setup(){
     gme::Window *w = gme::Game::getWindow();
     vec = w->getSize();
     reloj.restart();
+    
    
 }
 
@@ -21,6 +22,7 @@ void splash::update(){
     
     //std::cout <<reloj.currentTime().asSeconds() << std::endl;
 
+    
     
     
     if(trans.currentTime().asSeconds()>(0.01) && reloj.currentTime().asSeconds()<=3 && a>=0){
