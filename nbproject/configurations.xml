@@ -97,6 +97,8 @@
           <logicalFolder name="f2" displayName="objects" projectFiles="true">
             <itemPath>hito1/backgroundLayer.cpp</itemPath>
             <itemPath>hito1/backgroundLayer.hpp</itemPath>
+            <itemPath>hito1/genericEnemy.cpp</itemPath>
+            <itemPath>hito1/genericEnemy.hpp</itemPath>
             <itemPath>hito1/limit.cpp</itemPath>
             <itemPath>hito1/limit.hpp</itemPath>
             <itemPath>hito1/player.cpp</itemPath>
@@ -113,6 +115,8 @@
             <itemPath>hito1/BackgroundParallax.hpp</itemPath>
             <itemPath>hito1/CameraFollowPlayer.cpp</itemPath>
             <itemPath>hito1/CameraFollowPlayer.hpp</itemPath>
+            <itemPath>hito1/LifeManager.cpp</itemPath>
+            <itemPath>hito1/LifeManager.hpp</itemPath>
             <itemPath>hito1/MakeMapFromFile.cpp</itemPath>
             <itemPath>hito1/MakeMapFromFile.hpp</itemPath>
             <itemPath>hito1/PlayerMovement.cpp</itemPath>
@@ -352,6 +356,10 @@
       </item>
       <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/MakeMapFromFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/MakeMapFromFile.hpp" ex="false" tool="3" flavor2="0">
@@ -371,6 +379,10 @@
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/genericEnemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/genericEnemy.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -604,6 +616,10 @@
       </item>
       <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/MakeMapFromFile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/MakeMapFromFile.hpp" ex="false" tool="3" flavor2="0">
@@ -623,6 +639,10 @@
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/genericEnemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/genericEnemy.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
       </item>

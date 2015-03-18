@@ -6,6 +6,7 @@
 #include "tile.hpp"
 #include "backgroundLayer.hpp"
 #include "tileMapGenerator.hpp"
+#include "genericEnemy.hpp"
 
 
 void scene51::setup() {
@@ -39,6 +40,8 @@ void scene51::setup() {
     player2->weaponKey = gme::Keyboard::RSystem;
     player2->actionKey = gme::Keyboard::RAlt;*/
     
+    genericEnemy *enemy = new genericEnemy("enemy1");
+    enemy->getTransform()->setPosition(gme::Vector2(windowSize.x, windowSize.y/2));
     
     
     

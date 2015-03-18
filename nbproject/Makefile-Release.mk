@@ -69,11 +69,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/hito1/BackgroundParallax.o \
 	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
+	${OBJECTDIR}/hito1/LifeManager.o \
 	${OBJECTDIR}/hito1/MakeMapFromFile.o \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
 	${OBJECTDIR}/hito1/TileRowGenerator.o \
 	${OBJECTDIR}/hito1/backgroundLayer.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
+	${OBJECTDIR}/hito1/genericEnemy.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
 	${OBJECTDIR}/hito1/limit.o \
 	${OBJECTDIR}/hito1/player.o \
@@ -281,6 +283,11 @@ ${OBJECTDIR}/hito1/CameraFollowPlayer.o: hito1/CameraFollowPlayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/CameraFollowPlayer.o hito1/CameraFollowPlayer.cpp
 
+${OBJECTDIR}/hito1/LifeManager.o: hito1/LifeManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/LifeManager.o hito1/LifeManager.cpp
+
 ${OBJECTDIR}/hito1/MakeMapFromFile.o: hito1/MakeMapFromFile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
@@ -305,6 +312,11 @@ ${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
+
+${OBJECTDIR}/hito1/genericEnemy.o: hito1/genericEnemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/genericEnemy.o hito1/genericEnemy.cpp
 
 ${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1

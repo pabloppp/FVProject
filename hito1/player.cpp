@@ -1,5 +1,6 @@
 #include "player.hpp"
 #include "PlayerMovement.hpp"
+#include "LifeManager.hpp"
 
 void player::setup() {
     
@@ -35,7 +36,10 @@ void player::setup() {
         playerMovement->actionKey = actionKey;
     }
     
+    LifeManager *stats = new LifeManager();
+    
     addComponent(playerMovement);
+    addComponent(stats);
 }
 
 

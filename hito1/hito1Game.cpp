@@ -14,6 +14,7 @@ void hito1Game::setup(){
     gme::Game::newTexture("hito1/recursos/jungle_midA.png", "bgMidATexture");
     gme::Game::newTexture("hito1/recursos/jungle_midB.png", "bgMidBTexture");
     gme::Game::newTexture("hito1/recursos/jungle_midC.png", "bgMidCTexture");
+    gme::Game::newTexture("hito1/recursos/alien2.png", "alien");
     
     gme::Scene *newScene = new scene51("scene51");
     

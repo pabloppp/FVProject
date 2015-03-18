@@ -1,4 +1,5 @@
 #include "PlayerMovement.hpp"
+#include "LifeManager.hpp"
 
 void PlayerMovement::setup() {
 
@@ -88,6 +89,17 @@ void PlayerMovement::onCollision(gme::Collider* c) {
     if(c->gameObject()->hasTag("destructible") && relativePosition.y == 1 && relativePosition.x == 0){
         destroyGameObject(c->gameObject());
     } 
+    
+    //HARDCODED FOR ENEMY COLLISION
+    else if(c->gameObject()->hasTag("enemy")){
+        sendMessage("damage", 5);
+        if(c->gameObject()->getTransform()->getPosition().x > getTransform()->getPosition().x){
+            getRigidBody()->push(gme::Vector2(-1, 0), 10000);
+        }
+        else{
+            getRigidBody()->push(gme::Vector2(1, 0), 10000);
+        }
+    }
 }
 
 void PlayerMovement::animate() {
@@ -131,6 +143,8 @@ void PlayerMovement::animate() {
 }
 
 void PlayerMovement::onGui() {
+    
+    LifeManager *stats = (LifeManager*)(gameObject()->getComponent<LifeManager*>());
     //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50)
     //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
     gme::GUI::fontSize = 12;
@@ -139,7 +153,11 @@ void PlayerMovement::onGui() {
     pos.y -= 40;
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
-    gme::GUI::label(gme::Vector2(0,0), "Lives ****", gme::GUI::Origin::TopLeft);
+    if(stats != NULL){
+        gme::GUI::label(gme::Vector2(15,10), "Lives "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
+        gme::GUI::backgroundColor = gme::GUI::green;
+        gme::GUI::box(gme::Vector2(10,25), gme::Vector2(stats->getHpPercent(), 10));
+    }
     //std::cout << "ENTERING HERE" << std::endl;
 }
 
