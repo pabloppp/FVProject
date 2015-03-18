@@ -111,13 +111,13 @@ Sound *Game::getSound(const std::string& name){
 
 
 void Game::newMusic(const std::string& path, const std::string& name){
-    Music newMusic;
-    if(!newMusic.openFromFile(path)){
+    Music *newMusic = new Music();
+    if(!newMusic->openFromFile(path)){
         std::cout << "error loading music from: " << path << std::endl;
         return;
     }
-    newMusic.setName(name);
-    musics.push_back(&newMusic);
+    newMusic->setName(name);
+    musics.push_back(newMusic);
 }
 
 Music *Game::getMusic(const std::string& name){

@@ -49,7 +49,7 @@ void GUI::box(Vector2 position, Vector2 size, const std::string& text, Origin or
     }
     window->draw(rshape);
     if(text.length() > 0){
-        GUI::label(Vector2(px + size.x/2.f, px + size.y/2.f), text, Origin::Center);
+        GUI::label(Vector2(px + size.x/2.f, py + size.y/2.f), text, Origin::Center);
     }
 }
 
