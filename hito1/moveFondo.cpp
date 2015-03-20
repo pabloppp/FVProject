@@ -42,9 +42,9 @@ void moveFondo::update(){
     if(gme::Keyboard::isKeyPressed(spaceKey) && pausa==false){ // BUCLE PARA QUE SUENE LA MUSICA
        if(apretar.currentTime().asSeconds()>0.2){ 
            
-           std::cout << music_pausa << std::endl;
+           //std::cout << music_pausa << std::endl;
             if(sonando==true){
-                musica->stop();
+                musica->pause();
                 sonando=false;
 
             }else if(sonando==false){
@@ -113,6 +113,10 @@ void moveFondo::update(){
         if(pausa==true){
             pausa=false;
             pausa_visible=0;
+            if(music_pausa==true){
+                musica->play();
+                music_pausa=false;
+            }
             //num_apre=0;
         }else if(pausa==false){
             pausa=true;
