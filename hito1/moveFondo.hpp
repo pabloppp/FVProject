@@ -19,6 +19,7 @@ public:
      introKey = gme::Keyboard::Return;
      spaceKey = gme::Keyboard::Space;
      bacKey = gme::Keyboard::BackSpace;
+     pauseKey = gme::Keyboard::P;
         
     };
     void setup();
@@ -31,14 +32,16 @@ public:
     gme::Keyboard::Key introKey;
     gme::Keyboard::Key spaceKey;
     gme::Keyboard::Key bacKey;
+    gme::Keyboard::Key pauseKey;
     
 private:
-       
+    
+    gme::Window *w;
     gme::Clock reloj;
-    int x=1, largo=280, ancho=30,num_apre,menu, posX;
+    int x=1, largo=280, ancho=30,num_apre,num_apre_ini,menu, posX,pausa_visible;
     gme::Vector2 vec;
     gme::Clock apretar;
-    bool sonando,izq,dre;
+    bool sonando,izq,dre,pausa,apretado,music_pausa;
     gme::MusicPlayer *musica;
 
 

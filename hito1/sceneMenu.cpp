@@ -21,11 +21,11 @@ void sceneMenu::setup(){
    fondo2->getRenderer()->setTexture("fondo_principal");
    
    
-    gme::GameObject *logo= new staticObject("logo");
+   /* gme::GameObject *logo= new staticObject("logo");
     logo->getTransform()->setPosition(gme::Vector2(320, 130));
     logo->getRenderer()->setTexture("logo");
     //logo->getRenderer()->setSize(gme::Vector2(1, 1));
-    logo->getTransform()->setScale(gme::Vector2(0.20,0.20));
+    logo->getTransform()->setScale(gme::Vector2(0.20,0.20));*/
  
     
     

@@ -21,7 +21,7 @@ void hito1Game::setup(){
    /*gme::Game::setCurrentScene("sceneM");*/
    
    gme::Scene *sceneS = new sceneSplash("sceneS"); 
-   gme::Game::setCurrentScene("sceneM");
+   gme::Game::setCurrentScene("sceneS");
 }
 
 
