@@ -17,7 +17,17 @@ void moveFondo::setup(){
     reloj.restart();
     num_apre=0;num_apre_ini=0;
     musica = new gme::MusicPlayer();
+    musicabtn = new gme::MusicPlayer();
+    musicadesp = new gme::MusicPlayer();
+    
     musica->setMusic("sound");
+    musicabtn->setMusic("boton");
+    musicadesp->setMusic("desplazamiento");
+    
+    musicabtn->setVolume(20.0);
+    musicadesp->setVolume(20.0);
+    
+    
     sonando=false;izq=false;dre=false;pausa=false;apretado=false;music_pausa=false;
     menu=1;
     posX=320;
@@ -58,21 +68,25 @@ void moveFondo::update(){
     }//----------------------------------------------
     
     if(izq==true && apretar.currentTime().asSeconds()<1) { //MOVIMIENTO A LA IZQUIERDA
+                //musicadesp->play();
                 posX=posX-20;
                 apretar.restart();
                 if(posX==-320) izq=false;
             }
     if(dre==true && apretar.currentTime().asSeconds()<1) { //MOVIMIENTO A LA DERECHA
+                //musicadesp->play();
                 posX=posX+20;
                 apretar.restart();
                 if(posX==320) {dre=false;menu=1;}
             }
+
     
     if(menu==1 && num_apre_ini==3 && gme::Keyboard::isKeyPressed(introKey) && pausa==false )w->close();
         
     if(menu==1 && num_apre_ini==2 && gme::Keyboard::isKeyPressed(introKey) && pausa==false ){ //APRETAR OPCIONES
        
       // std::cout <<posX<< std::endl;
+       musicadesp->play();
        izq=true;
        menu=2;
        num_apre=0;
@@ -82,6 +96,7 @@ void moveFondo::update(){
     if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey) && pausa==false){ //APRETAR NUEVA PARTIDA
        
      //std::cout <<posX<< std::endl;
+       musicadesp->play();
        izq=true;
        menu=3;
        num_apre=0;
@@ -94,6 +109,7 @@ void moveFondo::update(){
       // std::cout <<posX<< std::endl;
        //menu=1;
       // num_apre=0;
+        musicadesp->play();
        dre=true;    
     }
     
@@ -102,6 +118,7 @@ void moveFondo::update(){
       // std::cout <<posX<< std::endl;
        //menu=3;
        //num_apre=0;
+         musicadesp->play();
        dre=true;    
     }
     
@@ -202,7 +219,7 @@ void moveFondo::onGui() {
             if(gme::Keyboard::isKeyPressed(upKey)){
 
                 if(apretar.currentTime().asSeconds()>0.2){
-
+                    musicabtn->play();
                     if(num_apre_ini==0) num_apre_ini=3;
                     else
                         num_apre_ini--;
@@ -215,6 +232,7 @@ void moveFondo::onGui() {
             if(gme::Keyboard::isKeyPressed(downKey)){
 
                 if(apretar.currentTime().asSeconds()>0.2){
+                    musicabtn->play();
                     if(num_apre_ini==3) num_apre_ini=0;
                     else
                         num_apre_ini++;
@@ -228,6 +246,7 @@ void moveFondo::onGui() {
         if(num_apre_ini==0){
             gme::GUI::backgroundColor = gme::GUI::blue;
             gme::GUI::contentColor = gme::GUI::white;
+            //musicabtn->play();
         }
         else{
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
@@ -246,6 +265,7 @@ void moveFondo::onGui() {
        if(num_apre_ini==1){
             gme::GUI::backgroundColor = gme::GUI::blue;
             gme::GUI::contentColor = gme::GUI::white;
+            //musicabtn->play();
         }
         else{
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
@@ -263,6 +283,7 @@ void moveFondo::onGui() {
         if(num_apre_ini==2){
             gme::GUI::backgroundColor = gme::GUI::blue;
             gme::GUI::contentColor = gme::GUI::white;
+           // musicabtn->play();
         }
         else{
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
@@ -280,6 +301,7 @@ void moveFondo::onGui() {
         if(num_apre_ini==3){
             gme::GUI::backgroundColor = gme::GUI::blue;
             gme::GUI::contentColor = gme::GUI::white;
+            //musicabtn->play();
         }
         else{
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
@@ -307,7 +329,7 @@ void moveFondo::onGui() {
         if(gme::Keyboard::isKeyPressed(upKey)){
             
             if(apretar.currentTime().asSeconds()>0.2){
-
+                musicabtn->play();
                 if(num_apre==0) num_apre=3;
                 else
                     num_apre--;
@@ -320,6 +342,7 @@ void moveFondo::onGui() {
         if(gme::Keyboard::isKeyPressed(downKey)){
               
             if(apretar.currentTime().asSeconds()>0.2){
+                musicabtn->play();
                 if(num_apre==3) num_apre=0;
                 else
                     num_apre++;
@@ -410,7 +433,7 @@ void moveFondo::onGui() {
         // std::cout <<menu << std::endl;
   
        if(gme::Keyboard::isKeyPressed(upKey)){
-            
+            musicabtn->play();
             if(apretar.currentTime().asSeconds()>0.2){
 
                 if(num_apre==0) num_apre=2;
@@ -423,7 +446,7 @@ void moveFondo::onGui() {
         }
 
         if(gme::Keyboard::isKeyPressed(downKey)){
-              
+             musicabtn->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==2) num_apre=0;
                 else
@@ -508,7 +531,7 @@ void moveFondo::onGui() {
         );
         
             if(gme::Keyboard::isKeyPressed(upKey)){
-
+                  musicabtn->play();
                if(apretar.currentTime().asSeconds()>0.2){
 
                    if(num_apre==0) num_apre=1;
@@ -521,7 +544,7 @@ void moveFondo::onGui() {
            }
 
            if(gme::Keyboard::isKeyPressed(downKey)){
-
+                musicabtn->play();
                if(apretar.currentTime().asSeconds()>0.2){
                    if(num_apre==1) num_apre=0;
                    else
@@ -574,10 +597,6 @@ void moveFondo::onGui() {
         
         
     }
-    
-    
-    
-    
         
 }
 

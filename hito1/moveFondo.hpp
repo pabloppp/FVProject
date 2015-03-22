@@ -43,6 +43,8 @@ private:
     gme::Clock apretar;
     bool sonando,izq,dre,pausa,apretado,music_pausa;
     gme::MusicPlayer *musica;
+    gme::MusicPlayer *musicabtn;
+    gme::MusicPlayer *musicadesp;
 
 
 };
