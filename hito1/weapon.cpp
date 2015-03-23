@@ -4,6 +4,8 @@
 
 void weapon::setup(){
     
+    ad = 50;
+    
     std::cout << "weapon setup" << std::endl;
     
     addTag("weapon");
@@ -17,6 +19,10 @@ void weapon::setup(){
     }
     
     addComponent(shotscript);
+}
+
+void weapon::change(){
+    
 }
 
 

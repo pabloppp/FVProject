@@ -113,6 +113,8 @@
           <logicalFolder name="f1" displayName="objects" projectFiles="true">
             <itemPath>hito1/bullet.cpp</itemPath>
             <itemPath>hito1/bullet.hpp</itemPath>
+            <itemPath>hito1/enemy.cpp</itemPath>
+            <itemPath>hito1/enemy.hpp</itemPath>
             <itemPath>hito1/weapon.cpp</itemPath>
             <itemPath>hito1/weapon.hpp</itemPath>
           </logicalFolder>
@@ -390,6 +392,10 @@
       </item>
       <item path="hito1/bullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1/enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/enemy.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -633,6 +639,10 @@
       <item path="hito1/bullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="hito1/bullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="hito1/enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1/enemy.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -71,6 +71,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/PlayerMovement.o \
 	${OBJECTDIR}/hito1/ShotScript.o \
 	${OBJECTDIR}/hito1/bullet.o \
+	${OBJECTDIR}/hito1/enemy.o \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
 	${OBJECTDIR}/hito1/limit.o \
@@ -288,6 +289,11 @@ ${OBJECTDIR}/hito1/bullet.o: hito1/bullet.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/bullet.o hito1/bullet.cpp
+
+${OBJECTDIR}/hito1/enemy.o: hito1/enemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/enemy.o hito1/enemy.cpp
 
 ${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1

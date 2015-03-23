@@ -23,6 +23,8 @@ public:
     gme::Keyboard::Key keyRight;
 private:
     bool disparado;
+    int arma;
+    bool cambio;
 };
 
 #endif	/* SHOTSCRIPT_HPP */

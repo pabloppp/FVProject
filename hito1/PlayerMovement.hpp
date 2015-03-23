@@ -17,6 +17,7 @@ public:
         jumpKey = gme::Keyboard::F;
         weaponKey = gme::Keyboard::G;
         actionKey = gme::Keyboard::H;
+        changeWeapon = gme::Keyboard::X;
     };
     void setup();
     void update();   
@@ -35,6 +36,7 @@ public:
     gme::Keyboard::Key jumpKey;
     gme::Keyboard::Key weaponKey;
     gme::Keyboard::Key actionKey;
+    gme::Keyboard::Key changeWeapon;
 private:
     bool jumped;
     float walkingSpeed;

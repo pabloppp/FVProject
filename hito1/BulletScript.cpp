@@ -15,11 +15,7 @@ void BulletScript::setup(){
 }
 
 void BulletScript::update(){
-    
-    //Obtener direccion jugador
-    //gme::GameObject *player = gme::GameObject::findWithTag("player_1");
-    
-    
+        
     if(direccion == 0) getRigidBody()->setSpeed(-6.f,0.0);
     else if(direccion == 1) getRigidBody()->setSpeed(0,-6.f);
     else if(direccion == 2) getRigidBody()->setSpeed(6.f,0.0);
@@ -35,6 +31,15 @@ void BulletScript::update(){
 
 void BulletScript::onCollision(gme::Collider *c){
     //Colision con enemigos
+    gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
+    
+    if(c->gameObject()->hasTag("enemy")){
+ 
+        if(relativePosition.y == -1){ //si golpea el suelo
+            std::cout << "me ha dao!" << std::endl;
+        }
+        
+    }
 }
 
 

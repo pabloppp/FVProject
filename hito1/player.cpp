@@ -32,6 +32,7 @@ void player::setup() {
         playerMovement->jumpKey = jumpKey;
         playerMovement->weaponKey = weaponKey;
         playerMovement->actionKey = actionKey;
+        playerMovement->changeWeapon = changeWeapon;
     }
     addComponent(playerMovement);
 }

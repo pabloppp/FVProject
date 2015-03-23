@@ -23,6 +23,8 @@ void bullet::setup(){
    addComponent(new BulletScript());
 }
 
+
+
 void bullet::update(){
     
     

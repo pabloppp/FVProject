@@ -8,7 +8,9 @@ void hito1Game::setup(){
     gme::Game::newTexture("hito1/recursos/Broniversal Soldier Anim.png", "playerTexture");
     gme::Game::newTexture("hito1/recursos/temple_bricks.png", "templeTexture");
     gme::Game::newTexture("hito1/recursos/Broniversal Soldier Gun Anim.png","weaponTexture");
+    gme::Game::newTexture("hito1/recursos/pistola.png","weaponTexture2");
     gme::Game::newTexture("hito1/recursos/bullet.png","bulletTexture");
+    gme::Game::newTexture("hito1/recursos/dino.png","enemyTexture");
     gme::Scene *newScene = new sceneEntregable2("sceneEntregable2");
     
     gme::Game::setCurrentScene("sceneEntregable2");

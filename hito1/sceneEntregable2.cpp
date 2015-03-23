@@ -4,6 +4,7 @@
 #include "bullet.hpp"
 #include "pruebaGameObject.hpp"
 #include "tile.hpp"
+#include "enemy.hpp"
 #include <SFML/Graphics.hpp>
 
 void sceneEntregable2::setup(){
@@ -31,9 +32,15 @@ void sceneEntregable2::setup(){
     player2->rightKey = gme::Keyboard::Right;
     player2->weaponKey = gme::Keyboard::L;
     player2->jumpKey = gme::Keyboard::Comma;
-    
+    player2->changeWeapon = gme::Keyboard::Period;
     
     weapon2 ->setParent(player2);
+    
+    //ENEMY
+    enemy *enemy1 = new enemy("enemy_1");
+    enemy1->getTransform()->setPosition(gme::Vector2(windowSize.x/3,windowSize.y/2));
+    
+    
 }
 
 void sceneEntregable2::setupTileMap() {

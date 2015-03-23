@@ -6,6 +6,8 @@
 
 void ShotScript::setup(){
     disparado = false;
+    arma = 1;
+    bool cambio = false;
 }
 
 void ShotScript::update(){
@@ -29,6 +31,25 @@ void ShotScript::update(){
     }
     else if(!gme::Keyboard::isKeyPressed(pm->weaponKey) && disparado){
         disparado = false;
+    }
+    
+    if(gme::Keyboard::isKeyPressed(pm->changeWeapon) && !cambio){
+        
+        cambio = true;
+        
+        if(arma==1){
+           getRenderer()->setTexture("weaponTexture2");
+           //getRenderer()->setSize(gme::Vector2(32,32));
+           //getTransform()->scale = gme::Vector2(0.3,0.3); 
+           
+           arma=2;
+        }else if(arma==2){
+            getRenderer()->setTexture("weaponTexture");
+            arma=1;
+        }
+        
+    }else if(!gme::Keyboard::isKeyPressed(pm->changeWeapon) && cambio){
+        cambio=false;
     }
     
 }
