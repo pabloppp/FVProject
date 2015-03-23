@@ -14,10 +14,7 @@ void pruebaGameObject::setup(){
     addTag("player");
     //getRenderer()->setTexture("playerTexture");
  
-    generaPosicion *gP = new generaPosicion();
-    gP->generaEnemigo(40,76);
-    gP->setEnemi(true);
-    gP->generaEnemigo(300,300);
+    generaPosicion *gP = new generaPosicion(300,300,3);
    
     addComponent(gP);
    

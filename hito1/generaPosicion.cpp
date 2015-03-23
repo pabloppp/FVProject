@@ -1,7 +1,7 @@
 #include "generaPosicion.hpp"
 #include "pruebaGameObject.hpp"
 #include "../engine/Game.hpp"
-
+#include "mueveEnemigo.hpp"
 
 void generaPosicion::setup(){
     w = gme::Game::getWindow();
@@ -26,13 +26,13 @@ void generaPosicion::update() {
     }
    
     if(enemi == true){
-        if(clkE.currentTime().asSeconds() > 1){
+        if(clkE.currentTime().asSeconds() > rat){
            clkE.restart();
             generaEnemigo(posX,posY);
         }
     }
     else{
-        //setEnemi(true);
+        setEnemi(true);
     }
     
 }
@@ -62,13 +62,14 @@ bool generaPosicion::getColectionable(){
 
 
 void generaPosicion::generaEnemigo(int x, int y) {
-    std::cout << x << " " << y << std::endl;
     if (enemi == true){
+        
         gme::GameObject *enemigo = new gme::GameObject("emenigo");
         enemigo->getRenderer()->setTexture("coleccionable");
         enemigo->getRenderer()->setSize(gme::Vector2(32,32));
         enemigo->getRenderer()->setFrame(gme::Vector2(1,0));
         enemigo->getTransform()->setPosition(gme::Vector2(x,y));
+        enemigo->addComponent(new mueveEnemigo(enemigo));
     }
 }
 
@@ -85,9 +86,10 @@ void generaPosicion::onGui() {
     gme::Game::getWindow()->draw(ratio);*/
 }
 
-generaPosicion::generaPosicion(int x, int y) {
+generaPosicion::generaPosicion(int x, int y,int ratio) {
     posX = x;
     posY = y;
+    rat =ratio; 
 }
 
 generaPosicion::generaPosicion() {

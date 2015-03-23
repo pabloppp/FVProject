@@ -21,7 +21,7 @@ public:
     virtual void onGui();
     void generaColeccionable();
     void generaEnemigo(int x, int y);
-    generaPosicion(int x,int y);
+    generaPosicion(int x,int y,int ratio);
     generaPosicion();
     virtual ~generaPosicion();
 private:
@@ -33,6 +33,7 @@ private:
     gme::Clock clkE;
     int posX;
     int posY;
+    int rat;
 };
 
 #endif	/* GENERAPOSICION_HPP */

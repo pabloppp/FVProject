@@ -72,6 +72,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/hito1/generaPosicion.o \
 	${OBJECTDIR}/hito1/hito1Game.o \
 	${OBJECTDIR}/hito1/limit.o \
+	${OBJECTDIR}/hito1/mueveEnemigo.o \
 	${OBJECTDIR}/hito1/player.o \
 	${OBJECTDIR}/hito1/pruebaGameObject.o \
 	${OBJECTDIR}/hito1/scene51.o \
@@ -289,6 +290,11 @@ ${OBJECTDIR}/hito1/limit.o: hito1/limit.cpp
 	${MKDIR} -p ${OBJECTDIR}/hito1
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/limit.o hito1/limit.cpp
+
+${OBJECTDIR}/hito1/mueveEnemigo.o: hito1/mueveEnemigo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/hito1
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/mueveEnemigo.o hito1/mueveEnemigo.cpp
 
 ${OBJECTDIR}/hito1/player.o: hito1/player.cpp 
 	${MKDIR} -p ${OBJECTDIR}/hito1
