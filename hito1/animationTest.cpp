@@ -40,16 +40,22 @@ void animationTest::setup() {
    
 }
 
-void animationTest::update() {    
-    if(gme::Keyboard::isKeyPressed(pauseKey)){
-       animator.loop(true);
-       std::cout << "restarting at " << animator.timeLapsed << std::endl;
-    }
-    else if(gme::Keyboard::isKeyPressed(resumeKey)){
-       animator.resume();
-       std::cout << "Looping...  " << std::endl;
-    }
+void animationTest::update() {  
     animator.animate();
+    if(gme::Keyboard::isKeyPressed(pauseKey) && !paused){
+       std::cout << "pausing...  " << animator.timeLapsed << std::endl;
+       animator.pause();
+       paused = true;
+       
+    }
+    else if(gme::Keyboard::isKeyPressed(resumeKey) && paused){
+       
+       animator.resume();
+        std::cout << "Looping...  " << animator.timeLapsed << std::endl;
+       paused = false;
+       
+    }
+    
 }
 
 

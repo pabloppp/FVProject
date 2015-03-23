@@ -45,7 +45,7 @@ void Animator::animate(){
             clock.restart();
         }
     }
-    timeLapsed = clock.currentTime().asSeconds();    
+    timeLapsed = clock.currentTime().asSeconds()+onSecond;    
     if(paused || events.empty()) return;
     if(events.front().from <= clock.currentTime().asSeconds() + onSecond){
         events.front().fptr(events.front().ctx);
@@ -57,12 +57,13 @@ void Animator::animate(){
 
 void Animator::pause(){
     paused = true;
-    onSecond = clock.currentTime().asSeconds(); 
+    onSecond += clock.currentTime().asSeconds(); 
 }
 
 void Animator::resume(){
     paused = false;
     clock.restart();
+    timeLapsed = clock.currentTime().asSeconds()+onSecond;  
 }
 
 void Animator::restart(){
