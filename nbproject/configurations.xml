@@ -189,12 +189,14 @@
           <incDir>
             <pElem>libs/SFML-2.1/include</pElem>
             <pElem>libs/Box2D/include</pElem>
+            <pElem>libs/json-c</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
             <pElem>libs/SFML-2.1/lib</pElem>
             <pElem>libs/Box2D/lib</pElem>
+            <pElem>libs/json-c/.libs</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
@@ -203,6 +205,7 @@
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
             <linkerLibLibItem>Box2D</linkerLibLibItem>
+            <linkerLibLibItem>json-c</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -443,6 +446,7 @@
           <incDir>
             <pElem>libs/SFML-2.1/include</pElem>
             <pElem>libs/Box2D/include</pElem>
+            <pElem>libs/json-c</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -455,6 +459,7 @@
           <linkerAddLib>
             <pElem>libs/SFML-2.1/lib</pElem>
             <pElem>libs/Box2D/lib</pElem>
+            <pElem>libs/json-c/.libs</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics</linkerLibLibItem>
@@ -463,6 +468,7 @@
             <linkerLibLibItem>sfml-audio</linkerLibLibItem>
             <linkerLibLibItem>sfml-network</linkerLibLibItem>
             <linkerLibLibItem>Box2D</linkerLibLibItem>
+            <linkerLibLibItem>json-c</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

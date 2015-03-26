@@ -5,7 +5,6 @@
 
 #include "GameObject.hpp"
 #include "facade/Clock.hpp"
-#include "CollisionGrid.hpp"
 #include <Box2D/Box2D.h>
 
 namespace gme{

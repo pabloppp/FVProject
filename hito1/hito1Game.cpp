@@ -3,7 +3,7 @@
 
 void hito1Game::setup(){
     
-    debugColliders = true;
+    //debugColliders = true;
     
     gme::Game::newTexture("hito1/recursos/Broniversal Soldier Anim.png", "playerTexture");
     gme::Game::newTexture("hito1/recursos/temple_bricks.png", "templeTexture");
@@ -15,6 +15,7 @@ void hito1Game::setup(){
     gme::Game::newTexture("hito1/recursos/jungle_midB.png", "bgMidBTexture");
     gme::Game::newTexture("hito1/recursos/jungle_midC.png", "bgMidCTexture");
     gme::Game::newTexture("hito1/recursos/alien2.png", "alien");
+    gme::Game::newTexture("resources/sprites/walk_spr/sprites.png", "dino");
     
     gme::Scene *newScene = new scene51("scene51");
     

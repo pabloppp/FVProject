@@ -1,8 +1,11 @@
 #include "Texture.hpp"
+#include <iostream>
+#include <string>
 
 using namespace gme;
 
 Texture::Texture() {
+    atlas = NULL;
 }
 
 sf::Texture &Texture::getTexture(){
@@ -10,6 +13,7 @@ sf::Texture &Texture::getTexture(){
 }
 
 bool Texture::loadFromFile(const std::string &s){
+    path = s;
     return texture.loadFromFile(s);
 }
 
@@ -19,5 +23,9 @@ std::string Texture::getName(){
 
 void Texture::setName(std::string n){
     name = n;
+}
+
+std::string Texture::getPath() {
+    return path;
 }
 

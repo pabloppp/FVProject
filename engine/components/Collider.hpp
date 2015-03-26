@@ -4,7 +4,7 @@
 #include "../Component.hpp"
 #include "../facade/Vector2.hpp"
 #include <unordered_map>
-#include <Box2D/Box2D.h>
+#include "Box2D.h"
 
 namespace gme{
     

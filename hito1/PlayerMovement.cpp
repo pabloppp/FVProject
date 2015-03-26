@@ -10,19 +10,20 @@ void PlayerMovement::update() {
     float deltaTime = gme::Game::deltaTime.asSeconds();
     
     if(getRigidBody() == NULL) return;
+    if(getRenderer() == NULL) return;
     
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
     
     if(!down && grounded && gme::Keyboard::isKeyPressed(downKey)){
         ((gme::BoxCollider*)getCollider())->setSize(10*3, 13*3);
-        ((gme::BoxCollider*)getCollider())->setCenter(0,(3.f*6)/2.0f);
+        //((gme::BoxCollider*)getCollider())->setCenter(0,(3.f*6)/2.0f);
         down = true;
         animGraceTimeClock.restart();
     }
     else if(down && !gme::Keyboard::isKeyPressed(downKey) ){
         ((gme::BoxCollider*)getCollider())->setSize(10*3,19*3);
-        ((gme::BoxCollider*)getCollider())->setCenter(0.f,0.f);
+        //((gme::BoxCollider*)getCollider())->setCenter(0.f,0.f);
         down = false;
         animGraceTimeClock.restart();
     }
@@ -148,9 +149,9 @@ void PlayerMovement::onGui() {
     //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50)
     //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
     gme::GUI::fontSize = 12;
-    gme::GUI::contentColor = gme::GUI::Color(255,0,255,150);
+    gme::GUI::contentColor = gme::GUI::Color(255,255,255,70);
     gme::Vector2 pos = getTransform()->getPosition().worldToScreen();
-    pos.y -= 40;
+    pos.y -= 70;
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
