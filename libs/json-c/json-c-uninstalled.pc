@@ -1,0 +1,11 @@
+prefix=
+exec_prefix=
+libdir=/Users/pablopernias/Documents/Developer/C_Cpp/GMEngine/libs/json-c-json-c-0.12-20140410
+includedir=/Users/pablopernias/Documents/Developer/C_Cpp/GMEngine/libs/json-c-json-c-0.12-20140410
+
+Name: json
+Description: JSON implementation in C
+Version: 0.12
+Requires:
+Libs:  -L/Users/pablopernias/Documents/Developer/C_Cpp/GMEngine/libs/json-c-json-c-0.12-20140410 -ljson-c
+Cflags: -I/Users/pablopernias/Documents/Developer/C_Cpp/GMEngine/libs/json-c-json-c-0.12-20140410
