@@ -92,57 +92,27 @@
         <itemPath>engine/Scene.cpp</itemPath>
         <itemPath>engine/Scene.hpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="hito1" projectFiles="true">
-        <logicalFolder name="f3" displayName="entregable1" projectFiles="true">
-          <logicalFolder name="f2" displayName="objects" projectFiles="true">
-            <itemPath>hito1/backgroundLayer.cpp</itemPath>
-            <itemPath>hito1/backgroundLayer.hpp</itemPath>
-            <itemPath>hito1/genericEnemy.cpp</itemPath>
-            <itemPath>hito1/genericEnemy.hpp</itemPath>
-            <itemPath>hito1/limit.cpp</itemPath>
-            <itemPath>hito1/limit.hpp</itemPath>
-            <itemPath>hito1/player.cpp</itemPath>
-            <itemPath>hito1/player.hpp</itemPath>
-            <itemPath>hito1/tile.cpp</itemPath>
-            <itemPath>hito1/tile.hpp</itemPath>
-            <itemPath>hito1/tileMapGenerator.cpp</itemPath>
-            <itemPath>hito1/tileMapGenerator.hpp</itemPath>
-            <itemPath>hito1/tileRow.cpp</itemPath>
-            <itemPath>hito1/tileRow.hpp</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f1" displayName="scripts" projectFiles="true">
-            <itemPath>hito1/BackgroundParallax.cpp</itemPath>
-            <itemPath>hito1/BackgroundParallax.hpp</itemPath>
-            <itemPath>hito1/CameraFollowPlayer.cpp</itemPath>
-            <itemPath>hito1/CameraFollowPlayer.hpp</itemPath>
-            <itemPath>hito1/LifeManager.cpp</itemPath>
-            <itemPath>hito1/LifeManager.hpp</itemPath>
-            <itemPath>hito1/MakeMapFromFile.cpp</itemPath>
-            <itemPath>hito1/MakeMapFromFile.hpp</itemPath>
-            <itemPath>hito1/PlayerMovement.cpp</itemPath>
-            <itemPath>hito1/PlayerMovement.hpp</itemPath>
-            <itemPath>hito1/TileRowGenerator.cpp</itemPath>
-            <itemPath>hito1/TileRowGenerator.hpp</itemPath>
-          </logicalFolder>
-          <itemPath>hito1/scene51.cpp</itemPath>
-          <itemPath>hito1/scene51.hpp</itemPath>
+      <logicalFolder name="source" displayName="source" projectFiles="true">
+        <logicalFolder name="f1" displayName="objects" projectFiles="true">
+          <itemPath>source/imagenFondo.cpp</itemPath>
+          <itemPath>source/imagenFondo.hpp</itemPath>
+          <itemPath>source/staticObject.cpp</itemPath>
+          <itemPath>source/staticObject.hpp</itemPath>
         </logicalFolder>
-        <logicalFolder name="f2" displayName="entregable3" projectFiles="true">
-          <itemPath>hito1/generaPosicion.cpp</itemPath>
-          <itemPath>hito1/generaPosicion.hpp</itemPath>
-          <itemPath>hito1/mueveEnemigo.cpp</itemPath>
-          <itemPath>hito1/mueveEnemigo.hpp</itemPath>
-          <itemPath>hito1/pruebaGameObject.cpp</itemPath>
-          <itemPath>hito1/pruebaGameObject.hpp</itemPath>
-          <itemPath>hito1/sceneEntregable3.cpp</itemPath>
-          <itemPath>hito1/sceneEntregable3.hpp</itemPath>
+        <logicalFolder name="f3" displayName="scenes" projectFiles="true">
+          <itemPath>source/sceneMenu.cpp</itemPath>
+          <itemPath>source/sceneMenu.hpp</itemPath>
+          <itemPath>source/sceneSplash.cpp</itemPath>
+          <itemPath>source/sceneSplash.hpp</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="entregable4" projectFiles="true">
-          <itemPath>hito1/sceneEntregable4.cpp</itemPath>
-          <itemPath>hito1/sceneEntregable4.hpp</itemPath>
+        <logicalFolder name="f2" displayName="scripts" projectFiles="true">
+          <itemPath>source/moveFondo.cpp</itemPath>
+          <itemPath>source/moveFondo.hpp</itemPath>
+          <itemPath>source/splash.cpp</itemPath>
+          <itemPath>source/splash.hpp</itemPath>
         </logicalFolder>
-        <itemPath>hito1/hito1Game.cpp</itemPath>
-        <itemPath>hito1/hito1Game.hpp</itemPath>
+        <itemPath>source/mainGame.cpp</itemPath>
+        <itemPath>source/mainGame.hpp</itemPath>
       </logicalFolder>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -176,6 +146,7 @@
     <Elem>engine</Elem>
     <Elem>hito1</Elem>
     <Elem>demo</Elem>
+    <Elem>source</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -353,87 +324,35 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="hito1/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/LifeManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/LifeManager.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/MakeMapFromFile.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/MakeMapFromFile.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/genericEnemy.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/genericEnemy.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/mueveEnemigo.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/mueveEnemigo.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tileMapGenerator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tileMapGenerator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tileRow.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tileRow.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sceneMenu.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -620,87 +539,35 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="hito1/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/LifeManager.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/LifeManager.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/MakeMapFromFile.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/MakeMapFromFile.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/genericEnemy.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/genericEnemy.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/hito1Game.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/hito1Game.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/limit.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/limit.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/mueveEnemigo.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/mueveEnemigo.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/player.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/player.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/pruebaGameObject.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/pruebaGameObject.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/scene51.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/scene51.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable3.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable3.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable4.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/sceneEntregable4.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tile.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tile.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tileMapGenerator.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tileMapGenerator.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="hito1/tileRow.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="hito1/tileRow.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sceneMenu.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

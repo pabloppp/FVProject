@@ -67,26 +67,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
-	${OBJECTDIR}/hito1/BackgroundParallax.o \
-	${OBJECTDIR}/hito1/CameraFollowPlayer.o \
-	${OBJECTDIR}/hito1/LifeManager.o \
-	${OBJECTDIR}/hito1/MakeMapFromFile.o \
-	${OBJECTDIR}/hito1/PlayerMovement.o \
-	${OBJECTDIR}/hito1/TileRowGenerator.o \
-	${OBJECTDIR}/hito1/backgroundLayer.o \
-	${OBJECTDIR}/hito1/generaPosicion.o \
-	${OBJECTDIR}/hito1/genericEnemy.o \
-	${OBJECTDIR}/hito1/hito1Game.o \
-	${OBJECTDIR}/hito1/limit.o \
-	${OBJECTDIR}/hito1/player.o \
-	${OBJECTDIR}/hito1/pruebaGameObject.o \
-	${OBJECTDIR}/hito1/scene51.o \
-	${OBJECTDIR}/hito1/sceneEntregable3.o \
-	${OBJECTDIR}/hito1/sceneEntregable4.o \
-	${OBJECTDIR}/hito1/tile.o \
-	${OBJECTDIR}/hito1/tileMapGenerator.o \
-	${OBJECTDIR}/hito1/tileRow.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/source/imagenFondo.o \
+	${OBJECTDIR}/source/mainGame.o \
+	${OBJECTDIR}/source/moveFondo.o \
+	${OBJECTDIR}/source/sceneMenu.o \
+	${OBJECTDIR}/source/sceneSplash.o \
+	${OBJECTDIR}/source/splash.o \
+	${OBJECTDIR}/source/staticObject.o
 
 
 # C Compiler Flags
@@ -273,105 +261,45 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
-${OBJECTDIR}/hito1/BackgroundParallax.o: hito1/BackgroundParallax.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/BackgroundParallax.o hito1/BackgroundParallax.cpp
-
-${OBJECTDIR}/hito1/CameraFollowPlayer.o: hito1/CameraFollowPlayer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/CameraFollowPlayer.o hito1/CameraFollowPlayer.cpp
-
-${OBJECTDIR}/hito1/LifeManager.o: hito1/LifeManager.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/LifeManager.o hito1/LifeManager.cpp
-
-${OBJECTDIR}/hito1/MakeMapFromFile.o: hito1/MakeMapFromFile.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/MakeMapFromFile.o hito1/MakeMapFromFile.cpp
-
-${OBJECTDIR}/hito1/PlayerMovement.o: hito1/PlayerMovement.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/PlayerMovement.o hito1/PlayerMovement.cpp
-
-${OBJECTDIR}/hito1/TileRowGenerator.o: hito1/TileRowGenerator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/TileRowGenerator.o hito1/TileRowGenerator.cpp
-
-${OBJECTDIR}/hito1/backgroundLayer.o: hito1/backgroundLayer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/backgroundLayer.o hito1/backgroundLayer.cpp
-
-${OBJECTDIR}/hito1/generaPosicion.o: hito1/generaPosicion.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/generaPosicion.o hito1/generaPosicion.cpp
-
-${OBJECTDIR}/hito1/genericEnemy.o: hito1/genericEnemy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/genericEnemy.o hito1/genericEnemy.cpp
-
-${OBJECTDIR}/hito1/hito1Game.o: hito1/hito1Game.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/hito1Game.o hito1/hito1Game.cpp
-
-${OBJECTDIR}/hito1/limit.o: hito1/limit.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/limit.o hito1/limit.cpp
-
-${OBJECTDIR}/hito1/player.o: hito1/player.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/player.o hito1/player.cpp
-
-${OBJECTDIR}/hito1/pruebaGameObject.o: hito1/pruebaGameObject.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/pruebaGameObject.o hito1/pruebaGameObject.cpp
-
-${OBJECTDIR}/hito1/scene51.o: hito1/scene51.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/scene51.o hito1/scene51.cpp
-
-${OBJECTDIR}/hito1/sceneEntregable3.o: hito1/sceneEntregable3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable3.o hito1/sceneEntregable3.cpp
-
-${OBJECTDIR}/hito1/sceneEntregable4.o: hito1/sceneEntregable4.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/sceneEntregable4.o hito1/sceneEntregable4.cpp
-
-${OBJECTDIR}/hito1/tile.o: hito1/tile.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tile.o hito1/tile.cpp
-
-${OBJECTDIR}/hito1/tileMapGenerator.o: hito1/tileMapGenerator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tileMapGenerator.o hito1/tileMapGenerator.cpp
-
-${OBJECTDIR}/hito1/tileRow.o: hito1/tileRow.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1/tileRow.o hito1/tileRow.cpp
-
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/imagenFondo.o source/imagenFondo.cpp
+
+${OBJECTDIR}/source/mainGame.o: source/mainGame.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/mainGame.o source/mainGame.cpp
+
+${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
+
+${OBJECTDIR}/source/sceneMenu.o: source/sceneMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sceneMenu.o source/sceneMenu.cpp
+
+${OBJECTDIR}/source/sceneSplash.o: source/sceneSplash.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sceneSplash.o source/sceneSplash.cpp
+
+${OBJECTDIR}/source/splash.o: source/splash.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/splash.o source/splash.cpp
+
+${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
 
 # Subprojects
 .build-subprojects:
