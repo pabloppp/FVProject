@@ -2,6 +2,7 @@
 #include "scene51.hpp"
 #include "sceneEntregable3.hpp"
 #include "sceneEntregable5.hpp"
+#include "sceneEntregable2.hpp"
 
 void hito1Game::setup(){
     
@@ -19,6 +20,10 @@ void hito1Game::setup(){
     gme::Game::newTexture("hito1/recursos/jungle_midC.png", "bgMidCTexture");
     gme::Game::newTexture("hito1/recursos/alien2.png", "alien");
     gme::Game::newTexture("resources/sprites/walk_spr/sprites.png", "dino");
+    gme::Game::newTexture("hito1/recursos/Broniversal Soldier Gun Anim.png","weaponTexture");
+    gme::Game::newTexture("hito1/recursos/pistola.png","weaponTexture2");
+    gme::Game::newTexture("hito1/recursos/bullet.png","bulletTexture");
+    gme::Game::newTexture("hito1/recursos/dino.png","enemyTexture");
     
     gme::Scene *newScene = new sceneEntregable5("sceneEntregable5");
     

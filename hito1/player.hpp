@@ -15,6 +15,7 @@ public:
     gme::Keyboard::Key jumpKey;
     gme::Keyboard::Key weaponKey;
     gme::Keyboard::Key actionKey;
+    gme::Keyboard::Key changeWeapon;
 private:
 
 };

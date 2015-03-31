@@ -19,6 +19,7 @@ public:
         actionKey = gme::Keyboard::H;
         
         animGraceTime = 0.01;
+        changeWeapon = gme::Keyboard::X;
     };
     void setup();
     void update();   
@@ -40,6 +41,7 @@ public:
     gme::Keyboard::Key weaponKey;
     gme::Keyboard::Key actionKey;
     gme::BoxCollider *agachadoCollider;
+    gme::Keyboard::Key changeWeapon;
 private:
     bool jumped;
     float walkingSpeed;
