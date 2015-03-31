@@ -1,16 +1,12 @@
-#include <SFML/Graphics.hpp>
-
 #include "engine/GMEngine.hpp"
-#include "hito1/hito1Game.hpp"
-#include "demo/MyGame.hpp"
+#include "source/mainGame.hpp"
 
 int main() {
-    gme::Game *H1G = new hito1Game(gme::Vector2(640, 480), "hito1 game");
-    //gme::Game *H1G = new MyGame(sf::Vector2f(640, 480), "My game");
+    gme::Game *game = new mainGame(gme::Vector2(640, 480), "hito1 game");
 
-    H1G->run();
+    game->run();
     
-    delete H1G;
+    delete game;
     
     return 0;
 }

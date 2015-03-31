@@ -2,6 +2,7 @@
 #define	TEXTURE_HPP
 
 #include <SFML/Graphics.hpp>
+#include "json.h"
 
 namespace gme{
 
@@ -12,9 +13,12 @@ public:
     sf::Texture &getTexture();
     std::string getName();
     void setName(std::string n);
+    std::string getPath();
+    json_object *atlas;
 private:
     sf::Texture texture;
     std::string name;
+    std::string path;
 };
 
 }

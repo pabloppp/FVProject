@@ -43,6 +43,7 @@ public:
     b2Body* b2body;
     b2FixtureDef fixtureDef;
 private:
+    Vector2 pivotDisp;
     float friction;
     float elasticity;
     float weight;

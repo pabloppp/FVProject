@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="27" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="temple_bricks" tilewidth="16" tileheight="16">
+  <image source="temple_bricks.png" width="256" height="256"/>
+  <tile id="61">
+   <properties>
+    <property name="destructible" value="true"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="destructible" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="27" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFQw3YAbEbFNvTyGxqm0tPQI3wQTaDVmFNK4DudlLcTcu0NRQAyP/E+JvcMB5u+QubXyhJf6MAAhiBWI5MLAzE3FBMSC0TEPMCcTwQNwBxGhQnA3ExlE5FEk+B4jyo+jyoeCIQFwBxMxC3QNkpSPoSgJgPiAFD7hlC
+  </data>
+ </layer>
+</map>

@@ -16,6 +16,7 @@
                 <sourceRootElem>engine</sourceRootElem>
                 <sourceRootElem>hito1</sourceRootElem>
                 <sourceRootElem>demo</sourceRootElem>
+                <sourceRootElem>source</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
