@@ -7,12 +7,17 @@
 
 #include "pruebaGameObject.hpp"
 #include "generaPosicion.hpp"
+#include "player.hpp"
 
 void pruebaGameObject::setup(){
-    addTag("player");
-    getRenderer()->setTexture("prueba");
     
-    generaPosicion *gP = new generaPosicion();
+    addTag("player");
+    //getRenderer()->setTexture("playerTexture");
+ 
+    generaPosicion *gP = new generaPosicion(300,300,3);
+   
     addComponent(gP);
-    //addComponent(new gme::RigidBody);
+   
+    
+    
 }
