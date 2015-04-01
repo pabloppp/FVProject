@@ -62,7 +62,8 @@ public:
         }
         return NULL;
     }
-
+    void customize(void(*fptr)(GameObject*));
+    
 private:
     GameObject* parent;
     std::vector<GameObject*> children;
@@ -75,6 +76,7 @@ private:
     Renderer *renderer;
     Collider *collider;
     RigidBody *rigidBody;
+    void(*customizer)(GameObject*);
 };
 
 }

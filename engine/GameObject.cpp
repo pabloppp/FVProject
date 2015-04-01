@@ -25,6 +25,7 @@ GameObject::GameObject(std::string n) {
     renderer->setGameObject(this);
     collider = NULL;
     rigidBody = NULL;
+    customizer = NULL;
     if(Game::getCurrentScene() != NULL) Game::getCurrentScene()->addGameObject(this);
 }
 
@@ -169,6 +170,11 @@ void GameObject::addComponent(Component* c){
 }
 
 void GameObject::componentSetup(){
+    
+    if(customizer != NULL){
+        customizer(this);
+    }
+    
     transform->setup();
     renderer->setup();
     if(collider != NULL) collider->setup();
@@ -264,3 +270,8 @@ void GameObject::onCollision(Collider* col) {
         }
     }
 }
+
+void GameObject::customize(void(*fptr)(GameObject*)){
+    customizer = fptr;
+}
+
