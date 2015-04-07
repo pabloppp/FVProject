@@ -2,7 +2,7 @@
 #include "source/mainGame.hpp"
 
 int main() {
-    gme::Game *game = new mainGame(gme::Vector2(640, 480), "hito1 game");
+    gme::Game *game = new mainGame(gme::Vector2(1024, 576), "hito1 game");
 
     game->run();
     
