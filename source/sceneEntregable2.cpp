@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "fondoBlanco.hpp"
 #include "pistolaBehavior.hpp"
+#include "metralletaBehavior.hpp"
 
 void sceneEntregable2::setup(){
     
@@ -15,7 +16,8 @@ void sceneEntregable2::setup(){
     //WEAPON por delante del player
     weapon *weapon1 = new weapon("weapon_1");
     pistolaBehavior *pb = new pistolaBehavior();
-    weapon1->addComponent(pb);
+    metralletaBehavior *mb = new metralletaBehavior();
+    weapon1->addComponent(mb);
         
 }
 

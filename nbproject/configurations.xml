@@ -336,6 +336,10 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/fondoBlanco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/fondoBlanco.hpp" ex="false" tool="3" flavor2="0">
@@ -347,6 +351,18 @@
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -575,6 +591,10 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/fondoBlanco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/fondoBlanco.hpp" ex="false" tool="3" flavor2="0">
@@ -586,6 +606,18 @@
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>

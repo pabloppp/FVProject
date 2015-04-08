@@ -4,7 +4,7 @@
 void pistolaBehavior::setup() {
     getRenderer()->setTexture("gun");
     shooting = false;
-    speedBullet = 8.f;
+    speedBullet = 25.f;
 
 }
 
@@ -44,16 +44,19 @@ void pistolaBehavior::update() {
 
 void pistolaBehavior::shoot(int d){
     gme::GameObject *bulletx = new pistolaBullet("bullet");
-    instantiate(bulletx);
+    instantiate(bulletx);   
+    
     bulletx->getTransform()->setPosition(gme::Vector2(500,350));    
     switch(d){
         case 0:
+            bulletx->getTransform()->setRotation(90);
             bulletx->getRigidBody()->setSpeed(0.0, -speedBullet);
             break;
         case 1:
             bulletx->getRigidBody()->setSpeed(speedBullet,0.0);
             break;
         case 2:
+            bulletx->getTransform()->setRotation(90);
             bulletx->getRigidBody()->setSpeed(0.0,speedBullet);
             break;
         case 3:

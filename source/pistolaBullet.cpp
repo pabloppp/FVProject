@@ -16,3 +16,6 @@ void pistolaBullet::setup(){
    addComponent(bB);
 }
 
+
+
+

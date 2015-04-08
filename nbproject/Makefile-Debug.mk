@@ -68,19 +68,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/source/fondoBlanco.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/moveFondo.o \
-	${OBJECTDIR}/source/pbBehavior.o \
-	${OBJECTDIR}/source/pistolaBehavior.o \
-	${OBJECTDIR}/source/pistolaBullet.o \
-	${OBJECTDIR}/source/sceneEntregable2.o \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/sceneSplash.o \
 	${OBJECTDIR}/source/splash.o \
-	${OBJECTDIR}/source/staticObject.o \
-	${OBJECTDIR}/source/weapon.o
+	${OBJECTDIR}/source/staticObject.o
 
 
 # C Compiler Flags
@@ -272,11 +266,6 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/source/fondoBlanco.o: source/fondoBlanco.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/fondoBlanco.o source/fondoBlanco.cpp
-
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -291,26 +280,6 @@ ${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
-
-${OBJECTDIR}/source/pbBehavior.o: source/pbBehavior.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/pbBehavior.o source/pbBehavior.cpp
-
-${OBJECTDIR}/source/pistolaBehavior.o: source/pistolaBehavior.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/pistolaBehavior.o source/pistolaBehavior.cpp
-
-${OBJECTDIR}/source/pistolaBullet.o: source/pistolaBullet.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/pistolaBullet.o source/pistolaBullet.cpp
-
-${OBJECTDIR}/source/sceneEntregable2.o: source/sceneEntregable2.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sceneEntregable2.o source/sceneEntregable2.cpp
 
 ${OBJECTDIR}/source/sceneMenu.o: source/sceneMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -331,11 +300,6 @@ ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
-
-${OBJECTDIR}/source/weapon.o: source/weapon.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/weapon.o source/weapon.cpp
 
 # Subprojects
 .build-subprojects:
