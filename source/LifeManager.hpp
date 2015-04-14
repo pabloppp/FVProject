@@ -13,8 +13,6 @@ public:
     };
     void setup();
     void update();
-    void setLives(int l);
-    void setHp(int h);
     int getHp();
     int getLives();
     int getMaxHp();

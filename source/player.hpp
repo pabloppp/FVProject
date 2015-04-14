@@ -17,7 +17,7 @@ public:
     gme::Keyboard::Key actionKey;
     gme::Keyboard::Key changeWeapon;
 private:
-    float life;
+
 };
 
 #endif	/* PLAYER_HPP */

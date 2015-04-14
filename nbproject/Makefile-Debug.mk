@@ -67,11 +67,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
-	${OBJECTDIR}/hito1_old/enemy.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/source/GeneralIA.o \
+	${OBJECTDIR}/source/IAMovement.o \
 	${OBJECTDIR}/source/LifeManager.o \
 	${OBJECTDIR}/source/PlayerMovement.o \
+	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/generaPosicion.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/moveFondo.o \
@@ -80,7 +81,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/scenePrueba.o \
 	${OBJECTDIR}/source/sceneSplash.o \
 	${OBJECTDIR}/source/splash.o \
-	${OBJECTDIR}/source/staticObject.o
+	${OBJECTDIR}/source/staticObject.o \
+	${OBJECTDIR}/source/voidObject.o
 
 
 # C Compiler Flags
@@ -267,20 +269,15 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
-${OBJECTDIR}/hito1_old/enemy.o: hito1_old/enemy.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1_old
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1_old/enemy.o hito1_old/enemy.cpp
-
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/source/GeneralIA.o: source/GeneralIA.cpp 
+${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/GeneralIA.o source/GeneralIA.cpp
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAMovement.o source/IAMovement.cpp
 
 ${OBJECTDIR}/source/LifeManager.o: source/LifeManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -291,6 +288,16 @@ ${OBJECTDIR}/source/PlayerMovement.o: source/PlayerMovement.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/PlayerMovement.o source/PlayerMovement.cpp
+
+${OBJECTDIR}/source/enemy.o: source/enemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/generaPosicion.o source/generaPosicion.cpp
 
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -336,6 +343,11 @@ ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
+
+${OBJECTDIR}/source/voidObject.o: source/voidObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/voidObject.o source/voidObject.cpp
 
 # Subprojects
 .build-subprojects:

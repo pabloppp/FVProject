@@ -10,9 +10,7 @@ public:
     enemy(std::string n) : gme::GameObject(n){};
     void setup();
     void update();
-    int life;
 private:
-    
 };
 
 #endif	/* ENEMY_HPP */

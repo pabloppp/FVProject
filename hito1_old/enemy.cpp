@@ -2,6 +2,7 @@
 #include "enemy.hpp"
 #include "LifeManager.hpp"
 
+
 void enemy::setup(){
     addTag("enemy");
     
@@ -24,23 +25,10 @@ void enemy::setup(){
     
     LifeManager *stats = new LifeManager();    
     addComponent(stats);
+    
+    
 }
 
-int enemy::getSpeed(){
-    return speed;
-}
-
-void enemy::setSpeed(int v){
-    speed =v;
-}
-
-int enemy::getDamage(){
-    return damage;
-}
-
-void enemy::setDamage(int v){
-    damage =v;
-}
 void enemy::update(){
     
 }

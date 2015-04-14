@@ -8,8 +8,6 @@ void player::setup() {
     
     addTag("player");
     
-
-    
     getRenderer()->setTexture("playerTexture");
     getRenderer()->setSize(gme::Vector2(32,32));
     getRenderer()->setPivot(gme::Vector2(0.5, 1));
@@ -19,9 +17,8 @@ void player::setup() {
     gme::RigidBody *rigidbody = new gme::RigidBody;
     rigidbody->setWeight(10);
     rigidbody->isDynamic();
-    //rigidbody->gravityMultiplier(5);
+    rigidbody->gravityMultiplier(5);
     rigidbody->setFixedRot(true);
-    rigidbody->setGravity(false);
     addComponent(rigidbody);
     
     gme::BoxCollider *collider = new gme::BoxCollider;
@@ -46,4 +43,5 @@ void player::setup() {
     addComponent(playerMovement);
     addComponent(stats);
 }
+
 

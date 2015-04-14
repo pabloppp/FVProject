@@ -32,19 +32,9 @@ int LifeManager::getMaxHp() {
     return maxHp;
 }
 
-void LifeManager::setHp(int h) {
-    hp = h;
-}
-
-void LifeManager::setLives(int l) {
-    lives = l;
-}
-
-
 float LifeManager::getHpPercent() {
     return (1.0f*hp/maxHp)*100;
 }
-
 
 
 
