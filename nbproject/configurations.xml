@@ -98,6 +98,8 @@
           <itemPath>hito1_old/enemy.hpp</itemPath>
           <itemPath>source/imagenFondo.cpp</itemPath>
           <itemPath>source/imagenFondo.hpp</itemPath>
+          <itemPath>source/player.cpp</itemPath>
+          <itemPath>source/player.hpp</itemPath>
           <itemPath>source/staticObject.cpp</itemPath>
           <itemPath>source/staticObject.hpp</itemPath>
         </logicalFolder>
@@ -110,6 +112,12 @@
           <itemPath>source/sceneSplash.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="scripts" projectFiles="true">
+          <itemPath>source/GeneralIA.cpp</itemPath>
+          <itemPath>source/GeneralIA.hpp</itemPath>
+          <itemPath>source/LifeManager.cpp</itemPath>
+          <itemPath>source/LifeManager.hpp</itemPath>
+          <itemPath>source/PlayerMovement.cpp</itemPath>
+          <itemPath>source/PlayerMovement.hpp</itemPath>
           <itemPath>source/moveFondo.cpp</itemPath>
           <itemPath>source/moveFondo.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
@@ -334,6 +342,18 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/GeneralIA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GeneralIA.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
@@ -345,6 +365,10 @@
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -557,6 +581,18 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/GeneralIA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GeneralIA.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
@@ -568,6 +604,10 @@
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>

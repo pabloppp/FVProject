@@ -69,9 +69,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/hito1_old/enemy.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/source/GeneralIA.o \
+	${OBJECTDIR}/source/LifeManager.o \
+	${OBJECTDIR}/source/PlayerMovement.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/moveFondo.o \
+	${OBJECTDIR}/source/player.o \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/scenePrueba.o \
 	${OBJECTDIR}/source/sceneSplash.o \
@@ -273,6 +277,21 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/source/GeneralIA.o: source/GeneralIA.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/GeneralIA.o source/GeneralIA.cpp
+
+${OBJECTDIR}/source/LifeManager.o: source/LifeManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/LifeManager.o source/LifeManager.cpp
+
+${OBJECTDIR}/source/PlayerMovement.o: source/PlayerMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/PlayerMovement.o source/PlayerMovement.cpp
+
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -287,6 +306,11 @@ ${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
+
+${OBJECTDIR}/source/player.o: source/player.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/player.o source/player.cpp
 
 ${OBJECTDIR}/source/sceneMenu.o: source/sceneMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
