@@ -19,6 +19,7 @@ void player::setup() {
     rigidbody->isDynamic();
     rigidbody->gravityMultiplier(5);
     rigidbody->setFixedRot(true);
+    rigidbody->setGravity(true);
     addComponent(rigidbody);
     
     gme::BoxCollider *collider = new gme::BoxCollider;

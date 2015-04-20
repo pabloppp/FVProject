@@ -16,15 +16,18 @@ public:
     void setup();
     void update();
     void findPlayer();   
+    void jump(gme::Vector2 player, gme::Vector2 enemy);
     void vectorDirector(gme::Vector2 player, gme::Vector2 enemy);
     virtual ~IAMovement();
 private:
     gme::GameObject *player;
-    gme::Clock clk;
+    gme::Clock clk,clkJ,clkPJ;
     gme::Vector2 dir = gme::Vector2(1,0);
-    bool right;
-   
-
+    bool right,left, jumping;
+    float timepas;
+    int check;
+    float deltatime,elapsetime;
+    
 };
 
 #endif	/* IAMOVEMENT_HPP */

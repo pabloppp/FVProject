@@ -1,5 +1,6 @@
 
 #include "enemy.hpp"
+#include "LifeManager.hpp"
 
 
 void enemy::setup(){
@@ -14,14 +15,15 @@ void enemy::setup(){
     rb->setWeight(20);
     rb->gravityMultiplier(5);
     rb->isDynamic(); //??
-    rb->setGravity(false);
+    rb->setGravity(true);
     addComponent(rb);
     
     gme::BoxCollider *bc = new gme::BoxCollider();
     //bc->setSize(gme::Vector2(10*3,7*3));
-    
     addComponent(bc);
-   
+  
+    LifeManager *stats = new LifeManager();
+    addComponent(stats);
 }
 
 void enemy::update(){
