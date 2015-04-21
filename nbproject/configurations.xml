@@ -94,28 +94,62 @@
       </logicalFolder>
       <logicalFolder name="source" displayName="source" projectFiles="true">
         <logicalFolder name="f1" displayName="objects" projectFiles="true">
-          <itemPath>hito1_old/bullet.cpp</itemPath>
-          <itemPath>hito1_old/bullet.hpp</itemPath>
+          <logicalFolder name="f1" displayName="Ataque" projectFiles="true">
+            <itemPath>source/escopetaBullet.cpp</itemPath>
+            <itemPath>source/escopetaBullet.hpp</itemPath>
+            <itemPath>source/llamasBullet.cpp</itemPath>
+            <itemPath>source/llamasBullet.hpp</itemPath>
+            <itemPath>source/metralletaBullet.cpp</itemPath>
+            <itemPath>source/metralletaBullet.hpp</itemPath>
+            <itemPath>source/pistolaBullet.cpp</itemPath>
+            <itemPath>source/pistolaBullet.hpp</itemPath>
+            <itemPath>source/weapon.cpp</itemPath>
+            <itemPath>source/weapon.hpp</itemPath>
+          </logicalFolder>
+          <itemPath>source/Animator.cpp</itemPath>
+          <itemPath>source/Animator.hpp</itemPath>
+          <itemPath>source/fondoBlanco.cpp</itemPath>
+          <itemPath>source/fondoBlanco.hpp</itemPath>
           <itemPath>source/imagenFondo.cpp</itemPath>
           <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/staticObject.cpp</itemPath>
           <itemPath>source/staticObject.hpp</itemPath>
-          <itemPath>hito1_old/weapon.cpp</itemPath>
-          <itemPath>hito1_old/weapon.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
-          <itemPath>hito1_old/sceneEntregable2.cpp</itemPath>
-          <itemPath>hito1_old/sceneEntregable2.hpp</itemPath>
+          <itemPath>source/sceneEntregable2.cpp</itemPath>
+          <itemPath>source/sceneEntregable2.hpp</itemPath>
           <itemPath>source/sceneMenu.cpp</itemPath>
           <itemPath>source/sceneMenu.hpp</itemPath>
           <itemPath>source/sceneSplash.cpp</itemPath>
           <itemPath>source/sceneSplash.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="scripts" projectFiles="true">
-          <itemPath>hito1_old/BulletScript.cpp</itemPath>
-          <itemPath>hito1_old/BulletScript.hpp</itemPath>
-          <itemPath>hito1_old/ShotScript.cpp</itemPath>
-          <itemPath>hito1_old/ShotScript.hpp</itemPath>
+          <logicalFolder name="f1" displayName="Weapons" projectFiles="true">
+            <logicalFolder name="f4" displayName="Escopeta" projectFiles="true">
+              <itemPath>source/escopetaBehavior.cpp</itemPath>
+              <itemPath>source/escopetaBehavior.hpp</itemPath>
+              <itemPath>source/sbBehavior.cpp</itemPath>
+              <itemPath>source/sbBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="Lanzallamas" projectFiles="true">
+              <itemPath>source/llbBehavior.cpp</itemPath>
+              <itemPath>source/llbBehavior.hpp</itemPath>
+              <itemPath>source/lnzllamasBehavior.cpp</itemPath>
+              <itemPath>source/lnzllamasBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="Metralleta" projectFiles="true">
+              <itemPath>source/mbBehavior.cpp</itemPath>
+              <itemPath>source/mbBehavior.hpp</itemPath>
+              <itemPath>source/metralletaBehavior.cpp</itemPath>
+              <itemPath>source/metralletaBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f1" displayName="Pistola" projectFiles="true">
+              <itemPath>source/pbBehavior.cpp</itemPath>
+              <itemPath>source/pbBehavior.hpp</itemPath>
+              <itemPath>source/pistolaBehavior.cpp</itemPath>
+              <itemPath>source/pistolaBehavior.hpp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
           <itemPath>source/moveFondo.cpp</itemPath>
           <itemPath>source/moveFondo.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
@@ -340,6 +374,14 @@
       </item>
       <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/fondoBlanco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/fondoBlanco.hpp" ex="false" tool="3" flavor2="0">
@@ -347,6 +389,18 @@
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -379,6 +433,10 @@
       <item path="source/pistolaBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/pistolaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneEntregable2.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -595,6 +653,14 @@
       </item>
       <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/fondoBlanco.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/fondoBlanco.hpp" ex="false" tool="3" flavor2="0">
@@ -602,6 +668,18 @@
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -634,6 +712,10 @@
       <item path="source/pistolaBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/pistolaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneEntregable2.cpp" ex="false" tool="1" flavor2="0">
       </item>

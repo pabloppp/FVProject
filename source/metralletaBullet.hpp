@@ -6,7 +6,7 @@
 
 class metralletaBullet: public gme::GameObject {
 public:
-    metralletaBullet(std::string n);;
+    metralletaBullet(std::string n);
     void setup();
 private:
 

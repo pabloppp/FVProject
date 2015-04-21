@@ -1,6 +1,7 @@
 
 #include "pistolaBullet.hpp"
 #include "pbBehavior.hpp"
+#include "llbBehavior.hpp"
 
 void pistolaBullet::setup(){
    addTag("bullet"); 
@@ -12,8 +13,14 @@ void pistolaBullet::setup(){
    rb->isKinematic();
    addComponent(rb);
    
-   pbBehavior *bB = new pbBehavior;
-   addComponent(bB);
+   /*
+    pbBehavior *bB = new pbBehavior;
+    addComponent(bB);
+    */
+   
+   llbBehavior *lB = new llbBehavior;
+   addComponent(lB);
+   
 }
 
 

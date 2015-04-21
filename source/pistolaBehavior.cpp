@@ -63,9 +63,7 @@ void pistolaBehavior::shoot(int d){
             bulletx->getRigidBody()->setSpeed(-speedBullet,0.0);
             break;
     }
-       
-   
-            
+                 
 }
 
 pistolaBehavior::~pistolaBehavior() {

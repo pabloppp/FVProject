@@ -18,6 +18,7 @@ void mainGame::setup() {
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
     gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
+    gme::Game::newTexture("resources/Bullets/flamebullet.png", "flame_bullet");
     gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
     
     gme::Scene *splash_scene = new sceneSplash("splash");
