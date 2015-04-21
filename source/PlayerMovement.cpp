@@ -1,5 +1,6 @@
 #include "PlayerMovement.hpp"
 #include "LifeManager.hpp"
+#include "tile.hpp"
 
 void PlayerMovement::setup() {
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
@@ -7,7 +8,6 @@ void PlayerMovement::setup() {
         if(objects->at(i) == gameObject()){
             objects->erase(objects->begin()+i);
             objects->push_back(gameObject());
-            std::cout << "pushing to back" << std::endl;
             break;
         }
     }
@@ -15,7 +15,7 @@ void PlayerMovement::setup() {
 
 void PlayerMovement::update() {
     
-    
+    std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
     float deltaTime = gme::Game::deltaTime.asSeconds();
     
@@ -97,16 +97,16 @@ void PlayerMovement::onCollision(gme::Collider* c) {
         std::cout << "hit right" << std::endl;
     }
     
-    /*if(relativePosition.y == 1 && relativePosition.x == 0){
+    if(relativePosition.y == 1 && relativePosition.x == 0){
         //destroyGameObject(c->gameObject());
         if(c && c->gameObject()){
-            c->gameObject()->sendMessage("damage", 20);
+            c->gameObject()->sendMessage("damage", 1);
         }
         
-    }*/
+    }
     
     //HARDCODED FOR ENEMY COLLISION
-    else if(c->gameObject()->hasTag("enemy")){
+    /*else if(c->gameObject()->hasTag("enemy")){
         sendMessage("damage", 5);
         if(c->gameObject()->getTransform()->getPosition().x > getTransform()->getPosition().x){
             getRigidBody()->push(gme::Vector2(-1, 0), 10000);
@@ -114,7 +114,7 @@ void PlayerMovement::onCollision(gme::Collider* c) {
         else{
             getRigidBody()->push(gme::Vector2(1, 0), 10000);
         }
-    }
+    }*/
 }
 
 void PlayerMovement::animate() {

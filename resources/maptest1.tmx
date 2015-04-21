@@ -25,7 +25,7 @@
  </tileset>
  <layer name="bg" width="33" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUUBMk4cADbf9AuYHeYCD9DQPJWDC1ALq/cPmRVvZjMxuXHbjkqBEvhNxAKB1QI1wI5TNCYUQNN5AbB7RyAyXytAS0ygsgAAATpCNu
+   eJxjYBgFo2AUUBMk4cADbf9AuYHeYCD9DQPJWDC1ALH+opX9pJiNSw014oVQGBNKB9QIF0L5jJAbqeEGQnFBKJ6o7QZK5GkJaJUXQAAAHuYhgQ==
   </data>
  </layer>
  <layer name="fg" width="33" height="18">
@@ -38,7 +38,7 @@
    <property name="hp" value="55"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUUBM44cCjgD5guIc9ur+Goh/p4WZ6pANceX2oxccooAwAAJBdB70=
+   eJxjYBgFo2AUUBM44cCjgD5guIf9cPAXPdxPj3QwmtdHAQgAAEFXBvc=
   </data>
  </layer>
 </map>

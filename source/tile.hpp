@@ -6,9 +6,11 @@
 class tile : public gme::GameObject {
 public:
     tile(std::string n) : gme::GameObject(n){
+        side = 0;
     };
     void setup();
     void addCollider();
+    int side;
 private:
 
 };

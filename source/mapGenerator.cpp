@@ -38,6 +38,7 @@ void mapGenerator::setup() {
                         int tileNumber = json_object_get_int( json_object_array_get_idx(mapDataArray, k+(j*mapwidth)) );
 
                         if(tileNumber != 0){
+                            tileNumber -= 1;
                             tile *t = new tile("tile");
                             instantiate(t);
                             int tx = tileNumber%16;
@@ -64,8 +65,9 @@ void mapGenerator::setup() {
                 for(int j=0;j<mapheight;j++){
                     for(int k=0;k<mapwidth;k++){
                         int tileNumber = json_object_get_int( json_object_array_get_idx(mapDataArray, k+(j*mapwidth)) );
-
+                            
                         if(tileNumber != 0){
+                            tileNumber -= 1;
                             tile *t = new tile("tile");
                             instantiate(t);
                             int tx = tileNumber%16;
@@ -100,7 +102,7 @@ void mapGenerator::setup() {
                             instantiate(t);
                             tileDestroyManager *tdm = new tileDestroyManager();
                             //tdm->hp = 100;
-                            json_object *tileAttrs = json_object_object_get(tileAttributes, std::to_string(tileNumber-1).c_str() );
+                            json_object *tileAttrs = json_object_object_get(tileAttributes, std::to_string(tileNumber).c_str() );
                             if(tileAttrs){
                                 int hp = json_object_get_int(json_object_object_get(tileAttrs, "hp"));
                                 if(hp){

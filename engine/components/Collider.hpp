@@ -21,6 +21,7 @@ public:
     Vector2 getRelativePosition(Collider * col);
     void isTrigger(bool b);
     bool checked;
+    void submit();
 private:
     
 protected:

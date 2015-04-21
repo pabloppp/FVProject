@@ -4,10 +4,17 @@
 void TileRowGenerator::setup() {
     std::cout << "creating new tile row" << std::endl;
     tileCount = gameObject()->getChildren().size();
+    
+    gameObject()->getChildren().front()->addTag("corner");
+    ((tile*)(gameObject()->getChildren().front()))->side = 1;
+    gameObject()->getChildren().back()->addTag("corner");
+    ((tile*)(gameObject()->getChildren().back()))->side = 2;
+    
     if(tileCount > 0)
         ((gme::BoxCollider*)getCollider())->setSize(tileCount*tileSize, tileSize);
     else 
         destroyGameObject(gameObject());
+    
 }
 
 void TileRowGenerator::update() {
@@ -73,6 +80,11 @@ void TileRowGenerator::addRow(std::vector<gme::GameObject *> &tiles) {
             tiles.pop_back();
         }
         instantiate(tro);
+        
+        tro->getChildren().front()->addTag("corner");  
+        ((tile*)(tro->getChildren().front()))->side = 1;
+        tro->getChildren().back()->addTag("corner");
+        ((tile*)(tro->getChildren().back()))->side = 2;
     }
 }
 

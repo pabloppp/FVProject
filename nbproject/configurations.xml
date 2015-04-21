@@ -346,6 +346,18 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
@@ -358,9 +370,21 @@
       </item>
       <item path="source/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/emptyGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -397,6 +421,10 @@
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/subTrigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/subTrigger.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -601,6 +629,18 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/CameraFollowPlayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
@@ -613,9 +653,21 @@
       </item>
       <item path="source/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/emptyGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -652,6 +704,10 @@
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/subTrigger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/subTrigger.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>

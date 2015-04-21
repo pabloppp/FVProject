@@ -89,6 +89,7 @@ void GameObject::addTag(std::string t){
     else std::cout << "ERROR: cannot add tag " << t << ". Tag container is FULL" << std::endl;
 }
 
+
 std::unordered_map<std::string, unsigned int> *GameObject::getTags(){
     return &tagmap;
 }

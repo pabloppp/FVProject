@@ -8,6 +8,8 @@ public:
     tilerJsonLoadScene(std::string s) : gme::Scene(s){};
 
     virtual void setup();
+    
+    void setupBg();
 
 private:
 

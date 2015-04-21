@@ -8,7 +8,7 @@
 #include "imagenFondo.hpp"
 #include "moveFondo.hpp"
 
-void moveFondo::setup(){
+void moveFondo::setup() {
     
     w = gme::Game::getWindow();
    // w->setFrameLimit(60);

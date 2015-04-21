@@ -34,6 +34,13 @@ void Collider::setup() {
     }
 }
 
+void Collider::submit() {
+    b2Fixture *fixture = gameObject()->getRigidBody()->b2body->GetFixtureList();
+    gameObject()->getRigidBody()->b2body->DestroyFixture(fixture);
+    setup();
+}
+
+
 
 void Collider::addFilterTag(const std::string& tag){
     
@@ -53,6 +60,7 @@ void Collider::addFilterTag(const std::string& tag){
             fixtureDef.filter.maskBits &= ~(1 << tagIndex);
             //std::cout << fixtureDef.filter.maskBits << std::endl;
         }
+        
     }
 
 }
@@ -75,6 +83,9 @@ void Collider::noticeCollision(Collider* col){
     debugColor = sf::Color::Red;
     colliding = true;
     gameObject()->onCollision(col);
+    if(gameObject()->getParent() && gameObject()->getParent()->getCollider()){
+       gameObject()->getParent()->getCollider()->noticeCollision(col);
+    }
 }
 
 bool Collider::checkTags(Collider *col){
@@ -89,10 +100,14 @@ bool Collider::checkTags(Collider *col){
 void Collider::isTrigger(bool b) {
     
     if(gameObject() != NULL && gameObject()->getRigidBody() != NULL){
+        
         int count = 0;
         for (b2Fixture *ce = gameObject()->getRigidBody()->b2body->GetFixtureList(); ce != NULL; ce = ce->GetNext())
         {
-            if(count == 0) ce->SetSensor(b);
+            if(count != 0){
+                ce->SetSensor(b);               
+            }
+            count++;
         }
     }
     else{

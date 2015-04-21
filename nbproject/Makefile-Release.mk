@@ -68,10 +68,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/source/BackgroundParallax.o \
+	${OBJECTDIR}/source/CameraFollowPlayer.o \
+	${OBJECTDIR}/source/IAMovement.o \
 	${OBJECTDIR}/source/LifeManager.o \
 	${OBJECTDIR}/source/PlayerMovement.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
+	${OBJECTDIR}/source/backgroundLayer.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
+	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/generaPosicion.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/mapGenerator.o \
@@ -81,6 +87,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/sceneSplash.o \
 	${OBJECTDIR}/source/splash.o \
 	${OBJECTDIR}/source/staticObject.o \
+	${OBJECTDIR}/source/subTrigger.o \
 	${OBJECTDIR}/source/tile.o \
 	${OBJECTDIR}/source/tileDestroyManager.o \
 	${OBJECTDIR}/source/tileRow.o \
@@ -276,6 +283,21 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/source/BackgroundParallax.o: source/BackgroundParallax.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/BackgroundParallax.o source/BackgroundParallax.cpp
+
+${OBJECTDIR}/source/CameraFollowPlayer.o: source/CameraFollowPlayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/CameraFollowPlayer.o source/CameraFollowPlayer.cpp
+
+${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAMovement.o source/IAMovement.cpp
+
 ${OBJECTDIR}/source/LifeManager.o: source/LifeManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -291,10 +313,25 @@ ${OBJECTDIR}/source/TileRowGenerator.o: source/TileRowGenerator.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/TileRowGenerator.o source/TileRowGenerator.cpp
 
+${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
+
 ${OBJECTDIR}/source/emptyGameObject.o: source/emptyGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/emptyGameObject.o source/emptyGameObject.cpp
+
+${OBJECTDIR}/source/enemy.o: source/enemy.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/generaPosicion.o source/generaPosicion.cpp
 
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -340,6 +377,11 @@ ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
+
+${OBJECTDIR}/source/subTrigger.o: source/subTrigger.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/subTrigger.o source/subTrigger.cpp
 
 ${OBJECTDIR}/source/tile.o: source/tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
