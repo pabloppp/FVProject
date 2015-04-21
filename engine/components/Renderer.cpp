@@ -85,6 +85,7 @@ void Renderer::setTexture(const std::string& s){
     Texture *t = Game::getTexture(s);
     if(t != NULL){
         setTexture(*t);
+        
         if(t->atlas == NULL){
             atlas = json_object_new_object();
             int lastindex = t->getPath().find_last_of("."); 
@@ -94,12 +95,13 @@ void Renderer::setTexture(const std::string& s){
             if(stat (jsonFileName.c_str(), &buffer) != 0) return;
             
             atlas = json_object_from_file(jsonFileName.c_str());  
-            if(strcmp(json_object_to_json_string(atlas), "null") != 0){
+            if(atlas){
                 std::cout << "Loaded atlas for "+s << std::endl;
             }
             else atlas = NULL;
             t->atlas = atlas;
         }
+        
     }
     
     
@@ -115,6 +117,7 @@ void Renderer::setFrame(gme::Vector2 f){
 
 void Renderer::setFrame(const std::string& framename){
     if(atlas != NULL){
+        
         json_object *frames = json_object_object_get(atlas, "frames");
         json_object *frameinfo = json_object_object_get(frames, framename.c_str());
         json_object *framedims = json_object_object_get(frameinfo, "frame");
@@ -123,11 +126,13 @@ void Renderer::setFrame(const std::string& framename){
             int py = json_object_get_int(json_object_object_get(framedims, "y"));
             int sx = json_object_get_int(json_object_object_get(framedims, "w"));
             int sy = json_object_get_int(json_object_object_get(framedims, "h"));
-            size = Vector2(sx, sy);
+            if(size.x != sx || size.y != sy){
+                size = Vector2(sx, sy);
+            }
             position = Vector2(px, py);
             
-            std::cout << "size: " << sx << " " << sy << std::endl; 
-            std::cout << "position: " << px << " " << py << std::endl; 
+            //std::cout << "size: " << sx << " " << sy << std::endl; 
+            //std::cout << "position: " << px << " " << py << std::endl; 
         }
         else{
            std::cout << "frame "+framename+" does not exist..."<< std::endl; 

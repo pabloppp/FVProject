@@ -141,7 +141,7 @@ void PlayerMovement::animate() {
         }
         else{
             getRenderer()->setFrame("idle_0");
-        } 
+        }
         walkFrameCount = 0;
     }
     else if(!grounded){
