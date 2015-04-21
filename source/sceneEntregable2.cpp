@@ -5,6 +5,7 @@
 #include "pistolaBehavior.hpp"
 #include "metralletaBehavior.hpp"
 #include "lnzllamasBehavior.hpp"
+#include "escopetaBehavior.hpp"
 
 void sceneEntregable2::setup(){
     
@@ -19,7 +20,8 @@ void sceneEntregable2::setup(){
     pistolaBehavior *pb = new pistolaBehavior();
     metralletaBehavior *mb = new metralletaBehavior();
     lnzllamasBehavior *lb = new lnzllamasBehavior();
-    weapon1->addComponent(lb);
+    escopetaBehavior *eb = new escopetaBehavior();
+    weapon1->addComponent(eb);
         
 }
 

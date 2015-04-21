@@ -7,10 +7,12 @@
 
 #include "sbBehavior.hpp"
 
-sbBehavior::sbBehavior() {
+void sbBehavior::setup() {
+
 }
 
-sbBehavior::sbBehavior(const sbBehavior& orig) {
+void sbBehavior::update() {
+
 }
 
 sbBehavior::~sbBehavior() {

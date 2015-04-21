@@ -8,10 +8,13 @@
 #ifndef SBBEHAVIOR_HPP
 #define	SBBEHAVIOR_HPP
 
-class sbBehavior {
+#include "../engine/GMEngine.hpp"
+
+class sbBehavior: public gme::Script {
 public:
-    sbBehavior();
-    sbBehavior(const sbBehavior& orig);
+    sbBehavior() : gme::Script(){};;
+    void setup();
+    void update();
     virtual ~sbBehavior();
 private:
 

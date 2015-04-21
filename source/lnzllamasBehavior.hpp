@@ -27,7 +27,7 @@ private:
     int directionSp;
     int direction; //0 top, 1 dcha, 2 bot, 3 izq 
     float speedBullet;
-    float cadency = 0.1f;
+    float cadency = 3.1f;
     gme::Vector2 winSize;
 };
 

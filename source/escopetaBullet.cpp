@@ -1,18 +1,17 @@
-/* 
- * File:   escopetaBullet.cpp
- * Author: apple
- * 
- * Created on 21 de abril de 2015, 10:42
- */
-
 #include "escopetaBullet.hpp"
+#include "sbBehavior.hpp"
 
-escopetaBullet::escopetaBullet() {
-}
-
-escopetaBullet::escopetaBullet(const escopetaBullet& orig) {
-}
-
-escopetaBullet::~escopetaBullet() {
+void escopetaBullet::setup() {
+    addTag("bullet");
+    
+    getRenderer()->setTexture("bullet");
+    getRenderer()->setSize(gme::Vector2(16,16));
+   
+    gme::RigidBody *rb = new gme::RigidBody();
+    rb->isKinematic();
+    addComponent(rb);
+    
+    sbBehavior *sb = new sbBehavior;
+    addComponent(sb);
 }
 

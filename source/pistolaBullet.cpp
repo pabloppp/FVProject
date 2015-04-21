@@ -13,13 +13,8 @@ void pistolaBullet::setup(){
    rb->isKinematic();
    addComponent(rb);
    
-   /*
-    pbBehavior *bB = new pbBehavior;
-    addComponent(bB);
-    */
-   
-   llbBehavior *lB = new llbBehavior;
-   addComponent(lB);
+   pbBehavior *bB = new pbBehavior;
+   addComponent(bB);
    
 }
 

@@ -1,7 +1,6 @@
 
 #include "lnzllamasBehavior.hpp"
 #include "llamasBullet.hpp"
-#include "pistolaBullet.hpp"
 
 
 void lnzllamasBehavior::setup() {
@@ -11,7 +10,6 @@ void lnzllamasBehavior::setup() {
 
 void lnzllamasBehavior::update() {
     if(gme::Keyboard::isKeyPressed(ShotKey)){
-        //shooting = true;
         animator.animate();
         if(gme::Keyboard::isKeyPressed(keyUp)){
             direction = 0;
@@ -20,7 +18,6 @@ void lnzllamasBehavior::update() {
         else if(gme::Keyboard::isKeyPressed(keyDown)){
             direction = 2;
             shoot(direction);
-
         } 
         else if(gme::Keyboard::isKeyPressed(keyLeft)){
             direction = 3;
@@ -35,23 +32,25 @@ void lnzllamasBehavior::update() {
                 !gme::Keyboard::isKeyPressed(keyDown) &&
                 !gme::Keyboard::isKeyPressed(keyUp)){
             shoot(direction);
+
         }
     } 
     else if(!gme::Keyboard::isKeyPressed(ShotKey)){ 
-        //destruir bala 
         animator.restart();
     }
 }
 
 void lnzllamasBehavior::shoot(int d) {
-    
-    float timePassed = 0.f;
+
+    float timePassed = 0.04f;
     directionSp = d;
+   
     animator.at(timePassed, [](void* ctx) {
        lnzllamasBehavior *q = static_cast<lnzllamasBehavior*> (ctx);
        gme::GameObject *bulletx = new llamasBullet("bullet");
        q->instantiate(bulletx);
-       bulletx->getTransform()->setPosition(gme::Vector2(500,350));
+       int v1 = rand() % 5+350;
+       bulletx->getTransform()->setPosition(gme::Vector2(500,v1));
        
        switch(q->directionSp){
             case 0:

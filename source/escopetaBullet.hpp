@@ -8,11 +8,12 @@
 #ifndef ESCOPETABULLET_HPP
 #define	ESCOPETABULLET_HPP
 
-class escopetaBullet {
+#include "../engine/GMEngine.hpp"
+
+class escopetaBullet: public gme::GameObject {
 public:
-    escopetaBullet();
-    escopetaBullet(const escopetaBullet& orig);
-    virtual ~escopetaBullet();
+    escopetaBullet(std::string n): gme::GameObject(n){};
+    void setup();
 private:
 
 };
