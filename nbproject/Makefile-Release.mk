@@ -68,13 +68,23 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/source/LifeManager.o \
+	${OBJECTDIR}/source/PlayerMovement.o \
+	${OBJECTDIR}/source/TileRowGenerator.o \
+	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
+	${OBJECTDIR}/source/mapGenerator.o \
 	${OBJECTDIR}/source/moveFondo.o \
+	${OBJECTDIR}/source/player.o \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/sceneSplash.o \
 	${OBJECTDIR}/source/splash.o \
-	${OBJECTDIR}/source/staticObject.o
+	${OBJECTDIR}/source/staticObject.o \
+	${OBJECTDIR}/source/tile.o \
+	${OBJECTDIR}/source/tileDestroyManager.o \
+	${OBJECTDIR}/source/tileRow.o \
+	${OBJECTDIR}/source/tilerJsonLoadScene.o
 
 
 # C Compiler Flags
@@ -266,6 +276,26 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
+${OBJECTDIR}/source/LifeManager.o: source/LifeManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/LifeManager.o source/LifeManager.cpp
+
+${OBJECTDIR}/source/PlayerMovement.o: source/PlayerMovement.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/PlayerMovement.o source/PlayerMovement.cpp
+
+${OBJECTDIR}/source/TileRowGenerator.o: source/TileRowGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/TileRowGenerator.o source/TileRowGenerator.cpp
+
+${OBJECTDIR}/source/emptyGameObject.o: source/emptyGameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/emptyGameObject.o source/emptyGameObject.cpp
+
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -276,10 +306,20 @@ ${OBJECTDIR}/source/mainGame.o: source/mainGame.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/mainGame.o source/mainGame.cpp
 
+${OBJECTDIR}/source/mapGenerator.o: source/mapGenerator.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/mapGenerator.o source/mapGenerator.cpp
+
 ${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
+
+${OBJECTDIR}/source/player.o: source/player.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/player.o source/player.cpp
 
 ${OBJECTDIR}/source/sceneMenu.o: source/sceneMenu.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -300,6 +340,26 @@ ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
+
+${OBJECTDIR}/source/tile.o: source/tile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tile.o source/tile.cpp
+
+${OBJECTDIR}/source/tileDestroyManager.o: source/tileDestroyManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tileDestroyManager.o source/tileDestroyManager.cpp
+
+${OBJECTDIR}/source/tileRow.o: source/tileRow.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tileRow.o source/tileRow.cpp
+
+${OBJECTDIR}/source/tilerJsonLoadScene.o: source/tilerJsonLoadScene.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tilerJsonLoadScene.o source/tilerJsonLoadScene.cpp
 
 # Subprojects
 .build-subprojects:

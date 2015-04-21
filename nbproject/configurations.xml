@@ -94,22 +94,42 @@
       </logicalFolder>
       <logicalFolder name="source" displayName="source" projectFiles="true">
         <logicalFolder name="f1" displayName="objects" projectFiles="true">
+          <itemPath>source/emptyGameObject.cpp</itemPath>
+          <itemPath>source/emptyGameObject.hpp</itemPath>
           <itemPath>source/imagenFondo.cpp</itemPath>
           <itemPath>source/imagenFondo.hpp</itemPath>
+          <itemPath>source/player.cpp</itemPath>
+          <itemPath>source/player.hpp</itemPath>
           <itemPath>source/staticObject.cpp</itemPath>
           <itemPath>source/staticObject.hpp</itemPath>
+          <itemPath>source/tile.cpp</itemPath>
+          <itemPath>source/tile.hpp</itemPath>
+          <itemPath>source/tileRow.cpp</itemPath>
+          <itemPath>source/tileRow.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
           <itemPath>source/sceneMenu.cpp</itemPath>
           <itemPath>source/sceneMenu.hpp</itemPath>
           <itemPath>source/sceneSplash.cpp</itemPath>
           <itemPath>source/sceneSplash.hpp</itemPath>
+          <itemPath>source/tilerJsonLoadScene.cpp</itemPath>
+          <itemPath>source/tilerJsonLoadScene.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="scripts" projectFiles="true">
+          <itemPath>source/LifeManager.cpp</itemPath>
+          <itemPath>source/LifeManager.hpp</itemPath>
+          <itemPath>source/PlayerMovement.cpp</itemPath>
+          <itemPath>source/PlayerMovement.hpp</itemPath>
+          <itemPath>source/TileRowGenerator.cpp</itemPath>
+          <itemPath>source/TileRowGenerator.hpp</itemPath>
+          <itemPath>source/mapGenerator.cpp</itemPath>
+          <itemPath>source/mapGenerator.hpp</itemPath>
           <itemPath>source/moveFondo.cpp</itemPath>
           <itemPath>source/moveFondo.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
           <itemPath>source/splash.hpp</itemPath>
+          <itemPath>source/tileDestroyManager.cpp</itemPath>
+          <itemPath>source/tileDestroyManager.hpp</itemPath>
         </logicalFolder>
         <itemPath>source/mainGame.cpp</itemPath>
         <itemPath>source/mainGame.hpp</itemPath>
@@ -326,6 +346,22 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/emptyGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
@@ -334,9 +370,17 @@
       </item>
       <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/mapGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mapGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -353,6 +397,22 @@
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tileDestroyManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tileDestroyManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tileRow.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tileRow.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -541,6 +601,22 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/TileRowGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/emptyGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
@@ -549,9 +625,17 @@
       </item>
       <item path="source/mainGame.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/mapGenerator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mapGenerator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -568,6 +652,22 @@
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tile.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tileDestroyManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tileDestroyManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tileRow.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tileRow.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -2,8 +2,11 @@
 
 #include "sceneSplash.hpp"
 #include "sceneMenu.hpp"
+#include "tilerJsonLoadScene.hpp"
 
 void mainGame::setup() {
+    
+    //debugColliders = true;
     
     gme::Game::newTexture("resources/fondoSplash.png", "fondoSplash");  
     gme::Game::newTexture("resources/fondonuevo.png", "fondo_principal");
@@ -17,8 +20,10 @@ void mainGame::setup() {
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
     
+    gme::Scene *tiledTest = new tilerJsonLoadScene("tiledTest");
     
-    gme::Game::setCurrentScene("splash");
+    
+    gme::Game::setCurrentScene("tiledTest");
 }
 
 

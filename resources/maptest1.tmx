@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="27" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="33" height="18" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="temple_bricks" tilewidth="16" tileheight="16">
   <image source="temple_bricks.png" width="256" height="256"/>
   <tile id="61">
@@ -7,15 +7,38 @@
     <property name="destructible" value="true"/>
    </properties>
   </tile>
+  <tile id="65">
+   <properties>
+    <property name="hp" value="55"/>
+   </properties>
+  </tile>
   <tile id="87">
    <properties>
     <property name="destructible" value="true"/>
    </properties>
   </tile>
+  <tile id="116">
+   <properties>
+    <property name="hp" value="24"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Capa de Patrones 1" width="27" height="20">
+ <layer name="bg" width="33" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFQw3YAbEbFNvTyGxqm0tPQI3wQTaDVmFNK4DudlLcTcu0NRQAyP/E+JvcMB5u+QubXyhJf6MAAhiBWI5MLAzE3FBMSC0TEPMCcTwQNwBxGhQnA3ExlE5FEk+B4jyo+jyoeCIQFwBxMxC3QNkpSPoSgJgPiAFD7hlC
+   eJxjYBgFo2AUUBMk4cADbf9AuYHeYCD9DQPJWDC1ALq/cPmRVvZjMxuXHbjkqBEvhNxAKB1QI1wI5TNCYUQNN5AbB7RyAyXytAS0ygsgAAATpCNu
+  </data>
+ </layer>
+ <layer name="fg" width="33" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYesBpEGAAS+4Igw==
+  </data>
+ </layer>
+ <layer name="fgd" width="33" height="18">
+  <properties>
+   <property name="hp" value="55"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUUBM44cCjgD5guIc9ur+Goh/p4WZ6pANceX2oxccooAwAAJBdB70=
   </data>
  </layer>
 </map>

@@ -38,7 +38,7 @@ void Scene::addGameObject(GameObject *g) {
 
 void Scene::destroyGameObject(GameObject* g){
     for(int i=0;i<gameObjects.size();i++){
-        if(gameObjects.at(i) == g){
+        if(i < gameObjects.size() && gameObjects.at(i) == g){
             gameObjects.at(i) = gameObjects.back();
             gameObjects.pop_back();
             delete g;
@@ -84,7 +84,7 @@ void Scene::update(){
         Game::deltaTime = updateTime;
         
         for(int i = gameObjects.size()-1; i >= 0; i--){
-            if(gameObjects.at(i)->isActive()){
+            if(i < gameObjects.size() && gameObjects.at(i)->isActive()){
                 gameObjects.at(i)->earlyUpdate();
             }
         }
@@ -93,7 +93,7 @@ void Scene::update(){
         
         //update
         for(int i = gameObjects.size()-1; i >= 0; i--){
-            if(gameObjects.at(i)->isActive()) gameObjects.at(i)->update();
+            if(i < gameObjects.size() && gameObjects.at(i)->isActive()) gameObjects.at(i)->update();
         }
         
         
@@ -104,7 +104,7 @@ void Scene::update(){
     //Fixed update
 
     for(int i = gameObjects.size()-1; i >= 0; i--){
-        if(gameObjects.at(i)->isActive()){
+        if(i < gameObjects.size() && gameObjects.at(i)->isActive()){
             gameObjects.at(i)->fixedUpdate();
         }
     }
@@ -124,12 +124,12 @@ void Scene::update(){
     //RENDER 
     Game::getWindow()->clear();
     for(int i = 0; i < gameObjects.size(); i++){
-         if(gameObjects.at(i)->isActive()) gameObjects.at(i)->getRenderer()->update();
+         if(i < gameObjects.size() && gameObjects.at(i)->isActive()) gameObjects.at(i)->getRenderer()->update();
     }
 
     Game::getWindow()->setView(Game::getWindow()->getDefaultView());
     for(int i = 0; i < gameObjects.size(); i++){     
-        if(gameObjects.at(i)->isActive()) gameObjects.at(i)->drawGui();
+        if(i < gameObjects.size() && gameObjects.at(i)->isActive()) gameObjects.at(i)->drawGui();
     }
 
     Game::getWindow()->display();
