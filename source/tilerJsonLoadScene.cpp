@@ -12,7 +12,7 @@ void tilerJsonLoadScene::setup() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     gme::Game::newTexture("resources/temple_bricks.png", "selvaTiles");
-    gme::Game::newTexture("resources/Broniversal Soldier Anim.png", "playerTexture");   
+    gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");   
     
     sceneLoaderObject->addComponent(new mapGenerator());
     

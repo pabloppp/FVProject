@@ -126,33 +126,33 @@ void PlayerMovement::animate() {
             walkFrameCount++;
             if(walkFrameCount >= 8) walkFrameCount = 0;
             if(gme::Keyboard::isKeyPressed(downKey)) 
-                getRenderer()->setFrame(gme::Vector2(8+walkFrameCount,1));
+                getRenderer()->setFrame("run-down_"+std::to_string(walkFrameCount));
             else 
-                getRenderer()->setFrame(gme::Vector2(walkFrameCount,1));
+                getRenderer()->setFrame("run_"+std::to_string(walkFrameCount));
         }
         
     }
     else if(grounded && getRigidBody()->getSpeed().x == 0){
         if(gme::Keyboard::isKeyPressed(downKey)){
-           getRenderer()->setFrame(gme::Vector2(20,1)); 
+           getRenderer()->setFrame("idle-down"); 
         }
         else if(gme::Keyboard::isKeyPressed(upKey)){
-           getRenderer()->setFrame(gme::Vector2(21,3)); 
+           getRenderer()->setFrame("idle-up");
         }
         else{
-            getRenderer()->setFrame(gme::Vector2(0,0));
+            getRenderer()->setFrame("idle_0");
         } 
         walkFrameCount = 0;
     }
     else if(!grounded){
         if(getRigidBody()->getSpeed().y < -10){
-            getRenderer()->setFrame(gme::Vector2(1,0));
+            getRenderer()->setFrame("jump_0");
         }
         else if(getRigidBody()->getSpeed().y > 10){
-            getRenderer()->setFrame(gme::Vector2(3,0));
+            getRenderer()->setFrame("jump_2");
         }
         else{
-            getRenderer()->setFrame(gme::Vector2(2,0));
+            getRenderer()->setFrame("jump_1");
         }
     }
 }
