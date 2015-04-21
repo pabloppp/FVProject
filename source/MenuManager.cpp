@@ -1,180 +1,186 @@
-/* 
- * File:   fondo.cpp
- * Author: Vir
- * 
- * Created on 15 de marzo de 2015, 13:25
- */
 
-#include "imagenFondo.hpp"
-#include "moveFondo.hpp"
+#include "MenuManager.hpp"
 
-void moveFondo::setup(){
-    
+void MenuManager::setup(){
     w = gme::Game::getWindow();
-   // w->setFrameLimit(60);
-    vec = w->getSize();
-    reloj.restart();
-    num_apre=0;num_apre_ini=0;
-    musica = new gme::MusicPlayer();
-    musicabtn = new gme::MusicPlayer();
-    musicadesp = new gme::MusicPlayer();
+    /* MUSIC DEFINITION */
+    music = new gme::MusicPlayer();
+    button_sound = new gme::MusicPlayer();
+    change_sound= new gme::MusicPlayer();
     
-    musica->setMusic("sound");
-    musicabtn->setMusic("boton");
-    musicadesp->setMusic("desplazamiento");
+    music->setMusic("sound");
+    button_sound->setMusic("boton");
+    change_sound->setMusic("desplazamiento");
     
-    musicabtn->setVolume(20.0);
-    musicadesp->setVolume(20.0);
+    button_sound->setVolume(20.0);
+    change_sound->setVolume(20.0);
     
+    /* BOOLEAN STATES */
+    sonando=false;izq=false;dre=false;apretado=false;music_pausa=false;
+    pausa=false;
+    menudejuego = false;
+    juegoNuevo1p = false;
+    juegoNuevo2p = false;
+    /* CLOCKS */
+    reloj_fondo.restart();
     
-    sonando=false;izq=false;dre=false;pausa=false;apretado=false;music_pausa=false;
+    /* VARS */
     menu=1;
-    posX=320;
+    posX= 320;
     pausa_visible = 0;
-
 }
 
-void moveFondo::update(){
-    if(reloj.currentTime().asSeconds() > 0.01 && pausa==false ){
-        
-        getTransform()->translate(gme::Vector2(-x, 0));
-        if(getTransform()->position.x <= -320) getTransform()->position.x = 960-x;
-        
-      reloj.restart();
-    
+void MenuManager::update(){
+    /* MUSICA SONANDO */
+    if(sonando==true){
+        music->pause();
+        sonando=false;
+
+    }else if(sonando==false){
+        music->play();
+        music->loop(true);
+        sonando=true;
     }
-    
-    if(gme::Keyboard::isKeyPressed(spaceKey) && pausa==false){ // BUCLE PARA QUE SUENE LA MUSICA
-       if(apretar.currentTime().asSeconds()>0.2){ 
-           
-            if(sonando==true){
-                musica->pause();
-                sonando=false;
+    if(pausa && !menudejuego) openPause();
+    else if(!pausa && menudejuego) openMenu();
+}
 
-            }else if(sonando==false){
-                musica->play();
-                musica->loop(true);
-                sonando=true;
-            }
-            apretar.restart();
-       }
+void MenuManager::onMessage(std::string m, float v) {
+    if(m.compare("openPause")==0) {
+        pausa=true;
+        menudejuego = false;
+        pausa_visible=100;
+        num_apre=0;
+        if(sonando){
+            music_pausa=true;
+            music->pause();
+        }
+    }
+    else if(m.compare("openMenu")==0){
+        pausa=false;
+        menudejuego = true;
+        pausa_visible=0;
+        if(music_pausa==true){
+            music->play();
+            music_pausa=false;
+        }
         
-    }//----------------------------------------------
-    
-    if(izq==true && apretar.currentTime().asSeconds()<1) { //MOVIMIENTO A LA IZQUIERDA
-                //musicadesp->play();
-                posX=posX-20;
-                apretar.restart();
-                if(posX==-320) izq=false;
-            }
-    if(dre==true && apretar.currentTime().asSeconds()<1) { //MOVIMIENTO A LA DERECHA
-                //musicadesp->play();
-                posX=posX+20;
-                apretar.restart();
-                if(posX==320) {dre=false;menu=1;}
-            }
+    }
+    else if(m.compare("hidePause") == 0){
+        pausa=false;
+        pausa_visible=0;
+        if(music_pausa==true){
+            music->play();
+            music_pausa=false;
+        }
+        sendMessage("resume",0);
+    }
+    else if(m.compare("hideMenu") == 0){
+        menudejuego = false;
+        if(sonando) music->pause();
+        if(juegoNuevo1p) sendMessage("newGame1p",0);
+        else if(juegoNuevo2p) sendMessage("newGame2p",0);
+        else sendMessage("resume", 0);
+    }
+}
 
+void MenuManager::openMenu(){
+    /* FONDO MOVIENDOSE */
+        if(reloj_fondo.currentTime().asSeconds() > 0.01 && pausa==false){
+            getTransform()->translate(gme::Vector2(-x, 0));
+            if(getTransform()->position.x <= -320) getTransform()->position.x = 960-x;
+            reloj_fondo.restart();
+        }
+    /* MOVIMIENTO A LA IZQUIERDA */
+    if(izq==true && apretar.currentTime().asSeconds()<1) { 
+        posX=posX-20;
+        apretar.restart();
+        if(posX==-320) izq=false;
+    }
+    /* MOVIMIENTO A LA DERECHA */
+    if(dre==true && apretar.currentTime().asSeconds()<1) { 
+        posX=posX+20;
+        apretar.restart();
+        if(posX==320) {dre=false; menu=1;}
+    }
+    /* CERRAR JUEGO */
+    if(menu==1 && num_apre_ini==3 && gme::Keyboard::isKeyPressed(introKey) && pausa==false) w->close();
     
-    if(menu==1 && num_apre_ini==3 && gme::Keyboard::isKeyPressed(introKey) && pausa==false )w->close();
-        
-    if(menu==1 && num_apre_ini==2 && gme::Keyboard::isKeyPressed(introKey) && pausa==false ){ //APRETAR OPCIONES
-       
-      // std::cout <<posX<< std::endl;
-       musicadesp->play();
+    /* ENTRAR EN OPCIONES */
+    if(menu==1 && num_apre_ini==2 && gme::Keyboard::isKeyPressed(introKey) && pausa==false ){       
+       change_sound->play();
        izq=true;
        menu=2;
        num_apre=0;
-           
     }
-    
-    if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey) && pausa==false){ //APRETAR NUEVA PARTIDA
-       
-     //std::cout <<posX<< std::endl;
-       musicadesp->play();
+    /* CONTINUA JUEGO */
+    if(menu==1 && num_apre_ini==1 && gme::Keyboard::isKeyPressed(introKey) && pausa==false){
+        juegoNuevo1p = false;
+        juegoNuevo2p = false;
+        sendMessage("hideMenu", 0);
+    } 
+    /* ENTRAR EN NUEVA PARTIDA */
+    if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey) && pausa==false){
+       change_sound->play();
        izq=true;
        menu=3;
        num_apre=0;
-           
     }
-    
-    
-    if(menu==2 && (num_apre==3 && gme::Keyboard::isKeyPressed(introKey) /*|| gme::Keyboard::isKeyPressed(bacKey)*/) && pausa==false  ){ //APRETAR VOLVER DESDE OPCIONES
-       
-      // std::cout <<posX<< std::endl;
-       //menu=1;
-      // num_apre=0;
-        musicadesp->play();
+    /* VOLVER DESDE OPCIONES */    
+    if(menu==2 && (num_apre==3 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false){ 
+       change_sound->play();
        dre=true;    
     }
-    
-     if(menu==3 && (num_apre==2 && gme::Keyboard::isKeyPressed(introKey) /*|| gme::Keyboard::isKeyPressed(bacKey)*/) && pausa==false ){ //APRETAR VOLVER DESDE NUEVA PARTIDA
-       
-      // std::cout <<posX<< std::endl;
-       //menu=3;
-       //num_apre=0;
-         musicadesp->play();
+    /* VOLVER DESDE NUEVA PARTIDA */
+    if(menu==3 && (num_apre==2 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+       change_sound->play();
        dre=true;    
     }
-    
-    //--------------- MENU DE PAUSA ------------------------
-    
-    if(gme::Keyboard::isKeyPressed(pauseKey) && apretar.currentTime().asSeconds()>0.2){
-        
-        
-        if(pausa==true){
-            pausa=false;
-            pausa_visible=0;
-            if(music_pausa==true){
-                musica->play();
-                music_pausa=false;
-            }
-            //num_apre=0;
-        }else if(pausa==false){
-            pausa=true;
-            pausa_visible=100;
-            num_apre=0;
-            if(sonando){
-                music_pausa=true;
-                musica->pause();
-            }
-        }
-        
-        apretar.restart();
-         
+    /* INICIAR JUEGO INDIVIDUAL 
+    if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+       juegoNuevo1p = true;
+       sendMessage("hideMenu",0);
     }
+     if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+       juegoNuevo2p = true;
+       sendMessage("hideMenu",0);
+    }*/
     
-    //---------------MENU DE PAUSA------------------------
-    if(pausa==true &&  num_apre==0 && gme::Keyboard::isKeyPressed(introKey) ){
-        
-        apretado=true;
-        
-   }
-    if(pausa==true && num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) w->close();
-    
-    if(!gme::Keyboard::isKeyPressed(introKey) && apretado==true){
-            //num_apre=0;
-            pausa=false;
-            pausa_visible=0;
-            apretado=false;
-            if(music_pausa==true){
-                musica->play();
-                music_pausa=false;
-            }
-           
-          }
-
-    //---------------MENU DE PAUSA------------------------
-    
-    
-     
-            
 }
 
-void moveFondo::onGui() {
+void MenuManager::openPause(){
+    /*if(pausa==true){
+        pausa=false;
+        pausa_visible=0;
+        if(music_pausa==true){
+            music->play();
+            music_pausa=false;
+        }
+    } 
+   */
+   
+    /* CONTINUA JUEGO */
+    if(pausa==true &&  num_apre==0 && gme::Keyboard::isKeyPressed(introKey)){
+        apretado=true;
+        sendMessage("resume", 0);
+    }
+    if(pausa == true && gme::Keyboard::isKeyPressed(resumeKey)) sendMessage("hidePause", 0);
     
+    if(pausa==true && num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) w->close();
+    if(!gme::Keyboard::isKeyPressed(introKey) && apretado==true){
+           pausa=false;
+           pausa_visible=0;
+           apretado=false;
+           if(music_pausa==true){
+               music->play();
+               music_pausa=false;
+           }
+    }
+}
+
+void MenuManager::onGui() {
     
-    
-  if(pausa==false){  
+  if(!pausa && menudejuego){  
     //------------LOGO------------------
       
       gme::GUI::fontSize = 24;
@@ -187,10 +193,6 @@ void moveFondo::onGui() {
         gme::GUI::ScaleToFit
           
     );
-    
-      
-      
-      
     //-----------LETRA MENU-------------
     gme::GUI::contentColor = gme::GUI::white;
     gme::GUI::drawTexture(
@@ -208,12 +210,10 @@ void moveFondo::onGui() {
      );
       
     if(menu==1){
-        
-    
             if(gme::Keyboard::isKeyPressed(upKey)){
 
                 if(apretar.currentTime().asSeconds()>0.2){
-                    musicabtn->play();
+                    button_sound->play();
                     if(num_apre_ini==0) num_apre_ini=3;
                     else
                         num_apre_ini--;
@@ -226,7 +226,7 @@ void moveFondo::onGui() {
             if(gme::Keyboard::isKeyPressed(downKey)){
 
                 if(apretar.currentTime().asSeconds()>0.2){
-                    musicabtn->play();
+                    button_sound->play();
                     if(num_apre_ini==3) num_apre_ini=0;
                     else
                         num_apre_ini++;
@@ -317,13 +317,13 @@ void moveFondo::onGui() {
  //---------------------OPCIONES-------------------------------------- 
   
   
-  if(menu==2 && pausa==false){  
+  if(menu==2 && !pausa && menudejuego){  
       
   
         if(gme::Keyboard::isKeyPressed(upKey)){
             
             if(apretar.currentTime().asSeconds()>0.2){
-                musicabtn->play();
+                button_sound->play();
                 if(num_apre==0) num_apre=3;
                 else
                     num_apre--;
@@ -336,7 +336,7 @@ void moveFondo::onGui() {
         if(gme::Keyboard::isKeyPressed(downKey)){
               
             if(apretar.currentTime().asSeconds()>0.2){
-                musicabtn->play();
+                button_sound->play();
                 if(num_apre==3) num_apre=0;
                 else
                     num_apre++;
@@ -421,13 +421,13 @@ void moveFondo::onGui() {
     
  //--NUEVA PARTIDA-----------------------
     
-     if(menu==3 && pausa==false){  
+     if(menu==3 && !pausa && menudejuego){  
          
         // std::cout <<num_apre << std::endl;
         // std::cout <<menu << std::endl;
   
        if(gme::Keyboard::isKeyPressed(upKey)){
-            musicabtn->play();
+            button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
 
                 if(num_apre==0) num_apre=2;
@@ -440,7 +440,7 @@ void moveFondo::onGui() {
         }
 
         if(gme::Keyboard::isKeyPressed(downKey)){
-             musicabtn->play();
+             button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==2) num_apre=0;
                 else
@@ -504,7 +504,7 @@ void moveFondo::onGui() {
     
   }
     
-    if(pausa){
+    if(pausa && !menudejuego){
         
         gme::GUI::contentColor = gme::GUI::white;
         gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,pausa_visible);
@@ -525,7 +525,7 @@ void moveFondo::onGui() {
         );
         
             if(gme::Keyboard::isKeyPressed(upKey)){
-                  musicabtn->play();
+                  button_sound->play();
                if(apretar.currentTime().asSeconds()>0.2){
 
                    if(num_apre==0) num_apre=1;
@@ -538,7 +538,7 @@ void moveFondo::onGui() {
            }
 
            if(gme::Keyboard::isKeyPressed(downKey)){
-                musicabtn->play();
+                button_sound->play();
                if(apretar.currentTime().asSeconds()>0.2){
                    if(num_apre==1) num_apre=0;
                    else
@@ -583,18 +583,9 @@ void moveFondo::onGui() {
             gme::GUI::Origin::Center
             //gme::GUI::TextureName("logo")    
         );
-        
-        
-        
-      
-        
-        
-        
-    }
-        
+    }  
 }
 
-moveFondo::~moveFondo(){
-
+MenuManager::~MenuManager() {
 
 }

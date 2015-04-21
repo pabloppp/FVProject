@@ -1,10 +1,3 @@
-/* 
- * File:   staticObject.cpp
- * Author: Vir
- * 
- * Created on 16 de marzo de 2015, 10:30
- */
-
 #include "staticObject.hpp"
 #include "splash.hpp"
 
