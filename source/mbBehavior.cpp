@@ -1,16 +1,17 @@
-/* 
- * File:   mbBehavior.cpp
- * Author: apple
- * 
- * Created on 7 de abril de 2015, 18:10
- */
 
 #include "mbBehavior.hpp"
 
-mbBehavior::mbBehavior() {
+void mbBehavior::setup() {
+    winSize = gme::Game::getWindow()->getSize(); 
 }
 
-mbBehavior::mbBehavior(const mbBehavior& orig) {
+void mbBehavior::update() {
+    float posX = getTransform()->getPosition().x;
+    float posY = getTransform()->getPosition().y;
+    
+    if((posX < 0 || posX > winSize.x) || (posY < 0 || posY > winSize.y)){
+        destroyGameObject(gameObject());
+    }
 }
 
 mbBehavior::~mbBehavior() {
