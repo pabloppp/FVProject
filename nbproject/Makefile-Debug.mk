@@ -68,6 +68,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/source/GameManager.o \
+	${OBJECTDIR}/source/GlobalStateManager.o \
+	${OBJECTDIR}/source/IntroS1Manager.o \
+	${OBJECTDIR}/source/MenuManager.o \
+	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/moveFondo.o \
@@ -265,6 +270,31 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/source/GameManager.o: source/GameManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/GameManager.o source/GameManager.cpp
+
+${OBJECTDIR}/source/GlobalStateManager.o: source/GlobalStateManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/GlobalStateManager.o source/GlobalStateManager.cpp
+
+${OBJECTDIR}/source/IntroS1Manager.o: source/IntroS1Manager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IntroS1Manager.o source/IntroS1Manager.cpp
+
+${OBJECTDIR}/source/MenuManager.o: source/MenuManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/MenuManager.o source/MenuManager.cpp
+
+${OBJECTDIR}/source/SaveManager.o: source/SaveManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/SaveManager.o source/SaveManager.cpp
 
 ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

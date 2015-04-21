@@ -1,5 +1,4 @@
 #include "mainGame.hpp"
-
 #include "sceneSplash.hpp"
 #include "sceneMenu.hpp"
 
@@ -18,7 +17,7 @@ void mainGame::setup() {
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
     
     
-    gme::Game::setCurrentScene("splash");
+    gme::Game::setCurrentScene("mainmenu");
 }
 
 
