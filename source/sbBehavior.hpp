@@ -17,7 +17,7 @@ public:
     void update();
     virtual ~sbBehavior();
 private:
-
+    gme::Vector2 winSize;
 };
 
 #endif	/* SBBEHAVIOR_HPP */

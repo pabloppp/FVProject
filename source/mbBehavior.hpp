@@ -8,13 +8,14 @@
 #ifndef MBBEHAVIOR_HPP
 #define	MBBEHAVIOR_HPP
 
-class mbBehavior {
+class mbBehavior: public gme::Script {
 public:
-    mbBehavior();
-    mbBehavior(const mbBehavior& orig);
+    mbBehavior() : gme::Script(){};
+    void setup();
+    void update();
     virtual ~mbBehavior();
 private:
-
+    gme::Vector2 winSize;
 };
 
 #endif	/* MBBEHAVIOR_HPP */
