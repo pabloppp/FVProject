@@ -18,46 +18,54 @@ void IAMovement::setup() {
     timepas=3;
     check = 0;
     jumping = false;
+    dead = false;
+    destroyed = false;
     
-    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
+    /*std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
         if(objects->at(i) == gameObject()){
             objects->erase(objects->begin()+i);
             objects->push_back(gameObject());
             break;
         }
-    }
+    }*/
     
     spawn = getTransform()->getPosition();
     
     trigger = new emptyGameObject("coltrigger");
     trigger->addComponent(new gme::RigidBody());
-    trigger->getRigidBody()->isKinematic();
+    trigger->getRigidBody()->isStatic();
     trigger->getRenderer()->setSize(gme::Vector2(32,32));
     trigger->getRenderer()->setPivot(gme::Vector2(0.5,1));
     gme::BoxCollider *bc = new gme::BoxCollider();
     bc->isTrigger(true);
     trigger->addComponent(bc);
+    trigger->addTag("enemy");
     gameObject()->addChild(trigger);
     instantiate(trigger);
     trigger->getTransform()->setPosition(gme::Vector2(0,0));
     
+    findPlayer();
+    
 }
 
-void IAMovement::update() {
+void IAMovement::update() { 
+     
+    trigger->getTransform()->position = gme::Vector2(0,0);
     
-    
-    
-    trigger->getTransform()->setPosition(gme::Vector2(0,0));
-    
-    findPlayer();
     if(player){
         gme::Vector2 playerpos = player->getTransform()->getPosition();
         gme::Vector2 enemypos = getTransform()->getPosition();
         
         if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
-          getTransform()->setPosition(spawn);
-          enemypos = spawn;
+            if(random()%3 == 1){
+                getTransform()->setPosition(spawn);
+                enemypos = spawn;
+                getRenderer()->setColor(255,150,150);
+            }
+            else{
+                dead = true;
+            }
         }
         
         deltatime = gme::Game::deltaTime.asSeconds();
@@ -89,6 +97,9 @@ void IAMovement::update() {
     
     
     cornered = 0;
+    
+    //if(dead) gameObject()->sendMessage("damage", 999999);
+    
 }
 
 void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
@@ -268,6 +279,14 @@ void IAMovement::onCollision(gme::Collider* c) {
     
     if(c->gameObject()->hasTag("corner")){  
         cornered = ((tile*)(c->gameObject()))->side;
+    }
+}
+
+void IAMovement::onMessage(std::string m, float v) {
+
+    if(m.compare("kill")==0 && !dead){
+        std::cout << "muerte" << std::endl;
+        dead = true;
     }
 }
 

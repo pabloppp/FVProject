@@ -42,7 +42,7 @@ void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
         hp -= v;
         if(hp <= 0){
-            sendMessage("kill", 0);
+            if(gameObject()->hasTag("enemy")) sendMessage("kill", 0);
             lives -= 1;
             if(lives <= 0){
                 lives = 0;
@@ -59,6 +59,9 @@ void LifeManager::onMessage(std::string m, float v) {
         if(hp > maxHp){
             hp = maxHp;
         }
+    }
+    if(m.compare("kill") == 0){
+        destroyGameObject(gameObject());
     }
     if(m.compare("oneup") == 0){
         lives += v;

@@ -120,6 +120,7 @@ void mapGenerator::setup() {
                             t->getRenderer()->setSize(gme::Vector2(16,16));
                             t->getRenderer()->setFrame(gme::Vector2(tx, ty));
                             t->getTransform()->setPosition(gme::Vector2(origin.x+(tileSizeFixed/2.f)+k*tileSizeFixed, origin.y+(tileSizeFixed/2.f)+j*tileSizeFixed));
+                            t->addTag("floor");
                             tRowV.push_back(t);
                         }
                         if(tRowV.size() > 0 && (tileNumber == 0 || k == mapwidth-1) ){

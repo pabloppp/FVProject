@@ -30,6 +30,7 @@ void enemy::setup(){
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
+    stats->maxHp = 10;
     addComponent(stats);
     
     IAMovement *ia = new IAMovement();

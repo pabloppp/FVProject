@@ -15,7 +15,7 @@ void PlayerMovement::setup() {
 
 void PlayerMovement::update() {
     
-    std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
+    //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
     float deltaTime = gme::Game::deltaTime.asSeconds();
     

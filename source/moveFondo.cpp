@@ -35,10 +35,6 @@ void moveFondo::setup() {
 }
 
 void moveFondo::update(){
-     
-    
-    
-    
     if(reloj.currentTime().asSeconds() > 0.01 && pausa==false ){
         
         getTransform()->translate(gme::Vector2(-x, 0));
@@ -51,7 +47,6 @@ void moveFondo::update(){
     if(gme::Keyboard::isKeyPressed(spaceKey) && pausa==false){ // BUCLE PARA QUE SUENE LA MUSICA
        if(apretar.currentTime().asSeconds()>0.2){ 
            
-           //std::cout << music_pausa << std::endl;
             if(sonando==true){
                 musica->pause();
                 sonando=false;

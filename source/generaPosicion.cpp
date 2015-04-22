@@ -26,7 +26,6 @@ void generaPosicion::update() {
     }
    
     if(enemi == true){
-        std::cout << "ctime: " << clkE.currentTime().asSeconds() << " : " << rat <<  std::endl;
         if(clkE.currentTime().asSeconds() > rat){
            clkE.restart();
            gme::Vector2 randomPos = posiciones.at(rand() % posiciones.size());

@@ -1,6 +1,8 @@
 #include "player.hpp"
 #include "PlayerMovement.hpp"
 #include "LifeManager.hpp"
+#include "weapon.hpp"
+#include "pistolaBehavior.hpp"
 
 void player::setup() {
     

@@ -6,6 +6,8 @@
 #include "CameraFollowPlayer.hpp"
 #include "backgroundLayer.hpp"
 #include "generaPosicion.hpp"
+#include "weapon.hpp"
+#include "pistolaBehavior.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -13,18 +15,30 @@ void tilerJsonLoadScene::setup() {
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
 
     
-    gme::Game::newTexture("resources/jungle_sky.png", "skyTexture");
-    gme::Game::newTexture("resources/jungle_frontA.png", "bgFrontATexture");
-    gme::Game::newTexture("resources/jungle_frontB.png", "bgFrontBTexture");
-    gme::Game::newTexture("resources/jungle_frontC.png", "bgFrontCTexture");
-    gme::Game::newTexture("resources/jungle_midA.png", "bgMidATexture");
-    gme::Game::newTexture("resources/jungle_midB.png", "bgMidBTexture");
-    gme::Game::newTexture("resources/jungle_midC.png", "bgMidCTexture");
+    gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontB.png", "bgFrontBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontC.png", "bgFrontCTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midA.png", "bgMidATexture");
+    gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
+    
+    gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
+    gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
     
     setupBg(); 
     
+    weapon *arma = new weapon("pistola");
+    arma->addComponent(new pistolaBehavior()); 
+    
+    
     player *p1 = new player("p1");
     p1->getTransform()->setPosition(gme::Vector2(512, 0));
+    
+    p1->addChild(arma);
+    arma->getTransform()->setPosition(gme::Vector2(0,0));
+    
+
     
     /*enemy *e = new enemy("dino");
     e->getTransform()->setPosition(gme::Vector2(150, 50));
@@ -40,7 +54,7 @@ void tilerJsonLoadScene::setup() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     generaPosicion *g =  new generaPosicion(-1,280,3);
-    g->addPosition(1530, 280);
+    g->addPosition(1520, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);
     sceneLoaderObject->addComponent(g);

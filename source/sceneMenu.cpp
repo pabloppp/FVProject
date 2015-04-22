@@ -2,6 +2,7 @@
 #include "sceneMenu.hpp"
 #include "imagenFondo.hpp"
 #include "staticObject.hpp"
+#include "GameManager.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -16,6 +17,7 @@ void sceneMenu::setup(){
    fondo2->getTransform()->setScale(gme::Vector2(-1, 1));
    fondo2->getRenderer()->setTexture("fondo_principal");
    
+   gme::GameObject *gameManager = new GameManager("gmanager");
    
    /* gme::GameObject *logo= new staticObject("logo");
     logo->getTransform()->setPosition(gme::Vector2(320, 130));

@@ -37,15 +37,23 @@ void Scene::addGameObject(GameObject *g) {
 }
 
 void Scene::destroyGameObject(GameObject* g){
-    for(int i=0;i<gameObjects.size();i++){
+    for(int i=gameObjects.size()-1;i>=0;i--){
         if(i < gameObjects.size() && gameObjects.at(i) == g){
+            
+            if(gameObjects.at(i)->getChildren().size() > 0){
+                while(gameObjects.at(i)->getChildren().size() > 0){
+                    GameObject *child = gameObjects.at(i)->getChildren().at(0);
+                    gameObjects.at(i)->removeChild(child);
+                    destroyGameObject(child);
+                }
+            }
+            
             gameObjects.at(i) = gameObjects.back();
             gameObjects.pop_back();
             delete g;
             return;
         }
-    }
-    
+    }    
 }
 
 void Scene::instantiate(GameObject* g){

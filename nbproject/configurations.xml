@@ -94,8 +94,28 @@
       </logicalFolder>
       <logicalFolder name="source" displayName="source" projectFiles="true">
         <logicalFolder name="f1" displayName="objects" projectFiles="true">
+          <logicalFolder name="f1" displayName="Ataque" projectFiles="true">
+            <itemPath>source/escopetaBullet.cpp</itemPath>
+            <itemPath>source/escopetaBullet.hpp</itemPath>
+            <itemPath>source/llamasBullet.cpp</itemPath>
+            <itemPath>source/llamasBullet.hpp</itemPath>
+            <itemPath>source/metralletaBullet.cpp</itemPath>
+            <itemPath>source/metralletaBullet.hpp</itemPath>
+            <itemPath>source/pistolaBullet.cpp</itemPath>
+            <itemPath>source/pistolaBullet.hpp</itemPath>
+            <itemPath>source/weapon.cpp</itemPath>
+            <itemPath>source/weapon.hpp</itemPath>
+          </logicalFolder>
+          <itemPath>source/Animator.cpp</itemPath>
+          <itemPath>source/Animator.hpp</itemPath>
+          <itemPath>source/GameManager.cpp</itemPath>
+          <itemPath>source/GameManager.hpp</itemPath>
+          <itemPath>source/backgroundLayer.cpp</itemPath>
+          <itemPath>source/backgroundLayer.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
+          <itemPath>source/enemy.cpp</itemPath>
+          <itemPath>source/enemy.hpp</itemPath>
           <itemPath>source/imagenFondo.cpp</itemPath>
           <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/player.cpp</itemPath>
@@ -116,12 +136,54 @@
           <itemPath>source/tilerJsonLoadScene.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="scripts" projectFiles="true">
+          <logicalFolder name="f1" displayName="Armas" projectFiles="true">
+            <logicalFolder name="f1" displayName="Escopeta" projectFiles="true">
+              <itemPath>source/escopetaBehavior.cpp</itemPath>
+              <itemPath>source/escopetaBehavior.hpp</itemPath>
+              <itemPath>source/sbBehavior.cpp</itemPath>
+              <itemPath>source/sbBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f2" displayName="Lanzallamas" projectFiles="true">
+              <itemPath>source/llbBehavior.cpp</itemPath>
+              <itemPath>source/llbBehavior.hpp</itemPath>
+              <itemPath>source/lnzllamasBehavior.cpp</itemPath>
+              <itemPath>source/lnzllamasBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f3" displayName="Metralleta" projectFiles="true">
+              <itemPath>source/mbBehavior.cpp</itemPath>
+              <itemPath>source/mbBehavior.hpp</itemPath>
+              <itemPath>source/metralletaBehavior.cpp</itemPath>
+              <itemPath>source/metralletaBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f4" displayName="Pistola" projectFiles="true">
+              <itemPath>source/pbBehavior.cpp</itemPath>
+              <itemPath>source/pbBehavior.hpp</itemPath>
+              <itemPath>source/pistolaBehavior.cpp</itemPath>
+              <itemPath>source/pistolaBehavior.hpp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>source/BackgroundParallax.cpp</itemPath>
+          <itemPath>source/BackgroundParallax.hpp</itemPath>
+          <itemPath>source/CameraFollowPlayer.cpp</itemPath>
+          <itemPath>source/CameraFollowPlayer.hpp</itemPath>
+          <itemPath>source/GlobalStateManager.cpp</itemPath>
+          <itemPath>source/GlobalStateManager.hpp</itemPath>
+          <itemPath>source/IAMovement.cpp</itemPath>
+          <itemPath>source/IAMovement.hpp</itemPath>
+          <itemPath>source/IntroS1Manager.cpp</itemPath>
+          <itemPath>source/IntroS1Manager.hpp</itemPath>
           <itemPath>source/LifeManager.cpp</itemPath>
           <itemPath>source/LifeManager.hpp</itemPath>
+          <itemPath>source/MenuManager.cpp</itemPath>
+          <itemPath>source/MenuManager.hpp</itemPath>
           <itemPath>source/PlayerMovement.cpp</itemPath>
           <itemPath>source/PlayerMovement.hpp</itemPath>
+          <itemPath>source/SaveManager.cpp</itemPath>
+          <itemPath>source/SaveManager.hpp</itemPath>
           <itemPath>source/TileRowGenerator.cpp</itemPath>
           <itemPath>source/TileRowGenerator.hpp</itemPath>
+          <itemPath>source/generaPosicion.cpp</itemPath>
+          <itemPath>source/generaPosicion.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
           <itemPath>source/mapGenerator.hpp</itemPath>
           <itemPath>source/moveFondo.cpp</itemPath>
@@ -346,6 +408,10 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
@@ -354,17 +420,37 @@
       </item>
       <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GameManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/GlobalStateManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GlobalStateManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IAMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/MenuManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MenuManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/SaveManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/SaveManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -382,6 +468,14 @@
       </item>
       <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -389,6 +483,18 @@
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -398,13 +504,41 @@
       </item>
       <item path="source/mapGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/mbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/pistolaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pistolaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/pistolaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pistolaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -422,10 +556,6 @@
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/subTrigger.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/subTrigger.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tile.hpp" ex="false" tool="3" flavor2="0">
@@ -441,6 +571,10 @@
       <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/weapon.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -629,6 +763,10 @@
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/Animator.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/BackgroundParallax.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/BackgroundParallax.hpp" ex="false" tool="3" flavor2="0">
@@ -637,17 +775,37 @@
       </item>
       <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GameManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/GlobalStateManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/GlobalStateManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IAMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/LifeManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/MenuManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MenuManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/PlayerMovement.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/PlayerMovement.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/SaveManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/SaveManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/TileRowGenerator.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -665,6 +823,14 @@
       </item>
       <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -672,6 +838,18 @@
       <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzllamasBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/mainGame.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -681,13 +859,41 @@
       </item>
       <item path="source/mapGenerator.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/mbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/mbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/pistolaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pistolaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/pistolaBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/pistolaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/player.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/player.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sbBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/sceneMenu.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -705,10 +911,6 @@
       </item>
       <item path="source/staticObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/subTrigger.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/subTrigger.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="source/tile.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tile.hpp" ex="false" tool="3" flavor2="0">
@@ -724,6 +926,10 @@
       <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/weapon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/weapon.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

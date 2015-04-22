@@ -9,7 +9,7 @@ void bullet::setup(){
    
    gme::RigidBody *rb = new gme::RigidBody();
    rb->setGravity(false);
-   rb->setSpeed(0,0); //<-----
+   //rb->setSpeed(0,0); 
    
    gme::BoxCollider *boxCollider = new gme::BoxCollider();
    boxCollider->isTrigger(true);

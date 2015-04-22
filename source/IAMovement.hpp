@@ -23,6 +23,9 @@ public:
     void vectorDirector(gme::Vector2 player, gme::Vector2 enemy);
     virtual ~IAMovement();
 
+    virtual void onMessage(std::string m, float v);
+
+
     virtual void onCollision(gme::Collider* c);
 
 private:
@@ -39,6 +42,7 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    bool dead, destroyed;
     gme::GameObject *trigger;
     
     gme::Vector2 spawn;
