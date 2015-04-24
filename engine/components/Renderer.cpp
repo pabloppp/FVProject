@@ -86,20 +86,30 @@ void Renderer::setTexture(const std::string& s){
     if(t != NULL){
         setTexture(*t);
         
-        if(t->atlas == NULL){
-            atlas = json_object_new_object();
-            int lastindex = t->getPath().find_last_of("."); 
-            std::string jsonFileName = t->getPath().substr(0, lastindex)+".json";
-            
-            struct stat   buffer;
-            if(stat (jsonFileName.c_str(), &buffer) != 0) return;
-            
-            atlas = json_object_from_file(jsonFileName.c_str());  
-            if(atlas){
-                std::cout << "Loaded atlas for "+s << std::endl;
+        int lastindex = t->getPath().find_last_of("."); 
+        std::string jsonFileName = t->getPath().substr(0, lastindex)+".json";
+        
+        if(FILE *file = fopen(jsonFileName.c_str(), "r")){
+            fclose(file);
+        
+            if(t->atlas == NULL){
+                atlas = json_object_new_object();
+
+
+                struct stat   buffer;
+                if(stat (jsonFileName.c_str(), &buffer) != 0) return;
+
+                atlas = json_object_from_file(jsonFileName.c_str());  
+                if(atlas){
+                    std::cout << "Loaded atlas for "+s << std::endl;
+                }
+                else atlas = NULL;
+                t->atlas = atlas;
             }
-            else atlas = NULL;
-            t->atlas = atlas;
+            
+        }
+        else{
+            atlas = NULL;
         }
         
     }

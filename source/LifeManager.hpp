@@ -10,6 +10,9 @@ public:
         hp = maxHp;
         maxLives = 3;
         lives = maxLives;
+        waitTime = 0.5; //segundos
+        showDamage = false;
+        startShowDamage = false;
     };
     void setup();
     void update();
@@ -21,6 +24,10 @@ public:
     virtual void onMessage(std::string m, float v);
     int maxHp;
     int maxLives;
+    float waitTime;
+    gme::Clock waitClock;
+    bool showDamage, startShowDamage;
+    int r, g, b;
 
 private:
     int hp;

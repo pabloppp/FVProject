@@ -1,6 +1,7 @@
 #include "generaPosicion.hpp"
 #include "../engine/Game.hpp"
 #include "enemy.hpp"
+#include "enemy_fast.hpp"
 
 
 void generaPosicion::setup(){
@@ -66,8 +67,16 @@ bool generaPosicion::getColectionable(){
 void generaPosicion::generaEnemigo(int x, int y) {
     if (enemi == true){
         
+        int random = rand() % 100;
         
-        enemy *enemigo = new enemy("dino");
+        gme::GameObject *enemigo;
+        
+        if(random < 70){
+            enemigo = new enemy("dino");
+        }
+        else{
+            enemigo = new enemy_fast("dino_fast");
+        }
         enemigo->getTransform()->setPosition(gme::Vector2(x, y));
         
         instantiate(enemigo);

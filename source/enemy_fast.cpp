@@ -1,10 +1,10 @@
 
-#include "enemy.hpp"
+#include "enemy_fast.hpp"
 #include "LifeManager.hpp"
 #include "IAMovement.hpp"
 
 
-void enemy::setup(){
+void enemy_fast::setup(){
     addTag("enemy");
     
     getRenderer()->setTexture("dino00");
@@ -12,6 +12,8 @@ void enemy::setup(){
     getRenderer()->setFrame("idle");
     getTransform()->scale = gme::Vector2(3,3);
     getRenderer()->setPivot(gme::Vector2(0.5, 1));
+    
+    getRenderer()->setColor(150,150,255);
     
     gme::RigidBody *rb = new gme::RigidBody();
     rb->setElasticity(0);
@@ -35,10 +37,11 @@ void enemy::setup(){
     addComponent(stats);
     
     IAMovement *ia = new IAMovement();
+    ia->speed = 12;
     addComponent(ia);
 }
 
-void enemy::update(){
+void enemy_fast::update(){
     
 }
 

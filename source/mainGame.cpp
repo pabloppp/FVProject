@@ -13,6 +13,8 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/gato.png", "logo");
     gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
     
+    gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
+    
     gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");   
    
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");

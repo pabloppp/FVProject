@@ -81,8 +81,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
 	${OBJECTDIR}/source/backgroundLayer.o \
+	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/enemy_fast.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
@@ -104,6 +106,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/sceneSplash.o \
 	${OBJECTDIR}/source/splash.o \
+	${OBJECTDIR}/source/sprayParticleScript.o \
 	${OBJECTDIR}/source/staticObject.o \
 	${OBJECTDIR}/source/tile.o \
 	${OBJECTDIR}/source/tileDestroyManager.o \
@@ -366,6 +369,11 @@ ${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
 
+${OBJECTDIR}/source/defaultParticle.o: source/defaultParticle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/defaultParticle.o source/defaultParticle.cpp
+
 ${OBJECTDIR}/source/emptyGameObject.o: source/emptyGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -375,6 +383,11 @@ ${OBJECTDIR}/source/enemy.o: source/enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/enemy_fast.o: source/enemy_fast.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_fast.o source/enemy_fast.cpp
 
 ${OBJECTDIR}/source/escopetaBehavior.o: source/escopetaBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -480,6 +493,11 @@ ${OBJECTDIR}/source/splash.o: source/splash.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/splash.o source/splash.cpp
+
+${OBJECTDIR}/source/sprayParticleScript.o: source/sprayParticleScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sprayParticleScript.o source/sprayParticleScript.cpp
 
 ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

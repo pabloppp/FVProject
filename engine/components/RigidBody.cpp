@@ -73,6 +73,13 @@ void RigidBody::update(){
     b2body->SetAngularDamping(friction*10);
 }
 
+void RigidBody::forcePosition(gme::Vector2 pos) {
+    b2body->SetTransform(b2Vec2((pos.x+pivotDisp.x)/SCALE, 
+                (pos.y+pivotDisp.y)/SCALE), 
+                gameObject()->getTransform()->getRotation()*PI/180.f);
+}
+
+
 void RigidBody::updatep(){
     if(gameObject()!= NULL && gameObject()->getTransform() != NULL){
         Vector2 parentDisp(0,0);
