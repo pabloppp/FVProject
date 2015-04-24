@@ -7,11 +7,6 @@
 class lnzllamasBehavior : public gme::Script {
 public:
     lnzllamasBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     virtual ~lnzllamasBehavior();
     void setup();

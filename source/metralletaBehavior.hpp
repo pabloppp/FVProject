@@ -8,11 +8,6 @@
 class metralletaBehavior: public gme::Script  {
 public:    
     metralletaBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     virtual ~metralletaBehavior();
     void setup();
