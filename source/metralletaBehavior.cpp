@@ -1,50 +1,86 @@
 #include "metralletaBehavior.hpp"
-#include "pistolaBullet.hpp"
+#include "metralletaBullet.hpp"
 
 void metralletaBehavior::setup() {
     getRenderer()->setTexture("gun");
     speedBullet = 25.f;
-
+    direction = 1;
+    numBullets = 100;
+    recargando = false;
+    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
+    for(int i=0;i<objects->size();i++){
+        if(objects->at(i) == gameObject()){
+            objects->erase(objects->begin()+i);
+            objects->push_back(gameObject());
+            break;
+        }
+    }
 }
 
 void metralletaBehavior::update() {
-    if(gme::Keyboard::isKeyPressed(ShotKey)){
-        animator.animate();
-        if(gme::Keyboard::isKeyPressed(keyUp) ){
-            direction = 0;
-            shoot(direction);
-        }
-        else if(gme::Keyboard::isKeyPressed(keyDown)){
-            direction = 2;
-            shoot(direction);
-        } 
-        else if(gme::Keyboard::isKeyPressed(keyLeft)){
-            direction = 3;
-            shoot(direction);
-        }
-        else if(gme::Keyboard::isKeyPressed(keyRight)) {
-            direction = 1;
-            shoot(direction);
-        }
-        else if(!gme::Keyboard::isKeyPressed(keyRight) &&
-                !gme::Keyboard::isKeyPressed(keyLeft) &&
-                !gme::Keyboard::isKeyPressed(keyDown) &&
-                !gme::Keyboard::isKeyPressed(keyUp)){
-            shoot(direction);
-        }
+    if(numBullets <= 0 && !recargando){
+        recargando = true;
+        return;
     }
-    else animator.restart();
+    if(recargando){
+        if(clock.currentTime().asSeconds() > 0.05){
+            clock.restart();
+            numBullets = numBullets + 4;
+        } 
+        if(numBullets >= 100) recargando = false;
+        return;
+    }
+    
+    verticalDirection = -1;
+    if(gme::Keyboard::isKeyPressed(keyUp)){
+        verticalDirection = 0;
+    }
+    else if(gme::Keyboard::isKeyPressed(keyDown)){
+        verticalDirection = 2;
+    } 
+    
+    if(gme::Keyboard::isKeyPressed(keyLeft)){
+        direction = 3;
+        verticalDirection = -1;
+    }
+    else if(gme::Keyboard::isKeyPressed(keyRight)) {
+        direction = 1;
+        verticalDirection = -1;
+    }
+    
+    if(gme::Keyboard::isKeyPressed(ShotKey) && !recargando){
+        animator.animate();
+        if(verticalDirection != -1) shoot(verticalDirection);
+        else shoot(direction);
+    }
+    else if(!gme::Keyboard::isKeyPressed(ShotKey)) animator.restart();
   
 }
 
 void metralletaBehavior::shoot(int d){
+    
     float timePassed = 0.f;
     directionSp = d;
     animator.at(timePassed, [](void* ctx) {
        metralletaBehavior *q = static_cast<metralletaBehavior*> (ctx);
-       gme::GameObject *bulletx = new pistolaBullet("bullet");
+       gme::GameObject *bulletx = new metralletaBullet("bullet");
        q->instantiate(bulletx);
-       bulletx->getTransform()->setPosition(gme::Vector2(500,350));
+       q->numBullets--;
+      
+
+       int v1 = rand() % 10+0;
+       if(q->directionSp == 1 || q->directionSp == 3){
+            bulletx->getTransform()->setPosition(
+                gme::Vector2(q->getTransform()->getPosition().x,
+               (q->getTransform()->getPosition().y-30+v1))
+            );
+       }
+       else if(q->directionSp == 0 || q->directionSp == 2){
+            bulletx->getTransform()->setPosition(
+                gme::Vector2(q->getTransform()->getPosition().x+v1,
+               (q->getTransform()->getPosition().y-30))
+            );
+       }
        switch(q->directionSp){
             case 0:
                 bulletx->getTransform()->setRotation(90);
@@ -63,8 +99,7 @@ void metralletaBehavior::shoot(int d){
         }
     }, this);
     timePassed += cadency;
-       
-   
+    
             
 }
 

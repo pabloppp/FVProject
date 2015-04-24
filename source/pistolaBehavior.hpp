@@ -28,6 +28,7 @@ private:
     int verticalDirection;
     float speedBullet;
     gme::Vector2 winSize;
+    gme::Clock clock;
 };
 
 #endif	/* SHOOTBULLET_HPP */

@@ -31,7 +31,7 @@ void enemy::setup(){
   
     LifeManager *stats = new LifeManager();
     stats->maxHp = 10;
-    stats->waitTime = 0.2;
+    stats->waitTime = 0.05;
     addComponent(stats);
     
     IAMovement *ia = new IAMovement();
