@@ -22,9 +22,11 @@ sprayParticleScript::~sprayParticleScript() {
 
 void sprayParticleScript::onCollision(gme::Collider* c) {
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
-    if(sticky && relativePosition.y == 1 && relativePosition.x == 0){
-        getRigidBody()->gravityMultiplier(0);
-        getRigidBody()->setSpeed(0,0);
+    if(sticky){
+        if(relativePosition.y == 1 || relativePosition.x != 0){
+            getRigidBody()->gravityMultiplier(0);
+            getRigidBody()->setSpeed(0,0);
+        }
     }
 }
 

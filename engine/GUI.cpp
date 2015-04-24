@@ -36,6 +36,8 @@ void GUI::box(Vector2 position, Vector2 size, const std::string& text, Origin or
         py = position.y - size.y;   
     }
     
+    rshape.setRotation(globalRotation);
+    
     rshape.setPosition(px+outlineThickness, py+outlineThickness);
     rshape.setSize(sf::Vector2f(size.x-outlineThickness*2.f, size.y-outlineThickness*2.f));
     rshape.setFillColor(sf::Color(backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a));
@@ -107,6 +109,9 @@ void GUI::label(Vector2 position, const std::string& txt, Origin origin) {
     }
     
     text.setPosition(int(px), int(py-space));
+    
+    text.setRotation(globalRotation);
+    
     window->draw(text);
 }
 
@@ -131,6 +136,8 @@ void GUI::drawTexture(Vector2 position, Vector2 size, Texture* texture, Origin o
     else if(origin == Origin::BottomLeft || origin == Origin::BottomRight || origin == Origin::BottomCenter){
         py = position.y - size.y;   
     }
+    
+    rshape.setRotation(globalRotation);
     
     rshape.setPosition(px, py);
     rshape.setSize(sf::Vector2f(size.x, size.y));
@@ -201,3 +208,5 @@ bool GUI::enabled = true;
 int GUI::fontSize = 24;
 
 float GUI::outlineThickness = 0;
+
+float GUI::globalRotation = 0;

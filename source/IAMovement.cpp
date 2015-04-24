@@ -308,10 +308,56 @@ void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
         particle->getRenderer()->setColor(255,0,0);
         particle->getRigidBody()->pushImmediate(gme::Vector2(dirX, dirY), force);
                 
-        std::cout << "pos: " << pos.x << " " << pos.y << std::endl;
     }
-    std::cout << "kaboom: " << cantidad << std::endl;
 }
+
+void IAMovement::onGui() {
+    
+    gme::Vector2 enemyPos = getTransform()->getPosition();
+    gme::Vector2 enemyPosWindow = enemyPos.worldToScreen();
+    if(enemyPosWindow.x < -32*3){
+        gme::GUI::globalRotation = 90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(16*3+8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.x > 1024+32*3){
+        gme::GUI::globalRotation = -90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(1024-8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.y > 576){
+        gme::GUI::globalRotation = 0;
+        float posx = enemyPosWindow.x;
+        if(posx < 16*3 ) posx = 16*3;
+        else if(posx > 1024-16*3) posx = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(posx, 576-8*3),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    gme::GUI::globalRotation = 0;
+    
+}
+
 
 
 

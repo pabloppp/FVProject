@@ -64,6 +64,7 @@ public:
     static bool enabled;
     static int fontSize;
     static float outlineThickness;
+    static float globalRotation;
     
     static void box(Vector2 position, Vector2 size, const std::string &text = "", Origin origin = Origin::TopLeft, Texture *texture = NULL);
     static void box(Vector2 position, Vector2 size, Origin origin, Texture *texture = NULL);

@@ -29,6 +29,10 @@ public:
 
     virtual void onCollision(gme::Collider* c);
     
+
+    virtual void onGui();
+
+    
     float speed;
 
 private:

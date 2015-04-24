@@ -15,7 +15,11 @@ void mainGame::setup() {
     
     gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
     
-    gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");   
+    gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");
+    
+    gme::Game::newTexture("resources/Others/indicator_0.png", "indicator_enemy"); 
+    gme::Game::newTexture("resources/Others/indicator_1.png", "indicator_box");
+    gme::Game::newTexture("resources/Others/heart.png", "heart");   
    
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");

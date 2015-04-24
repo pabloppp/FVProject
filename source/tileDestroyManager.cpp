@@ -54,10 +54,7 @@ void tileDestroyManager::explode(int min, int max, float forcemin, float forcema
             particle->getRenderer()->setColor(103,64,40);
         }
         particle->getRigidBody()->pushImmediate(gme::Vector2(dirX, dirY), force);
-                
-        std::cout << "pos: " << pos.x << " " << pos.y << std::endl;
     }
-    std::cout << "kaboom: " << cantidad << std::endl;
 }
 
 
