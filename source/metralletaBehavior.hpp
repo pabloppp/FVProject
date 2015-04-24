@@ -24,12 +24,16 @@ public:
     gme::Keyboard::Key keyLeft;
     gme::Keyboard::Key keyRight;
     gme::Keyboard::Key keyDown;
+    int numBullets;
 private:
     Animator animator;
     int direction; //0 top, 1 dcha, 2 bot, 3 izq 
     float speedBullet;
     float cadency = 0.1f;
     int directionSp;
+    int verticalDirection;
+    gme::Clock clock;
+    bool recargando;
     
 };
 

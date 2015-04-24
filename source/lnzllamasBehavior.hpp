@@ -22,6 +22,7 @@ public:
     gme::Keyboard::Key keyLeft;
     gme::Keyboard::Key keyRight;
     gme::Keyboard::Key keyDown;
+    int numBullets;
 private:
     Animator animator;
     int directionSp;
@@ -29,6 +30,9 @@ private:
     float speedBullet;
     float cadency = 3.1f;
     gme::Vector2 winSize;
+    int verticalDirection;
+    bool recargando;
+    gme::Clock clock;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */

@@ -1,7 +1,5 @@
-
 #include "pistolaBullet.hpp"
 #include "pbBehavior.hpp"
-#include "llbBehavior.hpp"
 
 void pistolaBullet::setup(){
    addTag("bullet"); 

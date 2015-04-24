@@ -8,6 +8,9 @@
 #include "generaPosicion.hpp"
 #include "weapon.hpp"
 #include "pistolaBehavior.hpp"
+#include "metralletaBehavior.hpp"
+#include "lnzllamasBehavior.hpp"
+#include "escopetaBehavior.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -28,8 +31,8 @@ void tilerJsonLoadScene::setup() {
     
     setupBg(); 
     
-    weapon *arma = new weapon("pistola");
-    arma->addComponent(new pistolaBehavior()); 
+    weapon *arma = new weapon("metra");
+    arma->addComponent(new escopetaBehavior()); 
     
     
     player *p1 = new player("p1");

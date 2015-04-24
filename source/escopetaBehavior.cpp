@@ -1,40 +1,44 @@
-
 #include "escopetaBehavior.hpp"
 #include "escopetaBullet.hpp"
 
 void escopetaBehavior::setup() {
     getRenderer()->setTexture("gun");
-    speedBullet = 25.f;
+    speedBullet = 32.f;
     shooting = false;
+    direction = 1;
+    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
+    for(int i=0;i<objects->size();i++){
+        if(objects->at(i) == gameObject()){
+            objects->erase(objects->begin()+i);
+            objects->push_back(gameObject());
+            break;
+        }
+    }
 }
 
 void escopetaBehavior::update() {
+    verticalDirection = -1;
+    
+    if(gme::Keyboard::isKeyPressed(keyUp)){
+        verticalDirection = 0;
+    }
+    else if(gme::Keyboard::isKeyPressed(keyDown)){
+        verticalDirection = 2;
+    } 
+    
+    if(gme::Keyboard::isKeyPressed(keyLeft)){
+        direction = 3;
+        verticalDirection = -1;
+    }
+    else if(gme::Keyboard::isKeyPressed(keyRight)) {
+        direction = 1;
+        verticalDirection = -1;
+    }
+    
     if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting ){
         shooting = true;
-        
-        if(gme::Keyboard::isKeyPressed(keyUp) && shooting){
-            direction = 0;
-            shoot(direction);
-        }
-        else if(gme::Keyboard::isKeyPressed(keyDown) && shooting){
-            direction = 2;
-            shoot(direction);
-
-        } 
-        else if(gme::Keyboard::isKeyPressed(keyLeft) && shooting){
-            direction = 3;
-            shoot(direction);
-        }
-        else if(gme::Keyboard::isKeyPressed(keyRight) && shooting) {
-            direction = 1;
-            shoot(direction);
-        }
-        else if(!gme::Keyboard::isKeyPressed(keyRight) &&
-                !gme::Keyboard::isKeyPressed(keyLeft) &&
-                !gme::Keyboard::isKeyPressed(keyDown) &&
-                !gme::Keyboard::isKeyPressed(keyUp) && shooting){
-            shoot(direction);
-        }
+        if(verticalDirection != -1) shoot(verticalDirection);
+        else shoot(direction);
     } 
     else if(!gme::Keyboard::isKeyPressed(ShotKey) && shooting){ 
         shooting = false;
@@ -43,7 +47,6 @@ void escopetaBehavior::update() {
 
 void escopetaBehavior::shoot(int d) {
     if(clock.currentTime().asSeconds()>1){
-        
         gme::GameObject *bulletx = new escopetaBullet("bullet");
         gme::GameObject *bullety = new escopetaBullet("bullet");
         gme::GameObject *bulletz = new escopetaBullet("bullet");
@@ -51,9 +54,9 @@ void escopetaBehavior::shoot(int d) {
         instantiate(bullety); 
         instantiate(bulletz); 
 
-        bulletx->getTransform()->setPosition(gme::Vector2(500,350));    
-        bullety->getTransform()->setPosition(gme::Vector2(500,350)); 
-        bulletz->getTransform()->setPosition(gme::Vector2(500,350)); 
+        bulletx->getTransform()->setPosition(gme::Vector2(getTransform()->getPosition().x,getTransform()->getPosition().y-30));    
+        bullety->getTransform()->setPosition(gme::Vector2(getTransform()->getPosition().x,getTransform()->getPosition().y-30)); 
+        bulletz->getTransform()->setPosition(gme::Vector2(getTransform()->getPosition().x,getTransform()->getPosition().y-30)); 
         switch(d){
             case 0:
                 bulletx->getTransform()->setRotation(79.2);

@@ -27,6 +27,7 @@ private:
     float speedBullet;
     bool shooting;
     int direction;
+    int verticalDirection;
     gme::Clock clock;
 };
 
