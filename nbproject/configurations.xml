@@ -112,6 +112,8 @@
           <itemPath>source/GameManager.hpp</itemPath>
           <itemPath>source/backgroundLayer.cpp</itemPath>
           <itemPath>source/backgroundLayer.hpp</itemPath>
+          <itemPath>source/colectableGameObject.cpp</itemPath>
+          <itemPath>source/colectableGameObject.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
           <itemPath>source/enemy.cpp</itemPath>
@@ -182,6 +184,8 @@
           <itemPath>source/SaveManager.hpp</itemPath>
           <itemPath>source/TileRowGenerator.cpp</itemPath>
           <itemPath>source/TileRowGenerator.hpp</itemPath>
+          <itemPath>source/colectableScript.cpp</itemPath>
+          <itemPath>source/colectableScript.hpp</itemPath>
           <itemPath>source/generaPosicion.cpp</itemPath>
           <itemPath>source/generaPosicion.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
@@ -459,6 +463,14 @@
       <item path="source/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -814,6 +826,14 @@
       <item path="source/backgroundLayer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -33,8 +33,9 @@ void enemy::setup(){
     stats->maxHp = 10;
     addComponent(stats);
     
-    IAMovement *ia = new IAMovement();
+    IAMovement *ia =  new IAMovement();
     addComponent(ia);
+   
 }
 
 void enemy::update(){

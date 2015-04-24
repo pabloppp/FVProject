@@ -81,6 +81,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
 	${OBJECTDIR}/source/backgroundLayer.o \
+	${OBJECTDIR}/source/colectableGameObject.o \
+	${OBJECTDIR}/source/colectableScript.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
@@ -365,6 +367,16 @@ ${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
+
+${OBJECTDIR}/source/colectableGameObject.o: source/colectableGameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/colectableGameObject.o source/colectableGameObject.cpp
+
+${OBJECTDIR}/source/colectableScript.o: source/colectableScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/colectableScript.o source/colectableScript.cpp
 
 ${OBJECTDIR}/source/emptyGameObject.o: source/emptyGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

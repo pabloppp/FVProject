@@ -1,6 +1,10 @@
 #include "generaPosicion.hpp"
 #include "../engine/Game.hpp"
 #include "enemy.hpp"
+#include "weapon.hpp"
+#include "metralletaBehavior.hpp"
+#include "pistolaBehavior.hpp"
+#include "colectableGameObject.hpp"
 
 
 void generaPosicion::setup(){
@@ -10,15 +14,22 @@ void generaPosicion::setup(){
     enemi = false;
     clkC.restart();
     clkE.restart();
+    randomtime = 5;
 }
 
 void generaPosicion::update() {   
     
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > 1){
+        if(clkC.currentTime().asSeconds() > randomtime && objects < 10){
             clkC.restart();
             generaColeccionable();
+            objects ++;
+            randomtime = (rand()%10) + 5;
+            //std::cout << randomtime << std::endl;
+        }
+        else if(objects >= 10){
+            //std::cout << "no se pueden generar mas objetos" << std::endl;
         }
     }
     else{
@@ -41,14 +52,17 @@ void generaPosicion::update() {
 
 void generaPosicion::generaColeccionable(){
     
+    
     int pos = rand();
-    int finalpos = (int)pos%(int)v.x;
-    gme::GameObject *coleccionable = new gme::GameObject("colleccionable");
-    coleccionable->getRenderer()->setTexture("coleccionable"); 
-    coleccionable->getRenderer()->setSize(gme::Vector2(32,32));
-    coleccionable->getRenderer()->setFrame(gme::Vector2(0,0));
-    coleccionable->addComponent(new gme::RigidBody);
-    coleccionable->getTransform()->setPosition(gme::Vector2(finalpos, -3));
+    int x = v.x +(16*35);
+    int finalpos = (int)pos%(int)x;
+    
+    
+    colectableGameObject *col =  new colectableGameObject("colectable");
+    col->getTransform()->setPosition(gme::Vector2(finalpos, 0));
+    instantiate(col);
+    
+    
    
     
     //std::cout << finalpos << std::endl; 

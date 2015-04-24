@@ -17,6 +17,8 @@ void PlayerMovement::update() {
     
     //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
+    
+    
     float deltaTime = gme::Game::deltaTime.asSeconds();
     
     if(getRigidBody() == NULL) return;
@@ -116,6 +118,7 @@ void PlayerMovement::onCollision(gme::Collider* c) {
         }
     }*/
 }
+
 
 void PlayerMovement::animate() {
     if(animGraceTimeClock.currentTime().asSeconds() < animGraceTime) return;

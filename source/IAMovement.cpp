@@ -114,7 +114,7 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
     if(clkJ.currentTime().asSeconds() > 5 && player.y < enemy.y && getRigidBody()){
         clkJ.restart();
         grounded = false;
-        std::cout << "jumping: " << 40000*deltatime << std::endl;
+        //std::cout << "jumping: " << 40000*deltatime << std::endl;
         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
     }
     
@@ -128,7 +128,7 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
+                        //std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                     }
                     else{
@@ -153,7 +153,7 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
+                    //std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                 }
                 //NO HACER NADA
@@ -166,7 +166,7 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
+                   // std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                 }
                 else{
@@ -179,7 +179,7 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
+                        //std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                     }
                     else{
@@ -260,10 +260,14 @@ void IAMovement::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
         
 }
 
-
-
 IAMovement::~IAMovement() {
+
 }
+
+IAMovement::IAMovement() {
+
+}
+
 
 void IAMovement::onCollision(gme::Collider* c) {
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);

@@ -11,6 +11,8 @@
 
 void tilerJsonLoadScene::setup() {
     
+    //gme::Game::debugColliders = true;
+    
     gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
 
@@ -25,11 +27,14 @@ void tilerJsonLoadScene::setup() {
     
     gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
     gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
+    gme::Game::newTexture("resources/Weapons/pistola.png","pipa");
     
     setupBg(); 
     
     weapon *arma = new weapon("pistola");
     arma->addComponent(new pistolaBehavior()); 
+    
+    
     
     
     player *p1 = new player("p1");
@@ -57,6 +62,7 @@ void tilerJsonLoadScene::setup() {
     g->addPosition(1520, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);
+    g->setColectionable(true);
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

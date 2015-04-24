@@ -12,10 +12,7 @@
 
 class IAMovement : public gme::Script {
 public:
-    IAMovement() : gme::Script(){
-        walkFPS = 30;
-        walkFrameCount = 0;
-    };
+    IAMovement();;
     void setup();
     void update();
     void findPlayer();   

@@ -35,6 +35,8 @@ private:
     int posY;
     int rat;
     std::vector<gme::Vector2> posiciones;
+    int objects;
+    int randomtime;
 };
 
 #endif	/* GENERAPOSICION_HPP */
