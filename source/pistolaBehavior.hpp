@@ -6,11 +6,6 @@
 class pistolaBehavior : public gme::Script  {
 public:    
     pistolaBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     virtual ~pistolaBehavior();
     void setup();

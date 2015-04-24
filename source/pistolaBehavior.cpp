@@ -1,5 +1,6 @@
 #include "pistolaBehavior.hpp"
 #include "pistolaBullet.hpp"
+#include "PlayerMovement.hpp"
 
 void pistolaBehavior::setup() {
     getRenderer()->setTexture("gun");
@@ -15,6 +16,12 @@ void pistolaBehavior::setup() {
             break;
         }
     }
+    
+    ShotKey = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->weaponKey;
+    keyUp = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->upKey;
+    keyDown = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->downKey;
+    keyLeft = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->leftKey;
+    keyRight = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->rightKey;
 }
 
 void pistolaBehavior::update() {
@@ -24,15 +31,14 @@ void pistolaBehavior::update() {
     }
     else if(gme::Keyboard::isKeyPressed(keyDown)){
         verticalDirection = 2;
-    } 
+    }
+    else verticalDirection = -1;
     
     if(gme::Keyboard::isKeyPressed(keyLeft)){
         direction = 3;
-        verticalDirection = -1;
     }
     else if(gme::Keyboard::isKeyPressed(keyRight)) {
         direction = 1;
-        verticalDirection = -1;
     }
             
     if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting){

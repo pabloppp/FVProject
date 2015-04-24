@@ -25,14 +25,13 @@ void escopetaBehavior::update() {
     else if(gme::Keyboard::isKeyPressed(keyDown)){
         verticalDirection = 2;
     } 
+    else verticalDirection = -1;
     
     if(gme::Keyboard::isKeyPressed(keyLeft)){
         direction = 3;
-        verticalDirection = -1;
     }
     else if(gme::Keyboard::isKeyPressed(keyRight)) {
         direction = 1;
-        verticalDirection = -1;
     }
     
     if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting ){

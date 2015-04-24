@@ -32,7 +32,7 @@ void tilerJsonLoadScene::setup() {
     setupBg(); 
     
     weapon *arma = new weapon("metra");
-    arma->addComponent(new escopetaBehavior()); 
+    arma->addComponent(new pistolaBehavior()); 
     
     
     player *p1 = new player("p1");

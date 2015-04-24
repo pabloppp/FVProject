@@ -10,16 +10,16 @@ public:
         jumpForce = 40 * 1000;
         walkFPS = 20;
         
-        upKey = gme::Keyboard::W;
-        downKey = gme::Keyboard::S;
-        leftKey = gme::Keyboard::A;
-        rightKey = gme::Keyboard::D;
-        jumpKey = gme::Keyboard::F;
-        weaponKey = gme::Keyboard::G;
-        actionKey = gme::Keyboard::H;
+        upKey = gme::Keyboard::Up;
+        downKey = gme::Keyboard::Down;
+        leftKey = gme::Keyboard::Left;
+        rightKey = gme::Keyboard::Right;
+        jumpKey = gme::Keyboard::C;
+        weaponKey = gme::Keyboard::X;
+        actionKey = gme::Keyboard::Z;
         
         animGraceTime = 0.01;
-        changeWeapon = gme::Keyboard::X;
+        changeWeapon = gme::Keyboard::Q;
     };
     void setup();
     void update();   
