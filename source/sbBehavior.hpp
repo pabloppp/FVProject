@@ -1,10 +1,3 @@
-/* 
- * File:   sbBehavior.hpp
- * Author: apple
- *
- * Created on 21 de abril de 2015, 10:41
- */
-
 #ifndef SBBEHAVIOR_HPP
 #define	SBBEHAVIOR_HPP
 
@@ -12,7 +5,7 @@
 
 class sbBehavior: public gme::Script {
 public:
-    sbBehavior() : gme::Script(){};;
+    sbBehavior() : gme::Script(){};
     void setup();
     void update();
     virtual ~sbBehavior();

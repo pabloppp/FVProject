@@ -8,6 +8,8 @@
 #ifndef MBBEHAVIOR_HPP
 #define	MBBEHAVIOR_HPP
 
+#include "../engine/GMEngine.hpp"
+
 class mbBehavior: public gme::Script {
 public:
     mbBehavior() : gme::Script(){};

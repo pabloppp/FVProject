@@ -4,7 +4,8 @@
 
 
 void lnzllamasBehavior::setup() {
-    getRenderer()->setTexture("gun");
+    getRenderer()->setTexture("lanzallamas");
+    getRenderer()->setSize(gme::Vector2(64,64)); //scale en weapon
     speedBullet = 8.f;
 }
 
@@ -49,8 +50,8 @@ void lnzllamasBehavior::shoot(int d) {
        lnzllamasBehavior *q = static_cast<lnzllamasBehavior*> (ctx);
        gme::GameObject *bulletx = new llamasBullet("bullet");
        q->instantiate(bulletx);
-       int v1 = rand() % 5+350;
-       bulletx->getTransform()->setPosition(gme::Vector2(500,v1));
+       int v1 = rand() % 5+348;
+       bulletx->getTransform()->setPosition(gme::Vector2(440,v1));
        
        switch(q->directionSp){
             case 0:

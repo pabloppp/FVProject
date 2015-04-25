@@ -19,7 +19,9 @@ void mainGame::setup() {
     
     gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
     gme::Game::newTexture("resources/Bullets/flamebullet.png", "flame_bullet");
+    gme::Game::newTexture("resources/Bullets/projectil.png", "proj_bullet");
     gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
+    gme::Game::newTexture("resources/Weapons/weapon.png", "lanzallamas");
     
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");

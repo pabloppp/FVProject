@@ -99,6 +99,8 @@
             <itemPath>source/escopetaBullet.hpp</itemPath>
             <itemPath>source/llamasBullet.cpp</itemPath>
             <itemPath>source/llamasBullet.hpp</itemPath>
+            <itemPath>source/lnzcohetesBullet.cpp</itemPath>
+            <itemPath>source/lnzcohetesBullet.hpp</itemPath>
             <itemPath>source/metralletaBullet.cpp</itemPath>
             <itemPath>source/metralletaBullet.hpp</itemPath>
             <itemPath>source/pistolaBullet.cpp</itemPath>
@@ -130,6 +132,12 @@
               <itemPath>source/escopetaBehavior.hpp</itemPath>
               <itemPath>source/sbBehavior.cpp</itemPath>
               <itemPath>source/sbBehavior.hpp</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f5" displayName="Lanzacohetes" projectFiles="true">
+              <itemPath>source/lbBehavior.cpp</itemPath>
+              <itemPath>source/lbBehavior.hpp</itemPath>
+              <itemPath>source/lnzcohetesBehavior.cpp</itemPath>
+              <itemPath>source/lnzcohetesBehavior.hpp</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="Lanzallamas" projectFiles="true">
               <itemPath>source/llbBehavior.cpp</itemPath>
@@ -390,6 +398,10 @@
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/lbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
@@ -397,6 +409,14 @@
       <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -669,6 +689,10 @@
       </item>
       <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/lbBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/llamasBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/llamasBullet.hpp" ex="false" tool="3" flavor2="0">
@@ -676,6 +700,14 @@
       <item path="source/llbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/llbBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBullet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/lnzcohetesBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/lnzllamasBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>

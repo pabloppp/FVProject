@@ -1,10 +1,10 @@
-#include "sbBehavior.hpp"
+#include "lbBehavior.hpp"
 
-void sbBehavior::setup() {
-    winSize = gme::Game::getWindow()->getSize();
+void lbBehavior::setup() {
+     winSize = gme::Game::getWindow()->getSize();
 }
 
-void sbBehavior::update() {
+void lbBehavior::update() {
     float posX = getTransform()->getPosition().x;
     float posY = getTransform()->getPosition().y;
     
@@ -13,6 +13,7 @@ void sbBehavior::update() {
     }
 }
 
-sbBehavior::~sbBehavior() {
+
+lbBehavior::~lbBehavior() {
 }
 

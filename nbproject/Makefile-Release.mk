@@ -73,8 +73,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/fondoBlanco.o \
 	${OBJECTDIR}/source/imagenFondo.o \
+	${OBJECTDIR}/source/lbBehavior.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
+	${OBJECTDIR}/source/lnzcohetesBehavior.o \
+	${OBJECTDIR}/source/lnzcohetesBullet.o \
 	${OBJECTDIR}/source/lnzllamasBehavior.o \
 	${OBJECTDIR}/source/mainGame.o \
 	${OBJECTDIR}/source/mbBehavior.o \
@@ -307,6 +310,11 @@ ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/imagenFondo.o source/imagenFondo.cpp
 
+${OBJECTDIR}/source/lbBehavior.o: source/lbBehavior.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/lbBehavior.o source/lbBehavior.cpp
+
 ${OBJECTDIR}/source/llamasBullet.o: source/llamasBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -316,6 +324,16 @@ ${OBJECTDIR}/source/llbBehavior.o: source/llbBehavior.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/llbBehavior.o source/llbBehavior.cpp
+
+${OBJECTDIR}/source/lnzcohetesBehavior.o: source/lnzcohetesBehavior.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/lnzcohetesBehavior.o source/lnzcohetesBehavior.cpp
+
+${OBJECTDIR}/source/lnzcohetesBullet.o: source/lnzcohetesBullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/lnzcohetesBullet.o source/lnzcohetesBullet.cpp
 
 ${OBJECTDIR}/source/lnzllamasBehavior.o: source/lnzllamasBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

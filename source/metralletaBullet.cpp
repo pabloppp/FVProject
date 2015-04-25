@@ -1,5 +1,6 @@
 
 #include "metralletaBullet.hpp"
+#include "mbBehavior.hpp"
 
 metralletaBullet::metralletaBullet(std::string n) : gme::GameObject(n) {
 }
