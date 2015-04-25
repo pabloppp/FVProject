@@ -7,7 +7,6 @@ void pbBehavior::setup() {
 }
 
 void pbBehavior::update() {
-    
     if(myClock.currentTime().asSeconds() > 0.4 || destroy){
         destroyGameObject(gameObject());
         return;
@@ -26,10 +25,11 @@ pbBehavior::~pbBehavior() {
 }
 
 void pbBehavior::onCollision(gme::Collider* c) {
-    std::cout << c->gameObject()->getName() << std::endl;
-    if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor")){
-        c->gameObject()->sendMessage("damage", 2);
-        destroy = true;
+    if(c->gameObject() != NULL){
+        if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor")){
+            c->gameObject()->sendMessageUpward("damage", 4);
+            destroy = true;
+        }
     }
 }
 

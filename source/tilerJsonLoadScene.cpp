@@ -8,6 +8,9 @@
 #include "generaPosicion.hpp"
 #include "weapon.hpp"
 #include "pistolaBehavior.hpp"
+#include "metralletaBehavior.hpp"
+#include "lnzllamasBehavior.hpp"
+#include "escopetaBehavior.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -31,11 +34,17 @@ void tilerJsonLoadScene::setup() {
     
     setupBg(); 
     
-    weapon *arma = new weapon("pistola");
+    weapon *arma = new weapon("metra");
     arma->addComponent(new pistolaBehavior()); 
-    
-    
-    
+    metralletaBehavior *mb =  new metralletaBehavior();
+    mb->setActive(false);
+    arma->addComponent(mb);
+    escopetaBehavior *eb =  new escopetaBehavior();
+    eb->setActive(false);
+    arma->addComponent(eb);
+    lnzllamasBehavior *lb =  new lnzllamasBehavior();
+    lb->setActive(false);
+    arma->addComponent(lb);
     
     player *p1 = new player("p1");
     p1->getTransform()->setPosition(gme::Vector2(512, 0));
@@ -64,7 +73,8 @@ void tilerJsonLoadScene::setup() {
     g->setEnemi(true);
     g->setColectionable(true);
     sceneLoaderObject->addComponent(g);
-    
+     g->setEnemi(true);
+    g->setColectionable(true);
     sceneLoaderObject->addComponent(new mapGenerator());
     
     

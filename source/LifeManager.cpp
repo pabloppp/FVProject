@@ -13,7 +13,28 @@ void LifeManager::setup() {
 }
 
 void LifeManager::update() {
-
+    
+    if(!startShowDamage && waitClock.currentTime().asSeconds() > waitTime) startShowDamage = true;
+    
+    if(!startShowDamage) return;
+    
+    if(waitClock.currentTime().asSeconds() < waitTime){
+        if(!showDamage){
+            showDamage = true;
+            r = getRenderer()->getColorR();
+            g = getRenderer()->getColorG();
+            b = getRenderer()->getColorB();
+        }
+        else{
+            getRenderer()->setColor(255,0,0);
+        }
+    }
+    else{
+        if(showDamage){
+            showDamage = false;
+            getRenderer()->setColor(r,g,b);
+        }
+    }
 }
 
 int LifeManager::getHp() {
@@ -40,6 +61,9 @@ float LifeManager::getHpPercent() {
 
 void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
+        if(waitClock.currentTime().asSeconds() < waitTime) return;
+        
+        waitClock.restart();
         hp -= v;
         if(hp <= 0){
             if(gameObject()->hasTag("enemy")) sendMessage("kill", 0);
@@ -69,7 +93,7 @@ void LifeManager::onMessage(std::string m, float v) {
     }
     if(m.compare("sethp") == 0){
         if(v > 0){
-            hp = v;
+            hp += v;
             if(hp > maxHp){
                 hp = maxHp;
             }

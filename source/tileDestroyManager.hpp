@@ -6,7 +6,7 @@
 class tileDestroyManager : public gme::Script{
 public:
     tileDestroyManager() : gme::Script(){
-        hp = 10;
+        hp = 20;
     }
     virtual void setup();
     virtual void update();
@@ -20,6 +20,8 @@ private:
     bool isHit;
     bool isHitTemp;
     gme::Clock hitclock;
+    
+    void explode(int min, int max, float forcemin, float forcemax);
 
 };
 

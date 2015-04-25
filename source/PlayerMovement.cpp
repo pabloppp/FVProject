@@ -172,9 +172,38 @@ void PlayerMovement::onGui() {
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
-        gme::GUI::label(gme::Vector2(15,10), "Lives "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
-        gme::GUI::backgroundColor = gme::GUI::green;
-        gme::GUI::box(gme::Vector2(10,25), gme::Vector2(stats->getHpPercent(), 10));
+        
+        gme::GUI::drawTexture(
+            gme::Vector2(10, 5),
+            gme::Vector2(8*3, 8*3),
+            gme::GUI::TextureName("heart"),
+            gme::GUI::Origin::TopLeft,
+            gme::GUI::ScaleToFit
+        );
+        
+        gme::GUI::fontSize = 20;
+        gme::GUI::label(gme::Vector2(50, 12), "x "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
+        
+        
+        gme::GUI::fontSize = 16;
+        gme::GUI::label(gme::Vector2(10,38), "HP", gme::GUI::Origin::TopLeft);
+        
+        gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
+        gme::GUI::outlineThickness = 3;
+        gme::GUI::outlineColor = gme::GUI::white;
+        
+        gme::GUI::box(gme::Vector2(40,35), gme::Vector2(117, 3*6));
+        
+        int bars = (int)( stats->getHpPercent() / 5.555); 
+        if(stats->getHpPercent() > 50) gme::GUI::backgroundColor = gme::GUI::Color(172, 255, 135);
+        else if(stats->getHpPercent() > 25) gme::GUI::backgroundColor = gme::GUI::Color(255, 218, 117);
+        else gme::GUI::backgroundColor = gme::GUI::Color(255, 142, 110);
+        gme::GUI::outlineThickness = 0;
+        for(int i=0;i<bars;i++){
+            gme::GUI::box(gme::Vector2(46+i*6, 35+6), gme::Vector2(3, 3*2));
+        }
+        
+        
     }
     //std::cout << "ENTERING HERE" << std::endl;
 }

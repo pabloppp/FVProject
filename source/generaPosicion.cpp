@@ -1,9 +1,7 @@
 #include "generaPosicion.hpp"
 #include "../engine/Game.hpp"
 #include "enemy.hpp"
-#include "weapon.hpp"
-#include "metralletaBehavior.hpp"
-#include "pistolaBehavior.hpp"
+#include "enemy_fast.hpp"
 #include "colectableGameObject.hpp"
 
 
@@ -14,22 +12,22 @@ void generaPosicion::setup(){
     enemi = false;
     clkC.restart();
     clkE.restart();
+    objects = 0;
     randomtime = 5;
+    destroyed = false;
+    lObjectType=0;
 }
 
 void generaPosicion::update() {   
     
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > randomtime && objects < 10){
+        if(clkC.currentTime().asSeconds() > randomtime ){
             clkC.restart();
             generaColeccionable();
-            objects ++;
-            randomtime = (rand()%10) + 5;
-            //std::cout << randomtime << std::endl;
-        }
-        else if(objects >= 10){
-            //std::cout << "no se pueden generar mas objetos" << std::endl;
+            
+            randomtime = (rand()%10) + 8;
+            destroyed = true;
         }
     }
     else{
@@ -52,17 +50,18 @@ void generaPosicion::update() {
 
 void generaPosicion::generaColeccionable(){
     
-    
     int pos = rand();
-    int x = v.x +(16*35);
+    int x = v.x + (16*3);
     int finalpos = (int)pos%(int)x;
-    
-    
-    colectableGameObject *col =  new colectableGameObject("colectable");
-    col->getTransform()->setPosition(gme::Vector2(finalpos, 0));
+    int objecType =  rand() %6;
+    if(objecType == lObjectType){
+        objecType+=1;
+        lObjectType = objecType;
+    }
+    std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
+    colectableGameObject *col =  new colectableGameObject("colectable",objecType);
+    col->getTransform()->setPosition(gme::Vector2(finalpos,-300));
     instantiate(col);
-    
-    
    
     
     //std::cout << finalpos << std::endl; 
@@ -80,8 +79,16 @@ bool generaPosicion::getColectionable(){
 void generaPosicion::generaEnemigo(int x, int y) {
     if (enemi == true){
         
+        int random = rand() % 100;
         
-        enemy *enemigo = new enemy("dino");
+        gme::GameObject *enemigo;
+        
+        if(random < 70){
+            enemigo = new enemy("dino");
+        }
+        else{
+            enemigo = new enemy_fast("dino_fast");
+        }
         enemigo->getTransform()->setPosition(gme::Vector2(x, y));
         
         instantiate(enemigo);
@@ -110,5 +117,8 @@ void generaPosicion::addPosition(int x, int y) {
     posiciones.push_back(gme::Vector2(x, y));
 }
 
-
-
+void generaPosicion::onMessage(std::string m, float v) {
+    if(m.compare("destroyed") == 0){
+        std::cout << "colectable destruido" << std::endl;
+    }
+}

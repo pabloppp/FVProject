@@ -8,11 +8,6 @@
 class escopetaBehavior: public gme::Script {
 public:
     escopetaBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     gme::Keyboard::Key ShotKey;
     gme::Keyboard::Key keyUp;
@@ -27,6 +22,7 @@ private:
     float speedBullet;
     bool shooting;
     int direction;
+    int verticalDirection;
     gme::Clock clock;
 };
 

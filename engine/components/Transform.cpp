@@ -50,6 +50,10 @@ float Transform::getZIndex(){
 void Transform::setPosition(gme::Vector2 v){
   position = v; 
   o_position = v;
+  
+  if(gameObject()->getRigidBody() != NULL){
+      gameObject()->getRigidBody()->forcePosition(v);
+  }
 }
 
 void Transform::setRotation(float f){

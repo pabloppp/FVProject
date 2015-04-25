@@ -1,8 +1,9 @@
 #include "colectableGameObject.hpp"
-#include "colectableScript.hpp"
+#include "ColectableScript.hpp"
+#include "DestroyScript.hpp"
 
 void colectableGameObject::setup() {
-     addTag("colectable");
+    addTag("colectable");
     
     getRenderer()->setTexture("pipa");
     getRenderer()->setSize(gme::Vector2(32,32));
@@ -10,17 +11,29 @@ void colectableGameObject::setup() {
     getRenderer()->setPivot(gme::Vector2(0.5, 1));
     
     gme::RigidBody *rb = new gme::RigidBody();
+    rb->setElasticity(0);
     rb->setFixedRot(true);
     
     addComponent(rb);
     
     gme::BoxCollider *bc = new gme::BoxCollider();
     bc->addFilterTag("enemy");
-    //bc->addFilterTag("player");
+    bc->addFilterTag("bullet");
     addComponent(bc);
     
+    addComponent(new ColectableScript(objectType));
+    addComponent(new DestroyScript);
+    //addComponent(new colectableScript);
+    // saddComponent(new DestroyManager);
     
-    addComponent(new colectableScript);
-   
+    destroy = false;
+    
 }
+
+
+
+
+
+
+
 

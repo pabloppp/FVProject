@@ -8,6 +8,8 @@
 #include "IAMovement.hpp"
 #include "emptyGameObject.hpp"
 #include "tile.hpp"
+#include "sprayParticleScript.hpp"
+#include "defaultParticle.hpp"
 
 void IAMovement::findPlayer() {
    player = gme::GameObject::find("p1").at(0);
@@ -21,6 +23,8 @@ void IAMovement::setup() {
     dead = false;
     destroyed = false;
     
+    fixPos = true;
+    
     /*std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
         if(objects->at(i) == gameObject()){
@@ -32,44 +36,35 @@ void IAMovement::setup() {
     
     spawn = getTransform()->getPosition();
     
-    trigger = new emptyGameObject("coltrigger");
-    trigger->addComponent(new gme::RigidBody());
-    trigger->getRigidBody()->isStatic();
-    trigger->getRenderer()->setSize(gme::Vector2(32,32));
-    trigger->getRenderer()->setPivot(gme::Vector2(0.5,1));
-    gme::BoxCollider *bc = new gme::BoxCollider();
-    bc->isTrigger(true);
-    trigger->addComponent(bc);
-    trigger->addTag("enemy");
-    gameObject()->addChild(trigger);
-    instantiate(trigger);
-    trigger->getTransform()->setPosition(gme::Vector2(0,0));
-    
     findPlayer();
     
 }
 
 void IAMovement::update() { 
      
-    trigger->getTransform()->position = gme::Vector2(0,0);
     
     if(player){
         gme::Vector2 playerpos = player->getTransform()->getPosition();
         gme::Vector2 enemypos = getTransform()->getPosition();
         
+        if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
+                && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
+            player->sendMessage("damage", 5);
+        }
+        
         if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
             if(random()%3 == 1){
                 getTransform()->setPosition(spawn);
                 enemypos = spawn;
-                getRenderer()->setColor(255,150,150);
-            }
-            else{
-                dead = true;
+                
+                fixPos = true;
+                
+                //getRenderer()->setColor(getRenderer()->getColorR(),getRenderer()->getColorG()-100,getRenderer()->getColorB()-100);
             }
         }
         
         deltatime = gme::Game::deltaTime.asSeconds();
-        float dist = 7;
+        float dist = speed;
         walkFPS = 30;
                
         if( ((playerpos.x > enemypos.x && right) || (playerpos.x < enemypos.x && !right))
@@ -264,9 +259,7 @@ IAMovement::~IAMovement() {
 
 }
 
-IAMovement::IAMovement() {
 
-}
 
 
 void IAMovement::onCollision(gme::Collider* c) {
@@ -277,12 +270,12 @@ void IAMovement::onCollision(gme::Collider* c) {
         }
     }
     
-    if(c->gameObject()->hasTag("player")){
-        c->gameObject()->sendMessage("damage", 5);
-    }
-    
     if(c->gameObject()->hasTag("corner")){  
         cornered = ((tile*)(c->gameObject()))->side;
+    }
+    
+    if(c->gameObject()->hasTag("bullet")){
+        //explode(3,10);
     }
 }
 
@@ -291,7 +284,82 @@ void IAMovement::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         std::cout << "muerte" << std::endl;
         dead = true;
+        explode(20, 50, 50, 250);
+    }
+    
+    if(m.compare("damage")==0 && !dead){
+        explode(3,10, 50, 150);
     }
 }
+
+void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
+    int cantidad = (rand() % (max-min)) + min;
+    
+    gme::Vector2 pos = getTransform()->getPositionRelative();
+    for(int i=0;i<cantidad;i++){
+        float dirX = ( (rand() % 200) - 100 ) / 100.f;
+        float dirY = ( (rand() % 200) - 100 ) / 100.f;
+        int force = (rand() % (int)(forcemax-forcemin)) + forcemin;
+        defaultParticle *particle = new defaultParticle("blood"); 
+        particle->startingPosition = pos;
+        instantiate(particle);
+        particle->getTransform()->setPosition(pos);
+        
+        ((sprayParticleScript*)(particle->getComponent<sprayParticleScript*>()))->sticky = true;
+        
+        particle->getRenderer()->setColor(255,0,0);
+        particle->getRigidBody()->pushImmediate(gme::Vector2(dirX, dirY), force);
+                
+    }
+}
+
+void IAMovement::onGui() {
+    
+    gme::Vector2 enemyPos = getTransform()->getPosition();
+    gme::Vector2 enemyPosWindow = enemyPos.worldToScreen();
+    if(enemyPosWindow.x < -32*3){
+        gme::GUI::globalRotation = 90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(16*3+8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.x > 1024+32*3){
+        gme::GUI::globalRotation = -90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(1024-8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.y > 576){
+        gme::GUI::globalRotation = 0;
+        float posx = enemyPosWindow.x;
+        if(posx < 16*3 ) posx = 16*3;
+        else if(posx > 1024-16*3) posx = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(posx, 576-8*3),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    gme::GUI::globalRotation = 0;
+    
+}
+
+
 
 

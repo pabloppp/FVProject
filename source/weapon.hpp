@@ -10,6 +10,7 @@ public:
     weapon(std::string n) : gme::GameObject(n){};
     void setup();
     
+    
 private: 
 
 };

@@ -39,6 +39,7 @@ public:
     Vector2 getSpeed();
     float getAngularSpeed();
     void setAngularSpeed(float f);
+    void forcePosition(gme::Vector2 pos);
     b2BodyDef b2def;
     b2Body* b2body;
     b2FixtureDef fixtureDef;

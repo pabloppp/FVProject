@@ -114,10 +114,14 @@
           <itemPath>source/backgroundLayer.hpp</itemPath>
           <itemPath>source/colectableGameObject.cpp</itemPath>
           <itemPath>source/colectableGameObject.hpp</itemPath>
+          <itemPath>source/defaultParticle.cpp</itemPath>
+          <itemPath>source/defaultParticle.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
           <itemPath>source/enemy.cpp</itemPath>
           <itemPath>source/enemy.hpp</itemPath>
+          <itemPath>source/enemy_fast.cpp</itemPath>
+          <itemPath>source/enemy_fast.hpp</itemPath>
           <itemPath>source/imagenFondo.cpp</itemPath>
           <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/player.cpp</itemPath>
@@ -168,6 +172,10 @@
           <itemPath>source/BackgroundParallax.hpp</itemPath>
           <itemPath>source/CameraFollowPlayer.cpp</itemPath>
           <itemPath>source/CameraFollowPlayer.hpp</itemPath>
+          <itemPath>source/ColectableScript.cpp</itemPath>
+          <itemPath>source/ColectableScript.hpp</itemPath>
+          <itemPath>source/DestroyScript.cpp</itemPath>
+          <itemPath>source/DestroyScript.hpp</itemPath>
           <itemPath>source/GlobalStateManager.cpp</itemPath>
           <itemPath>source/GlobalStateManager.hpp</itemPath>
           <itemPath>source/IAMovement.cpp</itemPath>
@@ -184,8 +192,6 @@
           <itemPath>source/SaveManager.hpp</itemPath>
           <itemPath>source/TileRowGenerator.cpp</itemPath>
           <itemPath>source/TileRowGenerator.hpp</itemPath>
-          <itemPath>source/colectableScript.cpp</itemPath>
-          <itemPath>source/colectableScript.hpp</itemPath>
           <itemPath>source/generaPosicion.cpp</itemPath>
           <itemPath>source/generaPosicion.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
@@ -194,6 +200,8 @@
           <itemPath>source/moveFondo.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
           <itemPath>source/splash.hpp</itemPath>
+          <itemPath>source/sprayParticleScript.cpp</itemPath>
+          <itemPath>source/sprayParticleScript.hpp</itemPath>
           <itemPath>source/tileDestroyManager.cpp</itemPath>
           <itemPath>source/tileDestroyManager.hpp</itemPath>
         </logicalFolder>
@@ -424,6 +432,14 @@
       </item>
       <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/ColectableScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/ColectableScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/DestroyScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/DestroyScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/GameManager.hpp" ex="false" tool="3" flavor2="0">
@@ -468,9 +484,9 @@
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
+      <item path="source/defaultParticle.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
+      <item path="source/defaultParticle.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -479,6 +495,10 @@
       <item path="source/enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -563,6 +583,10 @@
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sprayParticleScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sprayParticleScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -787,6 +811,14 @@
       </item>
       <item path="source/CameraFollowPlayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/ColectableScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/ColectableScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/DestroyScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/DestroyScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/GameManager.hpp" ex="false" tool="3" flavor2="0">
@@ -831,9 +863,9 @@
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
+      <item path="source/defaultParticle.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
+      <item path="source/defaultParticle.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/emptyGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -842,6 +874,10 @@
       <item path="source/enemy.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -926,6 +962,10 @@
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/splash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/sprayParticleScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/sprayParticleScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/staticObject.cpp" ex="false" tool="1" flavor2="0">
       </item>

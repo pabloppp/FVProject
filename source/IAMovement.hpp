@@ -12,7 +12,11 @@
 
 class IAMovement : public gme::Script {
 public:
-    IAMovement();;
+    IAMovement() : gme::Script(){
+        walkFPS = 30;
+        walkFrameCount = 0;
+        speed = 7;
+    };
     void setup();
     void update();
     void findPlayer();   
@@ -24,6 +28,12 @@ public:
 
 
     virtual void onCollision(gme::Collider* c);
+    
+
+    virtual void onGui();
+
+    
+    float speed;
 
 private:
     gme::GameObject *player;
@@ -39,12 +49,19 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    
+    
+    
     bool dead, destroyed;
-    gme::GameObject *trigger;
     
     gme::Vector2 spawn;
     
     gme::Clock animClock;
+    
+    void explode(int min, int max, float forcemin, float forcemax);
+    
+    bool fixPos;
+    
     
 };
 
