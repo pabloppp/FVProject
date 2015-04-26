@@ -99,7 +99,7 @@ void LifeManager::onMessage(std::string m, float v) {
     }
     if(m.compare("sethp") == 0){
         if(v > 0){
-            hp = v;
+            hp += v;
             if(hp > maxHp){
                 hp = maxHp;
             }

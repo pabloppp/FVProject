@@ -34,8 +34,9 @@ void enemy::setup(){
     stats->waitTime = 0.05;
     addComponent(stats);
     
-    IAMovement *ia = new IAMovement();
+    IAMovement *ia =  new IAMovement();
     addComponent(ia);
+   
 }
 
 void enemy::update(){

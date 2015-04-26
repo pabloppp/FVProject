@@ -71,6 +71,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/Animator.o \
 	${OBJECTDIR}/source/BackgroundParallax.o \
 	${OBJECTDIR}/source/CameraFollowPlayer.o \
+	${OBJECTDIR}/source/ColectableScript.o \
 	${OBJECTDIR}/source/GameManager.o \
 	${OBJECTDIR}/source/GlobalStateManager.o \
 	${OBJECTDIR}/source/IAMovement.o \
@@ -81,6 +82,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
 	${OBJECTDIR}/source/backgroundLayer.o \
+	${OBJECTDIR}/source/colectableGameObject.o \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
@@ -322,6 +324,11 @@ ${OBJECTDIR}/source/CameraFollowPlayer.o: source/CameraFollowPlayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/CameraFollowPlayer.o source/CameraFollowPlayer.cpp
 
+${OBJECTDIR}/source/ColectableScript.o: source/ColectableScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/ColectableScript.o source/ColectableScript.cpp
+
 ${OBJECTDIR}/source/GameManager.o: source/GameManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -371,6 +378,11 @@ ${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
+
+${OBJECTDIR}/source/colectableGameObject.o: source/colectableGameObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/colectableGameObject.o source/colectableGameObject.cpp
 
 ${OBJECTDIR}/source/defaultParticle.o: source/defaultParticle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

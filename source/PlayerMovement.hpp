@@ -24,6 +24,7 @@ public:
     void setup();
     void update();   
     virtual void onCollision(gme::Collider *c);
+
     virtual void onGui();
     virtual ~PlayerMovement();
 
