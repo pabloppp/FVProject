@@ -3,6 +3,7 @@
 #include "sceneSplash.hpp"
 #include "sceneMenu.hpp"
 #include "tilerJsonLoadScene.hpp"
+#include "transitionScene.hpp"
 
 void mainGame::setup() {
     
@@ -28,6 +29,8 @@ void mainGame::setup() {
     
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
+    
+    gme::Scene *trscene = new transitionScene("transition");
     
     gme::Scene *tiledTest = new tilerJsonLoadScene("tiledTest");
     

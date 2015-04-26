@@ -13,6 +13,12 @@
 
 void IAMovement::findPlayer() {
    player = gme::GameObject::find("p1").at(0);
+   if(gme::GameObject::find("p2").size() > 0){
+        player2 = gme::GameObject::find("p2").at(0);
+   }
+   else{
+        player2 = NULL;
+   }
 }
 
 void IAMovement::setup() {
@@ -38,10 +44,24 @@ void IAMovement::setup() {
     
     findPlayer();
     
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            stateManager = gsm;
+        }
+    }
+    
 }
 
 void IAMovement::update() { 
      
+    if(stateManager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
+        return;
+    }
+    else getRigidBody()->setActive(true);
     
     if(player){
         gme::Vector2 playerpos = player->getTransform()->getPosition();
@@ -50,6 +70,15 @@ void IAMovement::update() {
         if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
                 && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
             player->sendMessage("damage", 5);
+        }
+        
+        if(player2 != NULL){
+            gme::Vector2 playerpos2 = player2->getTransform()->getPosition();
+            
+            if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
+                    && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
+                player2->sendMessage("damage", 5);
+            }
         }
         
         if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
@@ -109,7 +138,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
     if(clkJ.currentTime().asSeconds() > 5 && player.y < enemy.y && getRigidBody()){
         clkJ.restart();
         grounded = false;
-        std::cout << "jumping: " << 40000*deltatime << std::endl;
         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
     }
     
@@ -123,7 +151,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                     }
                     else{
@@ -148,7 +175,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                 }
                 //NO HACER NADA
@@ -161,7 +187,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                 }
                 else{
@@ -174,7 +199,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                     }
                     else{

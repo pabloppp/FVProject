@@ -3,6 +3,7 @@
 #include "LifeManager.hpp"
 #include "weapon.hpp"
 #include "pistolaBehavior.hpp"
+#include "moveToTop.hpp"
 
 void player::setup() {
     
@@ -41,9 +42,13 @@ void player::setup() {
     }
     
     LifeManager *stats = new LifeManager();
+    stats->maxHp = 20;
+    stats->maxLives = 1;
     
     addComponent(playerMovement);
     addComponent(stats);
+    
+    addComponent(new moveToTop());
 }
 
 

@@ -1,5 +1,6 @@
 #include "escopetaBehavior.hpp"
 #include "escopetaBullet.hpp"
+#include "PlayerMovement.hpp"
 
 void escopetaBehavior::setup() {
     getRenderer()->setTexture("gun");

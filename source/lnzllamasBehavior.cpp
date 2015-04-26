@@ -1,5 +1,6 @@
 #include "lnzllamasBehavior.hpp"
 #include "llamasBullet.hpp"
+#include "PlayerMovement.hpp"
 
 void lnzllamasBehavior::setup() {
     getRenderer()->setTexture("gun");

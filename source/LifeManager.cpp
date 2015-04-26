@@ -72,6 +72,12 @@ void LifeManager::onMessage(std::string m, float v) {
                 lives = 0;
                 hp = 0;
                 sendMessage("gameover", 0);
+                if(gameObject()->hasTag("player")){
+                    std::vector<gme::GameObject*> managerList = gme::GameObject::find("manager");
+                    if(managerList.size() > 0){
+                        managerList.at(0)->sendMessage("gameover",0);
+                    }
+                }
             }
             else{
                 hp = maxHp;
@@ -98,6 +104,10 @@ void LifeManager::onMessage(std::string m, float v) {
                 hp = maxHp;
             }
         }
+    }
+    if(m.compare("reset") == 0){
+        hp = maxHp;
+        lives = maxLives;
     }
 }
 

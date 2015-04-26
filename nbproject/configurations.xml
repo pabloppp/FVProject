@@ -412,6 +412,10 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1_old/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1_old/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
@@ -534,6 +538,10 @@
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/pbBehavior.hpp" ex="false" tool="3" flavor2="0">
@@ -589,6 +597,10 @@
       <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/transitionScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/transitionScene.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/weapon.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -779,6 +791,10 @@
       </item>
       <item path="engine/gameobjects/Camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="hito1_old/limit.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="hito1_old/limit.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/Animator.cpp" ex="false" tool="1" flavor2="0">
@@ -901,6 +917,10 @@
       </item>
       <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/pbBehavior.hpp" ex="false" tool="3" flavor2="0">
@@ -956,6 +976,10 @@
       <item path="source/tilerJsonLoadScene.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/tilerJsonLoadScene.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/transitionScene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/transitionScene.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/weapon.cpp" ex="false" tool="1" flavor2="0">
       </item>

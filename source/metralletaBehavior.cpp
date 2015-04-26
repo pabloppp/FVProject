@@ -1,5 +1,6 @@
 #include "metralletaBehavior.hpp"
 #include "metralletaBullet.hpp"
+#include "PlayerMovement.hpp"
 
 void metralletaBehavior::setup() {
     getRenderer()->setTexture("gun");
