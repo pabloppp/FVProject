@@ -91,6 +91,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
 	${OBJECTDIR}/source/imagenFondo.o \
+	${OBJECTDIR}/source/limit.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
 	${OBJECTDIR}/source/lnzllamasBehavior.o \
@@ -100,6 +101,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/metralletaBehavior.o \
 	${OBJECTDIR}/source/metralletaBullet.o \
 	${OBJECTDIR}/source/moveFondo.o \
+	${OBJECTDIR}/source/moveToTop.o \
 	${OBJECTDIR}/source/pbBehavior.o \
 	${OBJECTDIR}/source/pistolaBehavior.o \
 	${OBJECTDIR}/source/pistolaBullet.o \
@@ -114,6 +116,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/tileDestroyManager.o \
 	${OBJECTDIR}/source/tileRow.o \
 	${OBJECTDIR}/source/tilerJsonLoadScene.o \
+	${OBJECTDIR}/source/transitionScene.o \
 	${OBJECTDIR}/source/weapon.o
 
 
@@ -421,6 +424,11 @@ ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/imagenFondo.o source/imagenFondo.cpp
 
+${OBJECTDIR}/source/limit.o: source/limit.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/limit.o source/limit.cpp
+
 ${OBJECTDIR}/source/llamasBullet.o: source/llamasBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -465,6 +473,11 @@ ${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
+
+${OBJECTDIR}/source/moveToTop.o: source/moveToTop.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveToTop.o source/moveToTop.cpp
 
 ${OBJECTDIR}/source/pbBehavior.o: source/pbBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -535,6 +548,11 @@ ${OBJECTDIR}/source/tilerJsonLoadScene.o: source/tilerJsonLoadScene.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/tilerJsonLoadScene.o source/tilerJsonLoadScene.cpp
+
+${OBJECTDIR}/source/transitionScene.o: source/transitionScene.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/transitionScene.o source/transitionScene.cpp
 
 ${OBJECTDIR}/source/weapon.o: source/weapon.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

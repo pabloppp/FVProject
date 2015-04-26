@@ -8,15 +8,7 @@ void pistolaBehavior::setup() {
     speedBullet = 25.f;
     
     direction = 1;
-    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
-    for(int i=0;i<objects->size();i++){
-        if(objects->at(i) == gameObject()){
-            objects->erase(objects->begin()+i);
-            objects->push_back(gameObject());
-            break;
-        }
-    }
-    
+
     ShotKey = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->weaponKey;
     keyUp = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->upKey;
     keyDown = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->downKey;

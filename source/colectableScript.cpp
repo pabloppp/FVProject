@@ -7,7 +7,6 @@
 #include "lnzllamasBehavior.hpp"
 
 void ColectableScript::setup() {
-    //objectType = rand()% 6;
     grounded = false;
     destroyed = false;
     walkFrameCountFD = 0;
@@ -19,14 +18,16 @@ void ColectableScript::setup() {
 }
 
 void ColectableScript::update() {
-    if(destroyed){
-        destroyGameObject(gameObject());
-    }
-    if(grounded){
+    
+    /*if(grounded){
         if(clkD.currentTime().asSeconds() > 12 && grounded) destroyGameObject(gameObject());
-    }
+    }*/
     animate();
     grounded=false;
+    if(destroyed){
+        destroyGameObject(gameObject());
+        return;
+    }
 }
 
 void ColectableScript::onCollision(gme::Collider* c) {
@@ -34,21 +35,18 @@ void ColectableScript::onCollision(gme::Collider* c) {
     if(c->gameObject()->hasTag("floor")){
         if(relativePosition.y == -1)   grounded = true;
     }
-    if(c->gameObject()->hasTag("player")){   
-        std::cout<< objectType << std::endl;
+    if(c->gameObject()->hasTag("player")){ 
+        std::cout << "objectType = " << objectType << std::endl;
         if(objectType <=1){
-            if(objectType == 0){ //sunar hp
-                c->gameObject()->sendMessage("heal",50);
-                //gameObject()->sendMessage("destroy",0);
-            }
-            if(objectType == 1){ //sunar vida
+            if(objectType == 0){ 
                 c->gameObject()->sendMessage("oneup",1);
-                //gameObject()->sendMessage("destroy",0);
+            }
+            if(objectType == 1){ 
+                c->gameObject()->sendMessage("heal",10);
             }
         }
         else{
             std::vector<gme::GameObject*> children = c->gameObject()->getChildren();
-            std::cout<< children.at(0)->getName() << std::endl;
             gme::Component *pb = children.at(0)->getComponent<pistolaBehavior*>();
             gme::Component *mb = children.at(0)->getComponent<metralletaBehavior*>();
             gme::Component *eb = children.at(0)->getComponent<escopetaBehavior*>();
@@ -78,31 +76,9 @@ void ColectableScript::onCollision(gme::Collider* c) {
                 eb->setActive(false);
                 lb->setActive(true);
             }
-        
-           /*if(objectType == 2){ //Poner Pistola
-                //c->gameObject()->sendMessage("sethp",50);
-                //gameObject()->sendMessage("destroy",0);
-                arma->addComponent(new pistolaBehavior());
-            }
-            if(objectType == 3){ //sunar Metralleta
-                //c->gameObject()->sendMessage("sethp",50);
-                //gameObject()->sendMessage("destroy",0);
-                arma->addComponent(new metralletaBehavior());
-            }
-            if(objectType == 4){ //poner Escopeta
-                //c->gameObject()->sendMessage("sethp",50);
-                //gameObject()->sendMessage("destroy",0);
-                arma->addComponent(new escopetaBehavior());
-            }
-            if(objectType == 5){ //poner lanzzallamas
-                //c->gameObject()->sendMessage("sethp",50);
-                //gameObject()->sendMessage("destroy",0);
-                arma->addComponent(new lnzllamasBehavior());
-            }*/
            
         }
         destroyed = true;
-        //destroyGameObject(gameObject());
     }
 }
 
@@ -135,6 +111,8 @@ void ColectableScript::onGui() {
             gme::GUI::ScaleToFit
         );
     }
+    
+    gme::GUI::globalRotation = 0;
 }
 
 void ColectableScript::animate() {
@@ -155,11 +133,10 @@ void ColectableScript::animate() {
             else{
                 if(walkFrameCountL >5) walkFrameCountL=0;
                 if(objectType == 0){
-                    getRenderer()->setFrame("ani_HP_"+std::to_string(walkFrameCountL));
+                    getRenderer()->setFrame("ani_NuevaVida_"+std::to_string(walkFrameCountL));
                 }
                 if(objectType == 1){
-                    getRenderer()->setFrame("ani_NuevaVida_"+std::to_string(walkFrameCountL));
-                    
+                    getRenderer()->setFrame("ani_HP_"+std::to_string(walkFrameCountL));
                 }
                 if(objectType == 2){
                     

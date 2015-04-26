@@ -11,7 +11,13 @@ void limit::setup() {
     
     gme::BoxCollider *boxcollider = new gme::BoxCollider;
     boxcollider->setSize(width, height);
+    
+    boxcollider->addFilterTag("enemy");
+    boxcollider->addFilterTag("particle");
+    boxcollider->addFilterTag("bullet");
     addComponent(boxcollider);
+    
+   
     
 }
 

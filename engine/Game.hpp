@@ -29,6 +29,7 @@ public:
     virtual void setup() = 0;
     static Scene *getCurrentScene();
     static void addScene(Scene *s);
+    static void removeScene(std::string n);
     static Window *getWindow();
     static Time deltaTime;
     static Time unfixedDeltaTime;

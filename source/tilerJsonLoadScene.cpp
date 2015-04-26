@@ -11,10 +11,17 @@
 #include "metralletaBehavior.hpp"
 #include "lnzllamasBehavior.hpp"
 #include "escopetaBehavior.hpp"
+#include "GameManager.hpp"
+#include "limit.hpp"
 
 void tilerJsonLoadScene::setup() {
     
-    //gme::Game::debugColliders = true;
+    if(reseting){
+        setupScenario();
+        return;
+    }
+    
+    GameManager *gm = new GameManager("manager");
     
     gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
@@ -30,13 +37,14 @@ void tilerJsonLoadScene::setup() {
     
     gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
     gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
-    gme::Game::newTexture("resources/Weapons/pistola.png","pipa");
     
     setupBg(); 
     
-    weapon *arma = new weapon("metra");
+    weapon *arma = new weapon("weapon");
     arma->addComponent(new pistolaBehavior()); 
-    metralletaBehavior *mb =  new metralletaBehavior();
+    
+    /* DISTINTAS ARMAS */
+    metralletaBehavior *mb = new metralletaBehavior();
     mb->setActive(false);
     arma->addComponent(mb);
     escopetaBehavior *eb =  new escopetaBehavior();
@@ -45,13 +53,13 @@ void tilerJsonLoadScene::setup() {
     lnzllamasBehavior *lb =  new lnzllamasBehavior();
     lb->setActive(false);
     arma->addComponent(lb);
+
     
     player *p1 = new player("p1");
-    p1->getTransform()->setPosition(gme::Vector2(512, 0));
+    p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
-    
 
     
     /*enemy *e = new enemy("dino");
@@ -64,26 +72,22 @@ void tilerJsonLoadScene::setup() {
         e->getTransform()->setPosition(gme::Vector2(rand() % 1584, 0));
     }*/
     
+    limit *lu = new limit("limit_up");
+    lu->width = 1584;
+    lu->height = 3;
+    lu->position = gme::Vector2(1584/2, -288);
     
-    emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
+    limit *ll = new limit("limit_left");
+    ll->width = 3;
+    ll->height = 864;
+    ll->position = gme::Vector2(-3, 144);
     
-    generaPosicion *g =  new generaPosicion(-1,280,3);
-    g->addPosition(1520, 280);
-    g->addPosition(802, -300);
-    g->setEnemi(true);
-    g->setColectionable(true);
-    sceneLoaderObject->addComponent(g);
-     g->setEnemi(true);
-    g->setColectionable(true);
-    sceneLoaderObject->addComponent(new mapGenerator());
+    limit *lr = new limit("limit_right");
+    lr->width = 3;
+    lr->height = 864;
+    lr->position = gme::Vector2(1584-16*3, 144);
     
-    
-    sceneLoaderObject->customize([](gme::GameObject* obj) {
-        mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
-        if(gen){
-            gen->mapFile = "resources/maps/wave1.json";
-        }
-    });
+    setupScenario();
     
     //SETUP CAMERA
     CameraFollowPlayer *cameraFollow = new CameraFollowPlayer;
@@ -91,6 +95,7 @@ void tilerJsonLoadScene::setup() {
     cameraFollow->limitY = gme::Vector2(-576/2, 0);
     gme::Game::mainCamera->addComponent(cameraFollow);
 
+    reseting = true;
 }
 
 
@@ -142,6 +147,27 @@ void tilerJsonLoadScene::setupBg() {
     bgLayerC->texture = "bgFrontCTexture";
     bgLayerC->getTransform()->position = gme::Vector2(windowSize.x*2, windowSize.y+yDisp);
     bgLayerC->parallaxFactor = 0.4;
+}
+
+void tilerJsonLoadScene::setupScenario() {
+    emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
+    
+    generaPosicion *g =  new generaPosicion(-1,280,3);
+    g->addPosition(1520, 280);
+    g->addPosition(802, -300);
+    g->setEnemi(true);
+    g->setColectionable(true);
+    sceneLoaderObject->addComponent(g);
+    
+    sceneLoaderObject->addComponent(new mapGenerator());
+    
+    
+    sceneLoaderObject->customize([](gme::GameObject* obj) {
+        mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
+        if(gen){
+            gen->mapFile = "resources/maps/wave1.json";
+        }
+    });
 }
 
 

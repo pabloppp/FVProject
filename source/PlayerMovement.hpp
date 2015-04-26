@@ -14,7 +14,7 @@ public:
         downKey = gme::Keyboard::Down;
         leftKey = gme::Keyboard::Left;
         rightKey = gme::Keyboard::Right;
-        jumpKey = gme::Keyboard::C;
+        jumpKey = gme::Keyboard::Space;
         weaponKey = gme::Keyboard::X;
         actionKey = gme::Keyboard::Z;
         
@@ -27,6 +27,9 @@ public:
 
     virtual void onGui();
     virtual ~PlayerMovement();
+
+    virtual void onMessage(std::string m, float v);
+
     int state; //0: idle, 1: walking
     bool grounded;
     bool down; //agachado
@@ -53,6 +56,7 @@ private:
     gme::Clock animClock;
     gme::Clock animGraceTimeClock;
     float animGraceTime;
+    bool dead;
     
 };
 

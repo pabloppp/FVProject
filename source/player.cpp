@@ -3,6 +3,7 @@
 #include "LifeManager.hpp"
 #include "weapon.hpp"
 #include "pistolaBehavior.hpp"
+#include "moveToTop.hpp"
 
 void player::setup() {
     
@@ -21,6 +22,7 @@ void player::setup() {
     rigidbody->isDynamic();
     rigidbody->gravityMultiplier(5);
     rigidbody->setFixedRot(true);
+    rigidbody->setElasticity(0);
     addComponent(rigidbody);
     
     gme::BoxCollider *collider = new gme::BoxCollider;
@@ -41,9 +43,13 @@ void player::setup() {
     }
     
     LifeManager *stats = new LifeManager();
+    stats->maxHp = 50;
+    stats->maxLives = 1;
     
     addComponent(playerMovement);
     addComponent(stats);
+    
+    addComponent(new moveToTop());
 }
 
 

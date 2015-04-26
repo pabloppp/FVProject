@@ -20,14 +20,12 @@ void generaPosicion::setup(){
 }
 
 void generaPosicion::update() {   
-    
-    
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > randomtime && objects < 10){
+        if(clkC.currentTime().asSeconds() > randomtime){
+            std::cout << "hey" << std::endl;
             clkC.restart();
             generaColeccionable();
-            randomtime = (rand()%10) + 10;
-            objects++;
+            randomtime = (rand()%10) + 8;
             destroyed = true;
         }
     }
@@ -50,18 +48,17 @@ void generaPosicion::update() {
 }
 
 void generaPosicion::generaColeccionable(){
-    
     int pos = rand();
     int x = v.x + (16*3);
     int finalpos = (int)pos%(int)x;
     int objecType =  rand() %6;
-    std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
-    if(objecType == lObjectType) objecType+=1;
-    if(objecType > 5) objecType =0;
+    if(objecType == lObjectType){
+        objecType+=1;
+        if(objecType >=6 ) objecType = 0;
+    }
     lObjectType = objecType;
-    //std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
     colectableGameObject *col =  new colectableGameObject("colectable",objecType);
-    col->getTransform()->setPosition(gme::Vector2(finalpos,-300));
+    col->getTransform()->setPosition(gme::Vector2(finalpos,-288+16*3));
     instantiate(col);
    
     

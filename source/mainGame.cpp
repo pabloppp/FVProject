@@ -3,6 +3,7 @@
 #include "sceneSplash.hpp"
 #include "sceneMenu.hpp"
 #include "tilerJsonLoadScene.hpp"
+#include "transitionScene.hpp"
 
 void mainGame::setup() {
     
@@ -16,7 +17,7 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
     
     gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");
-    gme::Game::newTexture("resources/Others/sprites.png","boxes");
+    gme::Game::newTexture("resources/Others/caja.png","boxes");
     
     gme::Game::newTexture("resources/Others/indicator_0.png", "indicator_enemy"); 
     gme::Game::newTexture("resources/Others/indicator_1.png", "indicator_box");
@@ -29,6 +30,8 @@ void mainGame::setup() {
     
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
+    
+    gme::Scene *trscene = new transitionScene("transition");
     
     gme::Scene *tiledTest = new tilerJsonLoadScene("tiledTest");
     

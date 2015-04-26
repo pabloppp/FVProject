@@ -1,6 +1,5 @@
 #include "colectableGameObject.hpp"
 #include "ColectableScript.hpp"
-#include "ScriptColectable.hpp"
 
 void colectableGameObject::setup() {
     addTag("colectable");
@@ -22,11 +21,7 @@ void colectableGameObject::setup() {
     bc->addFilterTag("bullet");
    
     addComponent(bc);
-    
-    
-    
     addComponent(new ColectableScript(objectType));
-    
     
 }
 

@@ -28,11 +28,13 @@ void MenuManager::setup(){
     menu=1;
     posX= 320;
     pausa_visible = 0;
+    
+    showGameOver = false;
 }
 
 void MenuManager::update(){
     /* MUSICA SONANDO */
-    if(sonando==true){
+    /*if(sonando==true){
         music->pause();
         sonando=false;
 
@@ -40,7 +42,7 @@ void MenuManager::update(){
         music->play();
         music->loop(true);
         sonando=true;
-    }
+    }*/
     if(pausa && !menudejuego) openPause();
     else if(!pausa && menudejuego) openMenu();
 }
@@ -81,6 +83,15 @@ void MenuManager::onMessage(std::string m, float v) {
         if(juegoNuevo1p) sendMessage("newGame1p",0);
         else if(juegoNuevo2p) sendMessage("newGame2p",0);
         else sendMessage("resume", 0);
+    }
+    
+    else if(m.compare("gameover") == 0){ 
+        showGameOver = true;
+    }
+    else if(m.compare("reset") == 0){ 
+        showGameOver = false;
+        menudejuego = false;
+        pausa = false;
     }
 }
 
@@ -179,6 +190,17 @@ void MenuManager::openPause(){
 }
 
 void MenuManager::onGui() {
+  
+  if(showGameOver){
+      gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,100);
+      gme::GUI::contentColor = gme::GUI::Color(0,0,0);
+      gme::GUI::fontSize = 30;
+      gme::GUI::box(gme::Vector2((1024/2)-200, (576/2)-100),gme::Vector2(400,200));
+      gme::GUI::label(gme::Vector2(1024/2, 576/2), "HAS MUERTO", gme::GUI::Origin::Center );
+      gme::GUI::fontSize = 15;
+      gme::GUI::label(gme::Vector2(1024/2, 576/2 + 50), "Pulsa ENTER para reiniciar", gme::GUI::Origin::Center );
+      return;
+  }  
     
   if(!pausa && menudejuego){  
     //------------LOGO------------------
