@@ -23,10 +23,11 @@ void generaPosicion::update() {
     
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > randomtime){
+        if(clkC.currentTime().asSeconds() > randomtime && objects < 10){
             clkC.restart();
             generaColeccionable();
-            randomtime = (rand()%10) + 8;
+            randomtime = (rand()%10) + 10;
+            objects++;
             destroyed = true;
         }
     }
@@ -55,9 +56,8 @@ void generaPosicion::generaColeccionable(){
     int finalpos = (int)pos%(int)x;
     int objecType =  rand() %6;
     std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
-    if(objecType == lObjectType){
-        objecType+=1;
-    }
+    if(objecType == lObjectType) objecType+=1;
+    if(objecType > 5) objecType =0;
     lObjectType = objecType;
     //std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
     colectableGameObject *col =  new colectableGameObject("colectable",objecType);

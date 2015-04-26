@@ -20,8 +20,6 @@ void ColectableScript::setup() {
 
 void ColectableScript::update() {
     if(destroyed){
-        
-       
         destroyGameObject(gameObject());
     }
     if(grounded){
@@ -40,7 +38,7 @@ void ColectableScript::onCollision(gme::Collider* c) {
         std::cout<< objectType << std::endl;
         if(objectType <=1){
             if(objectType == 0){ //sunar hp
-                c->gameObject()->sendMessage("sethp",50);
+                c->gameObject()->sendMessage("heal",50);
                 //gameObject()->sendMessage("destroy",0);
             }
             if(objectType == 1){ //sunar vida
@@ -157,10 +155,11 @@ void ColectableScript::animate() {
             else{
                 if(walkFrameCountL >5) walkFrameCountL=0;
                 if(objectType == 0){
-                    getRenderer()->setFrame("ani_NuevaVida_"+std::to_string(walkFrameCountL));
+                    getRenderer()->setFrame("ani_HP_"+std::to_string(walkFrameCountL));
                 }
                 if(objectType == 1){
-                    getRenderer()->setFrame("ani_HP_"+std::to_string(walkFrameCountL));
+                    getRenderer()->setFrame("ani_NuevaVida_"+std::to_string(walkFrameCountL));
+                    
                 }
                 if(objectType == 2){
                     

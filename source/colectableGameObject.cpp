@@ -1,5 +1,6 @@
 #include "colectableGameObject.hpp"
 #include "ColectableScript.hpp"
+#include "ScriptColectable.hpp"
 
 void colectableGameObject::setup() {
     addTag("colectable");
@@ -24,10 +25,8 @@ void colectableGameObject::setup() {
     
     
     
-    
     addComponent(new ColectableScript(objectType));
-    //addComponent(new colectableScript);
-    // saddComponent(new DestroyManager);
+    
     
 }
 
