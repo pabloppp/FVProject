@@ -43,6 +43,17 @@ void tilerJsonLoadScene::setup() {
     weapon *arma = new weapon("weapon");
     arma->addComponent(new pistolaBehavior()); 
     
+    /* DISTINTAS ARMAS */
+    metralletaBehavior *mb = new metralletaBehavior();
+    mb->setActive(false);
+    arma->addComponent(mb);
+    escopetaBehavior *eb =  new escopetaBehavior();
+    eb->setActive(false);
+    arma->addComponent(eb);
+    lnzllamasBehavior *lb =  new lnzllamasBehavior();
+    lb->setActive(false);
+    arma->addComponent(lb);
+
     
     player *p1 = new player("p1");
     p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
@@ -145,6 +156,7 @@ void tilerJsonLoadScene::setupScenario() {
     g->addPosition(1520, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);
+    g->setColectionable(true);
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

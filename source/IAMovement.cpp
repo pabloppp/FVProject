@@ -31,15 +31,6 @@ void IAMovement::setup() {
     
     fixPos = true;
     
-    /*std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
-    for(int i=0;i<objects->size();i++){
-        if(objects->at(i) == gameObject()){
-            objects->erase(objects->begin()+i);
-            objects->push_back(gameObject());
-            break;
-        }
-    }*/
-    
     spawn = getTransform()->getPosition();
     
     findPlayer();

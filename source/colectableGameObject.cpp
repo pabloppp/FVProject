@@ -21,13 +21,7 @@ void colectableGameObject::setup() {
     bc->addFilterTag("bullet");
    
     addComponent(bc);
-    
-    
-    
-    
     addComponent(new ColectableScript(objectType));
-    //addComponent(new colectableScript);
-    // saddComponent(new DestroyManager);
     
 }
 
