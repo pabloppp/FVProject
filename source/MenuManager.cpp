@@ -88,7 +88,6 @@ void MenuManager::onMessage(std::string m, float v) {
     else if(m.compare("gameover") == 0){ 
         showGameOver = true;
     }
-    
     else if(m.compare("reset") == 0){ 
         showGameOver = false;
         menudejuego = false;

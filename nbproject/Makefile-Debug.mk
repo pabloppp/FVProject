@@ -67,7 +67,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/engine/facade/Vector2.o \
 	${OBJECTDIR}/engine/facade/Window.o \
 	${OBJECTDIR}/engine/gameobjects/Camera.o \
-	${OBJECTDIR}/hito1_old/limit.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/source/Animator.o \
 	${OBJECTDIR}/source/BackgroundParallax.o \
@@ -90,6 +89,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
 	${OBJECTDIR}/source/imagenFondo.o \
+	${OBJECTDIR}/source/limit.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
 	${OBJECTDIR}/source/lnzllamasBehavior.o \
@@ -302,11 +302,6 @@ ${OBJECTDIR}/engine/gameobjects/Camera.o: engine/gameobjects/Camera.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/engine/gameobjects/Camera.o engine/gameobjects/Camera.cpp
 
-${OBJECTDIR}/hito1_old/limit.o: hito1_old/limit.cpp 
-	${MKDIR} -p ${OBJECTDIR}/hito1_old
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hito1_old/limit.o hito1_old/limit.cpp
-
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -416,6 +411,11 @@ ${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/imagenFondo.o source/imagenFondo.cpp
+
+${OBJECTDIR}/source/limit.o: source/limit.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/limit.o source/limit.cpp
 
 ${OBJECTDIR}/source/llamasBullet.o: source/llamasBullet.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

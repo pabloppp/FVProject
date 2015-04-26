@@ -11,6 +11,7 @@ public:
         menuKey = gme::Keyboard::Escape;
         canpause = true;
         gameOver = false;
+        player2_exists = false;
     };
     virtual ~GlobalStateManager();
     void pause();
@@ -29,6 +30,7 @@ private:
     bool paused;
     bool canpause;
     bool gameOver;
+    bool player2_exists;
     gme::Clock apretar;
 
 };

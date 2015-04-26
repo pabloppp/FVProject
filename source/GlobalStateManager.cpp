@@ -4,6 +4,9 @@
 #include "transitionScene.hpp"
 #include "PlayerMovement.hpp"
 #include "moveToTop.hpp"
+#include "weapon.hpp"
+#include "pistolaBehavior.hpp"
+#include "player.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -38,6 +41,30 @@ void GlobalStateManager::update(){
         if(!canpause) return; 
         pause();
         sendMessage("openMenu", 0); 
+        apretar.restart();
+    }
+    if(!player2_exists && !paused && gme::Keyboard::isKeyPressed(gme::Keyboard::Period) && apretar.currentTime().asSeconds()>0.2){
+        if(!canpause) return; 
+        player2_exists = true;
+        weapon *arma2 = new weapon("weapon");
+        arma2->addComponent(new pistolaBehavior()); 
+
+        player *p2 = new player("p2");
+        p2->overrideKeys = true;
+        p2->leftKey = gme::Keyboard::A;
+        p2->rightKey = gme::Keyboard::D;
+        p2->upKey = gme::Keyboard::W;
+        p2->downKey = gme::Keyboard::S;
+        p2->jumpKey = gme::Keyboard::F;
+        p2->weaponKey = gme::Keyboard::G;
+        p2->actionKey = gme::Keyboard::H;
+
+        p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+
+        p2->addChild(arma2);
+        arma2->getTransform()->setPosition(gme::Vector2(0,0));
+        instantiate(p2);
+        instantiate(arma2);
         apretar.restart();
     }
     
