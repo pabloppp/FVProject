@@ -72,7 +72,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/BackgroundParallax.o \
 	${OBJECTDIR}/source/CameraFollowPlayer.o \
 	${OBJECTDIR}/source/ColectableScript.o \
-	${OBJECTDIR}/source/DestroyScript.o \
 	${OBJECTDIR}/source/GameManager.o \
 	${OBJECTDIR}/source/GlobalStateManager.o \
 	${OBJECTDIR}/source/IAMovement.o \
@@ -326,11 +325,6 @@ ${OBJECTDIR}/source/ColectableScript.o: source/ColectableScript.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/ColectableScript.o source/ColectableScript.cpp
-
-${OBJECTDIR}/source/DestroyScript.o: source/DestroyScript.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/DestroyScript.o source/DestroyScript.cpp
 
 ${OBJECTDIR}/source/GameManager.o: source/GameManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

@@ -31,7 +31,7 @@ void lnzllamasBehavior::update() {
         return;
     }
     if(recargando){
-        std::cout << "BULLETS" << numBullets << std::endl;
+        //std::cout << "BULLETS" << numBullets << std::endl;
         if(clock.currentTime().asSeconds() > 0.2){
             clock.restart();
             numBullets = numBullets + 4;
@@ -45,7 +45,7 @@ void lnzllamasBehavior::update() {
             numBullets = numBullets + 4;
         } 
     }
-     std::cout << "BULLETS" << numBullets << std::endl;
+     //std::cout << "BULLETS" << numBullets << std::endl;
     verticalDirection = -1;
     if(gme::Keyboard::isKeyPressed(keyUp)){
         verticalDirection = 0;

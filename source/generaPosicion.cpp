@@ -16,16 +16,16 @@ void generaPosicion::setup(){
     randomtime = 5;
     destroyed = false;
     lObjectType=0;
+    objects = 0;
 }
 
 void generaPosicion::update() {   
     
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > randomtime ){
+        if(clkC.currentTime().asSeconds() > randomtime){
             clkC.restart();
             generaColeccionable();
-            
             randomtime = (rand()%10) + 8;
             destroyed = true;
         }
@@ -54,11 +54,12 @@ void generaPosicion::generaColeccionable(){
     int x = v.x + (16*3);
     int finalpos = (int)pos%(int)x;
     int objecType =  rand() %6;
+    std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
     if(objecType == lObjectType){
         objecType+=1;
-        lObjectType = objecType;
     }
-    std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
+    lObjectType = objecType;
+    //std::cout << "Ot: " << objecType << " lOt: " << lObjectType << std::endl;
     colectableGameObject *col =  new colectableGameObject("colectable",objecType);
     col->getTransform()->setPosition(gme::Vector2(finalpos,-300));
     instantiate(col);
@@ -118,7 +119,9 @@ void generaPosicion::addPosition(int x, int y) {
 }
 
 void generaPosicion::onMessage(std::string m, float v) {
+    std::cout << "message recieved " << m << std::endl;
     if(m.compare("destroyed") == 0){
         std::cout << "colectable destruido" << std::endl;
+        
     }
 }

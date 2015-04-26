@@ -14,7 +14,6 @@ public:
     void setup();
     void destroyObject();
     void update();
-    bool destroy;
 private:
     int objectType;
 

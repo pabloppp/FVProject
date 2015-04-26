@@ -8,13 +8,26 @@
 
 void ColectableScript::setup() {
     //objectType = rand()% 6;
-    grounded =false;
+    grounded = false;
+    destroyed = false;
+    walkFrameCountFD = 0;
+    walkFrameCountPD = 0;
+    walkFrameCountL  = 0;
+    walkFPS = 5;
+    ((gme::BoxCollider*)getCollider())->setSize(12*3, 12*3);
+    
 }
 
 void ColectableScript::update() {
+    if(destroyed){
+        
+       
+        destroyGameObject(gameObject());
+    }
     if(grounded){
         if(clkD.currentTime().asSeconds() > 12 && grounded) destroyGameObject(gameObject());
     }
+    animate();
     grounded=false;
 }
 
@@ -90,7 +103,83 @@ void ColectableScript::onCollision(gme::Collider* c) {
             }*/
            
         }
-        destroyGameObject(gameObject());
+        destroyed = true;
+        //destroyGameObject(gameObject());
+    }
+}
+
+void ColectableScript::onGui() {
+    gme::Vector2 boxPos = getTransform()->getPosition();
+    gme::Vector2 boxPosWindow = boxPos.worldToScreen();
+    if(boxPosWindow.x < -32*3){
+        gme::GUI::globalRotation = 90;
+        float posy = boxPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(16*3+8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_box"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(boxPosWindow.x > 1024+32*3){
+        gme::GUI::globalRotation = -90;
+        float posy = boxPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(1024-8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_box"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+}
+
+void ColectableScript::animate() {
+    if(animClock.currentTime().asSeconds() > 1.0f/walkFPS){
+        animClock.restart();
+        if(!grounded){
+            walkFrameCountFD++;
+            if(walkFrameCountFD >7) walkFrameCountFD = 0;
+            getRenderer()->setFrame("ani_CaidaPaquete_"+std::to_string(walkFrameCountFD));
+        }
+        else {
+            if(walkFPS == 5) walkFPS=10;
+        
+            if(walkFrameCountPD <=7){ 
+                getRenderer()->setFrame("ani_LLegadaParacaidas_"+std::to_string(walkFrameCountPD));
+                walkFrameCountPD++;
+            }
+            else{
+                if(walkFrameCountL >5) walkFrameCountL=0;
+                if(objectType == 0){
+                    getRenderer()->setFrame("ani_NuevaVida_"+std::to_string(walkFrameCountL));
+                }
+                if(objectType == 1){
+                    getRenderer()->setFrame("ani_HP_"+std::to_string(walkFrameCountL));
+                }
+                if(objectType == 2){
+                    
+                    getRenderer()->setFrame("ani_Pistola_"+std::to_string(walkFrameCountL));
+                }
+                if(objectType == 3){
+                    getRenderer()->setFrame("ani_Metralleta_"+std::to_string(walkFrameCountL));
+                }
+                if(objectType == 4){
+                    getRenderer()->setFrame("ani_Escopeta_"+std::to_string(walkFrameCountL));                    
+                }
+                if(objectType == 5){
+                    getRenderer()->setFrame("ani_Lanzallamas_"+std::to_string(walkFrameCountL));
+                }
+                walkFrameCountL++;
+            }
+        }
+            
+            
     }
 }
 

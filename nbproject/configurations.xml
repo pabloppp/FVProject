@@ -174,8 +174,6 @@
           <itemPath>source/CameraFollowPlayer.hpp</itemPath>
           <itemPath>source/ColectableScript.cpp</itemPath>
           <itemPath>source/ColectableScript.hpp</itemPath>
-          <itemPath>source/DestroyScript.cpp</itemPath>
-          <itemPath>source/DestroyScript.hpp</itemPath>
           <itemPath>source/GlobalStateManager.cpp</itemPath>
           <itemPath>source/GlobalStateManager.hpp</itemPath>
           <itemPath>source/IAMovement.cpp</itemPath>
@@ -435,10 +433,6 @@
       <item path="source/ColectableScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/ColectableScript.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="source/DestroyScript.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/DestroyScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -814,10 +808,6 @@
       <item path="source/ColectableScript.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/ColectableScript.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="source/DestroyScript.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/DestroyScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/GameManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
