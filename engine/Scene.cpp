@@ -26,7 +26,12 @@ Scene::Scene(const Scene& orig) {
 }
 
 Scene::~Scene() {   
-    while(!gameObjects.empty()) delete gameObjects.back(), gameObjects.pop_back();
+    for(int i=gameObjects.size()-1; i>=0;i--){
+        if(gameObjects.at(i) != gme::Game::mainCamera){
+            delete gameObjects.at(i);
+            gameObjects.erase(gameObjects.begin()+i);
+        }
+    }
     std::cout << "Destroying scene" << std::endl;
 }
 

@@ -6,6 +6,7 @@
 #include "../Game.hpp"
 #include "BoxCollider.hpp"
 
+
 #define SCALE 30.0f
 #define PI  3.14159265 
 
@@ -28,10 +29,12 @@ RigidBody::RigidBody() : Component::Component(){
     b2body->CreateFixture(&fixtureDef);
     
     fixedRotation = false;
+    
+    myscene = Game::getCurrentScene();
 }
 
 RigidBody::~RigidBody() {
-    Game::getCurrentScene()->boxWorld->DestroyBody(b2body);
+    myscene->boxWorld->DestroyBody(b2body);
 }
 
 
