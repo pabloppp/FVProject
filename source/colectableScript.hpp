@@ -7,7 +7,7 @@
 class ColectableScript : public gme::Script {
 public:
     ColectableScript(int i) : gme::Script(){
-        objectType=0;
+        objectType=i;
     };
     virtual ~ColectableScript();
     void setup();

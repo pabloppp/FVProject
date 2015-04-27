@@ -17,6 +17,7 @@ public:
         walkFPS = 30;
         walkFrameCount = 0;
         speed = 7;
+        damage = 5;
     };
     void setup();
     void update();
@@ -34,6 +35,7 @@ public:
     virtual void onGui();
     
     float speed;
+    float damage;
 
 private:
     gme::GameObject *player, *player2;

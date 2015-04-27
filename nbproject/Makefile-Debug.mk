@@ -86,6 +86,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/enemy_boss.o \
 	${OBJECTDIR}/source/enemy_fast.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
@@ -398,6 +399,11 @@ ${OBJECTDIR}/source/enemy.o: source/enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/enemy_boss.o: source/enemy_boss.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_boss.o source/enemy_boss.cpp
 
 ${OBJECTDIR}/source/enemy_fast.o: source/enemy_fast.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
