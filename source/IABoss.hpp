@@ -3,6 +3,8 @@
 
 #include "../engine/GMEngine.hpp"
 #include "GlobalStateManager.hpp"
+#include "LifeManager.hpp"
+
 
 class IABoss : public gme::Script {
 public:
@@ -15,6 +17,7 @@ public:
         dir.x = 1;
         right = true;
         side =false;
+        sprint =false;
     };
     void setup();
     void update();
@@ -28,16 +31,17 @@ private:
      gme::GameObject *player, *player2;
      GlobalStateManager *stateManager;
      gme::Vector2 dir;
-     gme::Clock clk;
+     gme::Clock clk,clkS;
      bool right;
-     bool side;;
+     bool side;
+     bool sprint;
      float deltatime;
-    
+    void explode(int min, int max, float forcemin, float forcemax);
     float speed;
     float damage;
     bool grounded;
     bool dead;
-    
+    LifeManager *lm;
     gme::Clock animClock;
     int walkFPS;
     int walkFrameCount;
