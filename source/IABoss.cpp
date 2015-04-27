@@ -9,6 +9,17 @@ void IABoss::setup() {
     std::cout << getTransform()->getPosition().x << std::endl;
     getTransform()->resize(gme::Vector2(-1,1));
      lm = (LifeManager*)gameObject()->getComponent<LifeManager*>();
+     
+     
+    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
+    
+    for(int i=0;i<objects->size();i++){
+        if(objects->at(i) == gameObject()){
+            objects->erase(objects->begin()+i);
+            objects->push_back(gameObject());
+            break;
+        }
+    } 
    
 }
 

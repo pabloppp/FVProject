@@ -14,6 +14,7 @@
 #include "GameManager.hpp"
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
+#include "enemy_boss.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -68,6 +69,10 @@ void tilerJsonLoadScene::setup() {
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
+    
+    
+    enemy_boss *boss = new enemy_boss("boss");
+    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));
 
     
     /*enemy *e = new enemy("dino");
@@ -160,12 +165,12 @@ void tilerJsonLoadScene::setupBg() {
 void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(-1,280,3);
-    g->addPosition(1520, 280);
-    g->addPosition(802, -300);
-    g->setEnemi(true);
-    g->setColectionable(true);
-    sceneLoaderObject->addComponent(g);
+    //generaPosicion *g =  new generaPosicion(-1,280,3);
+    //g->addPosition(1520, 280);
+    //g->addPosition(802, -300);
+    //g->setEnemi(true);
+    //g->setColectionable(true);
+    //sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
     

@@ -38,6 +38,7 @@ void enemy_boss::setup(){
     
     IABoss *ia = new IABoss();
     addComponent(ia);
+    
 }
 
 void enemy_boss::update(){
