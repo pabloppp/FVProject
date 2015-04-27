@@ -136,6 +136,8 @@
           <itemPath>source/tileRow.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
+          <itemPath>source/oleada2.cpp</itemPath>
+          <itemPath>source/oleada2.hpp</itemPath>
           <itemPath>source/sceneMenu.cpp</itemPath>
           <itemPath>source/sceneMenu.hpp</itemPath>
           <itemPath>source/sceneSplash.cpp</itemPath>
@@ -484,10 +486,6 @@
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="source/defaultParticle.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/defaultParticle.hpp" ex="false" tool="3" flavor2="0">
@@ -563,6 +561,10 @@
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -875,10 +877,6 @@
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/colectableScript.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/colectableScript.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="source/defaultParticle.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/defaultParticle.hpp" ex="false" tool="3" flavor2="0">
@@ -954,6 +952,10 @@
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>

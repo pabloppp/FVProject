@@ -102,6 +102,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/metralletaBullet.o \
 	${OBJECTDIR}/source/moveFondo.o \
 	${OBJECTDIR}/source/moveToTop.o \
+	${OBJECTDIR}/source/oleada2.o \
 	${OBJECTDIR}/source/pbBehavior.o \
 	${OBJECTDIR}/source/pistolaBehavior.o \
 	${OBJECTDIR}/source/pistolaBullet.o \
@@ -478,6 +479,11 @@ ${OBJECTDIR}/source/moveToTop.o: source/moveToTop.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveToTop.o source/moveToTop.cpp
+
+${OBJECTDIR}/source/oleada2.o: source/oleada2.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada2.o source/oleada2.cpp
 
 ${OBJECTDIR}/source/pbBehavior.o: source/pbBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

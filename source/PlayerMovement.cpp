@@ -7,6 +7,14 @@ void PlayerMovement::setup() {
     for(int i=0;i<gameObject()->getChildren().size();i++){
         gameObject()->getChildren().at(i)->setActive(true);
     }
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
 void PlayerMovement::onMessage(std::string m, float v) {
@@ -23,8 +31,15 @@ void PlayerMovement::update() {
     
     //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
+    if(manager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
+        return;
+    }
+    else getRigidBody()->setActive(true);
     
     if(dead) return;
+    
         
     float deltaTime = gme::Game::deltaTime.asSeconds();
     

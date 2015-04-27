@@ -3,6 +3,7 @@
 #include "enemy.hpp"
 #include "enemy_fast.hpp"
 #include "colectableGameObject.hpp"
+#include "GlobalStateManager.hpp"
 
 
 void generaPosicion::setup(){
@@ -17,9 +18,20 @@ void generaPosicion::setup(){
     destroyed = false;
     lObjectType=0;
     objects = 0;
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
-void generaPosicion::update() {   
+void generaPosicion::update() { 
+    
+    if(manager->isPaused()) return;
+    
     if(colectionable == true){
         if(clkC.currentTime().asSeconds() > randomtime){
             std::cout << "hey" << std::endl;
