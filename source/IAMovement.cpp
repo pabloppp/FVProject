@@ -13,6 +13,12 @@
 
 void IAMovement::findPlayer() {
    player = gme::GameObject::find("p1").at(0);
+   if(gme::GameObject::find("p2").size() > 0){
+        player2 = gme::GameObject::find("p2").at(0);
+   }
+   else{
+        player2 = NULL;
+   }
 }
 
 void IAMovement::setup() {
@@ -25,23 +31,28 @@ void IAMovement::setup() {
     
     fixPos = true;
     
-    /*std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
-    for(int i=0;i<objects->size();i++){
-        if(objects->at(i) == gameObject()){
-            objects->erase(objects->begin()+i);
-            objects->push_back(gameObject());
-            break;
-        }
-    }*/
-    
     spawn = getTransform()->getPosition();
     
     findPlayer();
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            stateManager = gsm;
+        }
+    }
     
 }
 
 void IAMovement::update() { 
      
+    if(stateManager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
+        return;
+    }
+    else getRigidBody()->setActive(true);
     
     if(player){
         gme::Vector2 playerpos = player->getTransform()->getPosition();
@@ -50,6 +61,15 @@ void IAMovement::update() {
         if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
                 && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
             player->sendMessage("damage", 5);
+        }
+        
+        if(player2 != NULL){
+            gme::Vector2 playerpos2 = player2->getTransform()->getPosition();
+            
+            if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
+                    && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
+                player2->sendMessage("damage", 5);
+            }
         }
         
         if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
@@ -109,7 +129,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
     if(clkJ.currentTime().asSeconds() > 5 && player.y < enemy.y && getRigidBody()){
         clkJ.restart();
         grounded = false;
-        std::cout << "jumping: " << 40000*deltatime << std::endl;
         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
     }
     
@@ -123,7 +142,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                     }
                     else{
@@ -148,7 +166,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                 }
                 //NO HACER NADA
@@ -161,7 +178,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                     //SALTAR
                     clkJ.restart();
                     grounded = false;
-                    std::cout << "jumping: " << 40000*deltatime << std::endl;
                     getRigidBody()->pushImmediate(gme::Vector2(0,-1), 25000*deltatime);
                 }
                 else{
@@ -174,7 +190,6 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
                         //SALTAR
                         clkJ.restart();
                         grounded = false;
-                        std::cout << "jumping: " << 40000*deltatime << std::endl;
                         getRigidBody()->pushImmediate(gme::Vector2(0,-1), 20000*deltatime);
                     }
                     else{
@@ -308,10 +323,56 @@ void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
         particle->getRenderer()->setColor(255,0,0);
         particle->getRigidBody()->pushImmediate(gme::Vector2(dirX, dirY), force);
                 
-        std::cout << "pos: " << pos.x << " " << pos.y << std::endl;
     }
-    std::cout << "kaboom: " << cantidad << std::endl;
 }
+
+void IAMovement::onGui() {
+    
+    gme::Vector2 enemyPos = getTransform()->getPosition();
+    gme::Vector2 enemyPosWindow = enemyPos.worldToScreen();
+    if(enemyPosWindow.x < -32*3){
+        gme::GUI::globalRotation = 90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(16*3+8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.x > 1024+32*3){
+        gme::GUI::globalRotation = -90;
+        float posy = enemyPosWindow.y;
+        if(posy < 16*3 ) posy = 16*3;
+        else if(posy > 576-16*3) posy = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(1024-8*3, posy),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    else if(enemyPosWindow.y > 576){
+        gme::GUI::globalRotation = 0;
+        float posx = enemyPosWindow.x;
+        if(posx < 16*3 ) posx = 16*3;
+        else if(posx > 1024-16*3) posx = 576-16*3;
+        gme::GUI::drawTexture(
+            gme::Vector2(posx, 576-8*3),
+            gme::Vector2(16*3, 16*3),
+            gme::GUI::TextureName("indicator_enemy"),
+            gme::GUI::Origin::Center,
+            gme::GUI::ScaleToFit
+        );
+    }
+    gme::GUI::globalRotation = 0;
+    
+}
+
 
 
 

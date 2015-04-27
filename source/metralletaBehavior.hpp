@@ -8,11 +8,6 @@
 class metralletaBehavior: public gme::Script  {
 public:    
     metralletaBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     virtual ~metralletaBehavior();
     void setup();
@@ -24,12 +19,16 @@ public:
     gme::Keyboard::Key keyLeft;
     gme::Keyboard::Key keyRight;
     gme::Keyboard::Key keyDown;
+    int numBullets;
 private:
     Animator animator;
     int direction; //0 top, 1 dcha, 2 bot, 3 izq 
     float speedBullet;
     float cadency = 0.1f;
     int directionSp;
+    int verticalDirection;
+    gme::Clock clock;
+    bool recargando;
     
 };
 

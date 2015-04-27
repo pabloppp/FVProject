@@ -9,8 +9,12 @@ public:
     void setup();
     void update();
     virtual ~mbBehavior();
+    virtual void onCollision(gme::Collider* c);
+    
 private:
     gme::Vector2 winSize;
+    bool destroy;
+    gme::Clock myClock;
 };
 
 #endif	/* MBBEHAVIOR_HPP */

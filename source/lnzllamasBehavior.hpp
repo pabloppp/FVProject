@@ -7,11 +7,6 @@
 class lnzllamasBehavior : public gme::Script {
 public:
     lnzllamasBehavior() : gme::Script(){
-        ShotKey = gme::Keyboard::G;
-        keyUp = gme::Keyboard::W;
-        keyLeft = gme::Keyboard::A;
-        keyRight = gme::Keyboard::D;
-        keyDown = gme::Keyboard::S;
     };
     virtual ~lnzllamasBehavior();
     void setup();
@@ -22,6 +17,7 @@ public:
     gme::Keyboard::Key keyLeft;
     gme::Keyboard::Key keyRight;
     gme::Keyboard::Key keyDown;
+    int numBullets;
 private:
     Animator animator;
     int directionSp;
@@ -29,6 +25,9 @@ private:
     float speedBullet;
     float cadency = 3.1f;
     gme::Vector2 winSize;
+    int verticalDirection;
+    bool recargando;
+    gme::Clock clock;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */

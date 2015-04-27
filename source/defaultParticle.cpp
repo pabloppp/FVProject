@@ -33,6 +33,7 @@ void defaultParticle::setup() {
     bc->addFilterTag("player");
     bc->addFilterTag("particle");
     bc->addFilterTag("bullet");
+    bc->addFilterTag("colectable");
     addComponent(bc);
     
     addComponent(new sprayParticleScript());

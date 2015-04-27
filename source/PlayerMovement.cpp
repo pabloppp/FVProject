@@ -3,20 +3,44 @@
 #include "tile.hpp"
 
 void PlayerMovement::setup() {
-    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
-    for(int i=0;i<objects->size();i++){
-        if(objects->at(i) == gameObject()){
-            objects->erase(objects->begin()+i);
-            objects->push_back(gameObject());
-            break;
+    dead = false;
+    for(int i=0;i<gameObject()->getChildren().size();i++){
+        gameObject()->getChildren().at(i)->setActive(true);
+    }
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
         }
     }
 }
+
+void PlayerMovement::onMessage(std::string m, float v) {
+    if(m.compare("gameover") == 0){
+        dead = true;
+        for(int i=0;i<gameObject()->getChildren().size();i++){
+            gameObject()->getChildren().at(i)->setActive(false);
+        }
+    }
+}
+
 
 void PlayerMovement::update() {
     
     //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
+    if(manager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
+        return;
+    }
+    else getRigidBody()->setActive(true);
+    
+    if(dead) return;
+    
+        
     float deltaTime = gme::Game::deltaTime.asSeconds();
     
     if(getRigidBody() == NULL) return;
@@ -159,6 +183,11 @@ void PlayerMovement::animate() {
 
 void PlayerMovement::onGui() {
     
+    int disp = 0;
+    if(gameObject()->getName().compare("p2")==0){
+        disp = 1024 - 170;
+    }
+    
     LifeManager *stats = (LifeManager*)(gameObject()->getComponent<LifeManager*>());
     //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50)
     //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
@@ -169,9 +198,38 @@ void PlayerMovement::onGui() {
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
-        gme::GUI::label(gme::Vector2(15,10), "Lives "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
-        gme::GUI::backgroundColor = gme::GUI::green;
-        gme::GUI::box(gme::Vector2(10,25), gme::Vector2(stats->getHpPercent(), 10));
+        
+        gme::GUI::drawTexture(
+            gme::Vector2(10+disp, 5),
+            gme::Vector2(8*3, 8*3),
+            gme::GUI::TextureName("heart"),
+            gme::GUI::Origin::TopLeft,
+            gme::GUI::ScaleToFit
+        );
+        
+        gme::GUI::fontSize = 20;
+        gme::GUI::label(gme::Vector2(50+disp, 12), "x "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
+        
+        
+        gme::GUI::fontSize = 16;
+        gme::GUI::label(gme::Vector2(10+disp,38), "HP", gme::GUI::Origin::TopLeft);
+        
+        gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
+        gme::GUI::outlineThickness = 3;
+        gme::GUI::outlineColor = gme::GUI::white;
+        
+        gme::GUI::box(gme::Vector2(40+disp,35), gme::Vector2(117, 3*6));
+        
+        int bars = (int)( stats->getHpPercent() / 5.555); 
+        if(stats->getHpPercent() > 50) gme::GUI::backgroundColor = gme::GUI::Color(172, 255, 135);
+        else if(stats->getHpPercent() > 25) gme::GUI::backgroundColor = gme::GUI::Color(255, 218, 117);
+        else gme::GUI::backgroundColor = gme::GUI::Color(255, 142, 110);
+        gme::GUI::outlineThickness = 0;
+        for(int i=0;i<bars;i++){
+            gme::GUI::box(gme::Vector2(46+i*6+disp, 35+6), gme::Vector2(3, 3*2));
+        }
+        
+        
     }
     //std::cout << "ENTERING HERE" << std::endl;
 }

@@ -38,6 +38,18 @@ void Game::setCurrentScene(std::string n){
     }
 }
 
+void Game::removeScene(std::string n) {
+    for(int i=0;i<scenes.size();i++){
+        if(scenes.at(i)->getName().compare(n) == 0){
+            Scene *es = scenes.at(i);
+            scenes.erase(scenes.begin()+i);
+            delete es;
+            return;
+        }
+    }
+}
+
+
 Scene *Game::getCurrentScene(){
     return currentScene;
 }

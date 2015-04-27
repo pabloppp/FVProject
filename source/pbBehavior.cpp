@@ -7,7 +7,6 @@ void pbBehavior::setup() {
 }
 
 void pbBehavior::update() {
-    
     if(myClock.currentTime().asSeconds() > 0.4 || destroy){
         destroyGameObject(gameObject());
         return;

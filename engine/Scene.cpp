@@ -16,9 +16,7 @@ Scene::Scene(std::string n){
     updateClock.restart();
     gameObjects.reserve(99999);
     Vector2 wsize = Game::getWindow()->getSize();
-    
-    b2Vec2 gravity(0.0f, 9.81f);
-    boxWorld = new b2World(gravity);
+    boxWorld = NULL;
     addGameObject(Game::mainCamera);
 }
 
@@ -148,6 +146,8 @@ void Scene::update(){
 }
 
 void Scene::superSetup(){
+    b2Vec2 gravity(0.0f, 9.81f);
+    boxWorld = new b2World(gravity);
     setup();
     for(int i = gameObjects.size()-1; i >= 0; i--) gameObjects.at(i)->setup();
     for(int i = gameObjects.size()-1; i >= 0; i--) gameObjects.at(i)->componentSetup();   

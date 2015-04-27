@@ -2,6 +2,7 @@
 #define	PLAYERMOVEMENT_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class PlayerMovement : public gme::Script{
 public:
@@ -10,22 +11,26 @@ public:
         jumpForce = 40 * 1000;
         walkFPS = 20;
         
-        upKey = gme::Keyboard::W;
-        downKey = gme::Keyboard::S;
-        leftKey = gme::Keyboard::A;
-        rightKey = gme::Keyboard::D;
-        jumpKey = gme::Keyboard::F;
-        weaponKey = gme::Keyboard::G;
-        actionKey = gme::Keyboard::H;
+        upKey = gme::Keyboard::Up;
+        downKey = gme::Keyboard::Down;
+        leftKey = gme::Keyboard::Left;
+        rightKey = gme::Keyboard::Right;
+        jumpKey = gme::Keyboard::Space;
+        weaponKey = gme::Keyboard::X;
+        actionKey = gme::Keyboard::Z;
         
         animGraceTime = 0.01;
-        changeWeapon = gme::Keyboard::X;
+        changeWeapon = gme::Keyboard::Q;
     };
     void setup();
     void update();   
     virtual void onCollision(gme::Collider *c);
+
     virtual void onGui();
     virtual ~PlayerMovement();
+
+    virtual void onMessage(std::string m, float v);
+
     int state; //0: idle, 1: walking
     bool grounded;
     bool down; //agachado
@@ -52,6 +57,8 @@ private:
     gme::Clock animClock;
     gme::Clock animGraceTimeClock;
     float animGraceTime;
+    bool dead;
+    GlobalStateManager *manager;
     
 };
 

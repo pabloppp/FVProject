@@ -9,6 +9,7 @@
 #define	GENERAPOSICION_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class generaPosicion : public gme::Script {
 public:
@@ -23,18 +24,26 @@ public:
     void generaColeccionable();
     void generaEnemigo(int x, int y);
     void addPosition(int x, int y);
+
+    virtual void onMessage(std::string m, float v);
+
     
 private:
     gme::Vector2 v;
     gme::Window *w;
     bool colectionable;
     bool enemi;
+    bool destroyed;
     gme::Clock clkC;
     gme::Clock clkE;
     int posX;
     int posY;
     int rat;
     std::vector<gme::Vector2> posiciones;
+    int objects;
+    int randomtime;
+    int lObjectType;
+    GlobalStateManager *manager;
 };
 
 #endif	/* GENERAPOSICION_HPP */

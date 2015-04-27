@@ -9,6 +9,7 @@
 #define	IAMOVEMENT_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class IAMovement : public gme::Script {
 public:
@@ -29,10 +30,13 @@ public:
 
     virtual void onCollision(gme::Collider* c);
     
+
+    virtual void onGui();
+    
     float speed;
 
 private:
-    gme::GameObject *player;
+    gme::GameObject *player, *player2;
     gme::Clock clk,clkJ,clkPJ;
     gme::Vector2 dir = gme::Vector2(1,0);
     bool right,left, jumping;
@@ -45,6 +49,8 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    
+    GlobalStateManager *stateManager;
     
     
     
