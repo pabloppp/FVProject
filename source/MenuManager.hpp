@@ -3,6 +3,7 @@
 #define	MENUMANAGER_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class MenuManager : public gme::Script{
 public:
@@ -32,9 +33,10 @@ private:
     gme::MusicPlayer *change_sound;
     bool sonando, izq, dre, apretado, music_pausa;
     int x=1, largo=280, ancho=30, num_apre, num_apre_ini, menu, posX, pausa_visible;
-    bool pausa, menudejuego, juegoNuevo1p, juegoNuevo2p, showGameOver;
+    bool pausa, menudejuego, juegoNuevo1p, juegoNuevo2p, showGameOver, showLevelSuccess;
     gme::Clock reloj_fondo;
     gme::Clock apretar;
+    GlobalStateManager *manager;
 
 };
 

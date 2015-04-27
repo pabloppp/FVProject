@@ -30,6 +30,9 @@ void MenuManager::setup(){
     pausa_visible = 0;
     
     showGameOver = false;
+    showLevelSuccess = false;
+    
+    manager = (GlobalStateManager*)(gameObject()->getComponent<GlobalStateManager*>());
 }
 
 void MenuManager::update(){
@@ -92,6 +95,13 @@ void MenuManager::onMessage(std::string m, float v) {
         showGameOver = false;
         menudejuego = false;
         pausa = false;
+    }
+    else if(m.compare("showLevelSuccess") == 0){
+        showGameOver = false;
+        showLevelSuccess = true;
+        menudejuego = false;
+        pausa = false;
+        
     }
 }
 
@@ -190,7 +200,26 @@ void MenuManager::openPause(){
 }
 
 void MenuManager::onGui() {
-  
+    
+  if(manager->gameType==1){
+      int timeLeft = (int)(manager->winCondition-(manager->lastScore+manager->gameClock.currentTime().asSeconds()));
+      if(manager->isPaused()) timeLeft = (int)(manager->winCondition-manager->lastScore);
+      if(timeLeft < 0) timeLeft = 0;
+      int minutes = timeLeft/60;
+      int seconds = timeLeft%60;
+      gme::GUI::fontSize = 45;
+      gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+std::to_string(seconds), gme::GUI::Origin::Center);
+  }  
+  if(showLevelSuccess){
+      gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,100);
+      gme::GUI::contentColor = gme::GUI::Color(0,0,0);
+      gme::GUI::fontSize = 30;
+      gme::GUI::box(gme::Vector2((1024/2)-200, (576/2)-100),gme::Vector2(400,200));
+      gme::GUI::label(gme::Vector2(1024/2, 576/2), "HAS GANADO", gme::GUI::Origin::Center );
+      gme::GUI::fontSize = 15;
+      gme::GUI::label(gme::Vector2(1024/2, 576/2 + 50), "Pulsa ENTER para continuar", gme::GUI::Origin::Center );
+      return;
+  }  
   if(showGameOver){
       gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,100);
       gme::GUI::contentColor = gme::GUI::Color(0,0,0);

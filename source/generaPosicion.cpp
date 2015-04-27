@@ -3,7 +3,7 @@
 #include "enemy.hpp"
 #include "enemy_fast.hpp"
 #include "colectableGameObject.hpp"
-#include "enemy_boss.hpp"
+#include "GlobalStateManager.hpp"
 
 
 void generaPosicion::setup(){
@@ -18,9 +18,20 @@ void generaPosicion::setup(){
     destroyed = false;
     lObjectType=0;
     objects = 0;
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
-void generaPosicion::update() {   
+void generaPosicion::update() { 
+    
+    if(manager->isPaused()) return;
+    
     if(colectionable == true){
         if(clkC.currentTime().asSeconds() > randomtime){
             std::cout << "hey" << std::endl;
@@ -80,15 +91,14 @@ void generaPosicion::generaEnemigo(int x, int y) {
         
         int random = rand() % 100;
         
-        gme::GameObject *enemigo =  new enemy_boss("dino_boss");
+        gme::GameObject *enemigo;
         
-        /*if(random < 70){
+        if(random < 70){
             enemigo = new enemy("dino");
         }
         else{
             enemigo = new enemy_fast("dino_fast");
-        }*/
-        
+        }
         enemigo->getTransform()->setPosition(gme::Vector2(x, y));
         
         instantiate(enemigo);

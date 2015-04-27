@@ -2,6 +2,7 @@
 #define	PLAYERMOVEMENT_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class PlayerMovement : public gme::Script{
 public:
@@ -57,6 +58,7 @@ private:
     gme::Clock animGraceTimeClock;
     float animGraceTime;
     bool dead;
+    GlobalStateManager *manager;
     
 };
 

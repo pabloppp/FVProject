@@ -9,6 +9,7 @@
 #define	GENERAPOSICION_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class generaPosicion : public gme::Script {
 public:
@@ -42,6 +43,7 @@ private:
     int objects;
     int randomtime;
     int lObjectType;
+    GlobalStateManager *manager;
 };
 
 #endif	/* GENERAPOSICION_HPP */

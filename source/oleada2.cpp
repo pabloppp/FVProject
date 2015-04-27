@@ -1,4 +1,4 @@
-#include "tilerJsonLoadScene.hpp"
+#include "oleada2.hpp"
 #include "emptyGameObject.hpp"
 #include "mapGenerator.hpp"
 #include "player.hpp"
@@ -15,7 +15,7 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 
-void tilerJsonLoadScene::setup() {
+void oleada2::setup() {
     
     addGameObject(gme::Game::mainCamera);
     
@@ -29,11 +29,11 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 60;
-        gsm->nextScene = "oleada2";
+        gsm->winCondition = 75;
     });
     
     gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
+
     
     gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
     gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
@@ -107,7 +107,7 @@ void tilerJsonLoadScene::setup() {
 }
 
 
-void tilerJsonLoadScene::setupBg() {
+void oleada2::setupBg() {
     srand (time(NULL));
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
     
@@ -157,12 +157,13 @@ void tilerJsonLoadScene::setupBg() {
     bgLayerC->parallaxFactor = 0.4;
 }
 
-void tilerJsonLoadScene::setupScenario() {
+void oleada2::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(-1,280,3);
-    g->addPosition(1520, 280);
-    g->addPosition(802, -300);
+    generaPosicion *g =  new generaPosicion(33,95,3);
+    g->addPosition(766, -144);
+    g->addPosition(1490, 95);
+    g->addPosition(829, 95);
     g->setEnemi(true);
     g->setColectionable(true);
     sceneLoaderObject->addComponent(g);
@@ -173,7 +174,7 @@ void tilerJsonLoadScene::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave1.json";
+            gen->mapFile = "resources/maps/wave5.json";
         }
     });
 }

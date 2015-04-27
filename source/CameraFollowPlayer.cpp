@@ -9,16 +9,20 @@
 
 void CameraFollowPlayer::setup() {
     player2 = NULL;
-    std::vector<gme::GameObject*> found = gme::GameObject::findWithTag("player");
+    std::vector<gme::GameObject*> found = gme::GameObject::find("p1");
+    std::vector<gme::GameObject*> found2 = gme::GameObject::find("p2");
     player = found.front();
-    if(found.size() > 1){
-        player2 = found.back();
+    if(found2.size() > 0){
+        player2 = found2.front();
     }
     std::cout << "Camera following player: " << player->getName() << std::endl;
     currentPos = getObjPos();
 }
 
 void CameraFollowPlayer::update() {
+    if(player == NULL){
+        return;
+    };
     objPos = getObjPos();
     float lerpFactor = 0.2;
     currentPos.x = currentPos.x*(1-lerpFactor)+objPos.x*lerpFactor;
