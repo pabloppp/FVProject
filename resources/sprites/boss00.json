@@ -1,0 +1,46 @@
+{
+    "layers": [
+        {
+            "tiles": [
+                boss_0{
+                    "flipX": false,
+                    "y": 0,
+                    "rot": 0,
+                    "tile": -1,
+                    "index": 0,
+                    "x": 0
+                },
+                boss_1{
+                    "flipX": false,
+                    "y": 0,
+                    "rot": 0,
+                    "tile": -1,
+                    "index": 1,
+                    "x": 1
+                },
+                boss_2{
+                    "flipX": false,
+                    "y": 0,
+                    "rot": 0,
+                    "tile": -1,
+                    "index": 2,
+                    "x": 2
+                },
+                boss_3{
+                    "flipX": false,
+                    "y": 0,
+                    "rot": 0,
+                    "tile": -1,
+                    "index": 3,
+                    "x": 3
+                }
+            ],
+            "name": "triceratops",
+            "number": 0
+        }
+    ],
+    "tileswide": 4,
+    "tileheight": 50,
+    "tileshigh": 1,
+    "tilewidth": 50
+}

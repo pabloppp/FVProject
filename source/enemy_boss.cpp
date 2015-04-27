@@ -1,14 +1,15 @@
 #include "enemy_boss.hpp"
 #include "LifeManager.hpp"
 #include "IAMovement.hpp"
+#include "IABoss.hpp"
 
 
 void enemy_boss::setup(){
     addTag("enemy");
     
-    getRenderer()->setTexture("dino00");
-    getRenderer()->setSize(gme::Vector2(32,32));
-    getRenderer()->setFrame("idle");
+    getRenderer()->setTexture("boss00");
+    getRenderer()->setSize(gme::Vector2(50,50));
+    getRenderer()->setFrame("boss_0");
     getTransform()->scale = gme::Vector2(3,3);
     getRenderer()->setPivot(gme::Vector2(0.5, 1));
     
@@ -35,9 +36,7 @@ void enemy_boss::setup(){
     stats->waitTime = 0.8;
     addComponent(stats);
     
-    IAMovement *ia = new IAMovement();
-    ia->speed = 4;
-    ia->damage = 10;
+    IABoss *ia = new IABoss();
     addComponent(ia);
 }
 

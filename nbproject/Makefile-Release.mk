@@ -74,6 +74,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/ColectableScript.o \
 	${OBJECTDIR}/source/GameManager.o \
 	${OBJECTDIR}/source/GlobalStateManager.o \
+	${OBJECTDIR}/source/IABoss.o \
 	${OBJECTDIR}/source/IAMovement.o \
 	${OBJECTDIR}/source/IntroS1Manager.o \
 	${OBJECTDIR}/source/LifeManager.o \
@@ -340,6 +341,11 @@ ${OBJECTDIR}/source/GlobalStateManager.o: source/GlobalStateManager.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/GlobalStateManager.o source/GlobalStateManager.cpp
+
+${OBJECTDIR}/source/IABoss.o: source/IABoss.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IABoss.o source/IABoss.cpp
 
 ${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
