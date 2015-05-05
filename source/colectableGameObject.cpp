@@ -1,5 +1,6 @@
 #include "colectableGameObject.hpp"
 #include "ColectableScript.hpp"
+#include "LifeManager.hpp"
 
 void colectableGameObject::setup() {
     addTag("colectable");
@@ -18,7 +19,8 @@ void colectableGameObject::setup() {
     
     gme::BoxCollider *bc = new gme::BoxCollider();
     bc->addFilterTag("enemy");
-    bc->addFilterTag("bullet");
+    bc->addFilterTag("colectable");
+   
    
     addComponent(bc);
     addComponent(new ColectableScript(objectType));

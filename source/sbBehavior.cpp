@@ -24,7 +24,8 @@ sbBehavior::~sbBehavior() {
 
 void sbBehavior::onCollision(gme::Collider* c) {
     if(c->gameObject() != NULL){
-        if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor")){
+        if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") ||
+                c->gameObject()->hasTag("colectable")){
             c->gameObject()->sendMessageUpward("damage", 10);
             destroy = true;
         }
