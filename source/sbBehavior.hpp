@@ -14,6 +14,8 @@ private:
     gme::Vector2 winSize;
     bool destroy;
     gme::Clock myClock;
+    gme::Clock animClock;
+    int frame;
 };
 
 #endif	/* SBBEHAVIOR_HPP */

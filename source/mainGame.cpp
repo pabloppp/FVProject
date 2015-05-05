@@ -29,6 +29,10 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
     gme::Game::newTexture("resources/sprites/player1_spr/player1_sheet.png", "player1Texture");
     
+    //BALAS
+    gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
+    gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
+    
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");

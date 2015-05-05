@@ -4,8 +4,9 @@
 void llamasBullet::setup() {
     addTag("bullet"); 
    
-   getRenderer()->setTexture("bullet");
+   getRenderer()->setTexture("fthrower_bullet");
    getRenderer()->setSize(gme::Vector2(16,16));
+   getTransform()->resize(gme::Vector2(3,3));
    
    gme::RigidBody *rb = new gme::RigidBody();
    rb->isDynamic();

@@ -14,6 +14,9 @@ public:
 private:
     Animator animator;
     gme::Clock clock;
+    gme::Clock animclock;
+    int frame;
+    int initialXSpeed;
     bool destroy;
     gme::Vector2 winSize;
 };

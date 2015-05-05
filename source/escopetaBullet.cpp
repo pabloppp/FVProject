@@ -4,8 +4,9 @@
 void escopetaBullet::setup() {
     addTag("bullet"); 
    
-   getRenderer()->setTexture("bullet");
+   getRenderer()->setTexture("escopeta_bullet");
    getRenderer()->setSize(gme::Vector2(16,16));
+   getTransform()->setScale(gme::Vector2(3, 3));
    
    gme::RigidBody *rb = new gme::RigidBody();
    rb->isDynamic();

@@ -19,7 +19,9 @@ void IABoss::setup() {
             objects->push_back(gameObject());
             break;
         }
-    } 
+    }
+    
+    ((gme::BoxCollider*)(getCollider()))->setSize(25*3,32*3);
    
 }
 
@@ -63,8 +65,8 @@ void IABoss::update() {
         deltatime = gme::Game::deltaTime.asSeconds();
         float dist = speed;
         walkFPS = 30;
-        gme::Vector2 inipos = gme::Vector2(16,enemypos.y);
-        gme::Vector2 finpos = gme::Vector2(1584-16,enemypos.y);
+        gme::Vector2 inipos = gme::Vector2(32,enemypos.y);
+        gme::Vector2 finpos = gme::Vector2(1584-32,enemypos.y);
                
         /*if( ((gme::Vector2::distance(finpos, enemypos) < 800 && right) || (gme::Vector2::distance(inipos, enemypos) < 800 && !right))){
             dist *= 4;
@@ -118,7 +120,7 @@ void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
     //std::cout << "enemy: " << enemy.y << std::endl;
     //std::cout << "player: " << player.y << std::endl;
     
-    if(enemy.x < 16 && !right){
+    if(enemy.x < 16*3 && !right){
         dir.x = -dir.x;        
         clk.restart();
         right = true;
@@ -127,7 +129,7 @@ void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
         getTransform()->resize(gme::Vector2(-1,1));
     }
     
-    if(enemy.x > 1510 && right){
+    if(enemy.x > 1526-16*3 && right){
         dir.x = -dir.x;        
         clk.restart();
         right = false;
@@ -168,11 +170,11 @@ void IABoss::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         std::cout << "muerte" << std::endl;
         dead = true;
-        explode(20, 50, 50, 250);
+        explode(5, 15, 20, 200);
     }
     
     if(m.compare("damage")==0 && !dead){
-        explode(3,10, 50, 150);
+        explode(1,5, 10, 100);
         std::cout << "damage " << std::endl;
     }
 }

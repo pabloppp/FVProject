@@ -4,7 +4,7 @@
 
 void lnzllamasBehavior::setup() {
     getRenderer()->setTexture("gun");
-    speedBullet = 25.f;
+    speedBullet = 15.f;
     recargando = false;
     numBullets = 100;
     

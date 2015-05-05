@@ -3,12 +3,19 @@
 void sbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize();
     destroy = false;
+    frame = 0;
 }
 
 void sbBehavior::update() {
     if(myClock.currentTime().asSeconds() > 0.3 || destroy){
         destroyGameObject(gameObject());
         return;
+    }
+    
+    if(animClock.currentTime().asSeconds() > 0.05){
+        animClock.restart();
+        frame++;
+        if(frame < 3) getRenderer()->setFrame(gme::Vector2(frame, 0));
     }
     
     float posX = getTransform()->getPosition().x;
