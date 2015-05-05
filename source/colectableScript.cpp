@@ -5,10 +5,14 @@
 #include "metralletaBehavior.hpp"
 #include "escopetaBehavior.hpp"
 #include "lnzllamasBehavior.hpp"
+#include "LifeManager.hpp"
+#include "defaultParticle.hpp"
 
 void ColectableScript::setup() {
     grounded = false;
     destroyed = false;
+    isHit = false;
+    hp = 5;
     walkFrameCountFD = 0;
     walkFrameCountPD = 0;
     walkFrameCountL  = 0;
@@ -34,7 +38,7 @@ void ColectableScript::onCollision(gme::Collider* c) {
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
     if(c->gameObject()->hasTag("floor")){
         if(relativePosition.y == -1)   grounded = true;
-    }
+    }    
     if(c->gameObject()->hasTag("player")){ 
         std::cout << "objectType = " << objectType << std::endl;
         if(objectType <=1){
@@ -81,6 +85,48 @@ void ColectableScript::onCollision(gme::Collider* c) {
         destroyed = true;
     }
 }
+
+void ColectableScript::onMessage(std::string m, float v) {
+    
+    if(m.compare("damage") == 0 && isHit == false){
+        isHit = true;
+        hp--;
+        if(hp <= 0){
+            explode(10,20,50,100);
+            destroyed = true;
+        }
+        else explode(3,10,25,50);
+    }
+    isHit = false;
+}
+
+void ColectableScript::explode(int min, int max, float forcemin, float forcemax) {
+    int cantidad = (rand() % (max-min)) + min;
+    
+    gme::Vector2 pos = getTransform()->getPosition();
+    
+    pos.y += 8*3;
+    
+    for(int i=0;i<cantidad;i++){
+        float dirX = ( (rand() % 200) - 100 ) / 100.f;
+        float dirY = ( (rand() % 200) - 100 ) / 100.f;
+        int force = (rand() % (int)(forcemax-forcemin)) + forcemin;
+        defaultParticle *particle = new defaultParticle("blood"); 
+        particle->startingPosition = pos;
+        instantiate(particle);
+        particle->getTransform()->setPosition(pos);
+        
+        if(rand() % 10 == 1){
+            particle->getRenderer()->setColor(33,51,32);
+        }
+        else{
+            particle->getRenderer()->setColor(103,64,40);
+        }
+        particle->getRigidBody()->pushImmediate(gme::Vector2(dirX, dirY), force);
+    }
+}
+
+
 
 void ColectableScript::onGui() {
     gme::Vector2 boxPos = getTransform()->getPosition();
