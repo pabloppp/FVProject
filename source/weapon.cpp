@@ -7,7 +7,9 @@ void weapon::setup(){
     getRenderer()->setSize(gme::Vector2(32,32));
     getRenderer()->setPivot(gme::Vector2(0.5, 1));
     //getTransform()->scale = gme::Vector2(3,3);
-    addComponent(new moveToTop());  
+    moveToTop *mtt = new moveToTop();
+    mtt->setOrder(-1);
+    addComponent(mtt);  
 }
 
 
