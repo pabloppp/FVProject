@@ -26,6 +26,8 @@ void escopetaBehavior::setup() {
 void escopetaBehavior::update() {
     verticalDirection = -1;
     
+    if(!isActive()) return;
+    
     if(gme::Keyboard::isKeyPressed(keyUp)){
         verticalDirection = 0;
     }

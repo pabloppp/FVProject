@@ -26,6 +26,9 @@ void lnzllamasBehavior::setup() {
 }
 
 void lnzllamasBehavior::update() {
+    
+    if(!isActive()) return;
+    
     if(numBullets <= 0 && !recargando){
         recargando = true;
         return;

@@ -18,6 +18,9 @@ void pistolaBehavior::setup() {
 
 void pistolaBehavior::update() {
     verticalDirection = -1;
+    
+    if(!isActive()) return;
+    
     if(gme::Keyboard::isKeyPressed(keyUp)){
         verticalDirection = 0;
     }

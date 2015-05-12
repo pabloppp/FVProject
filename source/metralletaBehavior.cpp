@@ -25,6 +25,9 @@ void metralletaBehavior::setup() {
 }
 
 void metralletaBehavior::update() {
+    
+    if(!isActive()) return;
+    
     if(numBullets <= 0 && !recargando){
         recargando = true;
         return;

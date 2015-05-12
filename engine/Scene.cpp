@@ -18,6 +18,7 @@ Scene::Scene(std::string n){
     Vector2 wsize = Game::getWindow()->getSize();
     boxWorld = NULL;
     addGameObject(Game::mainCamera);
+    lastTime = 0;
 }
 
 
@@ -90,8 +91,8 @@ void Scene::update(){
     float now = updateClock.currentTime().asSeconds();
     float frameTime = now - lastTime;
         
-    while(frameTime > updateTime){   
-        
+    while(frameTime > updateTime){
+                
         Game::deltaTime = updateTime;
         
         for(int i = gameObjects.size()-1; i >= 0; i--){
