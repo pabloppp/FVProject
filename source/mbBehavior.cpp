@@ -4,9 +4,20 @@
 void mbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize(); 
     destroy = false;
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
 void mbBehavior::update() {
+     if(manager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        return;
+    }
     if(myClock.currentTime().asSeconds() > 0.4 || destroy){
         destroyGameObject(gameObject());
         return;

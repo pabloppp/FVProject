@@ -64,9 +64,6 @@ void GlobalStateManager::update(){
         p2->actionKey = gme::Keyboard::H;
 
         p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
-        
-        
-        
         p2->customize([](gme::GameObject* obj) {
             obj->getRenderer()->setTexture("player1Texture");
         });

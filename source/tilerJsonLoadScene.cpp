@@ -38,7 +38,7 @@ void tilerJsonLoadScene::setup() {
     setupBg(); 
     
     weapon *arma = new weapon("weapon");
-    arma->addComponent(new escopetaBehavior()); 
+    arma->addComponent(new pistolaBehavior()); 
     
     /* DISTINTAS ARMAS */
     metralletaBehavior *mb = new metralletaBehavior();

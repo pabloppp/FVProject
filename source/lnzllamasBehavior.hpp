@@ -3,6 +3,7 @@
 
 #include "../engine/GMEngine.hpp"
 #include "Animator.hpp"
+#include "GlobalStateManager.hpp"
 
 class lnzllamasBehavior : public gme::Script {
 public:
@@ -28,6 +29,7 @@ private:
     int verticalDirection;
     bool recargando;
     gme::Clock clock;
+    GlobalStateManager *manager;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */
