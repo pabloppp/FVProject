@@ -2,6 +2,7 @@
 #define	PISTOLABEHAVIOR_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class pistolaBehavior : public gme::Script  {
 public:    
@@ -24,6 +25,7 @@ private:
     float speedBullet;
     gme::Vector2 winSize;
     gme::Clock clock;
+    GlobalStateManager *manager;
 };
 
 #endif	/* SHOOTBULLET_HPP */

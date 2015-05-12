@@ -2,6 +2,7 @@
 #define	MBBEHAVIOR_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class mbBehavior: public gme::Script {
 public:
@@ -15,6 +16,7 @@ private:
     gme::Vector2 winSize;
     bool destroy;
     gme::Clock myClock;
+    GlobalStateManager *manager;
 };
 
 #endif	/* MBBEHAVIOR_HPP */

@@ -3,6 +3,7 @@
 
 #include "../engine/GMEngine.hpp"
 #include "Animator.hpp"
+#include "GlobalStateManager.hpp"
 
 class llbBehavior: public gme::Script {
 public:
@@ -19,6 +20,7 @@ private:
     int initialXSpeed;
     bool destroy;
     gme::Vector2 winSize;
+    GlobalStateManager *manager;
 };
 
 #endif	/* LLBBEHAVIOR_HPP */
