@@ -10,10 +10,13 @@ void mainGame::setup() {
     
     //debugColliders = true;
     
-    gme::Game::newTexture("resources/BGs/fondoSplash.png", "fondoSplash");  
+    gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
     gme::Game::newTexture("resources/BGs/gato.png", "logo");
+    gme::Game::newTexture("resources/BGs/fondo_menu.png", "fondo_menu");
     gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
+    gme::Game::newTexture("resources/BGs/cartel_lose.png", "cartel_lose");
+    gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
     
     gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
     
@@ -37,8 +40,8 @@ void mainGame::setup() {
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
-    
-    
+        
+    //PRE ESCENAS
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
     
@@ -49,7 +52,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("oleada1");
+    gme::Game::setCurrentScene("mainmenu");
 }
 
 

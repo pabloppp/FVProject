@@ -9,7 +9,10 @@ public:
     sceneMenu() : gme::Scene(){};
     sceneMenu(std::string n) : gme::Scene(n){};
     void setup();
+    void setupBg();
 private:
+    float posXA;
+    float posXB;
    
 };
 

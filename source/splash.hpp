@@ -12,9 +12,13 @@
 
 class splash : public gme::Script {
 public:
+    splash() : gme::Script(){
+        spaceKey = gme::Keyboard::Space;
+    }
     void setup();
     void update();
     virtual ~splash();
+    gme::Keyboard::Key spaceKey;
 private:
        
     gme::Clock reloj;

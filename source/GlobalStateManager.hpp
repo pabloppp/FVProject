@@ -8,7 +8,7 @@ class GlobalStateManager : public gme::Script{
 public:
     GlobalStateManager() : gme::Script() {
         pauseKey = gme::Keyboard::P;
-        menuKey = gme::Keyboard::Escape;
+        escKey = gme::Keyboard::Escape;
         canpause = true;
         gameOver = false;
         player2_exists = false;
@@ -24,8 +24,9 @@ public:
     void resume();
     void setup();
     void update();
+    void isGameOver();
     gme::Keyboard::Key pauseKey;
-    gme::Keyboard::Key menuKey;
+    gme::Keyboard::Key escKey;
 
     virtual void onMessage(std::string m, float v);
     bool isPaused();
