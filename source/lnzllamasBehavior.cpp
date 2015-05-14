@@ -4,7 +4,7 @@
 
 void lnzllamasBehavior::setup() {
     getRenderer()->setTexture("gun");
-    speedBullet = 25.f;
+    speedBullet = 15.f;
     recargando = false;
     numBullets = 100;
     
@@ -23,9 +23,19 @@ void lnzllamasBehavior::setup() {
     keyDown = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->downKey;
     keyLeft = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->leftKey;
     keyRight = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->rightKey;
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
 void lnzllamasBehavior::update() {
+    if(manager->isPaused()) return;
+    if(!isActive()) return;
+    
     if(numBullets <= 0 && !recargando){
         recargando = true;
         return;

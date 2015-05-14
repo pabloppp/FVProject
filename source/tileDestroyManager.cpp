@@ -16,7 +16,6 @@ tileDestroyManager::~tileDestroyManager() {
 }
 
 void tileDestroyManager::onMessage(std::string m, float v) {
-    
     if(m.compare("damage") == 0 && isHit == false){
         isHit = true;
         isHitTemp = true;

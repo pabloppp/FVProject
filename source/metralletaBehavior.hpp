@@ -4,6 +4,7 @@
 
 #include "../engine/GMEngine.hpp"
 #include "Animator.hpp"
+#include "GlobalStateManager.hpp"
 
 class metralletaBehavior: public gme::Script  {
 public:    
@@ -29,6 +30,7 @@ private:
     int verticalDirection;
     gme::Clock clock;
     bool recargando;
+    GlobalStateManager *manager;
     
 };
 

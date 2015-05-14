@@ -3,6 +3,7 @@
 #define	PBBEHAVIOR_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "GlobalStateManager.hpp"
 
 class pbBehavior: public gme::Script  {
 public:
@@ -17,6 +18,7 @@ private:
     bool destroy;
     gme::Clock myClock;
     gme::Vector2 winSize;
+    GlobalStateManager *manager;
 };
 
 #endif	/* BULLETBEHAVIOR_HPP */

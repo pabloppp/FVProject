@@ -19,6 +19,7 @@ Game::Game(const Game& orig) {
 }
 
 Game::~Game() {
+    delete gme::Game::mainCamera;
     while(!scenes.empty()) delete scenes.back(), scenes.pop_back();
     std::cout << "Destroying game instance" << std::endl;
     //delete currentScene;

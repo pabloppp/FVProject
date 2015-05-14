@@ -18,6 +18,7 @@ Scene::Scene(std::string n){
     Vector2 wsize = Game::getWindow()->getSize();
     boxWorld = NULL;
     addGameObject(Game::mainCamera);
+    lastTime = 0;
 }
 
 
@@ -26,7 +27,12 @@ Scene::Scene(const Scene& orig) {
 }
 
 Scene::~Scene() {   
-    while(!gameObjects.empty()) delete gameObjects.back(), gameObjects.pop_back();
+    for(int i=gameObjects.size()-1; i>=0;i--){
+        if(gameObjects.at(i) != gme::Game::mainCamera){
+            delete gameObjects.at(i);
+            gameObjects.erase(gameObjects.begin()+i);
+        }
+    }
     std::cout << "Destroying scene" << std::endl;
 }
 
@@ -85,8 +91,8 @@ void Scene::update(){
     float now = updateClock.currentTime().asSeconds();
     float frameTime = now - lastTime;
         
-    while(frameTime > updateTime){   
-        
+    while(frameTime > updateTime){
+                
         Game::deltaTime = updateTime;
         
         for(int i = gameObjects.size()-1; i >= 0; i--){

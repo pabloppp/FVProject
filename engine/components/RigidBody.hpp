@@ -5,7 +5,9 @@
 #include "../facade/Vector2.hpp"
 #include "Collider.hpp"
 
-namespace gme{
+namespace gme{ 
+    
+class Scene;    
     
 class RigidBody : public Component{
 public:
@@ -40,6 +42,7 @@ public:
     float getAngularSpeed();
     void setAngularSpeed(float f);
     void forcePosition(gme::Vector2 pos);
+    Scene *myscene;
     b2BodyDef b2def;
     b2Body* b2body;
     b2FixtureDef fixtureDef;

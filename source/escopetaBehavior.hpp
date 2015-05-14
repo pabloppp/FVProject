@@ -4,6 +4,7 @@
  
 #include "../engine/GMEngine.hpp"
 #include "Animator.hpp"
+#include "GlobalStateManager.hpp"
  
 class escopetaBehavior: public gme::Script {
 public:
@@ -24,6 +25,7 @@ private:
     int direction;
     int verticalDirection;
     gme::Clock clock;
+    GlobalStateManager *manager;
 };
 
 #endif	/* ESCOPETABEHAVIOR_HPP */

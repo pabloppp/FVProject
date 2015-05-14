@@ -17,6 +17,7 @@ public:
         walkFPS = 30;
         walkFrameCount = 0;
         speed = 7;
+        damage = 5;
     };
     void setup();
     void update();
@@ -24,16 +25,11 @@ public:
     void jump(gme::Vector2 player, gme::Vector2 enemy);
     void vectorDirector(gme::Vector2 player, gme::Vector2 enemy);
     virtual ~IAMovement();
-
     virtual void onMessage(std::string m, float v);
-
-
     virtual void onCollision(gme::Collider* c);
-    
-
     virtual void onGui();
-    
     float speed;
+    float damage;
 
 private:
     gme::GameObject *player, *player2;

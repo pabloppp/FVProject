@@ -10,15 +10,33 @@ void mainGame::setup() {
     
     //debugColliders = true;
     
+    //BACKGROUND
+    gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontB.png", "bgFrontBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontC.png", "bgFrontCTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midA.png", "bgMidATexture");
+    gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
+    
     gme::Game::newTexture("resources/BGs/fondoSplash.png", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
     gme::Game::newTexture("resources/BGs/gato.png", "logo");
-    gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
+    gme::Game::newTexture("resources/Effects/no.png", "no_icon");
+    
+    //TILESETS
+    gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
+    
+    
+    gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
+    gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
     
     gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
     
     gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");
+    gme::Game::newTexture("resources/sprites/boss00.png","boss00");
     gme::Game::newTexture("resources/Others/caja.png","boxes");
+    
     
     gme::Game::newTexture("resources/Others/indicator_0.png", "indicator_enemy"); 
     gme::Game::newTexture("resources/Others/indicator_1.png", "indicator_box");
@@ -26,6 +44,10 @@ void mainGame::setup() {
     
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
     gme::Game::newTexture("resources/sprites/player1_spr/player1_sheet.png", "player1Texture");
+    
+    //BALAS
+    gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
+    gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");

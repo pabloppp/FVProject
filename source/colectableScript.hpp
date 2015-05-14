@@ -15,7 +15,8 @@ public:
     virtual void onCollision(gme::Collider* c);
     virtual void onGui();
     void animate();
-
+    void explode(int min, int max, float forcemin, float forcemax);
+    int hp;
 
 private:
     gme::Clock clkD;
@@ -27,6 +28,8 @@ private:
     int objectType;
     bool grounded;
     bool destroyed;
+    bool isHit;
+    virtual void onMessage(std::string m, float v);
 };
 
 #endif	/* COLECTABLESCRIPT_HPP */

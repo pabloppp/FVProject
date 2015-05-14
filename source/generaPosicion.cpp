@@ -4,6 +4,7 @@
 #include "enemy_fast.hpp"
 #include "colectableGameObject.hpp"
 #include "GlobalStateManager.hpp"
+#include "enemy_boss.hpp"
 
 
 void generaPosicion::setup(){
@@ -87,7 +88,7 @@ bool generaPosicion::getColectionable(){
 
 
 void generaPosicion::generaEnemigo(int x, int y) {
-    if (enemi == true){
+    if (enemi == true ){
         
         int random = rand() % 100;
         
@@ -100,7 +101,6 @@ void generaPosicion::generaEnemigo(int x, int y) {
             enemigo = new enemy_fast("dino_fast");
         }
         enemigo->getTransform()->setPosition(gme::Vector2(x, y));
-        
         instantiate(enemigo);
     }
 }

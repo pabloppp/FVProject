@@ -14,6 +14,7 @@
 #include "GameManager.hpp"
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
+#include "enemy_boss.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -29,22 +30,10 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 60;
+        gsm->winCondition = 5;
         gsm->nextScene = "oleada2";
     });
     
-    gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
-    
-    gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontB.png", "bgFrontBTexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontC.png", "bgFrontCTexture");
-    gme::Game::newTexture("resources/BGs/jungle_midA.png", "bgMidATexture");
-    gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
-    gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
-    
-    gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
-    gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
     
     setupBg(); 
     
@@ -68,6 +57,10 @@ void tilerJsonLoadScene::setup() {
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
+    
+    
+    enemy_boss *boss = new enemy_boss("boss");
+    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));
 
     
     /*enemy *e = new enemy("dino");
@@ -160,12 +153,12 @@ void tilerJsonLoadScene::setupBg() {
 void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(-1,280,3);
-    g->addPosition(1520, 280);
-    g->addPosition(802, -300);
-    g->setEnemi(true);
-    g->setColectionable(true);
-    sceneLoaderObject->addComponent(g);
+    //generaPosicion *g =  new generaPosicion(-1,280,3);
+    //g->addPosition(1520, 280);
+    //g->addPosition(802, -300);
+    //g->setEnemi(true);
+    //g->setColectionable(true);
+    //sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
     

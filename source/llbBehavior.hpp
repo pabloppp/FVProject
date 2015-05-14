@@ -3,6 +3,7 @@
 
 #include "../engine/GMEngine.hpp"
 #include "Animator.hpp"
+#include "GlobalStateManager.hpp"
 
 class llbBehavior: public gme::Script {
 public:
@@ -14,8 +15,12 @@ public:
 private:
     Animator animator;
     gme::Clock clock;
+    gme::Clock animclock;
+    int frame;
+    int initialXSpeed;
     bool destroy;
     gme::Vector2 winSize;
+    GlobalStateManager *manager;
 };
 
 #endif	/* LLBBEHAVIOR_HPP */

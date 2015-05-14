@@ -60,7 +60,7 @@ void IAMovement::update() {
         
         if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
                 && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
-            player->sendMessage("damage", 5);
+            player->sendMessage("damage", damage);
         }
         
         if(player2 != NULL){
@@ -68,7 +68,7 @@ void IAMovement::update() {
             
             if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
                     && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
-                player2->sendMessage("damage", 5);
+                player2->sendMessage("damage", damage);
             }
         }
         

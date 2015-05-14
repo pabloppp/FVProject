@@ -21,10 +21,20 @@ void escopetaBehavior::setup() {
     keyDown = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->downKey;
     keyLeft = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->leftKey;
     keyRight = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->rightKey;
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
 }
 
 void escopetaBehavior::update() {
+    if(manager->isPaused()) return;
     verticalDirection = -1;
+    
+    if(!isActive()) return;
     
     if(gme::Keyboard::isKeyPressed(keyUp)){
         verticalDirection = 0;

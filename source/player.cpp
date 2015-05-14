@@ -49,7 +49,9 @@ void player::setup() {
     addComponent(playerMovement);
     addComponent(stats);
     
-    addComponent(new moveToTop());
+    moveToTop *mtt = new moveToTop();
+    mtt->setOrder(-2);
+    addComponent(mtt);
 }
 
 
