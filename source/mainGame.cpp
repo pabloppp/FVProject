@@ -16,6 +16,7 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/gato.png", "logo");
     gme::Game::newTexture("resources/BGs/fondo_menu.png", "fondo_menu");
     gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
+    gme::Game::newTexture("resources/BGs/titulo.png", "title");
     gme::Game::newTexture("resources/BGs/cartel_lose.png", "cartel_lose");
     gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
 
@@ -69,7 +70,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("mainmenu");
+    gme::Game::setCurrentScene("oleada2");
 }
 
 bool mainGame::coop = false;

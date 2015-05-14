@@ -15,6 +15,11 @@ void PlayerMovement::setup() {
             manager = gsm;
         }
     }
+    if(flipped && getTransform()->getScale().x < 0){
+        getTransform()->resize(gme::Vector2(-1,1));
+        //flipped = false;
+    }
+    flipped = false;
 }
 
 void PlayerMovement::onMessage(std::string m, float v) {
@@ -67,7 +72,7 @@ void PlayerMovement::update() {
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
         else 
             getRigidBody()->setSpeed(-walkingSpeed*deltaTime, speedY);
-        if(!flipped){
+        if(!flipped && getTransform()->getScale().x > 0){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = true;
         }
@@ -77,7 +82,7 @@ void PlayerMovement::update() {
             getRigidBody()->setSpeed((walkingSpeed/2.f)*deltaTime, speedY);
         else 
             getRigidBody()->setSpeed(walkingSpeed*deltaTime, speedY);
-        if(flipped){
+        if(flipped && getTransform()->getScale().x < 0){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = false;
         }

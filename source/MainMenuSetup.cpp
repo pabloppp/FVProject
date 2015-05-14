@@ -95,13 +95,13 @@ void MainMenuSetup::movement() {
 void MainMenuSetup::onGui() {
     gme::GUI::fontSize = 28;
     //Titulo de juego  
-    /*gme::GUI::drawTexture(
+    gme::GUI::drawTexture(
         gme::Vector2(512,130), 
         gme::Vector2(512,220),
-        gme::GUI::TextureName("logo"),  
+        gme::GUI::TextureName("title"),  
         gme::GUI::Origin::Center,
         gme::GUI::ScaleToFit
-    );*/
+    );
     gme::GUI::contentColor = gme::GUI::white;
     gme::GUI::drawTexture(
             gme::Vector2(gme::Mouse::getPosition().x, gme::Mouse::getPosition().y),
@@ -110,12 +110,16 @@ void MainMenuSetup::onGui() {
             gme::GUI::Origin::Center,
             gme::GUI::ScaleToFit
     );
-    
+    gme::GUI::fontSize = 17;
+    gme::GUI::globalRotation = 1.5;
     gme::GUI::label(
+    
         gme::Vector2(512,230), 
-        "MENU",
+        "Ahora con el doble de queso!",
         gme::GUI::Origin::Center     
     );
+    gme::GUI::globalRotation = 0;
+     gme::GUI::fontSize = 28;
     
     if(menu==1){
         if(gme::Keyboard::isKeyPressed(upKey)){
