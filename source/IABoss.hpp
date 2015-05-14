@@ -31,7 +31,7 @@ private:
      gme::GameObject *player, *player2;
      GlobalStateManager *stateManager;
      gme::Vector2 dir;
-     gme::Clock clk,clkS;
+     gme::Clock clk,clkS,clkR;
      bool right;
      bool side;
      bool sprint;

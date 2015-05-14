@@ -1,53 +1,37 @@
-/* 
- * File:   IAMovement.cpp
- * Author: albertomartinezmartinez
- * 
- * Created on 14 de abril de 2015, 18:18
- */
 
-#include "IAMovement.hpp"
-#include "emptyGameObject.hpp"
+
+#include "IAexplosive.hpp"
 #include "tile.hpp"
 #include "sprayParticleScript.hpp"
 #include "defaultParticle.hpp"
 
-void IAMovement::findPlayer() {
-   player = gme::GameObject::find("p1").at(0);
-   if(gme::GameObject::find("p2").size() > 0){
-        player2 = gme::GameObject::find("p2").at(0);
-   }
-   else{
-        player2 = NULL;
-   }
-}
-
-void IAMovement::setup() {
-    right = true;
-    timepas=3;
-    check = 0;
-    jumping = false;
-    dead = false;
-    destroyed = false;
+void IAexplosive::setup() {
+findPlayer();
+    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     
-    fixPos = true;
+    for(int i=0;i<objects->size();i++){
+        if(objects->at(i) == gameObject()){
+            objects->erase(objects->begin()+i);
+            objects->push_back(gameObject());
+            break;
+        }
+    }
+    
     
     spawn = getTransform()->getPosition();
+   
     
-    findPlayer();
-    
-    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+     std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
     if(gm.size() > 0){
         GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
         if(gsm != NULL){
             stateManager = gsm;
         }
     }
-    
 }
 
-void IAMovement::update() { 
-     
-    if(stateManager->isPaused()){
+void IAexplosive::update() {
+if(stateManager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
         getRigidBody()->setActive(false);
         return;
@@ -55,22 +39,12 @@ void IAMovement::update() {
     else getRigidBody()->setActive(true);
     
     if(player){
-        gme::Vector2 playerpos = player->getTransform()->getPosition();
+        
+       gme::Vector2 playerpos = player->getTransform()->getPosition();
         gme::Vector2 enemypos = getTransform()->getPosition();
+        float distance = gme::Vector2::distance(playerpos,enemypos);
         
-        if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
-                && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
-            player->sendMessage("damage", damage);
-        }
         
-        if(player2 != NULL){
-            gme::Vector2 playerpos2 = player2->getTransform()->getPosition();
-            
-            if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
-                    && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
-                player2->sendMessage("damage", damage);
-            }
-        }
         
         if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
             if(random()%3 == 1){
@@ -83,39 +57,85 @@ void IAMovement::update() {
             }
         }
         
-        deltatime = gme::Game::deltaTime.asSeconds();
+         deltatime = gme::Game::deltaTime.asSeconds();
         float dist = speed;
-        walkFPS = 30;
-               
-        if( ((playerpos.x > enemypos.x && right) || (playerpos.x < enemypos.x && !right))
-                && gme::Vector2::distance(playerpos, enemypos) < 200 ){
-            dist *= 2;
-            walkFPS *= 2;
+        
+        
+        
+        if(distance <= 500) {
+            if(!wait && !sprint){
+                wait =true;
+                sprint =true;
+                boomb = true;
+                clkW.restart();
+                clkB.restart();
+            }
+        }
+        
+        
+        if(wait && clkW.currentTime().asSeconds() > 1) wait =false;
+        if(wait) dist *=0;
+        if(!wait && sprint) dist +=3;
+        
+        
+        
+        if(boomb && clkB.currentTime().asSeconds() > 3){
+            if(distance <=  5) player->sendMessage("explote",50);
+            else if(distance <= 10) player->sendMessage("explote",25);
+            else if(distance <= 20) player->sendMessage("explote",15);
+            else player->sendMessage("explote",0);
+            if(player2 != NULL){
+                gme::Vector2 playerpos2 = player->getTransform()->getPosition();
+                float distance2 = gme::Vector2::distance(playerpos2,enemypos);
+                if(distance2 <=  5) player2->sendMessage("explote",50);
+                else if(distance2 <= 10) player2->sendMessage("explote",25);
+                else if(distance2 <= 20) player2->sendMessage("explote",15);
+                else player2->sendMessage("explote",0);
+            }
+            boomb = false;
+            std::cout << "debe expltar el enemigo" << std::endl;
+            explode(20, 50, 50, 250);
         }
         
         vectorDirector(playerpos, enemypos);
-        
-        
-       
-        
-        //getTransform()->translate(dir,dist*deltatime);
-        
         if(grounded && getRigidBody()->getSpeed().y >= 0) getRigidBody()->setSpeed(dir, dist);
         
         jump(playerpos,enemypos);
-        
+       
+         
     }
-     
     grounded = false;
-    
-    
-    cornered = 0;
-    
-    //if(dead) gameObject()->sendMessage("damage", 999999);
-    
 }
 
-void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
+
+void IAexplosive::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
+   
+    
+     if(player.x == enemy.x) clk.restart();
+    
+    if(player.y >= enemy.y){
+        if(player.x < enemy.x && clk.currentTime().asSeconds()>timepas && right){
+            dir.x = -dir.x;
+            clk.restart();
+            right= false;
+            getTransform()->resize(gme::Vector2(-1,1));
+        }
+
+        if(player.x > enemy.x && clk.currentTime().asSeconds()>timepas && !right){
+            dir.x = -dir.x;
+            /*Falta cambiar la direccion del sprite*/
+
+            clk.restart();
+            right= true;
+            getTransform()->resize(gme::Vector2(-1,1));
+        }
+    }
+    
+        
+}
+
+
+void IAexplosive::jump(gme::Vector2 player, gme::Vector2 enemy) {
     //getRigidBody()->pushImmediate(dir,40000*deltatime);
     
     /*if(player.y < enemy.y && !jumping && elapsetime == 0){
@@ -217,63 +237,18 @@ void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
       
 }
 
-void IAMovement::animate() {
-    if(animClock.currentTime().asSeconds() > 1.0f/walkFPS){
-            animClock.restart();
-            walkFrameCount++;
-            if(walkFrameCount >= 14) walkFrameCount = 0;
-            getRenderer()->setFrame(std::to_string(walkFrameCount+1));
-        }
+
+void IAexplosive::findPlayer() {
+     player = gme::GameObject::find("p1").at(0);
+   if(gme::GameObject::find("p2").size() > 0){
+        player2 = gme::GameObject::find("p2").at(0);
+   }
+   else{
+        player2 = NULL;
+   }
 }
 
-
-
-void IAMovement::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
-   
-    
-    /*if(enemy.x < 16 && !right){
-        dir.x = -dir.x;        
-        clk.restart();
-        right = true;
-        getTransform()->resize(gme::Vector2(-1,1));
-    }
-    
-    if(enemy.x > 1584-16 && right){
-        dir.x = -dir.x;        
-        clk.restart();
-        right = false;
-        getTransform()->resize(gme::Vector2(-1,1));
-    }*/
-    
-    if(player.x == enemy.x) clk.restart();
-    
-    if(player.y >= enemy.y){
-        if(player.x < enemy.x && clk.currentTime().asSeconds()>timepas && right){
-            dir.x = -dir.x;
-            clk.restart();
-            right= false;
-            getTransform()->resize(gme::Vector2(-1,1));
-        }
-
-        if(player.x > enemy.x && clk.currentTime().asSeconds()>timepas && !right){
-            dir.x = -dir.x;
-            /*Falta cambiar la direccion del sprite*/
-
-            clk.restart();
-            right= true;
-            getTransform()->resize(gme::Vector2(-1,1));
-        }
-    }
-    
-        
-}
-
-
-
-IAMovement::~IAMovement() {
-}
-
-void IAMovement::onCollision(gme::Collider* c) {
+void IAexplosive::onCollision(gme::Collider* c) {
     gme::Vector2 relativePosition = getCollider()->getRelativePosition(c);
     if(gameObject()->hasTag("enemy") && c->gameObject()->hasTag("floor")){       
         if(relativePosition.y == -1){ //si golpea el suelo
@@ -290,8 +265,7 @@ void IAMovement::onCollision(gme::Collider* c) {
     }
 }
 
-void IAMovement::onMessage(std::string m, float v) {
-
+void IAexplosive::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         std::cout << "muerte" << std::endl;
         dead = true;
@@ -301,9 +275,14 @@ void IAMovement::onMessage(std::string m, float v) {
     if(m.compare("damage")==0 && !dead){
         explode(3,10, 50, 150);
     }
+    
+    if(m.compare("explote") == 0){
+        std::cout << "boooom" << std::endl;
+    }
 }
 
-void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
+
+void  IAexplosive::explode(int min, int max, float forcemin, float forcemax) {
     int cantidad = (rand() % (max-min)) + min;
     
     gme::Vector2 pos = getTransform()->getPositionRelative();
@@ -323,54 +302,3 @@ void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
                 
     }
 }
-
-void IAMovement::onGui() {
-    
-    gme::Vector2 enemyPos = getTransform()->getPosition();
-    gme::Vector2 enemyPosWindow = enemyPos.worldToScreen();
-    if(enemyPosWindow.x < -32*3){
-        gme::GUI::globalRotation = 90;
-        float posy = enemyPosWindow.y;
-        if(posy < 16*3 ) posy = 16*3;
-        else if(posy > 576-16*3) posy = 576-16*3;
-        gme::GUI::drawTexture(
-            gme::Vector2(16*3+8*3, posy),
-            gme::Vector2(16*3, 16*3),
-            gme::GUI::TextureName("indicator_enemy"),
-            gme::GUI::Origin::Center,
-            gme::GUI::ScaleToFit
-        );
-    }
-    else if(enemyPosWindow.x > 1024+32*3){
-        gme::GUI::globalRotation = -90;
-        float posy = enemyPosWindow.y;
-        if(posy < 16*3 ) posy = 16*3;
-        else if(posy > 576-16*3) posy = 576-16*3;
-        gme::GUI::drawTexture(
-            gme::Vector2(1024-8*3, posy),
-            gme::Vector2(16*3, 16*3),
-            gme::GUI::TextureName("indicator_enemy"),
-            gme::GUI::Origin::Center,
-            gme::GUI::ScaleToFit
-        );
-    }
-    else if(enemyPosWindow.y > 576){
-        gme::GUI::globalRotation = 0;
-        float posx = enemyPosWindow.x;
-        if(posx < 16*3 ) posx = 16*3;
-        else if(posx > 1024-16*3) posx = 576-16*3;
-        gme::GUI::drawTexture(
-            gme::Vector2(posx, 576-8*3),
-            gme::Vector2(16*3, 16*3),
-            gme::GUI::TextureName("indicator_enemy"),
-            gme::GUI::Origin::Center,
-            gme::GUI::ScaleToFit
-        );
-    }
-    gme::GUI::globalRotation = 0;
-    
-}
-
-
-
-

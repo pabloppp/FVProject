@@ -35,6 +35,8 @@ void mainGame::setup() {
     
     gme::Game::newTexture("resources/Enemies/sprites/walk_spr/sprites.png", "dino00");
     gme::Game::newTexture("resources/sprites/boss00.png","boss00");
+    gme::Game::newTexture("resources/Enemies/flyenemy.png","fly");
+    gme::Game::newTexture("resources/Enemies/explosive.png","explosive");
     gme::Game::newTexture("resources/Others/caja.png","boxes");
     
     

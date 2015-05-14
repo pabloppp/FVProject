@@ -120,21 +120,34 @@ void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
     //std::cout << "enemy: " << enemy.y << std::endl;
     //std::cout << "player: " << player.y << std::endl;
     
+    float deltatime = gme::Game::deltaTime.asSeconds();
+    
     if(enemy.x < 16*3 && !right){
-        dir.x = -dir.x;        
-        clk.restart();
-        right = true;
-        side = true;
-        sprint = false;
-        getTransform()->resize(gme::Vector2(-1,1));
+        if(sprint ){
+            std::cout << "Llega con sprint Izquierda" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(4,-1), 19000*deltatime);
+            
+        }
+            dir.x = -dir.x;        
+            clk.restart();
+            right = true;
+            side = true;
+            getTransform()->resize(gme::Vector2(-1,1));
+       
     }
     
     if(enemy.x > 1526-16*3 && right){
+        if(sprint){
+            std::cout << "Llega con sprint Derecha" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(-4,-1), 19000*deltatime);
+        }
+        
         dir.x = -dir.x;        
         clk.restart();
         right = false;
         side = true;
-        sprint =false;
         getTransform()->resize(gme::Vector2(-1,1));
     }
     

@@ -15,6 +15,8 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "enemy_boss.hpp"
+#include "enemy_fly.hpp"
+#include "enemy_explosive.hpp"
 
 void tilerJsonLoadScene::setup() {
     
@@ -30,7 +32,7 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 5;
+        gsm->winCondition = 155;
         gsm->nextScene = "oleada2";
     });
     
@@ -59,8 +61,11 @@ void tilerJsonLoadScene::setup() {
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));
+    /*enemy_boss *boss = new enemy_boss("boss");
+    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));*/
+    
+    enemy_fly *fly =  new enemy_fly("fly");
+    fly->getTransform()->setPosition(gme::Vector2(100,50 ));
 
     
     /*enemy *e = new enemy("dino");
