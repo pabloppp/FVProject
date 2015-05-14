@@ -5,12 +5,14 @@
 
 class BackgroundParallax : public gme::Script{
 public:
-    BackgroundParallax(): gme::Script(){};
+    BackgroundParallax(): gme::Script(){
+        active = true;};
     void setup();
     void update();
     virtual void fixedUpdate();
     virtual ~BackgroundParallax();
     float parallaxFactor;
+    bool active;
 private:
     gme::Transform *cameraTransform;
     gme::Vector2 initialPosition;

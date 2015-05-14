@@ -208,8 +208,8 @@
           <itemPath>source/generaPosicion.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
           <itemPath>source/mapGenerator.hpp</itemPath>
-          <itemPath>source/moveFondo.cpp</itemPath>
-          <itemPath>source/moveFondo.hpp</itemPath>
+          <itemPath>source/moveClouds.cpp</itemPath>
+          <itemPath>source/moveClouds.hpp</itemPath>
           <itemPath>source/moveToTop.cpp</itemPath>
           <itemPath>source/moveToTop.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
@@ -574,9 +574,9 @@
       </item>
       <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      <item path="source/moveClouds.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      <item path="source/moveClouds.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -981,9 +981,9 @@
       </item>
       <item path="source/metralletaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/moveFondo.cpp" ex="false" tool="1" flavor2="0">
+      <item path="source/moveClouds.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="source/moveFondo.hpp" ex="false" tool="3" flavor2="0">
+      <item path="source/moveClouds.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>

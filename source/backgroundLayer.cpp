@@ -14,6 +14,7 @@ void backgroundLayer::setup() {
     
     BackgroundParallax *parallax = new BackgroundParallax;
     parallax->parallaxFactor = parallaxFactor;
+    parallax->active = active;
     addComponent(parallax);
     
 }

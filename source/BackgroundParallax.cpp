@@ -16,11 +16,14 @@ void BackgroundParallax::update() {
 void BackgroundParallax::fixedUpdate() {
     //Lo pongo aqui y no en 'update' para que no vaya desfasado con respecto al movimiento de la camara
     
-    gme::Vector2 difference(cameraTransform->getPosition().x-initialPosition.x, cameraTransform->getPosition().y-initialPosition.y);
+    if(active){
+        gme::Vector2 difference(cameraTransform->getPosition().x-initialPosition.x, cameraTransform->getPosition().y-initialPosition.y);
     
-    gme::Vector2 currentPosition(initialPosition.x+difference.x*parallaxFactor-initialDifference.x, initialPosition.y+(difference.y-initialDifference.y)*parallaxFactor);
+        gme::Vector2 currentPosition(initialPosition.x+difference.x*parallaxFactor-initialDifference.x, initialPosition.y+(difference.y-initialDifference.y)*parallaxFactor);
+
+        getTransform()->setPosition(currentPosition);
+    }
     
-    getTransform()->setPosition(currentPosition);
 }
 
 
