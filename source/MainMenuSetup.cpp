@@ -12,15 +12,23 @@ void MainMenuSetup::setup() {
     entered = true;
     izq=false; dre=false; juegoNuevo1p = false; juegoNuevo2p = false;
     button_sound = new gme::MusicPlayer();
+    music_jungle=new gme::MusicPlayer();
+    music_jungle->setMusic("jungle");
+    music_jungle->setVolume(15.0);
+    music_jungle->loop(true);
     button_sound->setMusic("boton");
-    button_sound->setVolume(30.0);
+    button_sound->setVolume(50.0);
+    music_jungle->play();
+    if(!mainGame::music) music_jungle->setVolume(0.0);
+    
 }
 
 void MainMenuSetup::update() {
     movement();
 }
 
-void MainMenuSetup::movement() {
+void MainMenuSetup::movement() {    
+    
     if(reloj_fondo.currentTime().asSeconds() > 0.01){
         getTransform()->translate(gme::Vector2(-x, 0));
         if(getTransform()->position.x <= -320) getTransform()->position.x = 960-x;
@@ -71,7 +79,10 @@ void MainMenuSetup::movement() {
     //OPCIONES - OPCION MUSIC
     if(menu==2 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
        if(mainGame::sound) button_sound->play();
-       mainGame::music = !mainGame::music;    
+       mainGame::music = !mainGame::music;  
+       
+       if(mainGame::music) music_jungle->setVolume(50.0);
+       else if(!mainGame::music) music_jungle->setVolume(0.0);
        entered = true;
        mainGame::saveOpts();
     }
@@ -93,6 +104,7 @@ void MainMenuSetup::movement() {
     }
     // INICIAR JUEGO INDIVIDUAL 
     if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
+       music_jungle->stop();
        juegoNuevo1p = true;
        mainGame::coop = false;
        gme::Scene *olds = mainGame::removeScene("oleada1");
@@ -104,6 +116,7 @@ void MainMenuSetup::movement() {
        else mainGame::setCurrentScene("oleada1");
     }
      if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
+       music_jungle->stop();
        juegoNuevo2p = true;
        mainGame::coop = true;
        gme::Scene *olds = mainGame::removeScene("oleada1");

@@ -58,6 +58,7 @@ void mainGame::setup() {
     
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
+    gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
         
@@ -72,7 +73,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("oleada2");
+    gme::Game::setCurrentScene("mainmenu");
 }
 
 void mainGame::saveOpts() {
