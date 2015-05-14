@@ -55,8 +55,11 @@ void mainGame::setup() {
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
-    gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
     gme::Game::newMusic("resources/Sounds/jungle.wav","jungle");
+    
+    gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
+    gme::Game::newMusic("resources/Sounds/metralleta.wav", "metralletaShot");
+    gme::Game::newMusic("resources/Sounds/lanzallamas.wav","lanzallamasShot");
     
     //SONIDOS
     
@@ -71,7 +74,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("splash");
+    gme::Game::setCurrentScene("oleada2");
 }
 
 

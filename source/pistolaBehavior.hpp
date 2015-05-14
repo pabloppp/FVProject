@@ -28,6 +28,7 @@ private:
     GlobalStateManager *manager;
     
     gme::MusicPlayer *gunShot_sound;
+    
 };
 
 #endif	/* SHOOTBULLET_HPP */
