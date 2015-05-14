@@ -10,6 +10,7 @@ void mainGame::setup() {
     
     //debugColliders = true;
     
+
     gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
     gme::Game::newTexture("resources/BGs/gato.png", "logo");
@@ -17,6 +18,22 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
     gme::Game::newTexture("resources/BGs/cartel_lose.png", "cartel_lose");
     gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
+
+    //BACKGROUND
+    gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontB.png", "bgFrontBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_frontC.png", "bgFrontCTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midA.png", "bgMidATexture");
+    gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
+    gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
+    
+    
+    //TILESETS
+    gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
+    
+    gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
+    gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
     
     gme::Game::newTexture("resources/Effects/blood_particle.png", "spray_particle"); 
     

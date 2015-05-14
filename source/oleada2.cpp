@@ -32,20 +32,6 @@ void oleada2::setup() {
         gsm->winCondition = 75;
     });
     
-    gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
-
-    
-    gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontB.png", "bgFrontBTexture");
-    gme::Game::newTexture("resources/BGs/jungle_frontC.png", "bgFrontCTexture");
-    gme::Game::newTexture("resources/BGs/jungle_midA.png", "bgMidATexture");
-    gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
-    gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
-    
-    gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
-    gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
-    
     setupBg(); 
     
     weapon *arma = new weapon("weapon");
