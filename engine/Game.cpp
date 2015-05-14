@@ -96,6 +96,19 @@ void Game::run(){
         sf::Event event;
         while (window->pollEvent(event))
         {
+            if(event.type == sf::Event::KeyPressed){
+                keysPressed.push_back(event.key.code);
+                
+            } 
+            else if(event.type == sf::Event::KeyReleased){
+                int n;
+                for(int i=keysPressed.size()-1;i>=0;i--){
+                    if(keysPressed.at(i) == event.key.code){
+                        keysPressed.erase(keysPressed.begin()+i);
+                    };
+                }   
+            }
+                
             if (event.type == sf::Event::Closed) window->close();
         }
         
@@ -110,6 +123,16 @@ void Game::run(){
     }
     delete window;
 }
+
+bool Game::isKeyPressed(int k) {
+    for(int i=keysPressed.size()-1;i>=0;i--){
+        if(keysPressed.at(i) == k){
+            return true;
+        };
+    }
+    return false;
+}
+
 
 void Game::newTexture(const std::string &path, const std::string &name){
     Texture newTex;
@@ -207,3 +230,5 @@ float Game::ticPercent = 0;
 std::unordered_map<std::string, unsigned int> Game::tagmap;
 
 char Game::tagCount = 0;
+
+std::vector<int> Game::keysPressed;

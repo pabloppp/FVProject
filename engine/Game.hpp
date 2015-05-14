@@ -42,6 +42,7 @@ public:
     static void newMusic(const std::string &path, const std::string &name);
     static Sound *getSound(const std::string &name);
     static Music *getMusic(const std::string &name);
+    static bool isKeyPressed(int k);
     
     Clock deltaClock;
     static Clock updateClock;
@@ -58,6 +59,7 @@ private:
     static std::vector<Sound> sounds;
     static std::vector<Music*> musics;
     static Scene *currentScene;
+    static std::vector<int> keysPressed;
     //sfml class
     static Window *window;
 };

@@ -91,7 +91,7 @@ void PlayerMovement::update() {
         getRigidBody()->setSpeed(0, speedY);
     }
     
-    if(gme::Keyboard::isKeyPressed(jumpKey) && grounded && !jumped){
+    if((gme::Keyboard::isKeyPressed(jumpKey)) && grounded && !jumped ){
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->pushImmediate(gme::Vector2(0,-1), (jumpForce/2.f)*deltaTime);
         else 
@@ -119,11 +119,9 @@ void PlayerMovement::onCollision(gme::Collider* c) {
     //si golpea las paredes
     if(relativePosition.x == 1 && relativePosition.y == 0){
         hitWallLeft = true;
-        std::cout << "hit left" << std::endl;
     }
     else if(relativePosition.x == -1 && relativePosition.y == 0){
         hitWallRight = true;
-        std::cout << "hit right" << std::endl;
     }
     
     if(relativePosition.y == 1 && relativePosition.x == 0){

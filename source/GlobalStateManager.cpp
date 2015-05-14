@@ -11,6 +11,7 @@
 #include "escopetaBehavior.hpp"
 #include "lnzllamasBehavior.hpp"
 #include "oleada2.hpp"
+#include "mainGame.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -25,7 +26,7 @@ void GlobalStateManager::resume(){
 }
 
 void GlobalStateManager::setup(){
-
+    if(mainGame::coop) spawnP2();
 }
 
 bool GlobalStateManager::isPaused() {
@@ -43,45 +44,7 @@ void GlobalStateManager::update(){
         lastScore += gameClock.currentTime().asSeconds();
         apretar.restart();
     }
-    // Añadimos 2do jugador...
-    if(!player2_exists && !paused && gme::Keyboard::isKeyPressed(gme::Keyboard::Period) && apretar.currentTime().asSeconds()>0.2){
-        if(!canpause) return; 
-        player2_exists = true;
-        weapon *arma2 = new weapon("weapon");
-        arma2->addComponent(new pistolaBehavior()); 
-
-        player *p2 = new player("p2");
-        p2->overrideKeys = true;
-        p2->leftKey = gme::Keyboard::A;
-        p2->rightKey = gme::Keyboard::D;
-        p2->upKey = gme::Keyboard::W;
-        p2->downKey = gme::Keyboard::S;
-        p2->jumpKey = gme::Keyboard::F;
-        p2->weaponKey = gme::Keyboard::G;
-        p2->actionKey = gme::Keyboard::H;
-
-        p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
-        p2->customize([](gme::GameObject* obj) {
-            obj->getRenderer()->setTexture("player1Texture");
-        });
-
-        p2->addChild(arma2);
-        arma2->getTransform()->setPosition(gme::Vector2(0,0));
-        
-        metralletaBehavior *mb = new metralletaBehavior();
-        mb->setActive(false);
-        arma2->addComponent(mb);
-        escopetaBehavior *eb =  new escopetaBehavior();
-        eb->setActive(false);
-        arma2->addComponent(eb);
-        lnzllamasBehavior *lb =  new lnzllamasBehavior();
-        lb->setActive(false);
-        arma2->addComponent(lb);
-        
-        instantiate(p2);
-        instantiate(arma2);
-        apretar.restart();
-    }
+    
     // Tipo de juego por tiempo ganado
     if(gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver){
         if(!paused && !levelSuccess){
@@ -111,9 +74,45 @@ void GlobalStateManager::update(){
     if(goToMenu) gme::Game::setCurrentScene("mainmenu");
 }
 
+void GlobalStateManager::spawnP2() {
+    player2_exists = true;
+    weapon *arma2 = new weapon("weapon");
+    arma2->addComponent(new pistolaBehavior()); 
+
+    player *p2 = new player("p2");
+    p2->overrideKeys = true;
+    p2->leftKey = gme::Keyboard::A;
+    p2->rightKey = gme::Keyboard::D;
+    p2->upKey = gme::Keyboard::W;
+    p2->downKey = gme::Keyboard::S;
+    p2->jumpKey = gme::Keyboard::F;
+    p2->weaponKey = gme::Keyboard::G;
+    p2->actionKey = gme::Keyboard::H;
+
+    p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+    p2->customize([](gme::GameObject* obj) {
+        obj->getRenderer()->setTexture("player1Texture");
+    });
+
+    p2->addChild(arma2);
+    arma2->getTransform()->setPosition(gme::Vector2(0,0));
+
+    metralletaBehavior *mb = new metralletaBehavior();
+    mb->setActive(false);
+    arma2->addComponent(mb);
+    escopetaBehavior *eb =  new escopetaBehavior();
+    eb->setActive(false);
+    arma2->addComponent(eb);
+    lnzllamasBehavior *lb =  new lnzllamasBehavior();
+    lb->setActive(false);
+    arma2->addComponent(lb);
+    instantiate(p2);
+    instantiate(arma2);
+}
+
+
 void GlobalStateManager::isGameOver() {
     if(gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
-        gme::Scene *newScene;
         if(true){
             std::vector<gme::GameObject*> *ol = gme::Game::getCurrentScene()->getGameObjects();
             for(int i=ol->size()-1; i>=0; i--){
@@ -142,6 +141,18 @@ void GlobalStateManager::isGameOver() {
 
             std::vector<gme::GameObject*> players =  gme::GameObject::findWithTag("player");
             for(int i=0;i<players.size();i++){
+                
+                std::vector<gme::GameObject*> children = players.at(i)->getChildren();
+                
+                gme::Component *pb = children.at(0)->getComponent<pistolaBehavior*>();
+                gme::Component *mb = children.at(0)->getComponent<metralletaBehavior*>();
+                gme::Component *eb = children.at(0)->getComponent<escopetaBehavior*>();
+                gme::Component *lb = children.at(0)->getComponent<lnzllamasBehavior*>();
+                
+                if(pb != NULL) pb->setActive(true);
+                if(mb != NULL) mb->setActive(false);
+                if(eb != NULL) eb->setActive(false);
+                if(lb != NULL) lb->setActive(false);
 
                 if(i==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
                 else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
@@ -150,6 +161,7 @@ void GlobalStateManager::isGameOver() {
                 ((gme::GameObject*)(players.at(i)))->getComponent<moveToTop*>()->setup();
                 players.at(i)->sendMessage("reset",0);
                 ((gme::GameObject*)(players.at(i)->getChildren()[0]))->getComponent<moveToTop*>()->setup();
+                
             }
 
             gameObject()->sendMessage("reset", 0);

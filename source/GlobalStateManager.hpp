@@ -26,6 +26,7 @@ public:
     void setup();
     void update();
     void isGameOver();
+    void spawnP2();
     gme::Keyboard::Key pauseKey;
     gme::Keyboard::Key escKey;
 
