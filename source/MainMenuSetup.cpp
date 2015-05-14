@@ -293,7 +293,7 @@ void MainMenuSetup::onGui() {
         gme::GUI::box(
             gme::Vector2(posX+690,330), 
             gme::Vector2(largo,ancho), 
-            "COLECTIVA",
+            "COOP",
             gme::GUI::Origin::Center  
         );   
         if(num_apre==2){

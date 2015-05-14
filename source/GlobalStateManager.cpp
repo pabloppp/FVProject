@@ -170,7 +170,7 @@ void GlobalStateManager::onMessage(std::string m, float v) {
     else if(m.compare("changeToMenu") == 0){
         canpause = false;
         gameOver = true;
-        pause();
+        gme::Game::setCurrentScene("mainmenu");
         
     }
     else if(m.compare("gameover")==0){

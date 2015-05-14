@@ -128,6 +128,8 @@
           <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
+          <itemPath>source/myMenu.cpp</itemPath>
+          <itemPath>source/myMenu.hpp</itemPath>
           <itemPath>source/player.cpp</itemPath>
           <itemPath>source/player.hpp</itemPath>
           <itemPath>source/staticObject.cpp</itemPath>
@@ -192,6 +194,8 @@
           <itemPath>source/IntroS1Manager.hpp</itemPath>
           <itemPath>source/LifeManager.cpp</itemPath>
           <itemPath>source/LifeManager.hpp</itemPath>
+          <itemPath>source/MainMenuSetup.cpp</itemPath>
+          <itemPath>source/MainMenuSetup.hpp</itemPath>
           <itemPath>source/MenuManager.cpp</itemPath>
           <itemPath>source/MenuManager.hpp</itemPath>
           <itemPath>source/PlayerMovement.cpp</itemPath>

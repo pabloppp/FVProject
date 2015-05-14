@@ -52,7 +52,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("mainmenu");
+    gme::Game::setCurrentScene("oleada1");
 }
 
 
