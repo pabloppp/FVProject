@@ -29,7 +29,9 @@ public:
     virtual void setup() = 0;
     static Scene *getCurrentScene();
     static void addScene(Scene *s);
-    static void removeScene(std::string n);
+    static Scene* removeScene(std::string n);
+    static Scene* removeScene(Scene *s);
+    static Scene* getScene(std::string s);
     static Window *getWindow();
     static Time deltaTime;
     static Time unfixedDeltaTime;
@@ -51,6 +53,7 @@ private:
     static std::unordered_map<std::string, unsigned int> tagmap;
     static char tagCount;
     static std::vector<Scene*> scenes;
+    static std::vector<Scene*> scenesToDelete;
     static std::vector<Texture> textures;
     static std::vector<Sound> sounds;
     static std::vector<Music*> musics;

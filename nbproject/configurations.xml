@@ -124,8 +124,6 @@
           <itemPath>source/enemy_boss.hpp</itemPath>
           <itemPath>source/enemy_fast.cpp</itemPath>
           <itemPath>source/enemy_fast.hpp</itemPath>
-          <itemPath>source/imagenFondo.cpp</itemPath>
-          <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
           <itemPath>source/myMenu.cpp</itemPath>
@@ -534,10 +532,6 @@
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/limit.hpp" ex="false" tool="3" flavor2="0">
@@ -940,10 +934,6 @@
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="source/imagenFondo.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="source/imagenFondo.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>

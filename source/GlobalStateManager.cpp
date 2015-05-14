@@ -10,6 +10,7 @@
 #include "metralletaBehavior.hpp"
 #include "escopetaBehavior.hpp"
 #include "lnzllamasBehavior.hpp"
+#include "oleada2.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -91,7 +92,14 @@ void GlobalStateManager::update(){
         }
         if(levelSuccess && gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
             //Se abre una nueva escena 
-            if(nextScene.length() != 0) gme::Game::setCurrentScene(nextScene);
+            if(nextScene.length() != 0){
+                gme::Scene *olds = gme::Game::removeScene(gme::Game::getCurrentScene());
+                gme::Scene *olds2 = gme::Game::removeScene(nextScene);
+                if(nextScene.compare("oleada2") == 0){
+                    gme::Scene *news = new oleada2("oleada2");
+                }
+                gme::Game::setCurrentScene(nextScene);
+            }
             
         }
     }
@@ -99,6 +107,8 @@ void GlobalStateManager::update(){
     if(gameOver){
         isGameOver();
     }
+    
+    if(goToMenu) gme::Game::setCurrentScene("mainmenu");
 }
 
 void GlobalStateManager::isGameOver() {
@@ -158,7 +168,6 @@ void GlobalStateManager::onMessage(std::string m, float v) {
         if(canpause){
             pause();
             lastScore = gameClock.currentTime().asSeconds();
-            std::cout << "Queda: " << lastScore << std::endl;
         }
     }
     else if(paused && m.compare("resume")==0){
@@ -166,12 +175,6 @@ void GlobalStateManager::onMessage(std::string m, float v) {
             resume();
             gameClock.restart();
         } 
-    }
-    else if(m.compare("changeToMenu") == 0){
-        canpause = false;
-        gameOver = true;
-        gme::Game::setCurrentScene("mainmenu");
-        
     }
     else if(m.compare("gameover")==0){
         canpause = false;

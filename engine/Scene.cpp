@@ -12,6 +12,7 @@ using namespace gme;
 Scene::Scene(std::string n){
     name = n;
     Game::addScene(this);
+    //if(Game::mainCamera != NULL) delete Game::mainCamera; 
     Game::mainCamera = new Camera("mainCamera");
     updateClock.restart();
     gameObjects.reserve(99999);
@@ -26,10 +27,21 @@ Scene::Scene(std::string n){
 Scene::Scene(const Scene& orig) {
 }
 
-Scene::~Scene() {   
+Scene::~Scene() { 
+    std::cout << this->getName() << std::endl;
     for(int i=gameObjects.size()-1; i>=0;i--){
-        if(gameObjects.at(i) != gme::Game::mainCamera){
-            delete gameObjects.at(i);
+        if(gameObjects.at(i) != Game::mainCamera && gameObjects.at(i)->getName().compare("mainCamera") != 0){
+            try{
+                if(gameObjects.at(i) && gameObjects.at(i) != NULL && gameObjects.at(i) != nullptr){
+                    //std::cout << "objetos: " << gameObjects.size() << std::endl;
+                    if(gameObjects.size() == 3) std::cout << gameObjects.at(i)->getName() << std::endl;
+                    delete gameObjects.at(i);
+                }
+            }catch(std::exception& e){
+                std::cout << "erroratrapa" << std::endl;
+            } 
+            //std::cout << "objetos: " << gameObjects.at(i) << std::endl;
+            gameObjects.at(i) = nullptr;
             gameObjects.erase(gameObjects.begin()+i);
         }
     }

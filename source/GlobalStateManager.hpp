@@ -16,6 +16,7 @@ public:
         winCondition = 60;
         lastScore = 0;
         levelSuccess = false;
+        goToMenu = false;
         gameClock.restart();
         nextScene = "";
     };
@@ -38,6 +39,7 @@ public:
     
 private:
     bool paused;
+    bool goToMenu;
     bool canpause;
     bool gameOver;
     bool player2_exists;

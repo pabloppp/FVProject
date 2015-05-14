@@ -72,4 +72,5 @@ void mainGame::setup() {
     gme::Game::setCurrentScene("mainmenu");
 }
 
+bool mainGame::coop = false;
 

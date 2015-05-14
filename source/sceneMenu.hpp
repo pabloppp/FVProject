@@ -6,7 +6,9 @@
 
 class sceneMenu : public gme::Scene{
 public:
-    sceneMenu() : gme::Scene(){};
+    sceneMenu() : gme::Scene(){
+ 
+    };
     sceneMenu(std::string n) : gme::Scene(n){};
     void setup();
     void setupBg();

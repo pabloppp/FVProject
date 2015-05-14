@@ -1,4 +1,6 @@
 #include "MenuManager.hpp"
+#include "sceneMenu.hpp"
+#include "mainGame.hpp"
 
 void MenuManager::setup(){
     w = gme::Game::getWindow();
@@ -94,7 +96,11 @@ void MenuManager::onMessage(std::string m, float v) {
 }
 
 void MenuManager::openMenu(){
-    sendMessage("changeToMenu", 0);
+    gme::Scene *olds = mainGame::removeScene("mainmenu");
+    gme::Scene *olds2 = gme::Game::removeScene(gme::Game::getCurrentScene());
+    gme::Scene *mm = new sceneMenu("mainmenu");
+    gme::Game::setCurrentScene("mainmenu");
+    
 }
 
 void MenuManager::openPause(){

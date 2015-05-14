@@ -1,11 +1,15 @@
 #include "MainMenuSetup.hpp"
+#include "mainGame.hpp"
+#include "tilerJsonLoadScene.hpp"
 
 void MainMenuSetup::setup() {
     w = gme::Game::getWindow();
     menu = 1;
     posX = 512;
+    num_apre = 0;
+    num_apre_ini = 0;
     reloj_fondo.restart();
-    
+    entered = false;
     izq=false; dre=false; juegoNuevo1p = false; juegoNuevo2p = false;
 }
 
@@ -50,6 +54,7 @@ void MainMenuSetup::movement() {
     if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey)){
        izq=true;
        menu=3;
+       entered = true;
        num_apre=0;
     }
     /* VOLVER DESDE OPCIONES */    
@@ -60,15 +65,30 @@ void MainMenuSetup::movement() {
     if(menu==3 && (num_apre==2 && gme::Keyboard::isKeyPressed(introKey))){
        dre=true;    
     }
-    /* INICIAR JUEGO INDIVIDUAL 
-    if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+    // INICIAR JUEGO INDIVIDUAL 
+    if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
        juegoNuevo1p = true;
-       sendMessage("hideMenu",0);
+       mainGame::coop = false;
+       gme::Scene *olds = mainGame::removeScene("oleada1");
+       gme::Scene *s = mainGame::getScene("oleada1");
+       if(!s || s == NULL){
+           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
+           mainGame::setCurrentScene(tiledTest);  
+       }
+       else mainGame::setCurrentScene("oleada1");
     }
-     if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+     if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
        juegoNuevo2p = true;
-       sendMessage("hideMenu",0);
-    }*/
+       mainGame::coop = true;
+       gme::Scene *olds = mainGame::removeScene("oleada1");
+       gme::Scene *s = mainGame::getScene("oleada1");
+       if(!s || s == NULL){
+           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
+           mainGame::setCurrentScene(tiledTest);  
+       }
+       else mainGame::setCurrentScene("oleada1");
+    }
+    if(entered && ! gme::Keyboard::isKeyPressed(introKey)) entered = false;
 }
 
 

@@ -23,7 +23,7 @@ private:
     gme::Window *w;
     int menu, posX, num_apre_ini, num_apre;
     int x=1, largo=310, ancho=40;
-    bool izq, dre, juegoNuevo1p, juegoNuevo2p;
+    bool izq, dre, juegoNuevo1p, juegoNuevo2p, entered;    
     gme::Clock reloj_fondo;
     gme::Clock apretar;
 };
