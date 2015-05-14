@@ -33,20 +33,16 @@ bool GlobalStateManager::isPaused() {
 
 
 void GlobalStateManager::update(){
-     
-    if(!paused && gme::Keyboard::isKeyPressed(pauseKey) && apretar.currentTime().asSeconds()>0.2){
+    // El jugador pausa el juego
+    if(!paused && (gme::Keyboard::isKeyPressed(pauseKey) || (gme::Keyboard::isKeyPressed(escKey))) 
+            && apretar.currentTime().asSeconds()>0.2){
         if(!canpause) return; 
         pause();
         sendMessage("openPause", 0); 
         lastScore += gameClock.currentTime().asSeconds();
         apretar.restart();
     }
-    if(!paused && gme::Keyboard::isKeyPressed(menuKey) && apretar.currentTime().asSeconds()>0.2){
-        if(!canpause) return; 
-        pause();
-        sendMessage("openMenu", 0); 
-        apretar.restart();
-    }
+    // Añadimos 2do jugador...
     if(!player2_exists && !paused && gme::Keyboard::isKeyPressed(gme::Keyboard::Period) && apretar.currentTime().asSeconds()>0.2){
         if(!canpause) return; 
         player2_exists = true;
@@ -85,7 +81,8 @@ void GlobalStateManager::update(){
         instantiate(arma2);
         apretar.restart();
     }
-    if( gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver){
+    // Tipo de juego por tiempo ganado
+    if(gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver){
         if(!paused && !levelSuccess){
             gameObject()->sendMessage("showLevelSuccess", 0);
             levelSuccess = true;
@@ -98,57 +95,63 @@ void GlobalStateManager::update(){
             
         }
     }
+    //Si perdemos...
     if(gameOver){
-        if(gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
-            gme::Scene *newScene;
-            if(true){
-                std::vector<gme::GameObject*> *ol = gme::Game::getCurrentScene()->getGameObjects();
-                for(int i=ol->size()-1; i>=0; i--){
-                    if(ol->at(i)->hasTag("enemy")
-                            || ol->at(i)->getName().compare("tile")==0
-                            || ol->at(i)->getName().compare("sceneLoader")==0
-                            || ol->at(i)->hasTag("colectable")
-                            ){
-                        
-                        delete ol->at(i);
-                        ol->at(i) = ol->back();
-                        ol->pop_back();
-                        
-                    }
+        isGameOver();
+    }
+}
+
+void GlobalStateManager::isGameOver() {
+    if(gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
+        gme::Scene *newScene;
+        if(true){
+            std::vector<gme::GameObject*> *ol = gme::Game::getCurrentScene()->getGameObjects();
+            for(int i=ol->size()-1; i>=0; i--){
+                if(ol->at(i)->hasTag("enemy")
+                        || ol->at(i)->getName().compare("tile")==0
+                        || ol->at(i)->getName().compare("sceneLoader")==0
+                        || ol->at(i)->hasTag("colectable")
+                        ){
+
+                    delete ol->at(i);
+                    ol->at(i) = ol->back();
+                    ol->pop_back();
+
                 }
-                for(int i=ol->size()-1; i>=0; i--){
-                    if(ol->at(i)->hasTag("floor")){
-                        delete ol->at(i);
-                        ol->at(i) = ol->back();
-                        ol->pop_back();
-                    }
-                }
-                
-                gme::Game::getCurrentScene()->setup();
-                instantiate(gme::GameObject::find("sceneLoader")[0]);
-                
-                std::vector<gme::GameObject*> players =  gme::GameObject::findWithTag("player");
-                for(int i=0;i<players.size();i++){
-                    
-                    if(i==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
-                    else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
-                    
-                    players.at(i)->getComponent<PlayerMovement*>()->setup();
-                    ((gme::GameObject*)(players.at(i)))->getComponent<moveToTop*>()->setup();
-                    players.at(i)->sendMessage("reset",0);
-                    ((gme::GameObject*)(players.at(i)->getChildren()[0]))->getComponent<moveToTop*>()->setup();
-                }
-                
-                gameObject()->sendMessage("reset", 0);
-                
-                gameOver = false;
-                canpause = true;
-                gameClock.restart();
-                lastScore = 0;
             }
+            for(int i=ol->size()-1; i>=0; i--){
+                if(ol->at(i)->hasTag("floor")){
+                    delete ol->at(i);
+                    ol->at(i) = ol->back();
+                    ol->pop_back();
+                }
+            }
+
+            gme::Game::getCurrentScene()->setup();
+            instantiate(gme::GameObject::find("sceneLoader")[0]);
+
+            std::vector<gme::GameObject*> players =  gme::GameObject::findWithTag("player");
+            for(int i=0;i<players.size();i++){
+
+                if(i==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
+                else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+
+                players.at(i)->getComponent<PlayerMovement*>()->setup();
+                ((gme::GameObject*)(players.at(i)))->getComponent<moveToTop*>()->setup();
+                players.at(i)->sendMessage("reset",0);
+                ((gme::GameObject*)(players.at(i)->getChildren()[0]))->getComponent<moveToTop*>()->setup();
+            }
+
+            gameObject()->sendMessage("reset", 0);
+
+            gameOver = false;
+            canpause = true;
+            gameClock.restart();
+            lastScore = 0;
         }
     }
 }
+
 
 void GlobalStateManager::onMessage(std::string m, float v) {
     if(!paused && m.compare("pause")==0) {
@@ -157,13 +160,18 @@ void GlobalStateManager::onMessage(std::string m, float v) {
             lastScore = gameClock.currentTime().asSeconds();
             std::cout << "Queda: " << lastScore << std::endl;
         }
-        
     }
     else if(paused && m.compare("resume")==0){
         if(canpause){
             resume();
             gameClock.restart();
         } 
+    }
+    else if(m.compare("changeToMenu") == 0){
+        canpause = false;
+        gameOver = true;
+        gme::Game::setCurrentScene("mainmenu");
+        
     }
     else if(m.compare("gameover")==0){
         canpause = false;

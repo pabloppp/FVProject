@@ -22,6 +22,14 @@ void IABoss::setup() {
     }
     
     ((gme::BoxCollider*)(getCollider()))->setSize(25*3,32*3);
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            manager = gsm;
+        }
+    }
    
 }
 
@@ -37,12 +45,10 @@ void IABoss::findPlayer() {
 
 
 void IABoss::update() {
-    /*if(stateManager->isPaused()){
+    if(manager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
-        getRigidBody()->setActive(false);
         return;
     }
-    else getRigidBody()->setActive(true);*/
     
     if(player){
        gme::Vector2 playerpos = player->getTransform()->getPosition();

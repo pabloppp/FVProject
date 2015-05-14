@@ -45,7 +45,7 @@ private:
     gme::Clock animClock;
     int walkFPS;
     int walkFrameCount;
-    
+    GlobalStateManager *manager;
 };
 
 #endif	/* IABOSS_HPP */

@@ -78,6 +78,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/IAMovement.o \
 	${OBJECTDIR}/source/IntroS1Manager.o \
 	${OBJECTDIR}/source/LifeManager.o \
+	${OBJECTDIR}/source/MainMenuSetup.o \
 	${OBJECTDIR}/source/MenuManager.o \
 	${OBJECTDIR}/source/PlayerMovement.o \
 	${OBJECTDIR}/source/SaveManager.o \
@@ -104,6 +105,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/metralletaBullet.o \
 	${OBJECTDIR}/source/moveFondo.o \
 	${OBJECTDIR}/source/moveToTop.o \
+	${OBJECTDIR}/source/myMenu.o \
 	${OBJECTDIR}/source/oleada2.o \
 	${OBJECTDIR}/source/pbBehavior.o \
 	${OBJECTDIR}/source/pistolaBehavior.o \
@@ -362,6 +364,11 @@ ${OBJECTDIR}/source/LifeManager.o: source/LifeManager.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/LifeManager.o source/LifeManager.cpp
 
+${OBJECTDIR}/source/MainMenuSetup.o: source/MainMenuSetup.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/MainMenuSetup.o source/MainMenuSetup.cpp
+
 ${OBJECTDIR}/source/MenuManager.o: source/MenuManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -491,6 +498,11 @@ ${OBJECTDIR}/source/moveToTop.o: source/moveToTop.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveToTop.o source/moveToTop.cpp
+
+${OBJECTDIR}/source/myMenu.o: source/myMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/myMenu.o source/myMenu.cpp
 
 ${OBJECTDIR}/source/oleada2.o: source/oleada2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

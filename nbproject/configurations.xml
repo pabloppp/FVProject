@@ -128,6 +128,8 @@
           <itemPath>source/imagenFondo.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
+          <itemPath>source/myMenu.cpp</itemPath>
+          <itemPath>source/myMenu.hpp</itemPath>
           <itemPath>source/player.cpp</itemPath>
           <itemPath>source/player.hpp</itemPath>
           <itemPath>source/staticObject.cpp</itemPath>
@@ -192,6 +194,8 @@
           <itemPath>source/IntroS1Manager.hpp</itemPath>
           <itemPath>source/LifeManager.cpp</itemPath>
           <itemPath>source/LifeManager.hpp</itemPath>
+          <itemPath>source/MainMenuSetup.cpp</itemPath>
+          <itemPath>source/MainMenuSetup.hpp</itemPath>
           <itemPath>source/MenuManager.cpp</itemPath>
           <itemPath>source/MenuManager.hpp</itemPath>
           <itemPath>source/PlayerMovement.cpp</itemPath>
@@ -470,6 +474,10 @@
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/MainMenuSetup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MainMenuSetup.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/MenuManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/MenuManager.hpp" ex="false" tool="3" flavor2="0">
@@ -573,6 +581,10 @@
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/myMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -869,6 +881,10 @@
       </item>
       <item path="source/LifeManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/MainMenuSetup.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MainMenuSetup.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/MenuManager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/MenuManager.hpp" ex="false" tool="3" flavor2="0">
@@ -972,6 +988,10 @@
       <item path="source/moveToTop.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/moveToTop.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/myMenu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>

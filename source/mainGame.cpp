@@ -10,6 +10,15 @@ void mainGame::setup() {
     
     //debugColliders = true;
     
+
+    gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
+    gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
+    gme::Game::newTexture("resources/BGs/gato.png", "logo");
+    gme::Game::newTexture("resources/BGs/fondo_menu.png", "fondo_menu");
+    gme::Game::newTexture("resources/Effects/no.png", "no_icon"); 
+    gme::Game::newTexture("resources/BGs/cartel_lose.png", "cartel_lose");
+    gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
+
     //BACKGROUND
     gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
     gme::Game::newTexture("resources/BGs/jungle_frontA.png", "bgFrontATexture");
@@ -19,14 +28,9 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
     gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
     
-    gme::Game::newTexture("resources/BGs/fondoSplash.png", "fondoSplash");  
-    gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
-    gme::Game::newTexture("resources/BGs/gato.png", "logo");
-    gme::Game::newTexture("resources/Effects/no.png", "no_icon");
     
     //TILESETS
     gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
-    
     
     gme::Game::newTexture("resources/Weapons/soldier_gun.png", "gun");
     gme::Game::newTexture("resources/Bullets/Bullet2.png", "bullet");
@@ -49,21 +53,12 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     
-    
-    //SONIDOS 
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
-    gme::Game::newMusic("resources/Sounds/jungle.wav","jungle");
-    
-    gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
-    gme::Game::newMusic("resources/Sounds/metralleta.wav", "metralletaShot");
-    gme::Game::newMusic("resources/Sounds/lanzallamas.wav","lanzallamasShot");
-    
-    //SONIDOS
-    
-    
+        
+    //PRE ESCENAS
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
     
@@ -74,7 +69,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("oleada2");
+    gme::Game::setCurrentScene("oleada1");
 }
 
 
