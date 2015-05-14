@@ -2,6 +2,7 @@
 #include "pistolaBullet.hpp"
 #include "PlayerMovement.hpp"
 
+
 void pistolaBehavior::setup() {
     getRenderer()->setTexture("gun");
     shooting = false;
@@ -9,6 +10,9 @@ void pistolaBehavior::setup() {
     
     direction = 1;
 
+    gunShot_sound = new gme::MusicPlayer();
+    gunShot_sound->setMusic("gunShot");
+    
     ShotKey = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->weaponKey;
     keyUp = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->upKey;
     keyDown = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->downKey;
@@ -47,7 +51,7 @@ void pistolaBehavior::update() {
             
     if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting){
         shooting = true;
-            
+          gunShot_sound->play(); 
         if(verticalDirection != -1) shoot(verticalDirection);
         else shoot(direction);
     } 

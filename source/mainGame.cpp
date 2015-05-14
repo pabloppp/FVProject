@@ -49,10 +49,16 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     
+    
+    //SONIDOS 
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
+    gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
+    gme::Game::newMusic("resources/Sounds/jungle.wav","jungle");
+    
+    //SONIDOS
     
     
     gme::Scene *splash_scene = new sceneSplash("splash");
@@ -65,7 +71,7 @@ void mainGame::setup() {
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     
     
-    gme::Game::setCurrentScene("oleada1");
+    gme::Game::setCurrentScene("splash");
 }
 
 
