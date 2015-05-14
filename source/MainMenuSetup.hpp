@@ -26,6 +26,7 @@ private:
     bool izq, dre, juegoNuevo1p, juegoNuevo2p, entered;    
     gme::Clock reloj_fondo;
     gme::Clock apretar;
+    gme::MusicPlayer *button_sound;
 };
 
 #endif	/* MAINMENUSETUP_HPP */

@@ -6,10 +6,12 @@
 #include "transitionScene.hpp"
 #include "oleada2.hpp"
 
+#include <fstream>
+
 void mainGame::setup() {
     
     //debugColliders = true;
-    
+    loadOpts();
 
     gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
@@ -73,5 +75,63 @@ void mainGame::setup() {
     gme::Game::setCurrentScene("oleada2");
 }
 
+void mainGame::saveOpts() {
+    std::ofstream myfile ("global.conf");
+    if(myfile.is_open()){
+        if(music) myfile << "music true\n";
+        else myfile << "music false\n";
+        
+        if(sound) myfile << "sound true\n";
+        else myfile << "sound false\n";
+        
+        if(fullscreen) myfile << "fullscreen true\n";
+        else myfile << "fullscreen false\n";
+        
+        if(particles == 2) myfile << "particles high";
+        else if(particles == 1) myfile << "particles low";
+        else myfile << "particles none";
+        
+        myfile.close();
+    }
+}
+
+void mainGame::loadOpts() {
+    std::string str;
+    std::ifstream infile;
+    infile.open("global.conf");
+    if(infile.is_open()){
+        while(!infile.eof()){
+            getline(infile, str);
+            std::string opt = str.substr(0, str.find(" "));
+            str = str.erase(0, str.find(" ")+1);
+            std::string val = str.substr(0, str.find(" "));
+            std::cout <<opt << ": " << val << std::endl;
+            
+            if(opt.compare("music") == 0){
+                if(val.compare("false") == 0) music = false;
+            }
+            if(opt.compare("sound") == 0){
+                if(val.compare("false") == 0) sound = false;
+            }
+            if(opt.compare("fullscreen") == 0){
+                if(val.compare("false") == 0) fullscreen = false;
+            }
+            if(opt.compare("particles") == 0){
+                if(val.compare("low") == 0) particles = 1;
+                else if(val.compare("none") == 0) particles = 0;
+            }
+        }
+        infile.close();
+    }
+    else saveOpts();
+    
+}
+
+
+
 bool mainGame::coop = false;
+bool mainGame::music = true;
+bool mainGame::sound = true;
+bool mainGame::fullscreen = true;
+int mainGame::particles = 2;
 
