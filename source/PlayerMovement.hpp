@@ -37,6 +37,7 @@ public:
     bool hitWallRight;
     bool hitWallLeft;
     bool flipped;
+    int points;
     
     gme::Keyboard::Key upKey;
     gme::Keyboard::Key downKey;

@@ -1,9 +1,3 @@
-/* 
- * File:   IAMovement.cpp
- * Author: albertomartinezmartinez
- * 
- * Created on 14 de abril de 2015, 18:18
- */
 
 #include "IAMovement.hpp"
 #include "emptyGameObject.hpp"
@@ -109,10 +103,6 @@ void IAMovement::update() {
         vectorDirector(playerpos, enemypos);
         
         
-       
-        
-        //getTransform()->translate(dir,dist*deltatime);
-        
         if(grounded && getRigidBody()->getSpeed().y >= 0) getRigidBody()->setSpeed(dir, dist);
         
         jump(playerpos,enemypos);
@@ -122,23 +112,11 @@ void IAMovement::update() {
     animate();
     
     grounded = false;
-    
-    
     cornered = 0;
-    
-    //if(dead) gameObject()->sendMessage("damage", 999999);
     
 }
 
 void IAMovement::jump(gme::Vector2 player, gme::Vector2 enemy) {
-    //getRigidBody()->pushImmediate(dir,40000*deltatime);
-    
-    /*if(player.y < enemy.y && !jumping && elapsetime == 0){
-        std::cout << "jugador por encima" << std::endl;
-        elapsetime = clkJ.currentTime().asSeconds();
-    }*/
-    
-    
     if(clkJ.currentTime().asSeconds() > 5 && player.y < enemy.y && getRigidBody()){
         clkJ.restart();
         grounded = false;
@@ -306,15 +284,29 @@ void IAMovement::onCollision(gme::Collider* c) {
 }
 
 void IAMovement::onMessage(std::string m, float v) {
-
     if(m.compare("kill")==0 && !dead){
-        std::cout << "muerte" << std::endl;
+        if(lasthitby == 1){
+            if(player->getName().compare("p1") == 0) player->sendMessage("givePoints", 150);
+            else if(player2 != NULL ){
+                std::cout << "player 2 giving points" << std::endl;
+                player2->sendMessage("givePoints", 150);
+            }
+        }
+        else if(lasthitby == 2){
+            if(player->getName().compare("p2") == 0) player->sendMessage("givePoints", 150);
+            else if(player2 != NULL ){
+                std::cout << "player 2 giving points from type2" << std::endl;
+                player2->sendMessage("givePoints", 150);
+            }
+        }       
         dead = true;
         explode(20, 50, 50, 250);
-    }
-    
+    }    
     if(m.compare("damage")==0 && !dead){
         explode(3,10, 50, 150);
+    }
+    if(m.compare("iam")==0){
+        lasthitby = v;
     }
 }
 

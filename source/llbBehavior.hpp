@@ -7,10 +7,13 @@
 
 class llbBehavior: public gme::Script {
 public:
-    llbBehavior() : gme::Script(){};
+    llbBehavior() : gme::Script(){
+        whoami = 1;
+    };
     virtual ~llbBehavior();
     void setup();
     void update();
+    int whoami;
     virtual void onCollision(gme::Collider* c);
 private:
     Animator animator;
@@ -19,6 +22,7 @@ private:
     int frame;
     int initialXSpeed;
     bool destroy;
+    
     gme::Vector2 winSize;
     GlobalStateManager *manager;
 };

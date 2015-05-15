@@ -45,6 +45,7 @@ void llbBehavior::update() {
 
 void llbBehavior::onCollision(gme::Collider* c) {
     if(frame <= 3 && c->gameObject() != NULL){
+        if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam",whoami);
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
             c->gameObject()->sendMessageUpward("damage", 0.1);

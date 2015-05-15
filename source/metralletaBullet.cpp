@@ -22,6 +22,7 @@ void metralletaBullet::setup() {
    addComponent(col);
    
    mbBehavior *bB = new mbBehavior;
+   bB->whoami = whoshoots;
    addComponent(bB);
 }
 

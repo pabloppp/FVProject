@@ -1,9 +1,3 @@
-/* 
- * File:   LifeManager.cpp
- * Author: pablopernias
- * 
- * Created on 18 de marzo de 2015, 11:23
- */
 
 #include "LifeManager.hpp"
 
@@ -91,7 +85,7 @@ void LifeManager::onMessage(std::string m, float v) {
         }
     }
     if(m.compare("kill") == 0){
-        destroyGameObject(gameObject());
+        destroyGameObject(gameObject());        
     }
     if(m.compare("oneup") == 0){
         lives += v;

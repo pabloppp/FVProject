@@ -21,6 +21,7 @@ void llamasBullet::setup() {
    addComponent(col);
    
    llbBehavior *bB = new llbBehavior;
+   bB->whoami = whoshoots;
    addComponent(bB);
 }
 

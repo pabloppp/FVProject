@@ -45,6 +45,7 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    int lasthitby;
     
     GlobalStateManager *stateManager;
     

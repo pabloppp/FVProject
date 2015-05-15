@@ -4,6 +4,7 @@
 
 void PlayerMovement::setup() {
     dead = false;
+    points = 0;
     for(int i=0;i<gameObject()->getChildren().size();i++){
         gameObject()->getChildren().at(i)->setActive(true);
     }
@@ -28,6 +29,9 @@ void PlayerMovement::onMessage(std::string m, float v) {
         for(int i=0;i<gameObject()->getChildren().size();i++){
             gameObject()->getChildren().at(i)->setActive(false);
         }
+    }
+    if(m.compare("givePoints") == 0){
+        points+=v;
     }
 }
 
@@ -216,6 +220,7 @@ void PlayerMovement::onGui() {
         
         gme::GUI::fontSize = 16;
         gme::GUI::label(gme::Vector2(10+disp,38), "HP", gme::GUI::Origin::TopLeft);
+        gme::GUI::label(gme::Vector2(10+disp,58), std::to_string(points), gme::GUI::Origin::TopLeft);
         
         gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
         gme::GUI::outlineThickness = 3;
@@ -231,8 +236,6 @@ void PlayerMovement::onGui() {
         for(int i=0;i<bars;i++){
             gme::GUI::box(gme::Vector2(46+i*6+disp, 35+6), gme::Vector2(3, 3*2));
         }
-        
-        
     }
     //std::cout << "ENTERING HERE" << std::endl;
 }

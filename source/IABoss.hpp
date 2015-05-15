@@ -31,7 +31,8 @@ private:
      gme::GameObject *player, *player2;
      GlobalStateManager *stateManager;
      gme::Vector2 dir;
-     gme::Clock clk,clkS;
+     gme::Clock clk,clkS, updateP2;
+     
      bool right;
      bool side;
      bool sprint;
@@ -45,7 +46,9 @@ private:
     gme::Clock animClock;
     int walkFPS;
     int walkFrameCount;
+    int lasthitby;
     GlobalStateManager *manager;
+   
 };
 
 #endif	/* IABOSS_HPP */
