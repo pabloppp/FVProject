@@ -14,6 +14,9 @@ void lnzllamasBehavior::setup() {
     lanzallamasShot_sound = new gme::MusicPlayer();
     lanzallamasShot_sound->setMusic("lanzallamasShot");
     
+    lanzallamasReload_sound = new gme::MusicPlayer();
+    lanzallamasReload_sound->setMusic("lanzallamasReload");
+    
     direction = 1;
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
@@ -47,6 +50,11 @@ void lnzllamasBehavior::update() {
         return;
     }
     if(recargando){
+        
+        if(tlkClock.currentTime().asSeconds() > 4){
+            lanzallamasReload_sound->play();
+            tlkClock.restart();
+        }
         //std::cout << "BULLETS" << numBullets << std::endl;
         if(clock.currentTime().asSeconds() > 0.2){
             clock.restart();

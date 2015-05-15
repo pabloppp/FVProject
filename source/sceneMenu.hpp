@@ -13,7 +13,7 @@ public:
 private:
     float posXA;
     float posXB;
-   gme::MusicPlayer *jungleFondo_sound;
+   
 };
 
 #endif	/* SCENEENTREGABLE4_HPP */

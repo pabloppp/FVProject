@@ -3,6 +3,13 @@
 #include "tile.hpp"
 
 void PlayerMovement::setup() {
+    
+    footsteps_sound = new gme::MusicPlayer();
+    footsteps_sound->setMusic("footsteps");
+    
+    jump_sound = new gme::MusicPlayer();
+    jump_sound->setMusic("jump");
+    
     dead = false;
     for(int i=0;i<gameObject()->getChildren().size();i++){
         gameObject()->getChildren().at(i)->setActive(true);
@@ -34,6 +41,7 @@ void PlayerMovement::update() {
     if(manager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
         getRigidBody()->setActive(false);
+        footsteps_sound->pause();
         return;
     }
     else getRigidBody()->setActive(true);
@@ -63,6 +71,20 @@ void PlayerMovement::update() {
     }
     
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
+        
+        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07 && sonidoSalto==0){
+            jump_sound->play();
+            salto=false;
+            sonidoSalto++;
+        }
+        
+         if(tlkClock.currentTime().asSeconds() > 0.9){
+            
+             footsteps_sound->play();
+             tlkClock.restart();
+            
+        }
+        
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
         else 
@@ -73,6 +95,19 @@ void PlayerMovement::update() {
         }
     }
     else if(gme::Keyboard::isKeyPressed(rightKey) && !hitWallRight){
+         
+        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07 && sonidoSalto==0){
+            jump_sound->play();
+            salto=false;
+            sonidoSalto++;
+        }
+        
+          if(tlkClock.currentTime().asSeconds() > 0.9){
+              
+             footsteps_sound->play();
+             tlkClock.restart();
+        }
+        
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->setSpeed((walkingSpeed/2.f)*deltaTime, speedY);
         else 
@@ -84,9 +119,21 @@ void PlayerMovement::update() {
     }
     else{
         getRigidBody()->setSpeed(0, speedY);
+        footsteps_sound->pause();
+        salto=false;
+        salto=0;
     }
     
     if(gme::Keyboard::isKeyPressed(jumpKey) && grounded && !jumped){
+        
+        footsteps_sound->pause();
+        salto=true;
+        
+        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07){
+            jump_sound->play();
+            salto=false;
+        }
+        
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->pushImmediate(gme::Vector2(0,-1), (jumpForce/2.f)*deltaTime);
         else 
@@ -95,6 +142,8 @@ void PlayerMovement::update() {
     }
     else if(jumped && !gme::Keyboard::isKeyPressed(jumpKey)){
         jumped = false;
+        salto=true;
+        footsteps_sound->pause();
     }
     
     animate();

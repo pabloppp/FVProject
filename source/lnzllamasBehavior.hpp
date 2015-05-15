@@ -33,6 +33,7 @@ private:
     GlobalStateManager *manager;
     
     gme::MusicPlayer *lanzallamasShot_sound;
+    gme::MusicPlayer *lanzallamasReload_sound;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */

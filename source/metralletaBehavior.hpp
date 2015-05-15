@@ -34,6 +34,7 @@ private:
     GlobalStateManager *manager;
     
     gme::MusicPlayer *metralletaShot_sound;
+    gme::MusicPlayer *metralletaReload_sound;
 };
 
 #endif	/* METRALLETABEHAVIOR_HPP */

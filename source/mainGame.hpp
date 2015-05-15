@@ -8,6 +8,8 @@ public:
     mainGame(gme::Vector2 windowSize, std::string name) : gme::Game(windowSize, name){};
     void setup();
 private:
+    
+    gme::MusicPlayer *jungleFondo_sound;
 
 };
 

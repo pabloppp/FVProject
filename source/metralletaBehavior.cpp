@@ -13,6 +13,9 @@ void metralletaBehavior::setup() {
      metralletaShot_sound = new gme::MusicPlayer();
     metralletaShot_sound->setMusic("metralletaShot");
     
+    metralletaReload_sound = new gme::MusicPlayer();
+    metralletaReload_sound->setMusic("metralletaReload");
+    
     
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
@@ -42,10 +45,12 @@ void metralletaBehavior::update() {
     if(!isActive()) return;
     
     if(numBullets <= 0 && !recargando){
+        metralletaReload_sound->play();
         recargando = true;
         return;
     }
     if(recargando){
+        
         if(clock.currentTime().asSeconds() > 0.05){
             clock.restart();
             numBullets = numBullets + 4;

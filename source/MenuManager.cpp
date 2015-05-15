@@ -11,7 +11,7 @@ void MenuManager::setup(){
     button_sound->setMusic("boton");
     change_sound->setMusic("desplazamiento");
     
-    button_sound->setVolume(20.0);
+    /*button_sound->setVolume(20.0)*/;
     change_sound->setVolume(20.0);
     
     /* BOOLEAN STATES */

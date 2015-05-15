@@ -10,6 +10,8 @@ void mainGame::setup() {
     
     //debugColliders = true;
     
+    
+    
 
     gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
@@ -53,18 +55,46 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     
-    //sonido
+    //SONIDOS
+    
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
+        //ARMAS
     gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
+    
     gme::Game::newMusic("resources/Sounds/metralleta.wav", "metralletaShot");
+    gme::Game::newMusic("resources/Sounds/metralletaReload.wav","metralletaReload");
+    
     gme::Game::newMusic("resources/Sounds/lanzallamas.wav", "lanzallamasShot");
-    gme::Game::newMusic("resources/Sounds/jungle.wav", "jungle");
+    gme::Game::newMusic("resources/Sounds/lanzallamasReload.wav","lanzallamasReload");
+    
+    gme::Game::newMusic("resources/Sounds/escopeta.wav", "escopetaShot");
+    gme::Game::newMusic("resources/Sounds/escopetaReload.wav", "escopetaReload");
+    
+        //COLAIDERS
+    
+    gme::Game::newMusic("resources/Sounds/cajaRota.wav","cajaRota");
     
     
-
+        //AMBIENTE
+    gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
+    
+    
+        //PERSONAJE
+    gme::Game::newMusic("resources/Sounds/footsteps.wav","footsteps");
+    gme::Game::newMusic("resources/Sounds/salto.wav","jump");
+    
+    jungleFondo_sound = new gme::MusicPlayer();
+    jungleFondo_sound->setMusic("jungle");
+    
+    jungleFondo_sound->play();
+    jungleFondo_sound->loop(true);
+    
+    jungleFondo_sound->setVolume(20.0);
+    
+    //SONIDOS
     
     //PRE ESCENAS
     gme::Scene *splash_scene = new sceneSplash("splash");

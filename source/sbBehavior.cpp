@@ -4,6 +4,7 @@ void sbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize();
     destroy = false;
     frame = 0;
+    
     std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
     if(gm.size() > 0){
         GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
@@ -46,6 +47,7 @@ void sbBehavior::onCollision(gme::Collider* c) {
                 c->gameObject()->hasTag("colectable")){
             c->gameObject()->sendMessageUpward("damage", 10);
             destroy = true;
+            
         }
     }
 }
