@@ -45,12 +45,16 @@ pbBehavior::~pbBehavior() {
 }
 
 void pbBehavior::onCollision(gme::Collider* c) {
-    if(c->gameObject() != NULL){
+    if(c->gameObject() != NULL){        
+        if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam", whoami);
+        
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
             c->gameObject()->sendMessageUpward("damage", 4);
+            
             destroy = true;
-        }
+        }   
+        
     }
 }
 

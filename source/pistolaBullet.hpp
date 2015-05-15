@@ -6,8 +6,9 @@
 
 class pistolaBullet : public gme::GameObject{
 public:
-    pistolaBullet(std::string n): gme::GameObject(n){};
+    pistolaBullet(std::string n): gme::GameObject(n){whoshoots=1;};
     void setup();
+    int whoshoots;
 private:
     
 };

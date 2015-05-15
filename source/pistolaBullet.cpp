@@ -20,6 +20,7 @@ void pistolaBullet::setup(){
    addComponent(col);
    
    pbBehavior *bB = new pbBehavior;
+   bB->whoami = whoshoots;
    addComponent(bB);
    
 }
