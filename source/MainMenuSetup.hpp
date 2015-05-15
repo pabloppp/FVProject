@@ -27,7 +27,7 @@ private:
     gme::Clock reloj_fondo;
     gme::Clock apretar;
     gme::MusicPlayer *button_sound;
-    gme::MusicPlayer *music_jungle;
+   // gme::MusicPlayer *music_jungle;
 };
 
 #endif	/* MAINMENUSETUP_HPP */

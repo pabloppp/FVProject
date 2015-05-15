@@ -14,7 +14,10 @@ public:
     static bool fullscreen;
     static void saveOpts();
     static void loadOpts();
+    static gme::MusicPlayer *jungleFondo_sound;
 private:
+    
+    
     
 
 };

@@ -60,7 +60,7 @@ void mainGame::setup() {
     
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
-    gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
+   // gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
     
         //ARMAS
@@ -94,7 +94,11 @@ void mainGame::setup() {
     jungleFondo_sound->play();
     jungleFondo_sound->loop(true);
     
-    jungleFondo_sound->setVolume(20.0);
+    if(music)jungleFondo_sound->setVolume(20.0);
+    else jungleFondo_sound->setVolume(0.0);
+    
+    
+    
     
     //SONIDOS
     
@@ -145,7 +149,9 @@ void mainGame::loadOpts() {
             std::cout <<opt << ": " << val << std::endl;
             
             if(opt.compare("music") == 0){
-                if(val.compare("false") == 0) music = false;
+                if(val.compare("false") == 0){
+                    music = false;
+                }
             }
             if(opt.compare("sound") == 0){
                 if(val.compare("false") == 0) sound = false;
@@ -172,3 +178,4 @@ bool mainGame::sound = true;
 bool mainGame::fullscreen = true;
 int mainGame::particles = 2;
 
+gme::MusicPlayer *mainGame::jungleFondo_sound;
