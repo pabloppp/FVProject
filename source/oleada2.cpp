@@ -14,10 +14,12 @@
 #include "GameManager.hpp"
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
+#include "mainGame.hpp"
 
 void oleada2::setup() {
     
-    addGameObject(gme::Game::mainCamera);
+    mainGame::removeScene("oleada1");
+    //addGameObject(gme::Game::mainCamera);
     
     if(reseting){
         setupScenario();

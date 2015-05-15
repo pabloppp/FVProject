@@ -29,7 +29,9 @@ public:
     virtual void setup() = 0;
     static Scene *getCurrentScene();
     static void addScene(Scene *s);
-    static void removeScene(std::string n);
+    static Scene* removeScene(std::string n);
+    static Scene* removeScene(Scene *s);
+    static Scene* getScene(std::string s);
     static Window *getWindow();
     static Time deltaTime;
     static Time unfixedDeltaTime;
@@ -40,6 +42,7 @@ public:
     static void newMusic(const std::string &path, const std::string &name);
     static Sound *getSound(const std::string &name);
     static Music *getMusic(const std::string &name);
+    static bool isKeyPressed(int k);
     
     Clock deltaClock;
     static Clock updateClock;
@@ -51,10 +54,12 @@ private:
     static std::unordered_map<std::string, unsigned int> tagmap;
     static char tagCount;
     static std::vector<Scene*> scenes;
+    static std::vector<Scene*> scenesToDelete;
     static std::vector<Texture> textures;
     static std::vector<Sound> sounds;
     static std::vector<Music*> musics;
     static Scene *currentScene;
+    static std::vector<int> keysPressed;
     //sfml class
     static Window *window;
 };

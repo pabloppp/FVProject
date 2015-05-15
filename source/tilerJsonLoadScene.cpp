@@ -15,10 +15,15 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "enemy_boss.hpp"
+#include "mainGame.hpp"
+#include "oleada2.hpp"
 
-void tilerJsonLoadScene::setup() {
-    
-    addGameObject(gme::Game::mainCamera);
+void tilerJsonLoadScene::setup() {    
+    gme::Scene *s = mainGame::getScene("oleada2");
+    if(!s || s == NULL){
+        gme::Scene *ol2 = new oleada2("oleada2");
+    }    
+    //addGameObject(gme::Game::mainCamera);
     
     if(reseting){
         setupScenario();

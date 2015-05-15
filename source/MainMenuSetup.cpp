@@ -1,19 +1,34 @@
 #include "MainMenuSetup.hpp"
+#include "mainGame.hpp"
+#include "tilerJsonLoadScene.hpp"
 
 void MainMenuSetup::setup() {
     w = gme::Game::getWindow();
     menu = 1;
     posX = 512;
+    num_apre = 0;
+    num_apre_ini = 0;
     reloj_fondo.restart();
-    
+    entered = true;
     izq=false; dre=false; juegoNuevo1p = false; juegoNuevo2p = false;
+    button_sound = new gme::MusicPlayer();
+    music_jungle=new gme::MusicPlayer();
+    music_jungle->setMusic("jungle");
+    music_jungle->setVolume(15.0);
+    music_jungle->loop(true);
+    button_sound->setMusic("boton");
+    button_sound->setVolume(50.0);
+    music_jungle->play();
+    if(!mainGame::music) music_jungle->setVolume(0.0);
+    
 }
 
 void MainMenuSetup::update() {
     movement();
 }
 
-void MainMenuSetup::movement() {
+void MainMenuSetup::movement() {    
+    
     if(reloj_fondo.currentTime().asSeconds() > 0.01){
         getTransform()->translate(gme::Vector2(-x, 0));
         if(getTransform()->position.x <= -320) getTransform()->position.x = 960-x;
@@ -39,6 +54,7 @@ void MainMenuSetup::movement() {
        izq=true;
        menu=2;
        num_apre=0;
+       entered = true;
     }
     /* CONTINUA JUEGO */
     if(menu==1 && num_apre_ini==1 && gme::Keyboard::isKeyPressed(introKey)){
@@ -50,7 +66,33 @@ void MainMenuSetup::movement() {
     if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey)){
        izq=true;
        menu=3;
+       entered = true;
        num_apre=0;
+    }
+    //OPCIONES - OPCION SOUND
+    if(menu==2 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
+       if(mainGame::sound) button_sound->play();
+       mainGame::sound = !mainGame::sound;    
+       entered = true;
+       mainGame::saveOpts();
+    }
+    //OPCIONES - OPCION MUSIC
+    if(menu==2 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
+       if(mainGame::sound) button_sound->play();
+       mainGame::music = !mainGame::music;  
+       
+       if(mainGame::music) music_jungle->setVolume(50.0);
+       else if(!mainGame::music) music_jungle->setVolume(0.0);
+       entered = true;
+       mainGame::saveOpts();
+    }
+    //OPCIONES - OPCION PARTICLES
+    if(menu==2 && (num_apre==2 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
+       if(mainGame::sound) button_sound->play();
+       mainGame::particles -= 1;    
+       if(mainGame::particles < 0) mainGame::particles = 2;
+       entered = true;
+       mainGame::saveOpts();
     }
     /* VOLVER DESDE OPCIONES */    
     if(menu==2 && (num_apre==3 && gme::Keyboard::isKeyPressed(introKey))){ 
@@ -60,28 +102,45 @@ void MainMenuSetup::movement() {
     if(menu==3 && (num_apre==2 && gme::Keyboard::isKeyPressed(introKey))){
        dre=true;    
     }
-    /* INICIAR JUEGO INDIVIDUAL 
-    if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+    // INICIAR JUEGO INDIVIDUAL 
+    if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
+       music_jungle->stop();
        juegoNuevo1p = true;
-       sendMessage("hideMenu",0);
+       mainGame::coop = false;
+       gme::Scene *olds = mainGame::removeScene("oleada1");
+       gme::Scene *s = mainGame::getScene("oleada1");
+       if(!s || s == NULL){
+           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
+           mainGame::setCurrentScene(tiledTest);  
+       }
+       else mainGame::setCurrentScene("oleada1");
     }
-     if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && pausa==false ){
+     if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
+       music_jungle->stop();
        juegoNuevo2p = true;
-       sendMessage("hideMenu",0);
-    }*/
+       mainGame::coop = true;
+       gme::Scene *olds = mainGame::removeScene("oleada1");
+       gme::Scene *s = mainGame::getScene("oleada1");
+       if(!s || s == NULL){
+           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
+           mainGame::setCurrentScene(tiledTest);  
+       }
+       else mainGame::setCurrentScene("oleada1");
+    }
+    if(entered && ! gme::Keyboard::isKeyPressed(introKey)) entered = false;
 }
 
 
 void MainMenuSetup::onGui() {
     gme::GUI::fontSize = 28;
     //Titulo de juego  
-    /*gme::GUI::drawTexture(
+    gme::GUI::drawTexture(
         gme::Vector2(512,130), 
         gme::Vector2(512,220),
-        gme::GUI::TextureName("logo"),  
+        gme::GUI::TextureName("title"),  
         gme::GUI::Origin::Center,
         gme::GUI::ScaleToFit
-    );*/
+    );
     gme::GUI::contentColor = gme::GUI::white;
     gme::GUI::drawTexture(
             gme::Vector2(gme::Mouse::getPosition().x, gme::Mouse::getPosition().y),
@@ -90,22 +149,28 @@ void MainMenuSetup::onGui() {
             gme::GUI::Origin::Center,
             gme::GUI::ScaleToFit
     );
-    
+    gme::GUI::fontSize = 17;
+    gme::GUI::globalRotation = 1.5;
     gme::GUI::label(
+    
         gme::Vector2(512,230), 
-        "MENU",
+        "Ahora con el doble de queso!",
         gme::GUI::Origin::Center     
     );
+    gme::GUI::globalRotation = 0;
+     gme::GUI::fontSize = 28;
     
     if(menu==1){
         if(gme::Keyboard::isKeyPressed(upKey)){
-            if(apretar.currentTime().asSeconds()>0.2){
+            if(mainGame::sound) button_sound->play();
+            if(apretar.currentTime().asSeconds()>0.2){                
                 if(num_apre_ini==0) num_apre_ini=3;
                 else num_apre_ini--;
                 apretar.restart();
             }
         }
         if(gme::Keyboard::isKeyPressed(downKey)){
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre_ini==3) num_apre_ini=0;
                 else num_apre_ini++;
@@ -180,14 +245,16 @@ void MainMenuSetup::onGui() {
     
     //---------------------OPCIONES--------------------------------------
     if(menu==2){ 
-        if(gme::Keyboard::isKeyPressed(upKey)){            
+        if(gme::Keyboard::isKeyPressed(upKey)){    
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==0) num_apre=3;
                 else num_apre--;
                 apretar.restart();
             }
         }
-        if(gme::Keyboard::isKeyPressed(downKey)){              
+        if(gme::Keyboard::isKeyPressed(downKey)){   
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==3) num_apre=0;
                 else num_apre++;                
@@ -202,10 +269,12 @@ void MainMenuSetup::onGui() {
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
             gme::GUI::contentColor = gme::GUI::blue;
         }    
+        std::string s_sounds = "ON";
+        if(!mainGame::sound) s_sounds = "OFF";
         gme::GUI::box(
             gme::Vector2(posX+690,280), 
             gme::Vector2(largo+90,ancho), 
-            "CAMBIAR CONTROLES",
+            "SONIDOS: "+s_sounds,
             gme::GUI::Origin::Center  
         );
         if(num_apre==1){
@@ -216,10 +285,12 @@ void MainMenuSetup::onGui() {
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
             gme::GUI::contentColor = gme::GUI::blue;
         }    
+        std::string s_music = "ON";
+        if(!mainGame::music) s_music = "OFF";
         gme::GUI::box(
             gme::Vector2(posX+690,330), 
             gme::Vector2(largo+90,ancho), 
-            "CONFIGURAR SONIDO",
+            "MUSICA: "+s_music,
             gme::GUI::Origin::Center    
         );
         if(num_apre==2){
@@ -230,10 +301,13 @@ void MainMenuSetup::onGui() {
             gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
             gme::GUI::contentColor = gme::GUI::blue;
         }
+        std::string s_particles = "HIGH";
+        if(mainGame::particles == 1) s_particles = "LOW";
+        else if(mainGame::particles == 0) s_particles = "NONE";
         gme::GUI::box(
             gme::Vector2(posX+690,380), 
             gme::Vector2(largo+90,ancho), 
-            "CONFIGURAR EFECTOS",
+            "PARTICULAS: "+s_particles,
             gme::GUI::Origin::Center   
         );    
         if(num_apre==3){
@@ -255,6 +329,7 @@ void MainMenuSetup::onGui() {
     //--NUEVA PARTIDA-----------------------    
     if(menu==3){ 
         if(gme::Keyboard::isKeyPressed(upKey)){
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==0) num_apre=2;
                 else num_apre--;                
@@ -262,6 +337,7 @@ void MainMenuSetup::onGui() {
             }
         }
         if(gme::Keyboard::isKeyPressed(downKey)){
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
                 if(num_apre==2) num_apre=0;
                 else num_apre++;                

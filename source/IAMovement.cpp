@@ -10,14 +10,27 @@
 #include "tile.hpp"
 #include "sprayParticleScript.hpp"
 #include "defaultParticle.hpp"
+#include "mainGame.hpp"
 
 void IAMovement::findPlayer() {
-   player = gme::GameObject::find("p1").at(0);
-   if(gme::GameObject::find("p2").size() > 0){
-        player2 = gme::GameObject::find("p2").at(0);
+   int rnd = int(rand() % 100);
+   if(!mainGame::coop || rnd < 50){
+        player = gme::GameObject::find("p1").at(0);
+        if(gme::GameObject::find("p2").size() > 0){
+             player2 = gme::GameObject::find("p2").at(0);
+        }
+        else{
+             player2 = NULL;
+        }
    }
    else{
-        player2 = NULL;
+        player = gme::GameObject::find("p2").at(0);
+        if(gme::GameObject::find("p1").size() > 0){
+             player2 = gme::GameObject::find("p1").at(0);
+        }
+        else{
+             player2 = NULL;
+        }
    }
 }
 

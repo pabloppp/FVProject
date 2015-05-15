@@ -39,16 +39,38 @@ void Game::setCurrentScene(std::string n){
     }
 }
 
-void Game::removeScene(std::string n) {
+Scene* Game::removeScene(std::string n) {
     for(int i=0;i<scenes.size();i++){
         if(scenes.at(i)->getName().compare(n) == 0){
-            Scene *es = scenes.at(i);
-            scenes.erase(scenes.begin()+i);
-            delete es;
-            return;
+            Scene *es = scenes.at(i); 
+            scenes.erase(scenes.begin()+i); 
+            scenesToDelete.push_back(es);
+            return es;
         }
     }
 }
+
+Scene* Game::removeScene(Scene *s) {
+    for(int i=0;i<scenes.size();i++){
+        if(scenes.at(i) == s){
+            scenes.erase(scenes.begin()+i); 
+            scenesToDelete.push_back(s);
+            return s;
+        }
+    }
+}
+
+
+Scene* Game::getScene(std::string s) {
+    for(int i=0;i<scenes.size();i++){
+        if(scenes.at(i)->getName().compare(s) == 0){
+            //std::cout << s << ": " << scenes.at(i)->getName() << std::endl;
+            return scenes.at(i);
+        }
+    }
+    return NULL;
+}
+
 
 
 Scene *Game::getCurrentScene(){
@@ -74,18 +96,43 @@ void Game::run(){
         sf::Event event;
         while (window->pollEvent(event))
         {
+            if(event.type == sf::Event::KeyPressed){
+                keysPressed.push_back(event.key.code);
+                
+            } 
+            else if(event.type == sf::Event::KeyReleased){
+                int n;
+                for(int i=keysPressed.size()-1;i>=0;i--){
+                    if(keysPressed.at(i) == event.key.code){
+                        keysPressed.erase(keysPressed.begin()+i);
+                    };
+                }   
+            }
+                
             if (event.type == sf::Event::Closed) window->close();
         }
         
         //window->clear();
         
-        if(currentScene != NULL) currentScene->update();  
+        if(currentScene && currentScene != NULL && currentScene != nullptr) currentScene->update();  
+        
+        while(!scenesToDelete.empty()) delete scenesToDelete.back(), scenesToDelete.pop_back();
         
         
         //window->display();
     }
     delete window;
 }
+
+bool Game::isKeyPressed(int k) {
+    for(int i=keysPressed.size()-1;i>=0;i--){
+        if(keysPressed.at(i) == k){
+            return true;
+        };
+    }
+    return false;
+}
+
 
 void Game::newTexture(const std::string &path, const std::string &name){
     Texture newTex;
@@ -167,6 +214,7 @@ Scene *Game::currentScene = NULL;
 GameObject *Game::mainCamera = NULL;
 
 std::vector<Scene*> Game::scenes;
+std::vector<Scene*> Game::scenesToDelete;
 
 std::vector<Texture> Game::textures;
 
@@ -182,3 +230,5 @@ float Game::ticPercent = 0;
 std::unordered_map<std::string, unsigned int> Game::tagmap;
 
 char Game::tagCount = 0;
+
+std::vector<int> Game::keysPressed;

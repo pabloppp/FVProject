@@ -16,6 +16,7 @@ public:
         winCondition = 60;
         lastScore = 0;
         levelSuccess = false;
+        goToMenu = false;
         gameClock.restart();
         nextScene = "";
     };
@@ -25,6 +26,7 @@ public:
     void setup();
     void update();
     void isGameOver();
+    void spawnP2();
     gme::Keyboard::Key pauseKey;
     gme::Keyboard::Key escKey;
 
@@ -38,6 +40,7 @@ public:
     
 private:
     bool paused;
+    bool goToMenu;
     bool canpause;
     bool gameOver;
     bool player2_exists;

@@ -7,9 +7,11 @@ class backgroundLayer : public gme::GameObject{
 public:
     backgroundLayer(std::string n) : gme::GameObject(n){
         texture = "";
+        active = true;
     };
     void setup();
     float parallaxFactor;
+    bool active;
     std::string texture;
 private:
 

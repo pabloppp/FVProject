@@ -7,13 +7,13 @@
 void GameManager::setup() {
     
     GlobalStateManager *stateManager = new GlobalStateManager();
-    SaveManager *saveManager = new SaveManager();
+    //SaveManager *saveManager = new SaveManager();
     MenuManager *menuManager = new MenuManager();
     
-    IntroS1Manager *intros1Manager = new IntroS1Manager();
+    //IntroS1Manager *intros1Manager = new IntroS1Manager();
     
     addComponent(stateManager);
-    addComponent(saveManager);
+    //addComponent(saveManager);
     addComponent(menuManager);
     
 }

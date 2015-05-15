@@ -6,6 +6,7 @@
 #include "backgroundLayer.hpp"
 #include "MainMenuSetup.hpp"
 #include "myMenu.hpp"
+#include "moveClouds.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -64,30 +65,45 @@ void sceneMenu::setupBg() {
     bgLayerMidC->texture = "bgMidCTexture";
     bgLayerMidC->getTransform()->position = gme::Vector2(windowSize.x, windowSize.y);
     bgLayerMidC->parallaxFactor = 0.8;
+   
     
     backgroundLayer *bgLayerCloud = new backgroundLayer("BGCloud");
     bgLayerCloud->texture = "bgCloud";
     bgLayerCloud->getTransform()->position = gme::Vector2(200, 100);
+    bgLayerCloud->active = false;
+    bgLayerCloud->addComponent(new moveClouds);
     
-     backgroundLayer *bgLayerCloudB = new backgroundLayer("BGCloudB");
+    backgroundLayer *bgLayerCloudB = new backgroundLayer("BGCloudB");
     bgLayerCloudB->texture = "bgCloudB";
     bgLayerCloudB->getTransform()->position = gme::Vector2(350, 180);
+    bgLayerCloudB->active = false;
+    moveClouds *mv = new moveClouds();
+    mv->speed = 30;
+    bgLayerCloudB->addComponent(mv);
     
+    backgroundLayer *bgLayerCloud2 = new backgroundLayer("BGCloud");
+    bgLayerCloud2->texture = "bgCloud";
+    bgLayerCloud2->getTransform()->position = gme::Vector2(200-1024, 100);
+    bgLayerCloud2->active = false;
+    bgLayerCloud2->addComponent(new moveClouds);
+    
+    backgroundLayer *bgLayerCloudB2 = new backgroundLayer("BGCloudB");
+    bgLayerCloudB2->texture = "bgCloudB";
+    bgLayerCloudB2->getTransform()->position = gme::Vector2(350-1024, 180);
+    bgLayerCloudB2->active = false;
+    moveClouds *mv2 = new moveClouds();
+    mv2->speed = 30;
+    bgLayerCloudB2->addComponent(mv2);
     
     backgroundLayer *bgLayerA = new backgroundLayer("BGFrontA");
     bgLayerA->texture = "bgFrontATexture";
-    bgLayerA->getTransform()->position = gme::Vector2(0, windowSize.y);
-    bgLayerA->parallaxFactor = 0.4;
+    bgLayerA->getTransform()->position = gme::Vector2(0, windowSize.y+100);
+    bgLayerA->parallaxFactor = 1;
     
     backgroundLayer *bgLayerB = new backgroundLayer("BGFrontB");
     bgLayerB->texture = "bgFrontBTexture";
-    bgLayerB->getTransform()->position = gme::Vector2(600, windowSize.y+40);
-    bgLayerB->parallaxFactor = 0.4;
-    
-    backgroundLayer *bgLayerC = new backgroundLayer("BGFrontC");
-    bgLayerC->texture = "bgFrontCTexture";
-    bgLayerC->getTransform()->position = gme::Vector2(windowSize.x*2, windowSize.y);
-    bgLayerC->parallaxFactor = 0.4;
+    bgLayerB->getTransform()->position = gme::Vector2(windowSize.x, windowSize.y+100);
+    bgLayerB->parallaxFactor = 1;
 }
 
 

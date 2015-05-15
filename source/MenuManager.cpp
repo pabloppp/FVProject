@@ -1,4 +1,6 @@
 #include "MenuManager.hpp"
+#include "sceneMenu.hpp"
+#include "mainGame.hpp"
 
 void MenuManager::setup(){
     w = gme::Game::getWindow();
@@ -11,7 +13,11 @@ void MenuManager::setup(){
     button_sound->setMusic("boton");
     change_sound->setMusic("desplazamiento");
     
+<<<<<<< HEAD
     /*button_sound->setVolume(20.0)*/;
+=======
+    button_sound->setVolume(30.0);
+>>>>>>> 752294c03a5bc1a82807548cf71cd22af35b32ce
     change_sound->setVolume(20.0);
     
     /* BOOLEAN STATES */
@@ -62,10 +68,6 @@ void MenuManager::onMessage(std::string m, float v) {
     else if(m.compare("hidePause") == 0){
         pausa=false;
         pausa_visible=0;
-        if(music_pausa==true){
-            music->play();
-            music_pausa=false;
-        }
         sendMessage("resume",0);
     }
     /*else if(m.compare("hideMenu") == 0){
@@ -94,7 +96,11 @@ void MenuManager::onMessage(std::string m, float v) {
 }
 
 void MenuManager::openMenu(){
-    sendMessage("changeToMenu", 0);
+    gme::Scene *olds = mainGame::removeScene("mainmenu");
+    gme::Scene *olds2 = gme::Game::removeScene(gme::Game::getCurrentScene());
+    gme::Scene *mm = new sceneMenu("mainmenu");
+    gme::Game::setCurrentScene("mainmenu");
+    
 }
 
 void MenuManager::openPause(){
@@ -105,19 +111,12 @@ void MenuManager::openPause(){
     }
     if(pausa == true && gme::Keyboard::isKeyPressed(resumeKey)) sendMessage("hidePause", 0);
     if(pausa==true && num_apre==1 && gme::Keyboard::isKeyPressed(introKey)){
-        
-    }
-    if(pausa==true && num_apre==2 && gme::Keyboard::isKeyPressed(introKey)){
         openMenu();
     }
     if(!gme::Keyboard::isKeyPressed(introKey) && apretado==true){
            pausa=false;
            pausa_visible=0;
            apretado=false;
-           if(music_pausa==true){
-               music->play();
-               music_pausa=false;
-           }
     }
 }
 
@@ -129,7 +128,9 @@ void MenuManager::onGui() {
       int minutes = timeLeft/60;
       int seconds = timeLeft%60;
       gme::GUI::fontSize = 45;
-      gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+std::to_string(seconds), gme::GUI::Origin::Center);
+      std::string secondsString = std::to_string(seconds);
+      if(secondsString.size() == 1) secondsString = "0"+secondsString;
+      gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+secondsString, gme::GUI::Origin::Center);
   }  
   if(showLevelSuccess){
       gme::GUI::drawTexture(
@@ -183,17 +184,17 @@ void MenuManager::onGui() {
         );
         
         if(gme::Keyboard::isKeyPressed(upKey)){
-            button_sound->play();
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
-                if(num_apre==0) num_apre=2;
+                if(num_apre==0) num_apre=1;
                 else num_apre--;
                 apretar.restart();
             }
         }
         if(gme::Keyboard::isKeyPressed(downKey)){
-            button_sound->play();
+            if(mainGame::sound) button_sound->play();
             if(apretar.currentTime().asSeconds()>0.2){
-                if(num_apre==2) num_apre=0;
+                if(num_apre==1) num_apre=0;
                 else num_apre++;
                 apretar.restart();
             }
@@ -214,7 +215,7 @@ void MenuManager::onGui() {
             "CONTINUAR",
             gme::GUI::Origin::Center
         );
-   
+        
         if(num_apre==1){
             gme::GUI::backgroundColor = gme::GUI::red;
             gme::GUI::contentColor = gme::GUI::white;
@@ -226,22 +227,6 @@ void MenuManager::onGui() {
     
         gme::GUI::box(
             gme::Vector2(512,358), 
-            gme::Vector2(largo, ancho), 
-            "CONTROLES",
-            gme::GUI::Origin::Center  
-        );
-        
-        if(num_apre==2){
-            gme::GUI::backgroundColor = gme::GUI::red;
-            gme::GUI::contentColor = gme::GUI::white;
-        }
-        else{
-            gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,255);
-            gme::GUI::contentColor = gme::GUI::red;
-        }
-    
-        gme::GUI::box(
-            gme::Vector2(512,398), 
             gme::Vector2(largo, ancho), 
             "SALIR",
             gme::GUI::Origin::Center  

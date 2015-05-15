@@ -93,7 +93,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
-	${OBJECTDIR}/source/imagenFondo.o \
 	${OBJECTDIR}/source/limit.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
@@ -103,7 +102,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/mbBehavior.o \
 	${OBJECTDIR}/source/metralletaBehavior.o \
 	${OBJECTDIR}/source/metralletaBullet.o \
-	${OBJECTDIR}/source/moveFondo.o \
+	${OBJECTDIR}/source/moveClouds.o \
 	${OBJECTDIR}/source/moveToTop.o \
 	${OBJECTDIR}/source/myMenu.o \
 	${OBJECTDIR}/source/oleada2.o \
@@ -439,11 +438,6 @@ ${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/generaPosicion.o source/generaPosicion.cpp
 
-${OBJECTDIR}/source/imagenFondo.o: source/imagenFondo.cpp 
-	${MKDIR} -p ${OBJECTDIR}/source
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/imagenFondo.o source/imagenFondo.cpp
-
 ${OBJECTDIR}/source/limit.o: source/limit.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -489,10 +483,10 @@ ${OBJECTDIR}/source/metralletaBullet.o: source/metralletaBullet.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/metralletaBullet.o source/metralletaBullet.cpp
 
-${OBJECTDIR}/source/moveFondo.o: source/moveFondo.cpp 
+${OBJECTDIR}/source/moveClouds.o: source/moveClouds.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveFondo.o source/moveFondo.cpp
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/moveClouds.o source/moveClouds.cpp
 
 ${OBJECTDIR}/source/moveToTop.o: source/moveToTop.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

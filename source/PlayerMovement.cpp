@@ -22,6 +22,11 @@ void PlayerMovement::setup() {
             manager = gsm;
         }
     }
+    if(flipped && getTransform()->getScale().x < 0){
+        getTransform()->resize(gme::Vector2(-1,1));
+        //flipped = false;
+    }
+    flipped = false;
 }
 
 void PlayerMovement::onMessage(std::string m, float v) {
@@ -89,7 +94,7 @@ void PlayerMovement::update() {
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
         else 
             getRigidBody()->setSpeed(-walkingSpeed*deltaTime, speedY);
-        if(!flipped){
+        if(!flipped && getTransform()->getScale().x > 0){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = true;
         }
@@ -112,7 +117,7 @@ void PlayerMovement::update() {
             getRigidBody()->setSpeed((walkingSpeed/2.f)*deltaTime, speedY);
         else 
             getRigidBody()->setSpeed(walkingSpeed*deltaTime, speedY);
-        if(flipped){
+        if(flipped && getTransform()->getScale().x < 0){
             getTransform()->resize(gme::Vector2(-1,1));
             flipped = false;
         }
@@ -163,11 +168,9 @@ void PlayerMovement::onCollision(gme::Collider* c) {
     //si golpea las paredes
     if(relativePosition.x == 1 && relativePosition.y == 0){
         hitWallLeft = true;
-        std::cout << "hit left" << std::endl;
     }
     else if(relativePosition.x == -1 && relativePosition.y == 0){
         hitWallRight = true;
-        std::cout << "hit right" << std::endl;
     }
     
     if(relativePosition.y == 1 && relativePosition.x == 0){
