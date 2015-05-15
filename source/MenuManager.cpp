@@ -13,11 +13,7 @@ void MenuManager::setup(){
     button_sound->setMusic("boton");
     change_sound->setMusic("desplazamiento");
     
-<<<<<<< HEAD
-    /*button_sound->setVolume(20.0)*/;
-=======
     button_sound->setVolume(30.0);
->>>>>>> 752294c03a5bc1a82807548cf71cd22af35b32ce
     change_sound->setVolume(20.0);
     
     /* BOOLEAN STATES */
