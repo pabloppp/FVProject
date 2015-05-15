@@ -56,10 +56,13 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     
+    gme::Game::newTexture("resources/Effects/smallExplosion.png", "explosion_small");
+    
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
     gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
     gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
     gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
+    
     
         
     //PRE ESCENAS
