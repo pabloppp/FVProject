@@ -41,7 +41,7 @@ void enemy_fly::setup() {
     stats->waitTime = 0.3;
     addComponent(stats);
     
-    IAfly *ia = new IAfly();
+    IAfly *ia = new IAfly(enemy_boss);
     addComponent(ia);
     
     

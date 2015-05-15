@@ -13,7 +13,7 @@
 
 class IAfly : public gme::Script {
 public:
-    IAfly() : gme::Script(){
+    IAfly(bool boss) : gme::Script(){
         dir.x = 1;
         dir.y = 1;
         right =true;
@@ -29,7 +29,7 @@ public:
         change =  false;
         dead = false;
         stop = false;
-        mitad = (16*33*3)/2;
+        enemy_boss = boss;
     };
     void setup();
     void update();
@@ -66,10 +66,10 @@ private:
     bool change;
     bool dead;
     int cornered;
-    int mitad;
     bool stop;
     int lastXdir;
     int lastYdir;
+    bool enemy_boss;
     gme::Clock clkR;
     gme::GameObject *player, *player2;
     GlobalStateManager *stateManager;

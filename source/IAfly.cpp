@@ -96,6 +96,9 @@ void IAfly::update() {
         if(!back) vectorDirector(playerpos,enemypos);
         if(back) vectorDirector(init,enemypos);
        
+       /*if(enemy_boss) std::cout << "El enemigo e sun jefazo" << std::endl;
+       else std::cout << "El enemigo es nomalucho" << std::endl;
+       */
         getRigidBody()->setSpeed(dir, dist);
     }
         grounded = false;
@@ -158,8 +161,9 @@ void IAfly::vectorDirector(gme::Vector2 player,gme::Vector2 enemy) {
         }
         
         if(gdir.y != 0){
-            
-                
+            if(difference > 50){
+                std::cout << difference << " dif " << std::endl;
+            }
         }
         
     }
