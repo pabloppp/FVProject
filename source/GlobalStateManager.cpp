@@ -12,6 +12,7 @@
 #include "lnzllamasBehavior.hpp"
 #include "oleada2.hpp"
 #include "mainGame.hpp"
+#include "oleada3.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -60,6 +61,9 @@ void GlobalStateManager::update(){
                 gme::Scene *olds2 = gme::Game::removeScene(nextScene);
                 if(nextScene.compare("oleada2") == 0){
                     gme::Scene *news = new oleada2("oleada2");
+                }
+                if(nextScene.compare("oleada3") == 0){
+                    gme::Scene *news = new oleada3("oleada3");
                 }
                 gme::Game::setCurrentScene(nextScene);
             }

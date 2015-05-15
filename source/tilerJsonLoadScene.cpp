@@ -35,7 +35,7 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 5;
+        gsm->winCondition = 50;
         gsm->nextScene = "oleada2";
     });
     
@@ -62,22 +62,7 @@ void tilerJsonLoadScene::setup() {
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
-    
-    
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));
-
-    
-    /*enemy *e = new enemy("dino");
-    e->getTransform()->setPosition(gme::Vector2(150, 50));
-    enemy *e2 = new enemy("dino");
-    e2->getTransform()->setPosition(gme::Vector2(250, 50));*/
-    
-    /*for(int i=0;i<10;i++){
-        enemy *e = new enemy("dino");
-        e->getTransform()->setPosition(gme::Vector2(rand() % 1584, 0));
-    }*/
-    
+   
     limit *lu = new limit("limit_up");
     lu->width = 1584;
     lu->height = 3;
@@ -158,12 +143,12 @@ void tilerJsonLoadScene::setupBg() {
 void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    //generaPosicion *g =  new generaPosicion(-1,280,3);
-    //g->addPosition(1520, 280);
-    //g->addPosition(802, -300);
-    //g->setEnemi(true);
-    //g->setColectionable(true);
-    //sceneLoaderObject->addComponent(g);
+    generaPosicion *g =  new generaPosicion(-1,280,3);
+    g->addPosition(1520, 280);
+    g->addPosition(802, -300);
+    g->setEnemi(true);
+    g->setColectionable(true);
+    sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
     

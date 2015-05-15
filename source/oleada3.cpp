@@ -1,4 +1,4 @@
-#include "oleada2.hpp"
+#include "oleada3.hpp"
 #include "emptyGameObject.hpp"
 #include "mapGenerator.hpp"
 #include "player.hpp"
@@ -15,17 +15,9 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
-#include "oleada3.hpp"
-
-void oleada2::setup() {
-    
-    mainGame::removeScene("oleada1");
-    //addGameObject(gme::Game::mainCamera);
-    gme::Scene *s = mainGame::getScene("oleada3");
-    if(!s || s == NULL){
-        gme::Scene *ol3 = new oleada3("oleada3");
-    }  
-    
+#include "enemy_boss.hpp"
+void oleada3::setup() {
+    mainGame::removeScene("oleada2");    
     if(reseting){
         setupScenario();
         return;
@@ -36,8 +28,7 @@ void oleada2::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 5;
-        gsm->nextScene = "oleada3";
+        gsm->winCondition = 75;
     });
     
     setupBg(); 
@@ -55,24 +46,15 @@ void oleada2::setup() {
     lnzllamasBehavior *lb =  new lnzllamasBehavior();
     lb->setActive(false);
     arma->addComponent(lb);
-
     
     player *p1 = new player("p1");
     p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
-
     
-    /*enemy *e = new enemy("dino");
-    e->getTransform()->setPosition(gme::Vector2(150, 50));
-    enemy *e2 = new enemy("dino");
-    e2->getTransform()->setPosition(gme::Vector2(250, 50));*/
-    
-    /*for(int i=0;i<10;i++){
-        enemy *e = new enemy("dino");
-        e->getTransform()->setPosition(gme::Vector2(rand() % 1584, 0));
-    }*/
+    enemy_boss *boss = new enemy_boss("boss");
+    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -100,8 +82,7 @@ void oleada2::setup() {
     reseting = true;
 }
 
-
-void oleada2::setupBg() {
+void oleada3::setupBg() {
     srand (time(NULL));
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
     
@@ -149,16 +130,17 @@ void oleada2::setupBg() {
     bgLayerC->texture = "bgFrontCTexture";
     bgLayerC->getTransform()->position = gme::Vector2(windowSize.x*2, windowSize.y+yDisp);
     bgLayerC->parallaxFactor = 0.4;
+
 }
 
-void oleada2::setupScenario() {
+void oleada3::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     generaPosicion *g =  new generaPosicion(33,95,3);
     g->addPosition(766, -144);
     g->addPosition(1490, 95);
     g->addPosition(829, 95);
-    g->setEnemi(true);
+    g->setEnemi(false);
     g->setColectionable(true);
     sceneLoaderObject->addComponent(g);
     
@@ -167,11 +149,10 @@ void oleada2::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave2.json";
+            gen->mapFile = "resources/maps/wave3_boss.json";
         }
     });
 }
-
 
 
 

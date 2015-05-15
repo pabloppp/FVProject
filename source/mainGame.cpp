@@ -5,6 +5,7 @@
 #include "tilerJsonLoadScene.hpp"
 #include "transitionScene.hpp"
 #include "oleada2.hpp"
+#include "oleada3.hpp"
 
 #include <fstream>
 
@@ -71,7 +72,7 @@ void mainGame::setup() {
     /* AQUI LAS ESCENAS/OLEADAS */
     gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
-    
+    gme::Scene *scene_oleada3 = new oleada3("oleada3"); 
     
     gme::Game::setCurrentScene("mainmenu");
 }

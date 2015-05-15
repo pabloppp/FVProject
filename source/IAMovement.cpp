@@ -285,17 +285,19 @@ void IAMovement::onCollision(gme::Collider* c) {
 
 void IAMovement::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
+        
         if(lasthitby == 1){
-            if(player->getName().compare("p1") == 0) player->sendMessage("givePoints", 150);
+            if(player->getName().compare("p1") == 0){
+                std::cout << "esta entrando..." << std::endl;
+                player->sendMessage("givePoints", 150);
+            }
             else if(player2 != NULL ){
-                std::cout << "player 2 giving points" << std::endl;
                 player2->sendMessage("givePoints", 150);
             }
         }
         else if(lasthitby == 2){
             if(player->getName().compare("p2") == 0) player->sendMessage("givePoints", 150);
             else if(player2 != NULL ){
-                std::cout << "player 2 giving points from type2" << std::endl;
                 player2->sendMessage("givePoints", 150);
             }
         }       
@@ -307,6 +309,7 @@ void IAMovement::onMessage(std::string m, float v) {
     }
     if(m.compare("iam")==0){
         lasthitby = v;
+        std::cout << "esp: " << v << std::endl;
     }
 }
 

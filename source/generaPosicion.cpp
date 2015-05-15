@@ -10,8 +10,7 @@
 void generaPosicion::setup(){
     w = gme::Game::getWindow();
     v = w->getSize();
-    colectionable = false;
-    enemi = false;
+
     clkC.restart();
     clkE.restart();
     objects = 0;
@@ -42,9 +41,6 @@ void generaPosicion::update() {
             destroyed = true;
         }
     }
-    else{
-        setColectionable(true);
-    }
    
     if(enemi == true){
         if(clkE.currentTime().asSeconds() > rat){
@@ -53,9 +49,6 @@ void generaPosicion::update() {
            generaEnemigo(randomPos.x, randomPos.y);
            //std::cout << "genera enemigo: " << enemi << std::endl;
         }
-    }
-    else{
-        setEnemi(true);
     }
     
 }
@@ -73,7 +66,6 @@ void generaPosicion::generaColeccionable(){
     colectableGameObject *col =  new colectableGameObject("colectable",objecType);
     col->getTransform()->setPosition(gme::Vector2(finalpos,-288+16*3));
     instantiate(col);
-   
     
     //std::cout << finalpos << std::endl; 
 }
@@ -89,7 +81,6 @@ bool generaPosicion::getColectionable(){
 
 void generaPosicion::generaEnemigo(int x, int y) {
     if (enemi == true ){
-        
         int random = rand() % 100;
         
         gme::GameObject *enemigo;
@@ -114,13 +105,13 @@ bool generaPosicion::getEnemi(){
 }
 
 void generaPosicion::onGui() {
-    /*
-    gme::Game::getWindow()->draw(ratio);*/
 }
 
 generaPosicion::generaPosicion(int x, int y,int ratio) : gme::Script(){    
     posiciones.push_back(gme::Vector2(x, y));
     rat = ratio; 
+    colectionable = false;
+    enemi = false;
 }
 
 void generaPosicion::addPosition(int x, int y) {

@@ -6,7 +6,7 @@
 
 class escopetaBullet: public gme::GameObject {
 public:
-    escopetaBullet(std::string n): gme::GameObject(n){};
+    escopetaBullet(std::string n): gme::GameObject(n){whoshoots=1;};
     void setup();
     int whoshoots;
 private:
