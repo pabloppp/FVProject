@@ -22,6 +22,8 @@ private:
     gme::Clock animClock;
     int frame;
     GlobalStateManager *manager;
+    
+    
 };
 
 #endif	/* SBBEHAVIOR_HPP */

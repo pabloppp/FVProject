@@ -27,9 +27,13 @@ private:
     float cadency = 3.1f;
     gme::Vector2 winSize;
     int verticalDirection;
-    bool recargando;
+    bool recargando,pauseArma=true;
     gme::Clock clock;
+    gme::Clock tlkClock;
     GlobalStateManager *manager;
+    
+    gme::MusicPlayer *lanzallamasShot_sound;
+    gme::MusicPlayer *lanzallamasReload_sound;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */

@@ -13,6 +13,12 @@
 void sceneMenu::setup(){
    
     gme::GameObject *mymenu = new myMenu("mymenu");
+    
+   /* jungleFondo_sound = new gme::MusicPlayer();
+    jungleFondo_sound->setMusic("jungle");
+    
+    jungleFondo_sound->play();
+    jungleFondo_sound->loop(true);*/
    /*gme::GameObject *fondo1= new imagenFondo("fondo1");
    fondo1->getTransform()->setPosition(gme::Vector2(320, 240));
    fondo1->getRenderer()->setTexture("fondo_principal");

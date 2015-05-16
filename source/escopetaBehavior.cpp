@@ -7,6 +7,14 @@ void escopetaBehavior::setup() {
     speedBullet = 32.f;
     shooting = false;
     direction = 1;
+    
+    escopetaShot_sound = new gme::MusicPlayer();
+    escopetaShot_sound->setMusic("escopetaShot");
+    
+    escopetaReload_sound = new gme::MusicPlayer();
+    escopetaReload_sound->setMusic("escopetaReload");
+    
+    
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
         if(objects->at(i) == gameObject()){
@@ -51,14 +59,28 @@ void escopetaBehavior::update() {
         direction = 1;
     }
     
-    if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting ){
-        shooting = true;
-        if(verticalDirection != -1) shoot(verticalDirection);
-        else shoot(direction);
-    } 
-    else if(!gme::Keyboard::isKeyPressed(ShotKey) && shooting){ 
-        shooting = false;
-    }
+       
+    if(tlkClock.currentTime().asSeconds() > 0.5){
+        if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting ){
+            shooting = true;
+            escopetaReload_sound->stop();
+
+                escopetaShot_sound->play();
+
+            if(verticalDirection != -1) shoot(verticalDirection);
+            else shoot(direction);
+        } 
+        else if(!gme::Keyboard::isKeyPressed(ShotKey) && shooting){ 
+            shooting = false;
+            escopetaReload_sound->play();
+            escopetaShot_sound->stop();
+
+        }
+     
+     tlkClock.restart();   
+        
+    }    
+
 }
 
 void escopetaBehavior::shoot(int d) {

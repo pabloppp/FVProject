@@ -29,9 +29,12 @@ private:
     int directionSp;
     int verticalDirection;
     gme::Clock clock;
+    gme::Clock tlkClock;
     bool recargando;
     GlobalStateManager *manager;
     
+    gme::MusicPlayer *metralletaShot_sound;
+    gme::MusicPlayer *metralletaReload_sound;
 };
 
 #endif	/* METRALLETABEHAVIOR_HPP */

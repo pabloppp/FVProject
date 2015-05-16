@@ -26,6 +26,9 @@ private:
     gme::Vector2 winSize;
     gme::Clock clock;
     GlobalStateManager *manager;
+    
+    gme::MusicPlayer *gunShot_sound;
+    
 };
 
 #endif	/* SHOOTBULLET_HPP */

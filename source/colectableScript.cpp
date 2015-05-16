@@ -19,6 +19,7 @@ void ColectableScript::setup() {
     walkFPS = 5;
     ((gme::BoxCollider*)getCollider())->setSize(12*3, 12*3);
     
+    
 }
 
 void ColectableScript::update() {
@@ -29,6 +30,7 @@ void ColectableScript::update() {
     animate();
     grounded=false;
     if(destroyed){
+        
         destroyGameObject(gameObject());
         return;
     }
@@ -89,11 +91,13 @@ void ColectableScript::onCollision(gme::Collider* c) {
 void ColectableScript::onMessage(std::string m, float v) {
     
     if(m.compare("damage") == 0 && isHit == false){
+        
         isHit = true;
         hp--;
         if(hp <= 0){
             explode(10,20,50,100);
             destroyed = true;
+            
         }
         else explode(3,10,25,50);
     }

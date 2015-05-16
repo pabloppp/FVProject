@@ -49,17 +49,22 @@ public:
     gme::BoxCollider *agachadoCollider;
     gme::Keyboard::Key changeWeapon;
 private:
-    bool jumped;
+    bool jumped,salto=false;
     float walkingSpeed;
     float jumpForce;
     void animate();
     int walkFPS;
+    int sonidoSalto=0;
     int walkFrameCount;
     gme::Clock animClock;
     gme::Clock animGraceTimeClock;
+    gme::Clock tlkClock, tlkClock2;
     float animGraceTime;
     bool dead;
     GlobalStateManager *manager;
+    
+    gme::MusicPlayer *footsteps_sound;
+    gme::MusicPlayer *jump_sound;
     
 };
 

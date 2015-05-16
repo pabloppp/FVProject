@@ -25,7 +25,11 @@ private:
     int direction;
     int verticalDirection;
     gme::Clock clock;
+    gme::Clock tlkClock;
     GlobalStateManager *manager;
+    
+    gme::MusicPlayer *escopetaShot_sound;
+    gme::MusicPlayer *escopetaReload_sound;
 };
 
 #endif	/* ESCOPETABEHAVIOR_HPP */

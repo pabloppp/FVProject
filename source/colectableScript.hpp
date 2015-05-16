@@ -30,6 +30,8 @@ private:
     bool destroyed;
     bool isHit;
     virtual void onMessage(std::string m, float v);
+    
+    
 };
 
 #endif	/* COLECTABLESCRIPT_HPP */

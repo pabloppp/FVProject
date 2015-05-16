@@ -3,11 +3,20 @@
 #include "PlayerMovement.hpp"
 
 void metralletaBehavior::setup() {
+   
     getRenderer()->setTexture("gun");
     speedBullet = 25.f;
     direction = 1;
     numBullets = 100;
     recargando = false;
+    
+     metralletaShot_sound = new gme::MusicPlayer();
+    metralletaShot_sound->setMusic("metralletaShot");
+    
+    metralletaReload_sound = new gme::MusicPlayer();
+    metralletaReload_sound->setMusic("metralletaReload");
+    
+    
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     for(int i=0;i<objects->size();i++){
         if(objects->at(i) == gameObject()){
@@ -36,10 +45,12 @@ void metralletaBehavior::update() {
     if(!isActive()) return;
     
     if(numBullets <= 0 && !recargando){
+        metralletaReload_sound->play();
         recargando = true;
         return;
     }
     if(recargando){
+        
         if(clock.currentTime().asSeconds() > 0.05){
             clock.restart();
             numBullets = numBullets + 4;
@@ -66,11 +77,18 @@ void metralletaBehavior::update() {
     
     if(gme::Keyboard::isKeyPressed(ShotKey) && !recargando){
         animator.animate();
+        if(tlkClock.currentTime().asSeconds() > 0.275){
+               
+             metralletaShot_sound->play();
+             tlkClock.restart();
+        }
         if(verticalDirection != -1) shoot(verticalDirection);
         else shoot(direction);
     }
-    else if(!gme::Keyboard::isKeyPressed(ShotKey)) animator.restart();
-  
+    else if(!gme::Keyboard::isKeyPressed(ShotKey)){
+        metralletaShot_sound->stop();
+        animator.restart();
+    }
 }
 
 void metralletaBehavior::shoot(int d){

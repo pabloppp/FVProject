@@ -3,10 +3,19 @@
 #include "PlayerMovement.hpp"
 
 void lnzllamasBehavior::setup() {
+    
+    
+    
     getRenderer()->setTexture("gun");
     speedBullet = 15.f;
     recargando = false;
     numBullets = 100;
+    
+    lanzallamasShot_sound = new gme::MusicPlayer();
+    lanzallamasShot_sound->setMusic("lanzallamasShot");
+    
+    lanzallamasReload_sound = new gme::MusicPlayer();
+    lanzallamasReload_sound->setMusic("lanzallamasReload");
     
     direction = 1;
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
@@ -41,6 +50,11 @@ void lnzllamasBehavior::update() {
         return;
     }
     if(recargando){
+        
+        if(tlkClock.currentTime().asSeconds() > 4){
+            lanzallamasReload_sound->play();
+            tlkClock.restart();
+        }
         //std::cout << "BULLETS" << numBullets << std::endl;
         if(clock.currentTime().asSeconds() > 0.2){
             clock.restart();
@@ -74,12 +88,26 @@ void lnzllamasBehavior::update() {
         
     if(gme::Keyboard::isKeyPressed(ShotKey) && !recargando){
         animator.animate();
+        if(tlkClock.currentTime().asSeconds() > 15 || pauseArma ){
+              
+            pauseArma=false;
+             lanzallamasShot_sound->play();
+             tlkClock.restart();
+        }
+        if(numBullets==0){
+            pauseArma=true;
+            lanzallamasShot_sound->pause();
+        }
         if(verticalDirection != -1) shoot(verticalDirection);
         else shoot(direction);
     } 
-    else if(!gme::Keyboard::isKeyPressed(ShotKey)){ 
+    else if(!gme::Keyboard::isKeyPressed(ShotKey)){
+        
+        pauseArma=true;
+        lanzallamasShot_sound->pause();
         animator.restart();
     }
+    
 }
 
 void lnzllamasBehavior::shoot(int d) {
