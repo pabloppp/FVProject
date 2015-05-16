@@ -37,6 +37,11 @@ private:
     gme::Clock reloj_fondo;
     gme::Clock apretar;
     GlobalStateManager *manager;
+    bool kills_10, kills_100, kills_200, kills_300, kills_400, kills_500, kills_600;
+    bool brokentiles_30, brokentiles_100, brokentiles_300, brokentiles_500;
+    gme::Clock notificationClock;
+    bool showNotification;
+    std::string notificationTitle, notificationText;
 
 };
 

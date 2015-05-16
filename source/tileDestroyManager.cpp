@@ -1,5 +1,6 @@
 #include "tileDestroyManager.hpp"
 #include "defaultParticle.hpp"
+#include "mainGame.hpp"
 
 void tileDestroyManager::setup() {
     isHit = false;
@@ -21,6 +22,8 @@ void tileDestroyManager::onMessage(std::string m, float v) {
         isHitTemp = true;
         hp -= v;
         if(hp <= 0){
+            mainGame::brokentiles += 1;
+            mainGame::saveProfile();
             explode(10,20,50,100);
             destroyGameObject(gameObject());
         }

@@ -108,7 +108,9 @@ void IAMovement::update() {
         jump(playerpos,enemypos);
         
     }
-     
+    
+    animate();
+    
     grounded = false;
     cornered = 0;
     
@@ -284,9 +286,11 @@ void IAMovement::onCollision(gme::Collider* c) {
 void IAMovement::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         
+        mainGame::kills += 1;
+        mainGame::saveProfile();
+        
         if(lasthitby == 1){
             if(player->getName().compare("p1") == 0){
-                std::cout << "esta entrando..." << std::endl;
                 player->sendMessage("givePoints", 150);
             }
             else if(player2 != NULL ){

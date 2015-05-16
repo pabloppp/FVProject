@@ -9,6 +9,7 @@ public:
         downKey = gme::Keyboard::Down;
         introKey = gme::Keyboard::Return;
         bacKey = gme::Keyboard::BackSpace;
+        continueLevel = false;
     };
     virtual ~MainMenuSetup();
     void setup();
@@ -23,10 +24,11 @@ private:
     gme::Window *w;
     int menu, posX, num_apre_ini, num_apre;
     int x=1, largo=310, ancho=40;
-    bool izq, dre, juegoNuevo1p, juegoNuevo2p, entered;    
+    bool izq, dre, entered, continueLevel;    
     gme::Clock reloj_fondo;
     gme::Clock apretar;
     gme::MusicPlayer *button_sound;
+    void loadLevel();
    // gme::MusicPlayer *music_jungle;
 };
 

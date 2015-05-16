@@ -18,8 +18,6 @@ void ColectableScript::setup() {
     walkFrameCountL  = 0;
     walkFPS = 5;
     ((gme::BoxCollider*)getCollider())->setSize(12*3, 12*3);
-    
-    
 }
 
 void ColectableScript::update() {

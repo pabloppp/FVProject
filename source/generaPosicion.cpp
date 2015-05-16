@@ -5,6 +5,7 @@
 #include "colectableGameObject.hpp"
 #include "GlobalStateManager.hpp"
 #include "enemy_boss.hpp"
+#include "mainGame.hpp"
 
 
 void generaPosicion::setup(){
@@ -14,7 +15,7 @@ void generaPosicion::setup(){
     clkC.restart();
     clkE.restart();
     objects = 0;
-    randomtime = 5;
+    randomtime = 2;
     destroyed = false;
     lObjectType=0;
     objects = 0;
@@ -33,11 +34,11 @@ void generaPosicion::update() {
     if(manager->isPaused()) return;
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > randomtime){
+        if(clkC.currentTime().asSeconds() > 2){
             std::cout << "hey" << std::endl;
             clkC.restart();
             generaColeccionable();
-            randomtime = (rand()%10) + 8;
+            randomtime = (rand()%5) + 8;
             destroyed = true;
         }
     }
@@ -57,10 +58,16 @@ void generaPosicion::generaColeccionable(){
     int pos = rand();
     int x = v.x + (16*3);
     int finalpos = (int)pos%(int)x;
-    int objecType =  rand() %6;
-    if(objecType == lObjectType){
-        objecType+=1;
-        if(objecType >=6 ) objecType = 0;
+    int randSet = 3;
+    
+    if(mainGame::flamethrower) randSet = 6;
+    else if(mainGame::shotgun) randSet = 5;
+    else if(mainGame::machinegun) randSet = 4;
+    
+    int objecType = rand() % randSet;
+       
+    while(objecType == lObjectType){
+        objecType = rand() % randSet;
     }
     lObjectType = objecType;
     colectableGameObject *col =  new colectableGameObject("colectable",objecType);

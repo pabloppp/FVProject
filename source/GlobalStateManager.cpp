@@ -49,6 +49,8 @@ void GlobalStateManager::update(){
     // Tipo de juego por tiempo ganado
     if(gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver){
         if(!paused && !levelSuccess){
+            mainGame::levelspassed += 1;
+            mainGame::saveProfile();
             gameObject()->sendMessage("showLevelSuccess", 0);
             levelSuccess = true;
             canpause = false;
@@ -197,6 +199,8 @@ void GlobalStateManager::onMessage(std::string m, float v) {
         gameOver = true;
         pause();
         lastScore += gameClock.currentTime().asSeconds();
+        mainGame::deaths += 1;
+        mainGame::saveProfile();
     }
 }
 

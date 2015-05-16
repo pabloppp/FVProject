@@ -19,6 +19,9 @@
 
 void oleada2::setup() {
     
+    mainGame::continueLevel = 2;
+    mainGame::saveProfile();
+    
     mainGame::removeScene("oleada1");
     //addGameObject(gme::Game::mainCamera);
     gme::Scene *s = mainGame::getScene("oleada3");

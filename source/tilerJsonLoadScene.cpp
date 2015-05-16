@@ -18,7 +18,11 @@
 #include "mainGame.hpp"
 #include "oleada2.hpp"
 
-void tilerJsonLoadScene::setup() {    
+void tilerJsonLoadScene::setup() {   
+    
+    mainGame::continueLevel = 1;
+    mainGame::saveProfile();
+    
     gme::Scene *s = mainGame::getScene("oleada2");
     if(!s || s == NULL){
         gme::Scene *ol2 = new oleada2("oleada2");
@@ -143,7 +147,7 @@ void tilerJsonLoadScene::setupBg() {
 void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(-1,280,3);
+    generaPosicion *g =  new generaPosicion(-1, 280, 3);
     g->addPosition(1520, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);

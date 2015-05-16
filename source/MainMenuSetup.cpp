@@ -1,6 +1,8 @@
 #include "MainMenuSetup.hpp"
 #include "mainGame.hpp"
 #include "tilerJsonLoadScene.hpp"
+#include "oleada2.hpp"
+#include "oleada3.hpp"
 
 void MainMenuSetup::setup() {
     w = gme::Game::getWindow();
@@ -10,7 +12,7 @@ void MainMenuSetup::setup() {
     num_apre_ini = 0;
     reloj_fondo.restart();
     entered = true;
-    izq=false; dre=false; juegoNuevo1p = false; juegoNuevo2p = false;
+    izq=false; dre=false;
     button_sound = new gme::MusicPlayer();
     //music_jungle=new gme::MusicPlayer();
     //music_jungle->setMusic("jungle");
@@ -58,16 +60,21 @@ void MainMenuSetup::movement() {
     }
     /* CONTINUA JUEGO */
     if(menu==1 && num_apre_ini==1 && gme::Keyboard::isKeyPressed(introKey)){
-        juegoNuevo1p = false;
-        juegoNuevo2p = false;
-        sendMessage("hideMenu", 0);
-    } 
-    /* ENTRAR EN NUEVA PARTIDA */
-    if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey)){
+       continueLevel = true;
        izq=true;
        menu=3;
        entered = true;
        num_apre=0;
+    } 
+    
+    
+    /* ENTRAR EN NUEVA PARTIDA */
+    if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey)){
+       continueLevel = false;
+       izq=true;
+       menu=3;
+       entered = true;
+       num_apre=0;      
     }
     //OPCIONES - OPCION SOUND
     if(menu==2 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
@@ -105,30 +112,50 @@ void MainMenuSetup::movement() {
     // INICIAR JUEGO INDIVIDUAL 
     if(menu==3 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
        //music_jungle->stop();
-       juegoNuevo1p = true;
        mainGame::coop = false;
-       gme::Scene *olds = mainGame::removeScene("oleada1");
-       gme::Scene *s = mainGame::getScene("oleada1");
-       if(!s || s == NULL){
-           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
-           mainGame::setCurrentScene(tiledTest);  
-       }
-       else mainGame::setCurrentScene("oleada1");
+       loadLevel();
     }
      if(menu==3 && (num_apre==1 && gme::Keyboard::isKeyPressed(introKey)) && !entered){
        //music_jungle->stop();
-       juegoNuevo2p = true;
        mainGame::coop = true;
-       gme::Scene *olds = mainGame::removeScene("oleada1");
-       gme::Scene *s = mainGame::getScene("oleada1");
-       if(!s || s == NULL){
-           gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
-           mainGame::setCurrentScene(tiledTest);  
-       }
-       else mainGame::setCurrentScene("oleada1");
+       loadLevel();
+       
     }
     if(entered && ! gme::Keyboard::isKeyPressed(introKey)) entered = false;
 }
+
+void MainMenuSetup::loadLevel() {
+    int lvl = mainGame::continueLevel;
+    std::string lvl_s = "";
+    if(!continueLevel || lvl == 1){
+        if(!continueLevel){
+            mainGame::newgames += 1;
+            mainGame::saveProfile();
+        }
+        lvl_s = "oleada1";
+    }
+    else if(lvl == 2) lvl_s = "oleada2";
+    else if(lvl == 3) lvl_s = "oleada3";
+    else if(lvl == 4) lvl_s = "oleada4";
+    else if(lvl == 5) lvl_s = "oleada5";
+    else if(lvl == 6) lvl_s = "oleada6";
+    else if(lvl == 7) lvl_s = "oleada7";
+    else if(lvl == 8) lvl_s = "oleada8";
+    else if(lvl == 9) lvl_s = "oleada9";
+    else if(lvl == 10) lvl_s = "oleada10";
+    //if(continueLevel || lvl == 1) 
+    gme::Scene *olds = mainGame::removeScene(lvl_s);
+    gme::Scene *s = mainGame::getScene(lvl_s);
+    if(!s || s == NULL){
+        gme::Scene *tiledTest;
+        if(!continueLevel || lvl == 1) tiledTest = new tilerJsonLoadScene(lvl_s);
+        else if(lvl == 2) tiledTest = new oleada2(lvl_s);
+        else if(lvl == 3) tiledTest = new oleada3(lvl_s);
+        mainGame::setCurrentScene(tiledTest);  
+    }
+    else mainGame::setCurrentScene(lvl_s);
+}
+
 
 
 void MainMenuSetup::onGui() {

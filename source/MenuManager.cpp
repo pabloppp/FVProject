@@ -33,11 +33,117 @@ void MenuManager::setup(){
     showGameOver = false;
     showLevelSuccess = false;
     
+    kills_10 = kills_100 = kills_200 = kills_300 = kills_400 = kills_500 = kills_600 = false;
+    brokentiles_30 = brokentiles_100 = brokentiles_300 = brokentiles_500 = false;
+    showNotification = false;
+    
+    if(mainGame::kills >= 10) kills_10 = true;
+    if(mainGame::kills >= 100) kills_100 = true;
+    if(mainGame::kills >= 200) kills_200 = true;
+    if(mainGame::kills >= 300) kills_300 = true;
+    if(mainGame::kills >= 400) kills_400 = true;
+    if(mainGame::kills >= 500) kills_500 = true;
+    if(mainGame::kills >= 600) kills_600 = true;
+    
+    if(mainGame::brokentiles >= 30) brokentiles_30 = true;
+    if(mainGame::brokentiles >= 100) brokentiles_100 = true;
+    if(mainGame::brokentiles >= 300) brokentiles_300 = true;
+    if(mainGame::brokentiles >= 500) brokentiles_500 = true;
+    
     manager = (GlobalStateManager*)(gameObject()->getComponent<GlobalStateManager*>());
 }
 
 void MenuManager::update(){
     if(pausa && !menudejuego) openPause();
+    
+    if(!kills_10 && !showNotification && mainGame::kills >= 10){
+        kills_10 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "APRENDIZ DE VETERINARIO";
+        notificationText = "Has matado a tus primeros 10 dinosaurios!\nDesbloqueado: Ametralladora";
+        mainGame::machinegun = true;
+        mainGame::saveProfile();
+    }    
+    if(!kills_100 && !showNotification && mainGame::kills >= 100){
+        kills_100 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "VETERANO JURASICO";
+        notificationText = "Brutal! Ya has matado a tus 100 dinosaurios!\nDesbloqueado: Escopeta";
+        mainGame::shotgun = true;
+        mainGame::saveProfile();
+    }
+    if(!kills_200 && !showNotification && mainGame::kills >= 200){
+        kills_200 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "SIN REMORDIMIENTOS";
+        notificationText = "Ya llevas 200 dinosaurios.\nNo te dan pena?";
+    }
+    if(!kills_300 && !showNotification && mainGame::kills >= 300){
+        kills_300 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "CALDO DE POLLO";
+        notificationText = "300 pobres dinosaurios y contando.\nSabias que los pollos son dinosaurios?";
+    
+    }
+    if(!kills_400 && !showNotification && mainGame::kills >= 400){
+        kills_400 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "FELIZ ANIVERSARIO!";
+        notificationText = "Ya has matado a 400...\nRecuerdas cuando solo llevabas 4?";
+   
+    }
+    if(!kills_500 && !showNotification && mainGame::kills >= 500){
+        kills_500 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "EXTERMINADOR FEROZ";
+        notificationText = "Con 500 dinosaurios muertos deberias ir pensando dejarlo, no?";
+ 
+    }
+    if(!kills_600 && !showNotification && mainGame::kills >= 600){
+        kills_600 = true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "HERALDO DEL APOCALIPSIS";
+        notificationText = "Has destruido a 600 dinosaurios... \nIlusos los que dijeron que fue un meteorito...";
+
+    }
+    if(!brokentiles_30 && !showNotification && mainGame::brokentiles >= 30){
+        brokentiles_30= true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "INICIACION A LA JARDINERIA";
+        notificationText = "Has destruido 30 bloques de tierra, que planeas plantar? \nDesbloqueado: Lanzallamas";
+        mainGame::flamethrower = true;
+        mainGame::saveProfile();
+    }
+    if(!brokentiles_100 && !showNotification && mainGame::brokentiles >= 100){
+        brokentiles_100= true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "CALENTAMIENTO GLOBAL";
+        notificationText = "Destruir 100 bloques de tierra causa que se derritan los polos?";
+    }
+    if(!brokentiles_300 && !showNotification && mainGame::brokentiles >= 300){
+        brokentiles_300= true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "REMODELADO TOTAL";
+        notificationText = "Has destruido 300 bloques... \nTienes algo que comentarle a nuestros diseñadores?";
+    }
+    if(!brokentiles_500 && !showNotification && mainGame::brokentiles >= 500){
+        brokentiles_500= true;
+        showNotification = true;
+        notificationClock.restart();
+        notificationTitle = "ANOMALIA TEMPORAL";
+        notificationText = "Quien lo diria, has destruido 500 bloques de tierra. \nLos arquelogos del futuro no encontraron ningun fosil.";
+    }
+    
 }
 
 void MenuManager::onMessage(std::string m, float v) {
@@ -51,29 +157,11 @@ void MenuManager::onMessage(std::string m, float v) {
             music->pause();
         }
     }
-    /*else if(m.compare("openMenu")==0){
-        pausa=false;
-        menudejuego = true;
-        pausa_visible=0;
-        if(music_pausa==true){
-            music->play();
-            music_pausa=false;
-        }
-        
-    }*/
     else if(m.compare("hidePause") == 0){
         pausa=false;
         pausa_visible=0;
         sendMessage("resume",0);
     }
-    /*else if(m.compare("hideMenu") == 0){
-        menudejuego = false;
-        if(sonando) music->pause();
-        if(juegoNuevo1p) sendMessage("newGame1p",0);
-        else if(juegoNuevo2p) sendMessage("newGame2p",0);
-        else sendMessage("resume", 0);
-    }
-    */
     else if(m.compare("gameover") == 0){ 
         showGameOver = true;
     }
@@ -117,6 +205,40 @@ void MenuManager::openPause(){
 }
 
 void MenuManager::onGui() {
+    
+  float seconds = 10;  
+  
+  //NOTIFICATIONS  
+  if(showNotification){
+    int desfase = 0;
+    if(notificationClock.currentTime().asSeconds() < 1){
+        desfase = 500 - notificationClock.currentTime().asSeconds()*500;
+    }
+    
+    if(notificationClock.currentTime().asSeconds() > seconds-1){
+        desfase = 500 - (seconds-notificationClock.currentTime().asSeconds())*500;
+    }
+    
+    gme::GUI::contentColor = gme::GUI::white;
+    gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 200);
+    gme::GUI::outlineColor = gme::GUI::Color(255,255,255, 200);
+    gme::GUI::outlineThickness = 3;
+    gme::GUI::box(
+        gme::Vector2(512, 576-80+desfase), 
+        gme::Vector2(800, 80), "",
+        gme::GUI::Origin::Center
+    ); 
+    gme::GUI::fontSize = 20;
+    gme::GUI::label(gme::Vector2(512, 576-100+desfase), notificationTitle, gme::GUI::Origin::Center );
+    gme::GUI::fontSize = 15;
+    gme::GUI::label(gme::Vector2(512, 576-95+desfase), notificationText, gme::GUI::Origin::TopCenter );
+    
+    gme::GUI::outlineThickness = 0;
+    if(notificationClock.currentTime().asSeconds() > seconds){
+        showNotification = false;
+    }
+  }  
+    
   if(manager->gameType==1){
       int timeLeft = (int)(manager->winCondition-(manager->lastScore+manager->gameClock.currentTime().asSeconds()));
       if(manager->isPaused()) timeLeft = (int)(manager->winCondition-manager->lastScore);
@@ -136,14 +258,7 @@ void MenuManager::onGui() {
         gme::GUI::Origin::Center,
         gme::GUI::ScaleToFit
       );
-      /*gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,100);
-      gme::GUI::contentColor = gme::GUI::Color(0,0,0);
-      gme::GUI::fontSize = 30;
-      gme::GUI::box(gme::Vector2((1024/2)-200, (576/2)-100),gme::Vector2(400,200));
-      gme::GUI::label(gme::Vector2(1024/2, 576/2), "HAS GANADO", gme::GUI::Origin::Center );
-      gme::GUI::fontSize = 15;
-      gme::GUI::label(gme::Vector2(1024/2, 576/2 + 50), "Pulsa ENTER para continuar", gme::GUI::Origin::Center );
-     */ return;
+      return;
   }  
   if(showGameOver){
        gme::GUI::drawTexture(
@@ -227,7 +342,7 @@ void MenuManager::onGui() {
             "SALIR",
             gme::GUI::Origin::Center  
         );
-    }  
+    }
 }
 
 MenuManager::~MenuManager() {

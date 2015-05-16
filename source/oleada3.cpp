@@ -17,6 +17,10 @@
 #include "mainGame.hpp"
 #include "enemy_boss.hpp"
 void oleada3::setup() {
+    
+    mainGame::continueLevel = 3;
+    mainGame::saveProfile();
+    
     mainGame::removeScene("oleada2");    
     if(reseting){
         setupScenario();

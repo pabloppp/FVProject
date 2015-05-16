@@ -13,6 +13,7 @@ void mainGame::setup() {
     
     //debugColliders = true;
     loadOpts();
+    loadProfile();
 
     gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
@@ -180,6 +181,108 @@ void mainGame::loadOpts() {
     
 }
 
+void mainGame::loadProfile() {
+    std::string str;
+    std::ifstream infile;
+    infile.open("profile.conf");
+    if(infile.is_open()){
+        while(!infile.eof()){
+            getline(infile, str);
+            std::string opt = str.substr(0, str.find(" "));
+            str = str.erase(0, str.find(" ")+1);
+            std::string val = str.substr(0, str.find(" "));
+            std::cout <<opt << ": " << val << std::endl;
+            
+            if(opt.compare("level") == 0){
+                continueLevel = atoi(val.c_str());
+            }
+            //WEAPONS
+            if(opt.compare("machinegun") == 0){
+                if(val.compare("unlocked") == 0) machinegun = true;
+            }
+            if(opt.compare("shotgun") == 0){
+                if(val.compare("unlocked") == 0) shotgun = true;
+            }
+            if(opt.compare("snipper") == 0){
+                if(val.compare("unlocked") == 0) snipper = true;
+            }
+            if(opt.compare("flamethrower") == 0){
+                if(val.compare("unlocked") == 0) flamethrower = true;
+            }
+            if(opt.compare("bazooka") == 0){
+                if(val.compare("unlocked") == 0) bazooka = true;
+            }
+            
+            //PJ
+            if(opt.compare("will") == 0){
+                if(val.compare("unlocked") == 0) will = true;
+            }
+            if(opt.compare("marty") == 0){
+                if(val.compare("unlocked") == 0) marty = true;
+            }
+            if(opt.compare("drwho") == 0){
+                if(val.compare("unlocked") == 0) drwho = true;
+            }
+            
+            //STATS
+            if(opt.compare("kills") == 0){
+                kills = atoi(val.c_str());
+            }
+            if(opt.compare("deaths") == 0){
+                deaths = atoi(val.c_str());
+            }
+            if(opt.compare("brokentiles") == 0){
+                brokentiles = atoi(val.c_str());
+            }
+            if(opt.compare("victories") == 0){
+                victories = atoi(val.c_str());
+            }
+            if(opt.compare("levelspassed") == 0){
+                levelspassed = atoi(val.c_str());
+            }
+            if(opt.compare("newgames") == 0){
+                newgames = atoi(val.c_str());
+            }
+            
+        }
+        infile.close();
+    }
+    else saveProfile();
+}
+
+void mainGame::saveProfile() {
+    std::ofstream myfile ("profile.conf");
+    if(myfile.is_open()){
+        myfile << "level "<< continueLevel << "\n";
+        
+        if(machinegun) myfile << "machinegun unlocked\n";
+        else myfile << "machinegun locked\n";
+        if(shotgun) myfile << "shotgun unlocked\n";
+        else myfile << "shotgun locked\n";
+        if(flamethrower) myfile << "flamethrower unlocked\n";
+        else myfile << "flamethrower locked\n";
+        if(snipper) myfile << "snipper unlocked\n";
+        else myfile << "snipper locked\n";
+        if(bazooka) myfile << "bazooka unlocked\n";
+        else myfile << "bazooka locked\n";
+        if(will) myfile << "will unlocked\n";
+        else myfile << "will locked\n";
+        if(marty) myfile << "marty unlocked\n";
+        else myfile << "marty locked\n";
+        if(drwho) myfile << "drwho unlocked\n";
+        else myfile << "drwho locked\n";
+        
+        myfile << "kills "<< kills << "\n";
+        myfile << "deaths "<< deaths << "\n";
+        myfile << "brokentiles "<< brokentiles << "\n";
+        myfile << "victories "<< victories << "\n";
+        myfile << "newgames "<< newgames << "\n";
+        myfile << "levelspassed "<< levelspassed;
+        myfile.close();
+    }
+}
+
+
 
 
 bool mainGame::coop = false;
@@ -187,5 +290,21 @@ bool mainGame::music = true;
 bool mainGame::sound = true;
 bool mainGame::fullscreen = true;
 int mainGame::particles = 2;
+int mainGame::continueLevel = 1;
+bool mainGame::machinegun = false;
+bool mainGame::shotgun = false;
+bool mainGame::flamethrower = false;
+bool mainGame::bazooka = false;
+bool mainGame::snipper = false;
+bool mainGame::will = false;
+bool mainGame::marty = false;
+bool mainGame::drwho = false;
+/* USER DATA */
+int mainGame::kills = 0;
+int mainGame::brokentiles = 0;
+int mainGame::victories = 0;
+int mainGame::newgames = 0;
+int mainGame::levelspassed = 0;
+int mainGame::deaths = 0;
 
 gme::MusicPlayer *mainGame::jungleFondo_sound;
