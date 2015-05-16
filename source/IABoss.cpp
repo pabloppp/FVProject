@@ -88,7 +88,7 @@ void IABoss::update() {
              sprint =true;
              clkS.restart();
         }
-        std::cout << enemypos.x << " " << enemypos.y <<std::endl;
+        //std::cout << enemypos.x << " " << enemypos.y <<std::endl;
         
         if(sprint && clkS.currentTime().asSeconds() > 1){
             dist *= 4;
