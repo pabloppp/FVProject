@@ -32,7 +32,14 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/jungle_midB.png", "bgMidBTexture");
     gme::Game::newTexture("resources/BGs/jungle_midC.png", "bgMidCTexture");
     
-    
+    //INTERFAZ
+    gme::Game::newTexture("resources/Interface/interfaz_P1.png", "interface_p1");
+    gme::Game::newTexture("resources/Interface/interfaz_P2.png", "interface_p2");
+    gme::Game::newTexture("resources/Interface/max-willis-2.png", "max-willis");
+    gme::Game::newTexture("resources/Interface/pistola-inter.png", "pistola-inter");
+    gme::Game::newTexture("resources/Interface/pistola-inter.png", "metralleta-inter");
+    gme::Game::newTexture("resources/Interface/pistola-inter.png", "escopeta-inter");
+    gme::Game::newTexture("resources/Interface/pistola-inter.png", "llamas-inter");
     //TILESETS
     gme::Game::newTexture("resources/maps/Tileset.png", "selvaTiles");
     

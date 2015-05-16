@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="33" height="18" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16">
+  <image source="Tileset.png" width="256" height="384"/>
+ </tileset>
+ <layer name="bg" width="33" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt1EluwjAYhuGIc3ATSrpIGkWd2DGUHZ12nbZtFy2ISaLANaCTWrgfr0UshQgljo284pceKZHs/J/tJI5jr45xglOc4RwVi/1FVVFDHQ1coGk5QwuXuMI1bnBrOYOoO9zjAY94UpxXgh+791A2zPKMF7xihjk+U8YfoRjl8KLrwKD/G97RRgdf+MYPfhVymPbvooc+BhjiD/9YYJkx38WhZu9CZIQPjDHBFAcxcq/l9a4yyPPLa1sv3QxiXmgpg/x+PGdzH12N/roZZK8wMS7+PutmEOsrx3ok36Ft601mVdmLIOUZaeeZHGeSwc/IoLJfphlUn51nnFiX+CdkfZv7WtcKSEY5Qw==
+  </data>
+ </layer>
+ <layer name="fg" width="33" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztw8ENAAAEBEEJgv4bdi14+ewkYwYAAHDjGo9TS/vx6AK1iAGN
+  </data>
+ </layer>
+ <layer name="detalles" width="33" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztzrsRgCAABFHGOuyF3kE+ovTEBgZ2cAS3My++C8E5t2vHR9X5E4U/nFOVkHEJPxRUNHTB/o2BBy+m4MPOLTs7CfI=
+  </data>
+ </layer>
+ <layer name="fgd" width="33" height="18">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4A0IADEgmhYaEBdNApoBbDFNbXjG5cdwzVdIft3uPtvJMTnKBgFAEUGAjI=
+  </data>
+ </layer>
+</map>

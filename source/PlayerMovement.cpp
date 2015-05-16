@@ -214,6 +214,8 @@ void PlayerMovement::onGui() {
             gme::GUI::ScaleToFit
         );
         
+        
+        
         gme::GUI::fontSize = 20;
         gme::GUI::label(gme::Vector2(50+disp, 12), "x "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);
         
@@ -236,6 +238,28 @@ void PlayerMovement::onGui() {
         for(int i=0;i<bars;i++){
             gme::GUI::box(gme::Vector2(46+i*6+disp, 35+6), gme::Vector2(3, 3*2));
         }
+        //BOTTOM STATS    
+        gme::GUI::drawTexture(
+            gme::Vector2(0, 576),
+            gme::Vector2(64*3, 64*3),
+            gme::GUI::TextureName("interface_p1"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
+        gme::GUI::drawTexture(
+            gme::Vector2(20, 530),
+            gme::Vector2(27*3, 37*3),
+            gme::GUI::TextureName("max-willis"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
+        gme::GUI::drawTexture(
+            gme::Vector2(103, 525),
+            gme::Vector2(15*3, 7*3),
+            gme::GUI::TextureName("pistola-inter"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
     }
     //std::cout << "ENTERING HERE" << std::endl;
 }
