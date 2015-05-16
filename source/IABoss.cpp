@@ -27,7 +27,7 @@ void IABoss::setup() {
     if(gm.size() > 0){
         GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
         if(gsm != NULL){
-            manager = gsm;
+            stateManager = gsm;
         }
     }
    
@@ -45,17 +45,15 @@ void IABoss::findPlayer() {
 
 
 void IABoss::update() {
-    if(updateP2.currentTime().asSeconds() > 5){
-        findPlayer();
-        updateP2.restart();
-    }
-    if(manager->isPaused()){
+    if(stateManager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
         return;
     }
+    else getRigidBody()->setActive(true);
     
     if(player){
-        gme::Vector2 playerpos = player->getTransform()->getPosition();
+       gme::Vector2 playerpos = player->getTransform()->getPosition();
         gme::Vector2 enemypos = getTransform()->getPosition();
         
         if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
@@ -65,7 +63,7 @@ void IABoss::update() {
         
         if(player2 != NULL){
             gme::Vector2 playerpos2 = player2->getTransform()->getPosition();
-            std::cout << "entrando en player 2" << std::endl;
+            
             if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
                     && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
                 player2->sendMessage("damage", damage);
@@ -101,6 +99,9 @@ void IABoss::update() {
         if(sprint && clkS.currentTime().asSeconds() < 1){
             dist *= 0;
         }
+        
+        
+        
         if(side && clk.currentTime().asSeconds() < 5){
             dist =0;
         }
@@ -123,23 +124,43 @@ void IABoss::update() {
 }
 
 void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
+    
+    //std::cout << "enemy: " << enemy.y << std::endl;
+    //std::cout << "player: " << player.y << std::endl;
+    
+    float deltatime = gme::Game::deltaTime.asSeconds();
+    
     if(enemy.x < 16*3 && !right){
-        dir.x = -dir.x;        
-        clk.restart();
-        right = true;
-        side = true;
-        sprint = false;
-        getTransform()->resize(gme::Vector2(-1,1));
+        if(sprint ){
+            std::cout << "Llega con sprint Izquierda" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(4,-1), 19000*deltatime);
+            
+        }
+            dir.x = -dir.x;        
+            clk.restart();
+            right = true;
+            side = true;
+            getTransform()->resize(gme::Vector2(-1,1));
+       
     }
     
     if(enemy.x > 1526-16*3 && right){
+        if(sprint){
+            std::cout << "Llega con sprint Derecha" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(-4,-1), 19000*deltatime);
+        }
+        
         dir.x = -dir.x;        
         clk.restart();
         right = false;
         side = true;
-        sprint =false;
         getTransform()->resize(gme::Vector2(-1,1));
     }
+    
+    
+    
 }
 
 
@@ -155,6 +176,7 @@ void IABoss::onCollision(gme::Collider* c) {
         gme::Vector2 playerpos = player->getTransform()->getPosition();
         gme::Vector2 enemypos = getTransform()->getPosition();    
         if((playerpos.x < enemypos.x && right) || (playerpos.x > enemypos.x && !right) ){
+             std::cout <<"dado con una bala  por la espalda" << std::endl;
              dir.x = -dir.x;   
              right = !right;
               getTransform()->resize(gme::Vector2(-1,1));
@@ -165,22 +187,16 @@ void IABoss::onCollision(gme::Collider* c) {
 }
 
 void IABoss::onMessage(std::string m, float v) {
-    if(m.compare("kill")==0 && !dead){ 
-        if(lasthitby == 1){
-            gme::GameObject::find("p1").at(0)->sendMessage("givePoints", 1000);
-        }
-        else if(lasthitby == 2){
-            std::vector<gme::GameObject*> players  = gme::GameObject::find("p2");
-            if(players.size() > 0) players.at(0)->sendMessage("givePoints", 1000);
-        }        
+
+    if(m.compare("kill")==0 && !dead){
+        std::cout << "muerte" << std::endl;
         dead = true;
         explode(5, 15, 20, 200);
-    }     
+    }
+    
     if(m.compare("damage")==0 && !dead){
         explode(1,5, 10, 100);
-    }
-    if(m.compare("iam")==0){
-        lasthitby = v;
+        std::cout << "damage " << std::endl;
     }
 }
 

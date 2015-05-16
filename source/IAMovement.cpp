@@ -108,9 +108,7 @@ void IAMovement::update() {
         jump(playerpos,enemypos);
         
     }
-    
-    animate();
-    
+     
     grounded = false;
     cornered = 0;
     
