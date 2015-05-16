@@ -20,8 +20,11 @@ public:
     static void loadOpts();
     static void loadProfile();
     static void saveProfile();
+    static void loadPoints();
+    static void savePoints();
     static int continueLevel;
     static int kills, newgames, brokentiles, victories, levelspassed, deaths;
+    static int maxpoints[];
     
     static gme::MusicPlayer *jungleFondo_sound;
 private:

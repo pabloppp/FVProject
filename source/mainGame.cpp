@@ -14,6 +14,7 @@ void mainGame::setup() {
     //debugColliders = true;
     loadOpts();
     loadProfile();
+    loadPoints();
 
     gme::Game::newTexture("resources/BGs/fondoSplash.jpg", "fondoSplash");  
     gme::Game::newTexture("resources/BGs/fondonuevo.png", "fondo_principal");
@@ -282,6 +283,74 @@ void mainGame::saveProfile() {
     }
 }
 
+void mainGame::loadPoints() {
+    std::string str;
+    std::ifstream infile;
+    infile.open("scores.conf");
+    if(infile.is_open()){
+        while(!infile.eof()){
+            getline(infile, str);
+            std::string opt = str.substr(0, str.find(" "));
+            str = str.erase(0, str.find(" ")+1);
+            std::string val = str.substr(0, str.find(" "));
+            std::cout <<opt << ": " << val << std::endl;
+            
+            if(opt.compare("lvl1") == 0){
+                maxpoints[0] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl2") == 0){
+                maxpoints[1] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl3") == 0){
+                maxpoints[2] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl4") == 0){
+                maxpoints[3] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl5") == 0){
+                maxpoints[4] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl6") == 0){
+                maxpoints[5] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl7") == 0){
+                maxpoints[6] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl8") == 0){
+                maxpoints[7] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl9") == 0){
+                maxpoints[8] = atoi(val.c_str());
+            }
+            if(opt.compare("lvl10") == 0){
+                maxpoints[9] = atoi(val.c_str());
+            }
+
+        }
+        infile.close();
+    }
+    else savePoints();
+}
+
+void mainGame::savePoints() {
+    std::ofstream myfile ("scores.conf");
+    if(myfile.is_open()){
+        myfile << "lvl1 "<< maxpoints[0] << "\n";
+        myfile << "lvl2 "<< maxpoints[1] << "\n";
+        myfile << "lvl3 "<< maxpoints[2] << "\n";
+        myfile << "lvl4 "<< maxpoints[3] << "\n";
+        myfile << "lvl5 "<< maxpoints[4] << "\n";
+        myfile << "lvl6 "<< maxpoints[5] << "\n";
+        myfile << "lvl7 "<< maxpoints[6] << "\n";
+        myfile << "lvl8 "<< maxpoints[7] << "\n";
+        myfile << "lvl9 "<< maxpoints[8] << "\n";
+        myfile << "lvl10 "<< maxpoints[9];
+        
+        myfile.close();
+    }
+}
+
+
 
 
 
@@ -306,5 +375,7 @@ int mainGame::victories = 0;
 int mainGame::newgames = 0;
 int mainGame::levelspassed = 0;
 int mainGame::deaths = 0;
+
+int mainGame::maxpoints[] = {0,0,0,0,0,0,0,0,0,0};
 
 gme::MusicPlayer *mainGame::jungleFondo_sound;

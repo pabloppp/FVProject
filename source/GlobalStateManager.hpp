@@ -37,6 +37,7 @@ public:
     float lastScore;
     gme::Clock gameClock;
     std::string nextScene;
+    static int pointsp1, pointsp2, maxpoints;
     
 private:
     bool paused;

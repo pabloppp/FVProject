@@ -187,9 +187,7 @@ void IABoss::onCollision(gme::Collider* c) {
 }
 
 void IABoss::onMessage(std::string m, float v) {
-
     if(m.compare("kill")==0 && !dead){
-        std::cout << "muerte" << std::endl;
         dead = true;
         explode(5, 15, 20, 200);
     }

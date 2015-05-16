@@ -258,6 +258,38 @@ void MenuManager::onGui() {
         gme::GUI::Origin::Center,
         gme::GUI::ScaleToFit
       );
+      
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 200);
+      
+      gme::GUI::box(
+        gme::Vector2(512, 288+144+25), 
+        gme::Vector2(512-20, 50), "",
+        gme::GUI::Origin::Center
+      );
+      
+      std::string puntosp1 = std::to_string(GlobalStateManager::pointsp1);
+      std::string puntosp2 = std::to_string(GlobalStateManager::pointsp2);
+      std::string maxppuntos = std::to_string(GlobalStateManager::maxpoints);
+      int cp1 = 9-puntosp1.length();
+      int cp2 = 9-puntosp2.length();
+      int cpmax = 9-maxppuntos.length();
+      
+      for(int i = 0; i < cp1; i++){
+        puntosp1 = "0"+puntosp1;
+      }
+      for(int i = 0; i < cp2; i++){
+        puntosp2 = "0"+puntosp2;
+      }
+      for(int i = 0; i < cpmax; i++){
+        maxppuntos = "0"+maxppuntos;
+      }
+      
+      gme::GUI::fontSize = 20;
+      gme::GUI::label(gme::Vector2(256+20, 288+110), "P1: "+puntosp1, gme::GUI::Origin::TopLeft);
+      if(mainGame::coop) gme::GUI::label(gme::Vector2(768-20, 288+110), "P2: "+puntosp2, gme::GUI::Origin::TopRight);
+      gme::GUI::fontSize = 28;
+      gme::GUI::label(gme::Vector2(256+20, 288+110+25), "HIGH SCORE: "+maxppuntos, gme::GUI::Origin::TopLeft);
+      
       return;
   }  
   if(showGameOver){

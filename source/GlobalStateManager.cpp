@@ -51,6 +51,38 @@ void GlobalStateManager::update(){
         if(!paused && !levelSuccess){
             mainGame::levelspassed += 1;
             mainGame::saveProfile();
+            
+            maxpoints = 0;
+            int level = 0;
+            if(mainGame::getCurrentScene()->getName().compare("oleada1") == 0) level = 0;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada2") == 0) level = 1;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada3") == 0) level = 2;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada4") == 0) level = 3;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada5") == 0) level = 4;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada6") == 0) level = 5;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada7") == 0) level = 6;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada8") == 0) level = 7;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada9") == 0) level = 8;
+            else if(mainGame::getCurrentScene()->getName().compare("oleada10") == 0) level = 9;
+            
+                
+            std::vector<gme::GameObject*> players = gme::GameObject::findWithTag("player");
+            for(int i=0;i<players.size();i++){
+                
+                int points = ((PlayerMovement*)(players.at(i)->getComponent<PlayerMovement*>()))->points;
+                if(points > maxpoints) maxpoints = points; 
+                
+                if(players.at(i)->getName().compare("p1") == 0) pointsp1 = points;
+                else if(players.at(i)->getName().compare("p2") == 0) pointsp2 = points;
+                
+            }
+            if(maxpoints > mainGame::maxpoints[level]){
+                mainGame::maxpoints[level] = maxpoints;
+                mainGame::savePoints();
+            }
+            
+            maxpoints = mainGame::maxpoints[level];
+            
             gameObject()->sendMessage("showLevelSuccess", 0);
             levelSuccess = true;
             canpause = false;
@@ -207,3 +239,7 @@ void GlobalStateManager::onMessage(std::string m, float v) {
 GlobalStateManager::~GlobalStateManager() {
 
 }
+
+int GlobalStateManager::pointsp1 = 0;
+int GlobalStateManager::pointsp2 = 0;
+int GlobalStateManager::maxpoints = 0;
