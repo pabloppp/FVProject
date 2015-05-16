@@ -7,11 +7,12 @@ void moveToTop::setup() {
 
 void moveToTop::update() {
    
-    if(automove) move();
+   if(triggerMove) move();
     
 }
 
 void moveToTop::move() {
+    triggerMove = false;
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
    
     int p = orderpostion;
@@ -33,6 +34,13 @@ void moveToTop::move() {
 void moveToTop::setOrder(int o) {
     orderpostion = o;
 }
+
+void moveToTop::onMessage(std::string m, float v) {
+    if(m.compare("movetotop") == 0){
+        triggerMove = true;
+    }
+}
+
 
 
 
