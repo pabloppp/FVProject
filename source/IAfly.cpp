@@ -121,7 +121,7 @@ void IAfly::update() {
             if(chase) vectorDirector(playerpos,enemypos);
             if(wave && !home && !wait) waveAttack(playerpos,enemypos);
             if(fallDown) fallDownAttack(playerpos,enemypos);
-            if(home) vectorDirector(init,enemypos);
+            if(home && !wait) vectorDirector(init,enemypos);
             if(boing) desp.x =0;
             if(Vboing) desp.y = 0;
             
@@ -245,28 +245,33 @@ void IAfly::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
 }
 
 void IAfly::bossAttack() {
-    if(clkCA.currentTime().asSeconds() > 10){
-         std::cout << "Cambio de ataque-> c: " << chase << " w: " << wave << " fd: " << fallDown << std::endl;
+    if(clkCA.currentTime().asSeconds() > 10 && !pruebawave){
+         
         int rnd = rand() % 3;
         
         if(chase){
+            std::cout << "cambio chase" << std::endl;
             if(rnd != 1){
                 wave = true;
                 home = true;
+                pruebawave =true;
             }
-            else    fallDown = true;
+            else{fallDown = true;}
             chase = false;
         }
-        if(wave){
+        else if(wave){
+            std::cout << "cambio wave" << std::endl;
             if(rnd != 0) fallDown = true;
             else    chase = true;
             wave = false;
         }
-        if(fallDown){
+        else if(fallDown){
+            std::cout << "cambio falldown" << std::endl;
             if(rnd != 2) chase = true;
             else{
                 wave = true;
                 home  = true;
+                pruebawave = true;
             }
             fallDown = false;
         }
@@ -276,6 +281,7 @@ void IAfly::bossAttack() {
             init = wavePositions.at(0);
         }
         clkCA.restart();
+        std::cout << "Cambio de ataque-> c: " << chase << " w: " << wave << " fd: " << fallDown << std::endl;
     }
 }
 
@@ -286,12 +292,29 @@ void IAfly::fallDownAttack(gme::Vector2 player, gme::Vector2 enemy) {
 void IAfly::waveAttack(gme::Vector2 player, gme::Vector2 enemy) {
     std::cout << "esperando para atacar" << std::endl;
     std::cout << "wait " << wait << " home: " << home << std::endl;
+   
+    dir.y =0;
+    float distance1 = gme::Vector2::distance(enemy,wavePositions.at(0));
+    float distance2 = gme::Vector2::distance(enemy,wavePositions.at(1));
+    
+    if (distance1 < 10 && distance2 > 1000 && leftPosition){
+        dir.x = 1;
+        leftPosition = false;
+    }
+    if (distance1 > 1000 && distance2 < 10 && !leftPosition){
+        dir.x = -1;
+        leftPosition = true;
+    }
+    
+    std::cout << "d1 " << distance1 << " d2: " << distance2 << std::endl;
+    
 }
 
 
 
 void IAfly::onCollision(gme::Collider* c) {
     gme::Vector2 rP = getCollider()->getRelativePosition(c);
+   
     if(c->gameObject()->hasTag("floor")){
         grounded =  true;
         gdir = rP;

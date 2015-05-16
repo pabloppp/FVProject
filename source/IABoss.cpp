@@ -88,6 +88,7 @@ void IABoss::update() {
              sprint =true;
              clkS.restart();
         }
+        std::cout << enemypos.x << " " << enemypos.y <<std::endl;
         
         if(sprint && clkS.currentTime().asSeconds() > 1){
             dist *= 4;
@@ -130,7 +131,7 @@ void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
     
     float deltatime = gme::Game::deltaTime.asSeconds();
     
-    if(enemy.x < 16*3 && !right){
+    if(enemy.x < 615 && !right){
         if(sprint ){
             std::cout << "Llega con sprint Izquierda" << std::endl;
             sprint = false;

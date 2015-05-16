@@ -61,11 +61,11 @@ void tilerJsonLoadScene::setup() {
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
     
-    /*enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));*/
+    enemy_boss *boss = new enemy_boss("boss");
+    boss->getTransform()->setPosition(gme::Vector2(1000, 576-(16*9) ));
     
-    enemy_fly *fly =  new enemy_fly("fly",true);
-    fly->getTransform()->setPosition(gme::Vector2(100,50 ));
+    /*enemy_fly *fly =  new enemy_fly("fly",true);
+    fly->getTransform()->setPosition(gme::Vector2(100,50 ));*/
 
     
     /*enemy *e = new enemy("dino");
@@ -171,7 +171,7 @@ void tilerJsonLoadScene::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave1.json";
+            gen->mapFile = "resources/maps/wave3_2..json";
         }
     });
 }

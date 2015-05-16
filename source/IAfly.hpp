@@ -40,6 +40,10 @@ public:
         chase = true;
         wave = false;
         fallDown =false;
+        leftPosition = true;
+                
+           
+        pruebawave = false;
     };
     
     void setup();
@@ -82,6 +86,9 @@ private:
     bool chase;
     bool wave;
     bool fallDown;
+    bool leftPosition; 
+    
+    bool pruebawave;
     
     gme::Vector2 dir;
     gme::Vector2 gdir;
