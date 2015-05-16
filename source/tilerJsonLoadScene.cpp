@@ -64,7 +64,7 @@ void tilerJsonLoadScene::setup() {
     /*enemy_boss *boss = new enemy_boss("boss");
     boss->getTransform()->setPosition(gme::Vector2(1024/2, 576-(16*9) ));*/
     
-    enemy_fly *fly =  new enemy_fly("fly",false);
+    enemy_fly *fly =  new enemy_fly("fly",true);
     fly->getTransform()->setPosition(gme::Vector2(100,50 ));
 
     

@@ -2,18 +2,16 @@
  * File:   IAfly.cpp
  * Author: albertomartinezmartinez
  * 
- * Created on 12 de mayo de 2015, 18:59
+ * Created on 15 de mayo de 2015, 14:58
  */
 
 #include "IAfly.hpp"
-#include "Animator.hpp"
 #include "defaultParticle.hpp"
 #include "sprayParticleScript.hpp"
-#include "tile.hpp"
 
 void IAfly::setup() {
     findPlayer();
-    std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
+     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
     
     for(int i=0;i<objects->size();i++){
         if(objects->at(i) == gameObject()){
@@ -22,7 +20,7 @@ void IAfly::setup() {
             break;
         }
     }
-    
+     
      std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
     if(gm.size() > 0){
         GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
@@ -30,12 +28,16 @@ void IAfly::setup() {
             stateManager = gsm;
         }
     }
-    gme::Vector2 pos1 = gme::Vector2(100,50);
-    gme::Vector2 pos2 = gme::Vector2(200,50);
-    gme::Vector2 pos3 = gme::Vector2(800,50);
-    posiciones.push_back(pos1);
-    posiciones.push_back(pos2);
-    posiciones.push_back(pos3);
+     
+    // posiciones iniciales
+     
+     positions.push_back(gme::Vector2(100,50));
+     positions.push_back(gme::Vector2(800,50));
+     positions.push_back(gme::Vector2(1200,50));
+     
+     wavePositions.push_back(gme::Vector2(200,50));
+     wavePositions.push_back(gme::Vector2(1300,50));
+     
 }
 
 void IAfly::update() {
@@ -53,7 +55,8 @@ void IAfly::update() {
         if(enemypos.x > playerpos.x-16*3 && enemypos.x < playerpos.x+16*3
                 && enemypos.y > playerpos.y-16*3 && enemypos.y < playerpos.y+16*3){
             player->sendMessage("damage", damage);
-            if(!back) moveToInit();
+            sprint = false;
+            if(!enemy_boss)moveToInit();
         }
         
         if(player2 != NULL){
@@ -62,114 +65,92 @@ void IAfly::update() {
             if(enemypos.x > playerpos2.x-16*3 && enemypos.x < playerpos2.x+16*3
                     && enemypos.y > playerpos2.y-16*3 && enemypos.y < playerpos2.y+16*3){
                 player2->sendMessage("damage", damage);
-               if(!back) moveToInit();
+                sprint = false;
+                if(!enemy_boss)moveToInit();
             }
         }
         
-       float dist = speed;
-       
-       float distance = gme::Vector2::distance(playerpos, enemypos);
-      
-       
-       if(distance < 300 && !back){
-           dist *= 2;
-           if(!sprint) sprint=true;
-       }
         
-      if( gme::Vector2::distance(init,enemypos) < 10 && back && !wait){
-          
-          clkG.restart();
-          wait = true;
-      }
-      
-       if(stop && !grounded && back && wait){
-           dist=0;
-           stop = true;
-       }
-       
-      if(wait && clkG.currentTime().asSeconds() > 1) {
-          back = false;
-          wait = false;
-      }
-       
-       
-        if(!back) vectorDirector(playerpos,enemypos);
-        if(back) vectorDirector(init,enemypos);
-       
-       /*if(enemy_boss) std::cout << "El enemigo e sun jefazo" << std::endl;
-       else std::cout << "El enemigo es nomalucho" << std::endl;
-       */
-        getRigidBody()->setSpeed(dir, dist);
-    }
-        grounded = false;
-        
-}
+        float dist = speed;
+        gme::Vector2 desp = dir;
+        if(!enemy_boss){
+            float distance = gme::Vector2::distance(playerpos,enemypos);
 
-void IAfly::vectorDirector(gme::Vector2 player,gme::Vector2 enemy) {
-    if(enemy.x < 16*3 && !right){
-        dir.x = 1;
-        right = true;
-        change = true;
-        return;
-    }
-    if(enemy.x > 1526-16*3 && right){
-        dir.x = -1;
-        right = false;
-        change = true;
-        return;
-    }
-    
-    float h = player.y -5;
-    float H = player.y +5;
-    float w = player.x -5;
-    float W = player.x +5;
-    //std::cout << player.y << " p/e " << enemy.y << std::endl;
-    
-    
-    //if(enemy.x > player.x - 5 && enemy.x < player.x +5) stop = true;;
-    
-    if(enemy.x > w && enemy.x < W) dir.x=0;
-    
-    if(player.x < enemy.x && right){
-        dir.x = -1;
-        right = false;
-    }
-    
-    if(player.x > enemy.x && !right){
-        dir.x = 1;
-        right = true;
-    }
-    
-    if(enemy.y > h && enemy.y < H) dir.y=0;
-    if(player.y > enemy.y && down){
-        dir.y = 1;
-        down = false;
-    }
-    if(player.y < enemy.y && !down){
-        dir.y = -1;
-        down = true;
-    }
-    if(grounded){
-        float difference = std::abs(enemy.y-player.y);
-        if(gdir.x != 0){
-            dir.y = 1;
-            down = false;
-            if(player.y < enemy.y && !down && difference > 25){
-                dir.y = -1;
-                down = true;
+            if(distance < 400 && !sprint && !home){
+                sprint = true;
             }
-        }
-        
-        if(gdir.y != 0){
-            if(difference > 50){
-                std::cout << difference << " dif " << std::endl;
-            }
-        }
-        
-    }
-    
-}
+            if(sprint) dist*=2;
 
+            if(home && !wait){
+                float disthome = gme::Vector2::distance(init,enemypos);
+                if(disthome < 10){
+                    wait = true;
+                    clkW.restart();
+                }
+            }
+            if(wait && clkW.currentTime().asSeconds() > 5){
+                home= false;
+                wait = false;
+            }
+            
+
+
+            if(!home)vectorDirector(playerpos,enemypos);
+            if(home) vectorDirector(init,enemypos);
+            if(boing && !grounded) desp.x =0;
+            if(Vboing && !corner) desp.y = 0;
+            getRigidBody()->setSpeed(desp, dist);
+        }
+        else{
+            bossAttack();
+            
+            if(home){
+                float distance = gme::Vector2::distance(init, enemypos);
+                if(distance < 10){
+                    wait = true;
+                    home = false;
+                    clkW.restart();
+                }
+            }
+            
+            if(wait && clkW.currentTime().asSeconds() < 2) dist = 0;
+            if(wait && clkW.currentTime().asSeconds() >=2) wait = false;
+            
+           
+            
+            if(chase) vectorDirector(playerpos,enemypos);
+            if(wave && !home && !wait) waveAttack(playerpos,enemypos);
+            if(fallDown) fallDownAttack(playerpos,enemypos);
+            if(home) vectorDirector(init,enemypos);
+            if(boing) desp.x =0;
+            if(Vboing) desp.y = 0;
+            
+            
+            
+            
+            getRigidBody()->setSpeed(desp, dist);
+            
+        }
+        
+        if(first){
+            first=false;
+            if(playerpos.x > enemypos.x){
+                dir.x = 1;
+                right = false;
+            }
+            if(playerpos.x < enemypos.x){
+                dir.x = -1;
+                right = true;
+            }
+        }
+        
+    }
+    
+    grounded = false;
+    corner =  false;
+    boing = false;
+    Vboing = false;
+}
 
 void IAfly::findPlayer() {
      player = gme::GameObject::find("p1").at(0);
@@ -182,31 +163,142 @@ void IAfly::findPlayer() {
 }
 
 void IAfly::moveToInit() {
-        std::cout << "volver a la position de inicio" << std::endl;
-        pos = rand()%3;
-        init = posiciones.at(pos);
-        std::cout << init.x << " " << init.y << std::endl;
-        back = true;
-        sprint = false;
-    
+    int rnd = rand() %3;
+    init = positions.at(rnd);
+    home = true;
 }
+
+
+void IAfly::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
+
+    //std::cout << "Player: " << player.x << " " << player.y << std::endl;
+    //std::cout << "enemy: " << enemy.x << " " << enemy.y << std::endl;
+    
+    if(!grounded && move) move = false;
+    if(!grounded && randmove) randmove = false;
+    
+    float w = player.x - 5;
+    float W = player.x + 5;
+    
+    float h = player.y -5;
+    float H = player.y +5;
+    
+    float difference = std::abs(player.y-enemy.y);
+   
+    
+    
+    
+    if(!move){
+        if(enemy.x > w && enemy.x < W) boing = true;
+        if(player.x > enemy.x && right && !randmove ){
+            dir.x = 1;
+            right = false;
+        }
+        if(player.x < enemy.x && !right && !randmove){
+            dir.x = -1; 
+            right = true;
+        }
+
+        if(enemy.y > h && enemy.y < H) Vboing = true;
+        if(player.y > enemy.y && !down && !Vboing ){
+            dir.y = 1;
+            down = true;
+        }
+        if(player.y < enemy.y && down && !Vboing){
+            dir.y = -1;
+            down = false;
+        }
+    }
+    
+    if(grounded && !enemy_boss){
+        if((enemy.x < 80 || enemy.x > 1500) && !move){
+            std::cout << "caca" << std::endl;
+            dir.x = -dir.x;
+            right = !right;
+            move = true;
+        }
+        if(gdir.x != 0){
+            if(difference < 50 || home){
+                dir.y = -1;
+                down = false;   
+            }
+            else{
+                dir.y = 1;
+                down = true;
+            }
+        }
+        if(gdir.y != 0 && !randmove && difference > 25){
+            int rnd = rand() % 2;
+            if(rnd == 0){
+                dir.x = -1;
+                right = true;
+                randmove = true;
+            }
+            if(rnd == 1){
+                dir.x = 1;
+                right = false;
+                randmove = true;
+            }
+            
+        }
+    }
+}
+
+void IAfly::bossAttack() {
+    if(clkCA.currentTime().asSeconds() > 10){
+         std::cout << "Cambio de ataque-> c: " << chase << " w: " << wave << " fd: " << fallDown << std::endl;
+        int rnd = rand() % 3;
+        
+        if(chase){
+            if(rnd != 1){
+                wave = true;
+                home = true;
+            }
+            else    fallDown = true;
+            chase = false;
+        }
+        if(wave){
+            if(rnd != 0) fallDown = true;
+            else    chase = true;
+            wave = false;
+        }
+        if(fallDown){
+            if(rnd != 2) chase = true;
+            else{
+                wave = true;
+                home  = true;
+            }
+            fallDown = false;
+        }
+        
+        
+        if(home){
+            init = wavePositions.at(0);
+        }
+        clkCA.restart();
+    }
+}
+
+void IAfly::fallDownAttack(gme::Vector2 player, gme::Vector2 enemy) {
+
+}
+
+void IAfly::waveAttack(gme::Vector2 player, gme::Vector2 enemy) {
+    std::cout << "esperando para atacar" << std::endl;
+    std::cout << "wait " << wait << " home: " << home << std::endl;
+}
+
 
 
 void IAfly::onCollision(gme::Collider* c) {
     gme::Vector2 rP = getCollider()->getRelativePosition(c);
     if(c->gameObject()->hasTag("floor")){
-        //if(sprint) moveToInit();
-        grounded = true;
+        grounded =  true;
         gdir = rP;
     }
     if(c->gameObject()->hasTag("corner")){
-           cornered = ((tile*)(c->gameObject()))->side;
+        corner = true;
     }
-    
-}
-
-void IAfly::animate() {
-
 }
 
 void IAfly::onMessage(std::string m, float v) {
@@ -221,9 +313,8 @@ void IAfly::onMessage(std::string m, float v) {
     }
 }
 
-
 void IAfly::explode(int min, int max, float forcemin, float forcemax) {
-int cantidad = (rand() % (max-min)) + min;
+    int cantidad = (rand() % (max-min)) + min;
     
     gme::Vector2 pos = getTransform()->getPositionRelative();
     for(int i=0;i<cantidad;i++){
@@ -243,8 +334,10 @@ int cantidad = (rand() % (max-min)) + min;
     }
 }
 
+
+
 void IAfly::onGui() {
-    gme::Vector2 enemyPos = getTransform()->getPosition();
+ gme::Vector2 enemyPos = getTransform()->getPosition();
     gme::Vector2 enemyPosWindow = enemyPos.worldToScreen();
     if(enemyPosWindow.x < -32*3){
         gme::GUI::globalRotation = 90;
@@ -287,3 +380,7 @@ void IAfly::onGui() {
     }
     gme::GUI::globalRotation = 0;
 }
+
+
+
+

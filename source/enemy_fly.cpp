@@ -33,12 +33,15 @@ void enemy_fly::setup() {
     gme::BoxCollider *bc = new gme::BoxCollider();
     bc->addFilterTag("player");
     bc->addFilterTag("enemy");
+    if(enemy_boss) bc->addFilterTag("floor");
     bc->setSize(gme::Vector2(14*3,14*3));
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
-    stats->maxHp = 15;
-    stats->waitTime = 0.3;
+    if(!enemy_boss) stats->maxHp = 15;
+    else stats->maxHp = 40;
+    stats->waitTime = 0.8;
+   
     addComponent(stats);
     
     IAfly *ia = new IAfly(enemy_boss);
