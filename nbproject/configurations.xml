@@ -212,6 +212,8 @@
           <itemPath>source/moveClouds.hpp</itemPath>
           <itemPath>source/moveToTop.cpp</itemPath>
           <itemPath>source/moveToTop.hpp</itemPath>
+          <itemPath>source/smallExplosion.cpp</itemPath>
+          <itemPath>source/smallExplosion.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
           <itemPath>source/splash.hpp</itemPath>
           <itemPath>source/sprayParticleScript.cpp</itemPath>
@@ -617,6 +619,10 @@
       <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1024,6 +1030,10 @@
       <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>

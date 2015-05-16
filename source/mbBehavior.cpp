@@ -1,5 +1,7 @@
 
 #include "mbBehavior.hpp"
+#include "emptyGameObject.hpp"
+#include "smallExplosion.hpp"
 
 void mbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize(); 
@@ -19,6 +21,13 @@ void mbBehavior::update() {
         return;
     }
     if(myClock.currentTime().asSeconds() > 0.4 || destroy){
+        
+        //CREAR EXPLOSION
+        emptyGameObject *explosion = new emptyGameObject("smallboom");
+        explosion->addComponent(new smallExplosion());
+        explosion->getTransform()->setPosition(getTransform()->getPosition());
+        instantiate(explosion);
+        
         destroyGameObject(gameObject());
         return;
     }

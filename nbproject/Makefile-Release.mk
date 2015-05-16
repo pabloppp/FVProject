@@ -114,6 +114,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/sbBehavior.o \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/sceneSplash.o \
+	${OBJECTDIR}/source/smallExplosion.o \
 	${OBJECTDIR}/source/splash.o \
 	${OBJECTDIR}/source/sprayParticleScript.o \
 	${OBJECTDIR}/source/staticObject.o \
@@ -543,6 +544,11 @@ ${OBJECTDIR}/source/sceneSplash.o: source/sceneSplash.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sceneSplash.o source/sceneSplash.cpp
+
+${OBJECTDIR}/source/smallExplosion.o: source/smallExplosion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/smallExplosion.o source/smallExplosion.cpp
 
 ${OBJECTDIR}/source/splash.o: source/splash.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
