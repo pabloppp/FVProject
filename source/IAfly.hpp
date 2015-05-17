@@ -15,6 +15,9 @@ class IAfly : public gme::Script {
 public:
     IAfly(bool boss) : gme::Script(){
         enemy_boss= boss;
+        walkFPS = 20;
+        walkFrameCount = 0;
+        position = 0;
         if(!enemy_boss){
             damage = 5;
             speed = 6;
@@ -40,10 +43,11 @@ public:
         chase = true;
         wave = false;
         fallDown =false;
-        leftPosition = true;
-                
+        back = false;
+        crash = false;
+        invert = false;
+        caida = false;
            
-        pruebawave = false;
     };
     
     void setup();
@@ -61,12 +65,16 @@ public:
     virtual void onCollision(gme::Collider* c);
     virtual void onMessage(std::string m, float v);
     virtual void onGui();
+    void anmate();
  
 private:
     
     float damage;
     float speed;
     
+    int walkFrameCount;
+    int walkFPS;
+    int position;
     
     bool enemy_boss;
     bool right;
@@ -86,16 +94,23 @@ private:
     bool chase;
     bool wave;
     bool fallDown;
-    bool leftPosition; 
+    bool back; 
+    bool crash;
+    bool invert;
+    bool caida;
     
-    bool pruebawave;
     
     gme::Vector2 dir;
     gme::Vector2 gdir;
     gme::Vector2 init;
+    gme::Vector2 finalpos;
+    gme::Vector2 attack;
     
     gme::Clock clkW;
     gme::Clock clkCA;
+    gme::Clock clkD;
+    
+    gme::Clock animClock;
     
     std::vector<gme::Vector2> positions;
     std::vector<gme::Vector2> wavePositions;
