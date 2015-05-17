@@ -12,6 +12,7 @@
 void mainGame::setup() {
     
     //debugColliders = true;
+    
     loadOpts();
     loadProfile();
     loadPoints();
@@ -67,8 +68,10 @@ void mainGame::setup() {
     //BALAS
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
+    gme::Game::newTexture("resources/Bullets/grenade.png", "grenade");
     
     gme::Game::newTexture("resources/Effects/smallExplosion.png", "explosion_small");
+     gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");
     
     //SONIDOS
     

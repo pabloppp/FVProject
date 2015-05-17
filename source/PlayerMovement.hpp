@@ -21,6 +21,9 @@ public:
         
         animGraceTime = 0.01;
         changeWeapon = gme::Keyboard::Q;
+        
+        maxGrenades = 3;
+        grenades = maxGrenades;
     };
     void setup();
     void update();   
@@ -48,6 +51,8 @@ public:
     gme::Keyboard::Key actionKey;
     gme::BoxCollider *agachadoCollider;
     gme::Keyboard::Key changeWeapon;
+    
+    
 private:
     bool jumped,salto=false;
     float walkingSpeed;
@@ -65,6 +70,11 @@ private:
     
     gme::MusicPlayer *footsteps_sound;
     gme::MusicPlayer *jump_sound;
+    
+    bool grenadeLaunched;
+    int grenades;
+    int maxGrenades;
+    
     
 };
 

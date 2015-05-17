@@ -262,7 +262,7 @@ void MenuManager::onGui() {
       gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 200);
       
       gme::GUI::box(
-        gme::Vector2(512, 288+144+25), 
+        gme::Vector2(512, 288+110+25), 
         gme::Vector2(512-20, 50), "",
         gme::GUI::Origin::Center
       );
@@ -299,15 +299,8 @@ void MenuManager::onGui() {
         gme::GUI::TextureName("cartel_lose"),  
         gme::GUI::Origin::Center,
         gme::GUI::ScaleToFit
-      );/*
-      gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,100);
-      gme::GUI::contentColor = gme::GUI::Color(0,0,0);
-      gme::GUI::fontSize = 30;
-      gme::GUI::box(gme::Vector2((1024/2)-200, (576/2)-100),gme::Vector2(400,200));
-      gme::GUI::label(gme::Vector2(1024/2, 576/2), "HAS MUERTO", gme::GUI::Origin::Center );
-      gme::GUI::fontSize = 15;
-      gme::GUI::label(gme::Vector2(1024/2, 576/2 + 50), "Pulsa ENTER para reiniciar", gme::GUI::Origin::Center );
-      */return;
+      );
+       return;
   }  
     
     if(pausa){

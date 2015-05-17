@@ -51,8 +51,6 @@ float LifeManager::getHpPercent() {
     return (1.0f*hp/maxHp)*100;
 }
 
-
-
 void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
         if(waitClock.currentTime().asSeconds() < waitTime) return;

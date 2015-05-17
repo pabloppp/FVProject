@@ -84,6 +84,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
 	${OBJECTDIR}/source/backgroundLayer.o \
+	${OBJECTDIR}/source/bigExplosion.o \
 	${OBJECTDIR}/source/colectableGameObject.o \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
@@ -93,6 +94,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
+	${OBJECTDIR}/source/granada.o \
+	${OBJECTDIR}/source/granadaBehavior.o \
 	${OBJECTDIR}/source/limit.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
@@ -395,6 +398,11 @@ ${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
 
+${OBJECTDIR}/source/bigExplosion.o: source/bigExplosion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/bigExplosion.o source/bigExplosion.cpp
+
 ${OBJECTDIR}/source/colectableGameObject.o: source/colectableGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -439,6 +447,16 @@ ${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/generaPosicion.o source/generaPosicion.cpp
+
+${OBJECTDIR}/source/granada.o: source/granada.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/granada.o source/granada.cpp
+
+${OBJECTDIR}/source/granadaBehavior.o: source/granadaBehavior.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/granadaBehavior.o source/granadaBehavior.cpp
 
 ${OBJECTDIR}/source/limit.o: source/limit.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

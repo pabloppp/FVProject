@@ -97,6 +97,8 @@
           <logicalFolder name="f1" displayName="Ataque" projectFiles="true">
             <itemPath>source/escopetaBullet.cpp</itemPath>
             <itemPath>source/escopetaBullet.hpp</itemPath>
+            <itemPath>source/granada.cpp</itemPath>
+            <itemPath>source/granada.hpp</itemPath>
             <itemPath>source/llamasBullet.cpp</itemPath>
             <itemPath>source/llamasBullet.hpp</itemPath>
             <itemPath>source/metralletaBullet.cpp</itemPath>
@@ -177,6 +179,12 @@
               <itemPath>source/pistolaBehavior.cpp</itemPath>
               <itemPath>source/pistolaBehavior.hpp</itemPath>
             </logicalFolder>
+            <itemPath>source/bigExplosion.cpp</itemPath>
+            <itemPath>source/bigExplosion.hpp</itemPath>
+            <itemPath>source/granadaBehavior.cpp</itemPath>
+            <itemPath>source/granadaBehavior.hpp</itemPath>
+            <itemPath>source/smallExplosion.cpp</itemPath>
+            <itemPath>source/smallExplosion.hpp</itemPath>
           </logicalFolder>
           <itemPath>source/BackgroundParallax.cpp</itemPath>
           <itemPath>source/BackgroundParallax.hpp</itemPath>
@@ -212,8 +220,6 @@
           <itemPath>source/moveClouds.hpp</itemPath>
           <itemPath>source/moveToTop.cpp</itemPath>
           <itemPath>source/moveToTop.hpp</itemPath>
-          <itemPath>source/smallExplosion.cpp</itemPath>
-          <itemPath>source/smallExplosion.hpp</itemPath>
           <itemPath>source/splash.cpp</itemPath>
           <itemPath>source/splash.hpp</itemPath>
           <itemPath>source/sprayParticleScript.cpp</itemPath>
@@ -500,6 +506,10 @@
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/bigExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/bigExplosion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
@@ -535,6 +545,14 @@
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granada.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -911,6 +929,10 @@
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/bigExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/bigExplosion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
@@ -946,6 +968,14 @@
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granada.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>

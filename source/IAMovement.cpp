@@ -316,6 +316,11 @@ void IAMovement::onMessage(std::string m, float v) {
 }
 
 void IAMovement::explode(int min, int max, float forcemin, float forcemax) {
+    if(mainGame::particles == 0) return;
+    else if(mainGame::particles == 1){
+        max /= 4.0;
+        min /= 4.0;
+    } 
     int cantidad = (rand() % (max-min)) + min;
     
     gme::Vector2 pos = getTransform()->getPositionRelative();

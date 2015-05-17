@@ -7,6 +7,7 @@
 #include "lnzllamasBehavior.hpp"
 #include "LifeManager.hpp"
 #include "defaultParticle.hpp"
+#include "mainGame.hpp"
 
 void ColectableScript::setup() {
     grounded = false;
@@ -103,6 +104,13 @@ void ColectableScript::onMessage(std::string m, float v) {
 }
 
 void ColectableScript::explode(int min, int max, float forcemin, float forcemax) {
+    
+    if(mainGame::particles == 0) return;
+    else if(mainGame::particles == 1){
+        max /= 4.0;
+        min /= 4.0;
+    } 
+    
     int cantidad = (rand() % (max-min)) + min;
     
     gme::Vector2 pos = getTransform()->getPosition();

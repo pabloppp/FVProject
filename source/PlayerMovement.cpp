@@ -1,6 +1,7 @@
 #include "PlayerMovement.hpp"
 #include "LifeManager.hpp"
 #include "tile.hpp"
+#include "granada.hpp"
 
 void PlayerMovement::setup() {
     
@@ -28,6 +29,7 @@ void PlayerMovement::setup() {
         //flipped = false;
     }
     flipped = false;
+    grenades = maxGrenades;
 }
 
 void PlayerMovement::onMessage(std::string m, float v) {
@@ -65,6 +67,21 @@ void PlayerMovement::update() {
     
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
+    
+    if(grenades > 0 && !grenadeLaunched && gme::Keyboard::isKeyPressed(actionKey)){
+        
+        granada *gr = new granada("granada");
+        gme::Vector2 pos = getTransform()->getPosition();
+        pos.y -= 8*3;
+        gr->getTransform()->setPosition(pos);
+        if(flipped) gr->direction = 1;
+        instantiate(gr);
+        grenades -= 1;
+        grenadeLaunched = true;
+    }
+    else if(grenadeLaunched && !gme::Keyboard::isKeyPressed(actionKey)){
+        grenadeLaunched = false;
+    }
     
     if(!down && grounded && gme::Keyboard::isKeyPressed(downKey)){
         ((gme::BoxCollider*)getCollider())->setSize(10*3, 13*3);
@@ -245,8 +262,6 @@ void PlayerMovement::onGui() {
     }
     
     LifeManager *stats = (LifeManager*)(gameObject()->getComponent<LifeManager*>());
-    //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50)
-    //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
     gme::GUI::fontSize = 12;
     gme::GUI::contentColor = gme::GUI::Color(255,255,255,70);
     gme::Vector2 pos = getTransform()->getPosition().worldToScreen();
@@ -254,7 +269,6 @@ void PlayerMovement::onGui() {
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
-        
         gme::GUI::drawTexture(
             gme::Vector2(10+disp, 5),
             gme::Vector2(8*3, 8*3),
@@ -262,8 +276,6 @@ void PlayerMovement::onGui() {
             gme::GUI::Origin::TopLeft,
             gme::GUI::ScaleToFit
         );
-        
-        
         
         gme::GUI::fontSize = 20;
         gme::GUI::label(gme::Vector2(50+disp, 12), "x "+std::to_string(stats->getLives()), gme::GUI::Origin::TopLeft);

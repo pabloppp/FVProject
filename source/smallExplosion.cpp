@@ -17,7 +17,7 @@ void smallExplosion::setup() {
 void smallExplosion::update() {
     if(reloj.currentTime().asSeconds() > 0.02){
         framecount++;
-        if(framecount < 4) getRenderer()->setFrame(gme::Vector2(framecount));
+        if(framecount < 4) getRenderer()->setFrame(gme::Vector2(framecount, 0));
         else destroyGameObject(gameObject());
         reloj.restart();
     }
