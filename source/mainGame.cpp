@@ -59,34 +59,55 @@ void mainGame::setup() {
     //SONIDOS
     
     gme::Game::newMusic("resources/Sounds/chores_rules.wav", "sound");
-    gme::Game::newMusic("resources/Sounds/boton.wav", "boton");
+    gme::Game::newSound("resources/Sounds/boton.wav", "boton");
    // gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
-    gme::Game::newMusic("resources/Sounds/deslizamiento.wav", "desplazamiento");
+    gme::Game::newSound("resources/Sounds/deslizamiento.wav", "desplazamiento");
+    
+    
+        //JUEGO
+    gme::Game::newSound("resources/Sounds/introCancion.wav","introCancion");
+    gme::Game::newSound("resources/Sounds/cancion.wav","cancion");
     
         //ARMAS
-    gme::Game::newMusic("resources/Sounds/shot.wav", "gunShot");
+    gme::Game::newSound("resources/Sounds/shot.wav", "gunShot");
     
-    gme::Game::newMusic("resources/Sounds/metralleta.wav", "metralletaShot");
-    gme::Game::newMusic("resources/Sounds/metralletaReload.wav","metralletaReload");
+    gme::Game::newSound("resources/Sounds/metralleta.wav", "metralletaShot");
+    gme::Game::newSound("resources/Sounds/metralletaReload.wav","metralletaReload");
     
-    gme::Game::newMusic("resources/Sounds/lanzallamas.wav", "lanzallamasShot");
-    gme::Game::newMusic("resources/Sounds/lanzallamasReload.wav","lanzallamasReload");
+    gme::Game::newSound("resources/Sounds/lanzallamas.wav", "lanzallamasShot");
+    gme::Game::newSound("resources/Sounds/lanzallamasReload.wav","lanzallamasReload");
     
-    gme::Game::newMusic("resources/Sounds/escopeta.wav", "escopetaShot");
-    gme::Game::newMusic("resources/Sounds/escopetaReload.wav", "escopetaReload");
+    gme::Game::newSound("resources/Sounds/escopeta.wav", "escopetaShot");
+    gme::Game::newSound("resources/Sounds/escopetaReload.wav", "escopetaReload");
+    
+        //NOMBRES COLAIDERS
+    
+    gme::Game::newSound("resources/Sounds/EscopetaFrase.wav", "escopetaFrase");
+    gme::Game::newSound("resources/Sounds/MetralletaFrase.wav", "metralletaFrase");
+    gme::Game::newSound("resources/Sounds/LanzallamasFrase.wav", "lanzallamasFrase");
+    gme::Game::newSound("resources/Sounds/PistolaFrase.wav", "pistolaFrase");
+    gme::Game::newSound("resources/Sounds/NuevaVidaFrase.wav", "nuevaVidaFrase");
+    gme::Game::newSound("resources/Sounds/HPFrase.wav", "HPFrase");
     
         //COLAIDERS
     
-    gme::Game::newMusic("resources/Sounds/cajaRota.wav","cajaRota");
+    gme::Game::newSound("resources/Sounds/cajarota.wav","cajaRota");
     
+        //BLOQUES   
+    gme::Game::newSound("resources/Sounds/bloque.wav", "bloque");
+    //gme::Game::newSound("resources/Sounds/bloque.wav","b");
     
         //AMBIENTE
-    gme::Game::newMusic("resources/Sounds/Jungle.wav", "jungle");
+    gme::Game::newMusic("resources/Sounds/Jungle1.wav", "jungle");
     
     
         //PERSONAJE
-    gme::Game::newMusic("resources/Sounds/footsteps.wav","footsteps");
-    gme::Game::newMusic("resources/Sounds/salto.wav","jump");
+    gme::Game::newSound("resources/Sounds/footsteps.wav","footsteps");
+    gme::Game::newSound("resources/Sounds/salto.wav","jump");
+    gme::Game::newSound("resources/Sounds/danyo1.wav","danyo1");
+    
+        //ENEMIGOS
+    gme::Game::newSound("resources/Sounds/danyo2.wav","danyo2");
     
     jungleFondo_sound = new gme::MusicPlayer();
     jungleFondo_sound->setMusic("jungle");

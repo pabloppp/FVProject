@@ -33,7 +33,7 @@ public:
 
 private:
     gme::GameObject *player, *player2;
-    gme::Clock clk,clkJ,clkPJ;
+    gme::Clock clk,clkJ,clkPJ,clksound;
     gme::Vector2 dir = gme::Vector2(1,0);
     bool right,left, jumping;
     float timepas;
@@ -45,6 +45,7 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    gme::SoundPlayer *danyoEnemigo_sound;
     
     GlobalStateManager *stateManager;
     

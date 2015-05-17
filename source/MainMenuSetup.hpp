@@ -26,7 +26,7 @@ private:
     bool izq, dre, juegoNuevo1p, juegoNuevo2p, entered;    
     gme::Clock reloj_fondo;
     gme::Clock apretar;
-    gme::MusicPlayer *button_sound;
+    gme::SoundPlayer *button_sound;
    // gme::MusicPlayer *music_jungle;
 };
 

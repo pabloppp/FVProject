@@ -7,6 +7,7 @@
 #include "lnzllamasBehavior.hpp"
 #include "LifeManager.hpp"
 #include "defaultParticle.hpp"
+#include "mainGame.hpp"
 
 void ColectableScript::setup() {
     grounded = false;
@@ -18,6 +19,31 @@ void ColectableScript::setup() {
     walkFrameCountL  = 0;
     walkFPS = 5;
     ((gme::BoxCollider*)getCollider())->setSize(12*3, 12*3);
+    
+    pistolaFrase_sound = new gme::SoundPlayer();
+    pistolaFrase_sound->setSound("pistolaFrase");
+    
+    metralletaFrase_sound = new gme::SoundPlayer();
+    metralletaFrase_sound->setSound("metralletaFrase");
+    
+    lanzallamasFrase_sound = new gme::SoundPlayer();
+    lanzallamasFrase_sound->setSound("lanzallamasFrase");
+    
+    escopetaFrase_sound = new gme::SoundPlayer();
+    escopetaFrase_sound->setSound("escopetaFrase");
+    
+    nuevaVidaFrase_sound = new gme::SoundPlayer();
+    nuevaVidaFrase_sound->setSound("nuevaVidaFrase");
+    
+    HPFrase_sound = new gme::SoundPlayer();
+    HPFrase_sound->setSound("HPFrase");
+    
+    cajaRota_sound = new gme::SoundPlayer();
+    cajaRota_sound->setSound("cajaRota");
+    
+    
+    
+    
     
     
 }
@@ -41,14 +67,19 @@ void ColectableScript::onCollision(gme::Collider* c) {
     if(c->gameObject()->hasTag("floor")){
         if(relativePosition.y == -1)   grounded = true;
     }    
-    if(c->gameObject()->hasTag("player")){ 
+    if(c->gameObject()->hasTag("player")){
+        
+        
+        
         std::cout << "objectType = " << objectType << std::endl;
         if(objectType <=1){
             if(objectType == 0){ 
                 c->gameObject()->sendMessage("oneup",1);
+                if(mainGame::sound) nuevaVidaFrase_sound->play();
             }
             if(objectType == 1){ 
                 c->gameObject()->sendMessage("heal",10);
+                if(mainGame::sound)  HPFrase_sound->play();
             }
         }
         else{
@@ -59,24 +90,28 @@ void ColectableScript::onCollision(gme::Collider* c) {
             gme::Component *lb = children.at(0)->getComponent<lnzllamasBehavior*>();
             
             if(objectType == 2 && !pb->isActive()){
+                if(mainGame::sound) pistolaFrase_sound->play();
                 pb->setActive(true);
                 mb->setActive(false);
                 eb->setActive(false);
                 lb->setActive(false);
             }
             if(objectType == 3 && !mb->isActive()){
+                if(mainGame::sound) metralletaFrase_sound->play();
                 pb->setActive(false);
                 mb->setActive(true);
                 eb->setActive(false);
                 lb->setActive(false);
             }
             if(objectType == 4 && !eb->isActive()){
+                if(mainGame::sound)  escopetaFrase_sound->play();
                 pb->setActive(false);
                 mb->setActive(false);
                 eb->setActive(true);
                 lb->setActive(false);
             }
             if(objectType == 5 && !lb->isActive()){
+                if(mainGame::sound)  lanzallamasFrase_sound->play();
                 pb->setActive(false);
                 mb->setActive(false);
                 eb->setActive(false);
@@ -91,6 +126,9 @@ void ColectableScript::onCollision(gme::Collider* c) {
 void ColectableScript::onMessage(std::string m, float v) {
     
     if(m.compare("damage") == 0 && isHit == false){
+        //CUANDO RECIBE UN GOLPE EL COLIDER
+        
+        
         
         isHit = true;
         hp--;
@@ -104,7 +142,11 @@ void ColectableScript::onMessage(std::string m, float v) {
     isHit = false;
 }
 
-void ColectableScript::explode(int min, int max, float forcemin, float forcemax) {
+void ColectableScript::explode(int min, int max, float forcemin, float forcemax) { //CUANDO SE DESTRUYE
+    
+    
+    if(mainGame::sound) cajaRota_sound->play();
+    
     int cantidad = (rand() % (max-min)) + min;
     
     gme::Vector2 pos = getTransform()->getPosition();
@@ -122,6 +164,7 @@ void ColectableScript::explode(int min, int max, float forcemin, float forcemax)
         
         if(rand() % 10 == 1){
             particle->getRenderer()->setColor(33,51,32);
+            
         }
         else{
             particle->getRenderer()->setColor(103,64,40);

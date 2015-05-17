@@ -27,7 +27,7 @@ private:
     gme::Clock clock;
     GlobalStateManager *manager;
     
-    gme::MusicPlayer *gunShot_sound;
+    gme::SoundPlayer *gunShot_sound;
     
 };
 

@@ -32,6 +32,7 @@ public:
 private:
     int hp;
     int lives;
+    
 };
 
 #endif	/* LIFEMANAGER_HPP */

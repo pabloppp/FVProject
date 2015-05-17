@@ -1,6 +1,7 @@
 #include "lnzllamasBehavior.hpp"
 #include "llamasBullet.hpp"
 #include "PlayerMovement.hpp"
+#include "mainGame.hpp"
 
 void lnzllamasBehavior::setup() {
     
@@ -11,11 +12,11 @@ void lnzllamasBehavior::setup() {
     recargando = false;
     numBullets = 100;
     
-    lanzallamasShot_sound = new gme::MusicPlayer();
-    lanzallamasShot_sound->setMusic("lanzallamasShot");
+    lanzallamasShot_sound = new gme::SoundPlayer();
+    lanzallamasShot_sound->setSound("lanzallamasShot");
     
-    lanzallamasReload_sound = new gme::MusicPlayer();
-    lanzallamasReload_sound->setMusic("lanzallamasReload");
+    lanzallamasReload_sound = new gme::SoundPlayer();
+    lanzallamasReload_sound->setSound("lanzallamasReload");
     
     direction = 1;
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
@@ -52,7 +53,7 @@ void lnzllamasBehavior::update() {
     if(recargando){
         
         if(tlkClock.currentTime().asSeconds() > 4){
-            lanzallamasReload_sound->play();
+            if(mainGame::sound) lanzallamasReload_sound->play();
             tlkClock.restart();
         }
         //std::cout << "BULLETS" << numBullets << std::endl;
@@ -91,7 +92,7 @@ void lnzllamasBehavior::update() {
         if(tlkClock.currentTime().asSeconds() > 15 || pauseArma ){
               
             pauseArma=false;
-             lanzallamasShot_sound->play();
+             if(mainGame::sound) lanzallamasShot_sound->play();
              tlkClock.restart();
         }
         if(numBullets==0){

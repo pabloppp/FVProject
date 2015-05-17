@@ -56,6 +56,9 @@ void IAMovement::setup() {
         }
     }
     
+   danyoEnemigo_sound = new gme::SoundPlayer();
+   danyoEnemigo_sound->setSound("danyo2");
+   danyoEnemigo_sound->setVolume(30.0);
 }
 
 void IAMovement::update() { 
@@ -314,6 +317,11 @@ void IAMovement::onMessage(std::string m, float v) {
     }
     
     if(m.compare("damage")==0 && !dead){
+        
+        if(clksound.currentTime().asSeconds() > 0.9){
+            if(mainGame::sound)danyoEnemigo_sound->play();
+            clksound.restart();
+        }
         explode(3,10, 50, 150);
     }
 }
