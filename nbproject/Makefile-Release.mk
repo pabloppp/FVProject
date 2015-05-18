@@ -92,6 +92,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/enemyBullet.o \
 	${OBJECTDIR}/source/enemy_Final.o \
 	${OBJECTDIR}/source/enemy_boss.o \
 	${OBJECTDIR}/source/enemy_explosive.o \
@@ -451,6 +452,11 @@ ${OBJECTDIR}/source/enemy.o: source/enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/enemyBullet.o: source/enemyBullet.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemyBullet.o source/enemyBullet.cpp
 
 ${OBJECTDIR}/source/enemy_Final.o: source/enemy_Final.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
