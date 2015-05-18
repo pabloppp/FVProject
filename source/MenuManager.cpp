@@ -19,6 +19,10 @@ void MenuManager::setup(){
     musicMain->setMusic("cancion");
     musicMain->loop(true);
     
+    
+    ready_player->setVolume(100.0);
+    intro->setVolume(30.0);
+    musicMain->setVolume(30.0);
     button_sound->setVolume(30.0);
     change_sound->setVolume(20.0);
     
@@ -62,6 +66,7 @@ void MenuManager::setup(){
     
     ohyeah_sound = new gme::SoundPlayer();
     ohyeah_sound->setSound("ohyeah");
+    ohyeah_sound->setVolume(200.0);
 }
 
 void MenuManager::update(){
