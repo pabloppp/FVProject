@@ -133,8 +133,8 @@ void generaPosicion::onGui() {
 }
 
 generaPosicion::generaPosicion(int x, int y,float ratio) : gme::Script(){
-    v = gme::Vector2(1584, 576);
-    colMinX = 0;
+    v = gme::Vector2(1584-16*3*2, 576);
+    colMinX = 16*3;
     posiciones.push_back(gme::Vector2(x, y));
     rat = ratio; 
     colectionable = false;

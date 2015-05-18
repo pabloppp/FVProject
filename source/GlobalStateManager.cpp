@@ -20,6 +20,8 @@
 #include "oleada9.hpp"
 #include "oleada10.hpp"
 #include "MenuManager.hpp"
+#include "enemy_Final.hpp"
+#include "enemy_boss.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -240,6 +242,17 @@ void GlobalStateManager::isGameOver() {
                 ((gme::GameObject*)(players.at(i)))->getComponent<moveToTop*>()->setup();
                 players.at(i)->sendMessage("reset",0);
                 ((gme::GameObject*)(players.at(i)->getChildren()[0]))->getComponent<moveToTop*>()->setup();
+                
+                if(mainGame::getCurrentScene()->getName().compare("oleada10")==0){
+                    enemy_Final *finalEnemy = new enemy_Final("boss");
+                    finalEnemy->getTransform()->setPosition(gme::Vector2(1024-200, 576-(16*9) ));
+                    instantiate(finalEnemy);
+                }
+                if(mainGame::getCurrentScene()->getName().compare("oleada3")==0){
+                    enemy_boss *boss = new enemy_boss("boss");
+                    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
+                    instantiate(boss);
+                }
                 
             }
 

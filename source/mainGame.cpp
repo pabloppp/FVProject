@@ -81,6 +81,9 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     gme::Game::newTexture("resources/Bullets/grenade.png", "grenade");
     
+    gme::Game::newTexture("resources/Bullets/enemy_bullet.png", "enemy_bullet");
+    
+    
     gme::Game::newTexture("resources/Effects/smallExplosion.png", "explosion_small");
     gme::Game::newTexture("resources/Effects/Noisy Cricket Ball.png", "explosion_teleport");
     gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");

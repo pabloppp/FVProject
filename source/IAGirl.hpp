@@ -13,12 +13,18 @@ public:
         damage = 0;
         disparos = 0;
         cargando = false;
+        maxLife = 500;
+        life = maxLife;
+        
     };
     void setup();
     void update();
     void animate();
     virtual void onMessage(std::string m, float v);
     virtual void onCollision(gme::Collider* c);
+
+    virtual void onGui();
+
     virtual ~IAGirl();
 private:
     GlobalStateManager *manager;
@@ -28,11 +34,14 @@ private:
     gme::Clock shootClock;
     gme::Vector2 objectivePosition;
     void getPlayer();
-    void shoot();
+    void shoot(int dir);
+    void explode(int min, int max, float forcemin, float forcemax);
     void teleport();
     gme::GameObject *player;
     bool flipped, disparando, cargando;
     int damage, disparos;
+    int life;
+    int maxLife;
     //0:random,  1: intenta golpear, 2: intenta disparar, 3: teletransporta
 };
 
