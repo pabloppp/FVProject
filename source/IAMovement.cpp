@@ -101,6 +101,7 @@ void IAMovement::update() {
                 && gme::Vector2::distance(playerpos, enemypos) < 200 ){
             dist *= 2;
             walkFPS *= 2;
+            sendMessage("detected", 0);
         }
         
         vectorDirector(playerpos, enemypos);

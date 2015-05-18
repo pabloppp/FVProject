@@ -21,10 +21,15 @@ void bigExplosion::update() {
 }
 
 void bigExplosion::onCollision(gme::Collider* c) {
-    if(framecount < 2){
+    if(framecount < 2){       
+        if(c->gameObject()->hasTag("player")){
+            std::cout << "hitting "+c->gameObject()->getName() << std::endl;
+        }
+        //
+        //else std::cout << "hitting nothing " << std::endl;
+        
         if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam", whoami);
-        c->gameObject()->sendMessage("damage", 99);
-        std::cout << "hitting "+c->gameObject()->getName() << std::endl;
+        c->gameObject()->sendMessage("damage", 25);
     }
 }
 

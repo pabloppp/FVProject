@@ -13,8 +13,16 @@ void IAexplosive::setup() {
 
 void IAexplosive::update() {
     if(gonnaExplode){
-        float glow = 255*(countdownClock.currentTime().asSeconds()/2.0);
+        float glow = 255*(countdownClock.currentTime().asSeconds()/1.0);
         getRenderer()->setColor(255,255-glow,255-glow);
+        
+        if(countdownClock.currentTime().asSeconds() > 0.75){
+            float growy = 1*((countdownClock.currentTime().asSeconds()-0.75)/0.25)+3;
+            float growx = growy;
+            if(getTransform()->getScale().x < 0) growx = -growx;
+
+            getTransform()->setScale(gme::Vector2(growx, growy));
+        }
     }
     if(gonnaExplode && countdownClock.currentTime().asSeconds() > 1){
         if(!exploded) explode();
@@ -31,6 +39,10 @@ void IAexplosive::onMessage(std::string m, float v) {
     }
     if(m.compare("iam")==0){
         iam = v;
+    }
+    if(m.compare("detected")==0 && !gonnaExplode){
+        gonnaExplode = true;
+        countdownClock.restart();
     }
 }
 
