@@ -12,7 +12,8 @@ public:
         downKey = gme::Keyboard::Down;
         introKey = gme::Keyboard::Return;
         bacKey = gme::Keyboard::BackSpace;
-        resumeKey = gme::Keyboard::R;
+        resumeKey = gme::Keyboard::R;        
+        musicMain = new gme::MusicPlayer(); 
     };
     virtual ~MenuManager();
     void setup();
@@ -29,7 +30,7 @@ public:
     gme::Keyboard::Key resumeKey;
 private:
     gme::Window *w;
-    gme::MusicPlayer *music;
+    gme::SoundPlayer *intro;
     gme::SoundPlayer *button_sound;
     gme::SoundPlayer *change_sound;
     bool sonando, izq, dre, apretado, music_pausa;
@@ -46,7 +47,10 @@ private:
     gme::Clock notificationClock;
     bool showNotification;
     std::string notificationTitle, notificationText;
+    
     gme::SoundPlayer *ready_player;
+    gme::MusicPlayer *musicMain;
+   
 
 };
 

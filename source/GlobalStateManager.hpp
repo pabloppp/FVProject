@@ -47,7 +47,8 @@ private:
     bool gameOver;
     bool player2_exists;
     bool levelSuccess;
-    bool startready;
+    bool startready;   
+    gme::SoundPlayer *ready_player;
     gme::Clock apretar;
     
 };

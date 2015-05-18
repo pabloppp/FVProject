@@ -8,6 +8,11 @@
 #include "oleada3.hpp"
 #include "oleada4.hpp"
 #include "oleada5.hpp"
+#include "oleada6.hpp"
+#include "oleada7.hpp"
+#include "oleada8.hpp"
+#include "oleada9.hpp"
+#include "oleada10.hpp"
 
 #include <fstream>
 
@@ -87,7 +92,7 @@ void mainGame::setup() {
     
         //JUEGO
     gme::Game::newSound("resources/Sounds/introCancion.wav","introCancion");
-    gme::Game::newSound("resources/Sounds/cancion.wav","cancion");
+    gme::Game::newMusic("resources/Sounds/cancion.wav","cancion");
     gme::Game::newSound("resources/Sounds/Ready2.wav","ready_sound");
         //ARMAS
     gme::Game::newSound("resources/Sounds/shot.wav", "gunShot");
@@ -151,6 +156,11 @@ void mainGame::setup() {
     gme::Scene *scene_oleada3 = new oleada3("oleada3"); 
     gme::Scene *scene_oleada4 = new oleada4("oleada4");   
     gme::Scene *scene_oleada5 = new oleada5("oleada5"); 
+    gme::Scene *scene_oleada6 = new oleada6("oleada6"); 
+    gme::Scene *scene_oleada7 = new oleada7("oleada7");   
+    gme::Scene *scene_oleada8 = new oleada8("oleada8");
+    gme::Scene *scene_oleada9 = new oleada9("oleada9");   
+    gme::Scene *scene_oleada10 = new oleada10("oleada10");
     
     gme::Game::setCurrentScene("mainmenu");
 }

@@ -1,4 +1,3 @@
-
 #include "GlobalStateManager.hpp"
 #include "tilerJsonLoadScene.hpp"
 #include "transitionScene.hpp"
@@ -20,6 +19,7 @@
 #include "oleada8.hpp"
 #include "oleada9.hpp"
 #include "oleada10.hpp"
+#include "MenuManager.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -30,10 +30,12 @@ void GlobalStateManager::pause(){
 void GlobalStateManager::resume(){
     if(!canpause) return; 
     std::cout << "Volviendo al juego desde el State Manager" << std::endl;
-    paused = false;
+    paused = false;   
 }
 
-void GlobalStateManager::setup(){
+void GlobalStateManager::setup(){    
+    ready_player= new gme::SoundPlayer();
+    ready_player->setSound("ready_sound");   
     if(mainGame::coop) spawnP2();
     pause();
 }
@@ -47,8 +49,7 @@ void GlobalStateManager::update(){
     // El jugador pausa el juego
     if(paused && !startready){
         sendMessage("readygo", 0); 
-        startready = true;
-        
+        startready = true;        
     }
     if(!paused && (gme::Keyboard::isKeyPressed(pauseKey) || (gme::Keyboard::isKeyPressed(escKey))) 
             && apretar.currentTime().asSeconds()>0.2){
@@ -249,6 +250,8 @@ void GlobalStateManager::isGameOver() {
         }
     }
 }
+
+
 
 
 void GlobalStateManager::onMessage(std::string m, float v) {
