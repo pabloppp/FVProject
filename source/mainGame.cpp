@@ -88,7 +88,7 @@ void mainGame::setup() {
         //JUEGO
     gme::Game::newSound("resources/Sounds/introCancion.wav","introCancion");
     gme::Game::newSound("resources/Sounds/cancion.wav","cancion");
-    
+    gme::Game::newSound("resources/Sounds/Ready2.wav","ready_sound");
         //ARMAS
     gme::Game::newSound("resources/Sounds/shot.wav", "gunShot");
     

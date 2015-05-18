@@ -1,6 +1,7 @@
 #include "MenuManager.hpp"
 #include "sceneMenu.hpp"
 #include "mainGame.hpp"
+#include "GameManager.hpp"
 
 void MenuManager::setup(){
     w = gme::Game::getWindow();
@@ -8,10 +9,12 @@ void MenuManager::setup(){
     music = new gme::MusicPlayer();
     button_sound = new gme::SoundPlayer();
     change_sound= new gme::SoundPlayer();
+    ready_player= new gme::SoundPlayer();
     
     music->setMusic("sound");
     button_sound->setSound("boton");
     change_sound->setSound("desplazamiento");
+    ready_player->setSound("ready_sound");
     
     button_sound->setVolume(30.0);
     change_sound->setVolume(20.0);
@@ -166,6 +169,7 @@ void MenuManager::onMessage(std::string m, float v) {
     }
     else if(m.compare("readygo") == 0){
         readygo = true;
+        ready_player->play();
     }
     else if(m.compare("gameover") == 0){ 
         showGameOver = true;
@@ -210,7 +214,7 @@ void MenuManager::openPause(){
 }
 
 void MenuManager::readyGo() {
-    if(readyClock.currentTime().asSeconds() > 5){        
+    if( readyClock.currentTime().asSeconds() > 5 && readygo){        
         readygo = false; 
         sendMessage("resume",0);
     } 
@@ -219,7 +223,7 @@ void MenuManager::readyGo() {
 
 void MenuManager::onGui() {
   float seconds = 10;  
-  if(readygo){
+  if(readygo){      
       if(readyClock.currentTime().asSeconds() < 3){
         gme::GUI::drawTexture(
           gme::Vector2(512,288), 
@@ -280,6 +284,12 @@ void MenuManager::onGui() {
       gme::GUI::fontSize = 45;
       std::string secondsString = std::to_string(seconds);
       if(secondsString.size() == 1) secondsString = "0"+secondsString;
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 100);      
+      gme::GUI::box(
+        gme::Vector2(512, 30), 
+        gme::Vector2(230, 50), "",
+        gme::GUI::Origin::Center
+      );
       gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+secondsString, gme::GUI::Origin::Center);
   }  
   if(showLevelSuccess){

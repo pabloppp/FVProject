@@ -46,6 +46,7 @@ private:
     gme::Clock notificationClock;
     bool showNotification;
     std::string notificationTitle, notificationText;
+    gme::SoundPlayer *ready_player;
 
 };
 

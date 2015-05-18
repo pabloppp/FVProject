@@ -48,6 +48,7 @@ void GlobalStateManager::update(){
     if(paused && !startready){
         sendMessage("readygo", 0); 
         startready = true;
+        
     }
     if(!paused && (gme::Keyboard::isKeyPressed(pauseKey) || (gme::Keyboard::isKeyPressed(escKey))) 
             && apretar.currentTime().asSeconds()>0.2){
