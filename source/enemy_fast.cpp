@@ -32,7 +32,7 @@ void enemy_fast::setup(){
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
-    stats->maxHp = 10;
+    stats->maxHp = 8;
     stats->waitTime = 0.2;
     addComponent(stats);
     

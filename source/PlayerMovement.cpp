@@ -11,9 +11,6 @@ void PlayerMovement::setup() {
     
     jump_sound = new gme::SoundPlayer();
     jump_sound->setSound("jump");
-    
-    
-    
     dead = false;
     points = 0;
     for(int i=0;i<gameObject()->getChildren().size();i++){
@@ -48,8 +45,7 @@ void PlayerMovement::onMessage(std::string m, float v) {
 }
 
 
-void PlayerMovement::update() {
-    
+void PlayerMovement::update() {    
     if(gme::Keyboard::isKeyPressed(gme::Keyboard::H)) std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
     if(manager->isPaused()){
@@ -60,12 +56,15 @@ void PlayerMovement::update() {
     }
     else getRigidBody()->setActive(true);
     
+    float posPlayerY = getTransform()->getPosition().y;
+    if(posPlayerY > 1200){
+        sendMessage("damage", 151);
+    }
     if(dead){
         footsteps_sound->stop();
         jump_sound->stop();
         return;
-    }
-    
+    }    
         
     float deltaTime = gme::Game::deltaTime.asSeconds();
     
@@ -75,8 +74,7 @@ void PlayerMovement::update() {
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
     
-    if(grenades > 0 && !grenadeLaunched && gme::Keyboard::isKeyPressed(actionKey)){
-        
+    if(grenades > 0 && !grenadeLaunched && gme::Keyboard::isKeyPressed(actionKey)){        
         granada *gr = new granada("granada");
         gme::Vector2 pos = getTransform()->getPosition();
         if(gameObject()->getName().compare("p2") == 0) gr->whoshoots = 2;
@@ -192,17 +190,6 @@ void PlayerMovement::onCollision(gme::Collider* c) {
         }
         
     }
-    
-    //HARDCODED FOR ENEMY COLLISION
-    /*else if(c->gameObject()->hasTag("enemy")){
-        sendMessage("damage", 5);
-        if(c->gameObject()->getTransform()->getPosition().x > getTransform()->getPosition().x){
-            getRigidBody()->push(gme::Vector2(-1, 0), 10000);
-        }
-        else{
-            getRigidBody()->push(gme::Vector2(1, 0), 10000);
-        }
-    }*/
 }
 
 void PlayerMovement::animate() {

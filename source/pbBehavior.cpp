@@ -50,7 +50,7 @@ void pbBehavior::onCollision(gme::Collider* c) {
         
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
-            c->gameObject()->sendMessageUpward("damage", 4);
+            c->gameObject()->sendMessageUpward("damage", 3);
             
             destroy = true;
         }   

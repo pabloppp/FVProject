@@ -12,6 +12,7 @@ public:
     virtual ~lnzllamasBehavior();
     void setup();
     void update();
+    virtual void onGui(); 
     virtual void shoot(int d);
     gme::Keyboard::Key ShotKey;
     gme::Keyboard::Key keyUp;

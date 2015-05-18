@@ -41,8 +41,8 @@ void enemy_fly::setup() {
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
-    if(!enemy_boss) stats->maxHp = 15;
-    else stats->maxHp = 40;
+    if(!enemy_boss) stats->maxHp = 35;
+    else stats->maxHp = 80;
     stats->waitTime = 0.8;
    
     std::cout << stats->maxHp << std::endl;

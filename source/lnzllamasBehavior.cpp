@@ -50,24 +50,22 @@ void lnzllamasBehavior::update() {
         recargando = true;
         return;
     }
-    if(recargando){
-        
+    if(recargando){        
         if(tlkClock.currentTime().asSeconds() > 4){
             if(mainGame::sound) lanzallamasReload_sound->play();
             tlkClock.restart();
         }
-        //std::cout << "BULLETS" << numBullets << std::endl;
         if(clock.currentTime().asSeconds() > 0.2){
             clock.restart();
-            numBullets = numBullets + 4;
+            numBullets = numBullets + 5;
         } 
         if(numBullets >= 50) recargando = false;
         return;
     }
     else if(numBullets < 100 && !recargando){
-        if(clock.currentTime().asSeconds() > 0.2){
+        if(clock.currentTime().asSeconds() > 0.5){
             clock.restart();
-            numBullets = numBullets + 4;
+            numBullets = numBullets + 5;
         } 
     }
      //std::cout << "BULLETS" << numBullets << std::endl;
@@ -110,6 +108,25 @@ void lnzllamasBehavior::update() {
     }
     
 }
+
+void lnzllamasBehavior::onGui() {
+    gme::GUI::fontSize = 16;
+    gme::GUI::label(gme::Vector2(10,58), "WP", gme::GUI::Origin::TopLeft);
+
+    gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
+    gme::GUI::outlineThickness = 3;
+    gme::GUI::outlineColor = gme::GUI::white;
+
+    gme::GUI::box(gme::Vector2(40,55), gme::Vector2(117, 3*6));
+    //1.0f*numBullets/maxHp)*100
+    int bars = (int)( 1.0f*numBullets/ 5.555); 
+    gme::GUI::backgroundColor = gme::GUI::Color(255, 142, 110);
+    gme::GUI::outlineThickness = 0;
+    for(int i=0;i<bars;i++){
+        gme::GUI::box(gme::Vector2(46+i*6, 55+6), gme::Vector2(3, 3*2));
+    }    
+}
+
 
 void lnzllamasBehavior::shoot(int d) {
 
