@@ -18,6 +18,7 @@ public:
         levelSuccess = false;
         goToMenu = false;
         gameClock.restart();
+        startready = false;
         nextScene = "";
     };
     virtual ~GlobalStateManager();
@@ -46,6 +47,7 @@ private:
     bool gameOver;
     bool player2_exists;
     bool levelSuccess;
+    bool startready;
     gme::Clock apretar;
     
 };

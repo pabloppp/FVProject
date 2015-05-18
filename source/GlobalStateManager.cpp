@@ -35,6 +35,7 @@ void GlobalStateManager::resume(){
 
 void GlobalStateManager::setup(){
     if(mainGame::coop) spawnP2();
+    pause();
 }
 
 bool GlobalStateManager::isPaused() {
@@ -44,6 +45,10 @@ bool GlobalStateManager::isPaused() {
 
 void GlobalStateManager::update(){
     // El jugador pausa el juego
+    if(paused && !startready){
+        sendMessage("readygo", 0); 
+        startready = true;
+    }
     if(!paused && (gme::Keyboard::isKeyPressed(pauseKey) || (gme::Keyboard::isKeyPressed(escKey))) 
             && apretar.currentTime().asSeconds()>0.2){
         if(!canpause) return; 

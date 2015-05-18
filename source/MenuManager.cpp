@@ -19,6 +19,8 @@ void MenuManager::setup(){
     /* BOOLEAN STATES */
     sonando=false;izq=false;dre=false;apretado=false;music_pausa=false;
     pausa=false;
+    readygo = false;
+    readygoGo = false;
     menudejuego = false;
     juegoNuevo1p = false;
     juegoNuevo2p = false;
@@ -55,7 +57,7 @@ void MenuManager::setup(){
 
 void MenuManager::update(){
     if(pausa && !menudejuego) openPause();
-    
+    readyGo();
     if(!kills_10 && !showNotification && mainGame::kills >= 10){
         kills_10 = true;
         showNotification = true;
@@ -162,6 +164,9 @@ void MenuManager::onMessage(std::string m, float v) {
         pausa_visible=0;
         sendMessage("resume",0);
     }
+    else if(m.compare("readygo") == 0){
+        readygo = true;
+    }
     else if(m.compare("gameover") == 0){ 
         showGameOver = true;
     }
@@ -204,10 +209,37 @@ void MenuManager::openPause(){
     }
 }
 
+void MenuManager::readyGo() {
+    if(readyClock.currentTime().asSeconds() > 5){        
+        readygo = false; 
+        sendMessage("resume",0);
+    } 
+}
+
+
 void MenuManager::onGui() {
-    
   float seconds = 10;  
-  
+  if(readygo){
+      if(readyClock.currentTime().asSeconds() < 3){
+        gme::GUI::drawTexture(
+          gme::Vector2(512,288), 
+          gme::Vector2(441,105),
+          gme::GUI::TextureName("ready"),  
+          gme::GUI::Origin::Center,
+          gme::GUI::ScaleToFit
+        );
+      }
+      if(readyClock.currentTime().asSeconds() > 3){
+        gme::GUI::drawTexture(
+          gme::Vector2(512,288), 
+          gme::Vector2(207,102),
+          gme::GUI::TextureName("go"),  
+          gme::GUI::Origin::Center,
+          gme::GUI::ScaleToFit
+        );
+      }
+      
+  }
   //NOTIFICATIONS  
   if(showNotification){
     int desfase = 0;
