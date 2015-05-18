@@ -33,6 +33,11 @@ private:
     gme::GameObject *player;
     bool flipped, disparando, cargando;
     int damage, disparos;
+    
+    gme::SoundPlayer *laserShot_sound;
+    gme::SoundPlayer *laserCarga_sound;
+    gme::SoundPlayer *jetpack_sound;
+    gme::SoundPlayer *teletransport_sound;
     //0:random,  1: intenta golpear, 2: intenta disparar, 3: teletransporta
 };
 
