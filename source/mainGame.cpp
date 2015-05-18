@@ -27,6 +27,8 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/titulo.png", "title");
     gme::Game::newTexture("resources/BGs/cartel_lose.png", "cartel_lose");
     gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
+    gme::Game::newTexture("resources/BGs/Ready.png", "ready");
+    gme::Game::newTexture("resources/BGs/Go.png", "go");
 
     //BACKGROUND
     gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
