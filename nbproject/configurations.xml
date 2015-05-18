@@ -630,6 +630,10 @@
       </item>
       <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/oleada10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada10.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
@@ -637,6 +641,30 @@
       <item path="source/oleada3.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada5.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada6.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada6.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada7.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada7.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada8.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada8.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada9.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada9.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1069,6 +1097,10 @@
       </item>
       <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/oleada10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada10.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
@@ -1076,6 +1108,30 @@
       <item path="source/oleada3.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada5.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada6.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada6.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada7.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada7.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada8.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada8.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada9.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada9.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>

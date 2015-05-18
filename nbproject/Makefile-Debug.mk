@@ -112,8 +112,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/moveClouds.o \
 	${OBJECTDIR}/source/moveToTop.o \
 	${OBJECTDIR}/source/myMenu.o \
+	${OBJECTDIR}/source/oleada10.o \
 	${OBJECTDIR}/source/oleada2.o \
 	${OBJECTDIR}/source/oleada3.o \
+	${OBJECTDIR}/source/oleada4.o \
+	${OBJECTDIR}/source/oleada5.o \
+	${OBJECTDIR}/source/oleada6.o \
+	${OBJECTDIR}/source/oleada7.o \
+	${OBJECTDIR}/source/oleada8.o \
+	${OBJECTDIR}/source/oleada9.o \
 	${OBJECTDIR}/source/pbBehavior.o \
 	${OBJECTDIR}/source/pistolaBehavior.o \
 	${OBJECTDIR}/source/pistolaBullet.o \
@@ -542,6 +549,11 @@ ${OBJECTDIR}/source/myMenu.o: source/myMenu.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/myMenu.o source/myMenu.cpp
 
+${OBJECTDIR}/source/oleada10.o: source/oleada10.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada10.o source/oleada10.cpp
+
 ${OBJECTDIR}/source/oleada2.o: source/oleada2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -551,6 +563,36 @@ ${OBJECTDIR}/source/oleada3.o: source/oleada3.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada3.o source/oleada3.cpp
+
+${OBJECTDIR}/source/oleada4.o: source/oleada4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada4.o source/oleada4.cpp
+
+${OBJECTDIR}/source/oleada5.o: source/oleada5.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada5.o source/oleada5.cpp
+
+${OBJECTDIR}/source/oleada6.o: source/oleada6.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada6.o source/oleada6.cpp
+
+${OBJECTDIR}/source/oleada7.o: source/oleada7.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada7.o source/oleada7.cpp
+
+${OBJECTDIR}/source/oleada8.o: source/oleada8.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada8.o source/oleada8.cpp
+
+${OBJECTDIR}/source/oleada9.o: source/oleada9.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada9.o source/oleada9.cpp
 
 ${OBJECTDIR}/source/pbBehavior.o: source/pbBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

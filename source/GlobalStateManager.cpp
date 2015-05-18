@@ -13,6 +13,13 @@
 #include "oleada2.hpp"
 #include "mainGame.hpp"
 #include "oleada3.hpp"
+#include "oleada4.hpp"
+#include "oleada5.hpp"
+#include "oleada6.hpp"
+#include "oleada7.hpp"
+#include "oleada8.hpp"
+#include "oleada9.hpp"
+#include "oleada10.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -99,6 +106,27 @@ void GlobalStateManager::update(){
                 }
                 if(nextScene.compare("oleada3") == 0){
                     gme::Scene *news = new oleada3("oleada3");
+                }
+                if(nextScene.compare("oleada4") == 0){
+                    gme::Scene *news = new oleada4("oleada4");
+                }
+                if(nextScene.compare("oleada5") == 0){
+                    gme::Scene *news = new oleada5("oleada5");
+                }
+                if(nextScene.compare("oleada6") == 0){
+                    gme::Scene *news = new oleada6("oleada6");
+                }
+                if(nextScene.compare("oleada7") == 0){
+                    gme::Scene *news = new oleada7("oleada7");
+                }
+                if(nextScene.compare("oleada8") == 0){
+                    gme::Scene *news = new oleada8("oleada8");
+                }
+                if(nextScene.compare("oleada9") == 0){
+                    gme::Scene *news = new oleada9("oleada9");
+                }
+                if(nextScene.compare("oleada10") == 0){
+                    gme::Scene *news = new oleada10("oleada10");
                 }
                 gme::Game::setCurrentScene(nextScene);
             }

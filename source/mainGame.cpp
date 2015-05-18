@@ -6,6 +6,8 @@
 #include "transitionScene.hpp"
 #include "oleada2.hpp"
 #include "oleada3.hpp"
+#include "oleada4.hpp"
+#include "oleada5.hpp"
 
 #include <fstream>
 
@@ -135,11 +137,6 @@ void mainGame::setup() {
     if(music)jungleFondo_sound->setVolume(20.0);
     else jungleFondo_sound->setVolume(0.0);
     
-    
-    
-    
-    //SONIDOS
-    
     //PRE ESCENAS
     gme::Scene *splash_scene = new sceneSplash("splash");
     gme::Scene *mainmenu_scene = new sceneMenu("mainmenu");
@@ -150,6 +147,8 @@ void mainGame::setup() {
     gme::Scene *tiledTest = new tilerJsonLoadScene("oleada1");
     gme::Scene *scene_oleada2 = new oleada2("oleada2");   
     gme::Scene *scene_oleada3 = new oleada3("oleada3"); 
+    gme::Scene *scene_oleada4 = new oleada4("oleada4");   
+    gme::Scene *scene_oleada5 = new oleada5("oleada5"); 
     
     gme::Game::setCurrentScene("mainmenu");
 }

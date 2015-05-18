@@ -1,4 +1,4 @@
-#include "oleada3.hpp"
+#include "oleada5.hpp"
 #include "emptyGameObject.hpp"
 #include "mapGenerator.hpp"
 #include "player.hpp"
@@ -16,12 +16,13 @@
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
 #include "enemy_boss.hpp"
-void oleada3::setup() {
+
+void oleada5::setup() {
     
-    mainGame::continueLevel = 3;
+    mainGame::continueLevel = 5;
     mainGame::saveProfile();
     
-    mainGame::removeScene("oleada2");    
+    mainGame::removeScene("oleada4");    
     if(reseting){
         setupScenario();
         return;
@@ -32,8 +33,8 @@ void oleada3::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 15;
-        gsm->nextScene = "oleada4";
+        gsm->winCondition = 75;
+        gsm->nextScene = "oleada6";
     });
     
     setupBg(); 
@@ -85,9 +86,10 @@ void oleada3::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+
 }
 
-void oleada3::setupBg() {
+void oleada5::setupBg() {
     srand (time(NULL));
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
     
@@ -138,7 +140,7 @@ void oleada3::setupBg() {
 
 }
 
-void oleada3::setupScenario() {
+void oleada5::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     generaPosicion *g =  new generaPosicion(33,95,3);
@@ -147,7 +149,6 @@ void oleada3::setupScenario() {
     g->addPosition(829, 95);
     g->setEnemi(false);
     g->setColectionable(true);
-    g->setCollectableLimits(615, 1584);
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
@@ -155,7 +156,7 @@ void oleada3::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave3_boss.json";
+            gen->mapFile = "resources/maps/wave5.json";
         }
     });
 }
