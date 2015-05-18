@@ -17,8 +17,11 @@ void enemy_fly::setup() {
    
     getTransform()->scale = gme::Vector2(3,3);
     getRenderer()->setPivot(gme::Vector2(0.5, 0.5));
+    getRenderer()->setSize(gme::Vector2(32,32));
+    getRenderer()->setFrame("fly_1");
+    //getTransform()->resize(gme::Vector2(-1,1));
     
-    getRenderer()->setColor(150,150,255);
+    getRenderer()->setColor(255,255,255);
     
     gme::RigidBody *rb = new gme::RigidBody();
     rb->setElasticity(0);
