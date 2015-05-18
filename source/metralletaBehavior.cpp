@@ -102,7 +102,6 @@ void metralletaBehavior::shoot(int d){
        if(q->gameObject()->getParent()->getName().compare("p2") == 0) bulletx->whoshoots = 2;
        q->instantiate(bulletx);
        q->numBullets--;
-      
 
        int v1 = rand() % 10+0;
        if(q->directionSp == 1 || q->directionSp == 3){

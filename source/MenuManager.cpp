@@ -277,9 +277,9 @@ void MenuManager::onGui() {
         gme::GUI::Origin::Center
     ); 
     gme::GUI::fontSize = 20;
-    gme::GUI::label(gme::Vector2(512, 576-120+desfase), notificationTitle, gme::GUI::Origin::Center );
+    gme::GUI::label(gme::Vector2(512, 576-125+desfase), notificationTitle, gme::GUI::Origin::Center );
     gme::GUI::fontSize = 15;
-    gme::GUI::label(gme::Vector2(512, 576-115+desfase), notificationText, gme::GUI::Origin::TopCenter );
+    gme::GUI::label(gme::Vector2(512, 576-118+desfase), notificationText, gme::GUI::Origin::TopCenter );
     
     gme::GUI::outlineThickness = 0;
     if(notificationClock.currentTime().asSeconds() > seconds){

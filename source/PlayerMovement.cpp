@@ -249,22 +249,14 @@ void PlayerMovement::animate() {
 }
 
 void PlayerMovement::onGui() {
-    //BOTTOM STATS    
-    
-    gme::GUI::drawTexture(
-        gme::Vector2(5, 580),
-        gme::Vector2(27*3, 37*3),
-        gme::GUI::TextureName("max-willis"),
-        gme::GUI::Origin::BottomLeft,
-        gme::GUI::ScaleToFit
-    );
-    gme::GUI::drawTexture(
+    //BOTTOM STATS           
+    /*gme::GUI::drawTexture(
         gme::Vector2(103, 525),
         gme::Vector2(15*3, 7*3),
         gme::GUI::TextureName("pistola-inter"),
         gme::GUI::Origin::BottomLeft,
         gme::GUI::ScaleToFit
-    );
+    );*/
     
     int disp = 0;
     if(gameObject()->getName().compare("p2")==0){
@@ -279,14 +271,45 @@ void PlayerMovement::onGui() {
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
-        gme::GUI::drawTexture(
-            gme::Vector2(0, 576),
-            gme::Vector2(100*3, 37*3),
-            gme::GUI::TextureName("interface_p1"),
-            gme::GUI::Origin::BottomLeft,
-            gme::GUI::ScaleToFit
-        );
-        if(disp != 0){
+        std::string puntosp1 = std::to_string(points);
+        int cp1 = 9-puntosp1.length();
+        for(int i = 0; i < cp1; i++){
+          puntosp1 = "0"+puntosp1;
+        }
+        
+        if(gameObject()->getName().compare("p1")==0){
+            gme::GUI::drawTexture(
+                gme::Vector2(0, 576),
+                gme::Vector2(100*3, 37*3),
+                gme::GUI::TextureName("interface_p1"),
+                gme::GUI::Origin::BottomLeft,
+                gme::GUI::ScaleToFit
+            );
+            gme::GUI::drawTexture(
+                gme::Vector2(5, 580),
+                gme::Vector2(27*3, 37*3),
+                gme::GUI::TextureName("max-willis"),
+                gme::GUI::Origin::BottomLeft,
+                gme::GUI::ScaleToFit
+            );
+            
+            gme::GUI::fontSize = 25;
+            gme::GUI::contentColor = gme::GUI::Color(0,0,0);
+            gme::GUI::label(gme::Vector2(195, 555), puntosp1, gme::GUI::Origin::Center);
+            gme::GUI::contentColor = gme::GUI::white;
+            
+            for(int i=0; i<grenades; i++){
+                gme::GUI::drawTexture(
+                    gme::Vector2(115+8*3*i, 530),
+                    gme::Vector2(16*3, 16*3),
+                    gme::GUI::TextureName("grenade"),
+                    gme::GUI::Origin::Center,
+                    gme::GUI::ScaleToFit
+                );        
+            }
+        }         
+        
+        if(gameObject()->getName().compare("p2")==0){
             gme::GUI::drawTexture(
                 gme::Vector2(723, 576),
                 gme::Vector2(100*3, 37*3),
@@ -294,7 +317,22 @@ void PlayerMovement::onGui() {
                 gme::GUI::Origin::BottomLeft,
                 gme::GUI::ScaleToFit
             );
+             gme::GUI::fontSize = 25;
+             gme::GUI::contentColor = gme::GUI::Color(0,0,0);
+             gme::GUI::label(gme::Vector2(833, 555), puntosp1, gme::GUI::Origin::Center);
+             gme::GUI::contentColor = gme::GUI::white;
+             
+             for(int i=0; i<grenades; i++){
+                gme::GUI::drawTexture(
+                    gme::Vector2(865+8*3*i, 530),
+                    gme::Vector2(16*3, 16*3),
+                    gme::GUI::TextureName("grenade"),
+                    gme::GUI::Origin::Center,
+                    gme::GUI::ScaleToFit
+                );        
+            }
         }
+        
         gme::GUI::drawTexture(
             gme::Vector2(10+disp, 5),
             gme::Vector2(8*3, 8*3),
