@@ -1,17 +1,23 @@
 #include "MenuManager.hpp"
 #include "sceneMenu.hpp"
 #include "mainGame.hpp"
+#include "GameManager.hpp"
 
 void MenuManager::setup(){
     w = gme::Game::getWindow();
     /* MUSIC DEFINITION */
-    music = new gme::MusicPlayer();
+    intro = new gme::SoundPlayer();
     button_sound = new gme::SoundPlayer();
     change_sound= new gme::SoundPlayer();
+    ready_player= new gme::SoundPlayer();
     
-    music->setMusic("sound");
+    
+    intro->setSound("introCancion");
     button_sound->setSound("boton");
     change_sound->setSound("desplazamiento");
+    ready_player->setSound("ready_sound");
+    musicMain->setMusic("cancion");
+    musicMain->loop(true);
     
     button_sound->setVolume(30.0);
     change_sound->setVolume(20.0);
@@ -56,8 +62,11 @@ void MenuManager::setup(){
 }
 
 void MenuManager::update(){
-    if(pausa && !menudejuego) openPause();
     readyGo();
+    if(pausa){
+        openPause();
+    } 
+    if(!pausa && !ready_player->isPlaying() && mainGame::music) musicMain->play();    
     if(!kills_10 && !showNotification && mainGame::kills >= 10){
         kills_10 = true;
         showNotification = true;
@@ -154,21 +163,22 @@ void MenuManager::onMessage(std::string m, float v) {
         menudejuego = false;
         pausa_visible=100;
         num_apre=0;
-        if(sonando){
-            music_pausa=true;
-            music->pause();
-        }
+        if(mainGame::music) musicMain->pause();
     }
     else if(m.compare("hidePause") == 0){
         pausa=false;
         pausa_visible=0;
         sendMessage("resume",0);
+        
     }
     else if(m.compare("readygo") == 0){
         readygo = true;
+        if(mainGame::music) intro->play();
+        ready_player->play();
     }
     else if(m.compare("gameover") == 0){ 
         showGameOver = true;
+        if(mainGame::music) musicMain->stop();
     }
     else if(m.compare("reset") == 0){ 
         showGameOver = false;
@@ -180,7 +190,7 @@ void MenuManager::onMessage(std::string m, float v) {
         showLevelSuccess = true;
         menudejuego = false;
         pausa = false;
-        
+        if(mainGame::music) musicMain->stop();        
     }
 }
 
@@ -196,22 +206,28 @@ void MenuManager::openPause(){
     /* CONTINUA JUEGO */
     if(pausa==true &&  num_apre==0 && gme::Keyboard::isKeyPressed(introKey)){
         apretado=true;
-        sendMessage("resume", 0);
+        sendMessage("resume", 0);        
+        if(mainGame::music) musicMain->play();
     }
-    if(pausa == true && gme::Keyboard::isKeyPressed(resumeKey)) sendMessage("hidePause", 0);
+    if(pausa == true && gme::Keyboard::isKeyPressed(resumeKey)){
+        sendMessage("hidePause", 0);        
+        if(mainGame::music) musicMain->play();
+    }
     if(pausa==true && num_apre==1 && gme::Keyboard::isKeyPressed(introKey)){
+        if(mainGame::music) musicMain->stop();
         openMenu();
     }
     if(!gme::Keyboard::isKeyPressed(introKey) && apretado==true){
-           pausa=false;
-           pausa_visible=0;
-           apretado=false;
+        pausa=false;
+        pausa_visible=0;
+        apretado=false;           
+        if(mainGame::music) musicMain->play();
     }
 }
 
 void MenuManager::readyGo() {
-    if(readyClock.currentTime().asSeconds() > 5){        
-        readygo = false; 
+    if(readyClock.currentTime().asSeconds() > 5 && readygo){        
+        readygo = false;             
         sendMessage("resume",0);
     } 
 }
@@ -219,7 +235,7 @@ void MenuManager::readyGo() {
 
 void MenuManager::onGui() {
   float seconds = 10;  
-  if(readygo){
+  if(readygo){      
       if(readyClock.currentTime().asSeconds() < 3){
         gme::GUI::drawTexture(
           gme::Vector2(512,288), 
@@ -256,14 +272,14 @@ void MenuManager::onGui() {
     gme::GUI::outlineColor = gme::GUI::Color(255,255,255, 200);
     gme::GUI::outlineThickness = 3;
     gme::GUI::box(
-        gme::Vector2(512, 576-80+desfase), 
+        gme::Vector2(512, 576-120+desfase), 
         gme::Vector2(800, 80), "",
         gme::GUI::Origin::Center
     ); 
     gme::GUI::fontSize = 20;
-    gme::GUI::label(gme::Vector2(512, 576-100+desfase), notificationTitle, gme::GUI::Origin::Center );
+    gme::GUI::label(gme::Vector2(512, 576-125+desfase), notificationTitle, gme::GUI::Origin::Center );
     gme::GUI::fontSize = 15;
-    gme::GUI::label(gme::Vector2(512, 576-95+desfase), notificationText, gme::GUI::Origin::TopCenter );
+    gme::GUI::label(gme::Vector2(512, 576-118+desfase), notificationText, gme::GUI::Origin::TopCenter );
     
     gme::GUI::outlineThickness = 0;
     if(notificationClock.currentTime().asSeconds() > seconds){
@@ -280,6 +296,12 @@ void MenuManager::onGui() {
       gme::GUI::fontSize = 45;
       std::string secondsString = std::to_string(seconds);
       if(secondsString.size() == 1) secondsString = "0"+secondsString;
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 100);      
+      gme::GUI::box(
+        gme::Vector2(512, 30), 
+        gme::Vector2(230, 50), "",
+        gme::GUI::Origin::Center
+      );
       gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+secondsString, gme::GUI::Origin::Center);
   }  
   if(showLevelSuccess){

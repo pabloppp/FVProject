@@ -146,10 +146,24 @@
           <itemPath>source/tileRow.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
+          <itemPath>source/oleada10.cpp</itemPath>
+          <itemPath>source/oleada10.hpp</itemPath>
           <itemPath>source/oleada2.cpp</itemPath>
           <itemPath>source/oleada2.hpp</itemPath>
           <itemPath>source/oleada3.cpp</itemPath>
           <itemPath>source/oleada3.hpp</itemPath>
+          <itemPath>source/oleada4.cpp</itemPath>
+          <itemPath>source/oleada4.hpp</itemPath>
+          <itemPath>source/oleada5.cpp</itemPath>
+          <itemPath>source/oleada5.hpp</itemPath>
+          <itemPath>source/oleada6.cpp</itemPath>
+          <itemPath>source/oleada6.hpp</itemPath>
+          <itemPath>source/oleada7.cpp</itemPath>
+          <itemPath>source/oleada7.hpp</itemPath>
+          <itemPath>source/oleada8.cpp</itemPath>
+          <itemPath>source/oleada8.hpp</itemPath>
+          <itemPath>source/oleada9.cpp</itemPath>
+          <itemPath>source/oleada9.hpp</itemPath>
           <itemPath>source/sceneMenu.cpp</itemPath>
           <itemPath>source/sceneMenu.hpp</itemPath>
           <itemPath>source/sceneSplash.cpp</itemPath>

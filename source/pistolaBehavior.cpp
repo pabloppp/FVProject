@@ -65,8 +65,9 @@ void pistolaBehavior::update() {
 void pistolaBehavior::shoot(int d){
     if(clock.currentTime().asSeconds()>0.2){
         if(mainGame::sound) gunShot_sound->play();
-        gme::GameObject *bulletx = new pistolaBullet("bullet");
-        instantiate(bulletx);   
+        pistolaBullet *bulletx = new pistolaBullet("bullet");
+        if(gameObject()->getParent()->getName().compare("p2") == 0) bulletx->whoshoots = 2;
+        instantiate(bulletx);         
 
         bulletx->getTransform()->setPosition(gme::Vector2(getTransform()->getPosition().x,getTransform()->getPosition().y-30));    
         switch(d){
