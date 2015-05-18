@@ -39,7 +39,7 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 25;
+        gsm->winCondition = 5;
         gsm->nextScene = "oleada2";
     });
     

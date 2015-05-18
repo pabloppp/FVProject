@@ -3,6 +3,13 @@
 #include "tilerJsonLoadScene.hpp"
 #include "oleada2.hpp"
 #include "oleada3.hpp"
+#include "oleada4.hpp"
+#include "oleada5.hpp"
+#include "oleada6.hpp"
+#include "oleada7.hpp"
+#include "oleada8.hpp"
+#include "oleada9.hpp"
+#include "oleada10.hpp"
 
 void MainMenuSetup::setup() {
     w = gme::Game::getWindow();
@@ -151,6 +158,13 @@ void MainMenuSetup::loadLevel() {
         if(!continueLevel || lvl == 1) tiledTest = new tilerJsonLoadScene(lvl_s);
         else if(lvl == 2) tiledTest = new oleada2(lvl_s);
         else if(lvl == 3) tiledTest = new oleada3(lvl_s);
+        else if(lvl == 4) tiledTest = new oleada4(lvl_s);
+        else if(lvl == 5) tiledTest = new oleada5(lvl_s);
+        else if(lvl == 6) tiledTest = new oleada6(lvl_s);
+        else if(lvl == 7) tiledTest = new oleada7(lvl_s);
+        else if(lvl == 8) tiledTest = new oleada8(lvl_s);
+        else if(lvl == 9) tiledTest = new oleada9(lvl_s);
+        else if(lvl == 10) tiledTest = new oleada10(lvl_s);
         mainGame::setCurrentScene(tiledTest);  
     }
     else mainGame::setCurrentScene(lvl_s);

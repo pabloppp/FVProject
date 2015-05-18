@@ -1,4 +1,4 @@
-#include "oleada3.hpp"
+#include "oleada7.hpp"
 #include "emptyGameObject.hpp"
 #include "mapGenerator.hpp"
 #include "player.hpp"
@@ -16,12 +16,13 @@
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
 #include "enemy_boss.hpp"
-void oleada3::setup() {
+
+void oleada7::setup() {
     
-    mainGame::continueLevel = 3;
+    mainGame::continueLevel = 7;
     mainGame::saveProfile();
     
-    mainGame::removeScene("oleada2");    
+    mainGame::removeScene("oleada6");    
     if(reseting){
         setupScenario();
         return;
@@ -32,8 +33,8 @@ void oleada3::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 15;
-        gsm->nextScene = "oleada4";
+        gsm->winCondition = 75;
+        gsm->nextScene = "oleada8";
     });
     
     setupBg(); 
@@ -85,9 +86,10 @@ void oleada3::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+
 }
 
-void oleada3::setupBg() {
+void oleada7::setupBg() {
     srand (time(NULL));
     gme::Vector2 windowSize = gme::Game::getWindow()->getSize();
     
@@ -138,7 +140,7 @@ void oleada3::setupBg() {
 
 }
 
-void oleada3::setupScenario() {
+void oleada7::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     generaPosicion *g =  new generaPosicion(33,95,3);
@@ -154,7 +156,7 @@ void oleada3::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave3_boss.json";
+            gen->mapFile = "resources/maps/wave7.json";
         }
     });
 }
