@@ -22,24 +22,31 @@ void ColectableScript::setup() {
     
     pistolaFrase_sound = new gme::SoundPlayer();
     pistolaFrase_sound->setSound("pistolaFrase");
+    pistolaFrase_sound->setVolume(100.0);
     
     metralletaFrase_sound = new gme::SoundPlayer();
     metralletaFrase_sound->setSound("metralletaFrase");
+    metralletaFrase_sound->setVolume(100.0);
     
     lanzallamasFrase_sound = new gme::SoundPlayer();
     lanzallamasFrase_sound->setSound("lanzallamasFrase");
+    lanzallamasFrase_sound->setVolume(100.0);
     
     escopetaFrase_sound = new gme::SoundPlayer();
     escopetaFrase_sound->setSound("escopetaFrase");
+    escopetaFrase_sound->setVolume(100.0);
     
     nuevaVidaFrase_sound = new gme::SoundPlayer();
     nuevaVidaFrase_sound->setSound("nuevaVidaFrase");
+    nuevaVidaFrase_sound->setVolume(100.0);
     
     HPFrase_sound = new gme::SoundPlayer();
     HPFrase_sound->setSound("HPFrase");
+    HPFrase_sound->setVolume(100.0);
     
     cajaRota_sound = new gme::SoundPlayer();
     cajaRota_sound->setSound("cajaRota");
+    cajaRota_sound->setVolume(100.0);
     
     
     
@@ -75,7 +82,7 @@ void ColectableScript::onCollision(gme::Collider* c) {
                 if(mainGame::sound) nuevaVidaFrase_sound->play();
             }
             if(objectType == 1){ 
-                c->gameObject()->sendMessage("heal",10);
+                c->gameObject()->sendMessage("heal",20);
                 if(mainGame::sound)  HPFrase_sound->play();
             }
         }

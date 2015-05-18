@@ -13,6 +13,7 @@ void metralletaBehavior::setup() {
     
      metralletaShot_sound = new gme::SoundPlayer();
     metralletaShot_sound->setSound("metralletaShot");
+    metralletaShot_sound->setVolume(60.0);
     
     metralletaReload_sound = new gme::SoundPlayer();
     metralletaReload_sound->setSound("metralletaReload");

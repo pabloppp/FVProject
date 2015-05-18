@@ -21,15 +21,8 @@ void MainMenuSetup::setup() {
     entered = true;
     izq=false; dre=false;
     button_sound = new gme::SoundPlayer();
-    //music_jungle=new gme::MusicPlayer();
-    //music_jungle->setMusic("jungle");
-   // music_jungle->setVolume(15.0);
-    //music_jungle->loop(true);
     button_sound->setSound("boton");
-    button_sound->setVolume(50.0);
-   // music_jungle->play();
-   // if(!mainGame::music) music_jungle->setVolume(0.0);
-    
+    button_sound->setVolume(100.0);   
 }
 
 void MainMenuSetup::update() {

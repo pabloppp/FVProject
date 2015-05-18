@@ -21,9 +21,9 @@ void MenuManager::setup(){
     
     
     ready_player->setVolume(100.0);
-    intro->setVolume(30.0);
-    musicMain->setVolume(30.0);
-    button_sound->setVolume(30.0);
+    intro->setVolume(25.0);
+    musicMain->setVolume(25.0);
+    button_sound->setVolume(600.0);
     change_sound->setVolume(20.0);
     
     /* BOOLEAN STATES */
@@ -203,6 +203,7 @@ void MenuManager::onMessage(std::string m, float v) {
         showGameOver = false;
         menudejuego = false;
         pausa = false;
+        if(mainGame::music) musicMain->play();
     }
     else if(m.compare("showLevelSuccess") == 0){
         showGameOver = false;
@@ -297,9 +298,9 @@ void MenuManager::onGui() {
         gme::GUI::Origin::Center
     ); 
     gme::GUI::fontSize = 20;
-    gme::GUI::label(gme::Vector2(512, 576-125+desfase), notificationTitle, gme::GUI::Origin::Center );
+    gme::GUI::label(gme::Vector2(512, 576-140+desfase), notificationTitle, gme::GUI::Origin::Center );
     gme::GUI::fontSize = 15;
-    gme::GUI::label(gme::Vector2(512, 576-118+desfase), notificationText, gme::GUI::Origin::TopCenter );
+    gme::GUI::label(gme::Vector2(512, 576-130+desfase), notificationText, gme::GUI::Origin::TopCenter );
     
     gme::GUI::outlineThickness = 0;
     if(notificationClock.currentTime().asSeconds() > seconds){
