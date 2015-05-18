@@ -72,6 +72,7 @@ void PlayerMovement::update() {
         
         granada *gr = new granada("granada");
         gme::Vector2 pos = getTransform()->getPosition();
+        if(gameObject()->getName().compare("p2") == 0) gr->whoshoots = 2;
         pos.y -= 8*3;
         gr->getTransform()->setPosition(pos);
         if(flipped) gr->direction = 1;
