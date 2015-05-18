@@ -39,7 +39,7 @@ void oleada2::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 5;
+        gsm->winCondition = 60;
         gsm->nextScene = "oleada3";
     });
     
@@ -163,6 +163,12 @@ void oleada2::setupScenario() {
     g->addPosition(829, 95);
     g->setEnemi(true);
     g->setColectionable(true);
+    
+    g->ene4 = 0;
+    g->ene3 = 25;
+    g->ene2 = 37;
+    g->ene1 = 38;
+    
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

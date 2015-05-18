@@ -32,8 +32,8 @@ private:
     gme::Clock tlkClock;
     GlobalStateManager *manager;
     
-    gme::MusicPlayer *lanzallamasShot_sound;
-    gme::MusicPlayer *lanzallamasReload_sound;
+    gme::SoundPlayer *lanzallamasShot_sound;
+    gme::SoundPlayer *lanzallamasReload_sound;
 };
 
 #endif	/* LNZLLAMASBEHAVIOR_HPP */

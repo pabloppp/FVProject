@@ -82,17 +82,14 @@ void IAfly::update() {
             }
             if(sprint) dist*=2;
 
-            if(home && !wait){
-                float disthome = gme::Vector2::distance(init,enemypos);
-                if(disthome < 10){
-                    wait = true;
+            if(home ){
+                //float disthome = gme::Vector2::distance(init,enemypos);
+                if(clkW.currentTime().asSeconds() > 5){
+                    home = false;
                     clkW.restart();
                 }
             }
-            if(wait && clkW.currentTime().asSeconds() > 5){
-                home= false;
-                wait = false;
-            }
+  
             
 
 
@@ -238,6 +235,7 @@ void IAfly::moveToInit() {
     int rnd = rand() %3;
     init = positions.at(rnd);
     home = true;
+    clkW.restart();
 }
 
 
@@ -440,11 +438,13 @@ void IAfly::onCollision(gme::Collider* c) {
     gme::Vector2 rP = getCollider()->getRelativePosition(c);
    
     if(c->gameObject()->hasTag("floor")){
+        std::cout << "suelo" << std::endl;
         grounded =  true;
         gdir = rP;
     }
     if(c->gameObject()->hasTag("corner")){
         corner = true;
+        std::cout << "corner" << std::endl;
     }
 }
 

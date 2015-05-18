@@ -28,8 +28,8 @@ private:
     gme::Clock tlkClock;
     GlobalStateManager *manager;
     
-    gme::MusicPlayer *escopetaShot_sound;
-    gme::MusicPlayer *escopetaReload_sound;
+    gme::SoundPlayer *escopetaShot_sound;
+    gme::SoundPlayer *escopetaReload_sound;
 };
 
 #endif	/* ESCOPETABEHAVIOR_HPP */

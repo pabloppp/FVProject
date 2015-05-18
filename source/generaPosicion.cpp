@@ -6,12 +6,11 @@
 #include "GlobalStateManager.hpp"
 #include "enemy_boss.hpp"
 #include "mainGame.hpp"
+#include "enemy_fly.hpp"
+#include "enemy_explosive.hpp"
 
 
 void generaPosicion::setup(){
-    w = gme::Game::getWindow();
-    v = w->getSize();
-
     clkC.restart();
     clkE.restart();
     objects = 0;
@@ -34,7 +33,7 @@ void generaPosicion::update() {
     if(manager->isPaused()) return;
     
     if(colectionable == true){
-        if(clkC.currentTime().asSeconds() > 2){
+        if(clkC.currentTime().asSeconds() > 10){
             std::cout << "hey" << std::endl;
             clkC.restart();
             generaColeccionable();
@@ -55,9 +54,7 @@ void generaPosicion::update() {
 }
 
 void generaPosicion::generaColeccionable(){
-    int pos = rand();
-    int x = v.x + (16*3);
-    int finalpos = (int)pos%(int)x;
+    int finalpos = colMinX + (int)rand() % (int)(v.x-colMinX) ;
     int randSet = 3;
     
     if(mainGame::flamethrower) randSet = 6;
@@ -70,7 +67,7 @@ void generaPosicion::generaColeccionable(){
         objecType = rand() % randSet;
     }
     lObjectType = objecType;
-    colectableGameObject *col =  new colectableGameObject("colectable",objecType);
+    colectableGameObject *col =  new colectableGameObject("colectable",objecType);//objecType
     col->getTransform()->setPosition(gme::Vector2(finalpos,-288+16*3));
     instantiate(col);
     
@@ -88,15 +85,22 @@ bool generaPosicion::getColectionable(){
 
 void generaPosicion::generaEnemigo(int x, int y) {
     if (enemi == true ){
-        int random = rand() % 100;
+        int random = rand() % (ene1+ene2+ene3+ene4);
+        
         
         gme::GameObject *enemigo;
         
-        if(random < 70){
+        if(random < ene1){
             enemigo = new enemy("dino");
         }
-        else{
+        else if(random < ene1+ene2){
             enemigo = new enemy_fast("dino_fast");
+        }
+        else if(random < ene1+ene2+ene3){
+            enemigo = new enemy_fly("dino_fly", false);
+        }
+        else if(random < ene1+ene2+ene3+ene4){
+            enemigo = new enemy_explosive("dino_explosive");
         }
         enemigo->getTransform()->setPosition(gme::Vector2(x, y));
         instantiate(enemigo);
@@ -114,12 +118,21 @@ bool generaPosicion::getEnemi(){
 void generaPosicion::onGui() {
 }
 
-generaPosicion::generaPosicion(int x, int y,int ratio) : gme::Script(){    
+generaPosicion::generaPosicion(int x, int y,int ratio) : gme::Script(){
+    v = gme::Vector2(1584, 576);
+    colMinX = 0;
     posiciones.push_back(gme::Vector2(x, y));
     rat = ratio; 
     colectionable = false;
     enemi = false;
+    ene1 = ene2 = ene3 = ene4 = 25;
 }
+
+void generaPosicion::setCollectableLimits(int xmin, int xmax) {
+    v.x = xmax;
+    colMinX = xmin;
+}
+
 
 void generaPosicion::addPosition(int x, int y) {
     posiciones.push_back(gme::Vector2(x, y));

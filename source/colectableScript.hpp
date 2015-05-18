@@ -31,6 +31,17 @@ private:
     bool isHit;
     virtual void onMessage(std::string m, float v);
     
+    gme::SoundPlayer *pistolaFrase_sound;
+    gme::SoundPlayer *metralletaFrase_sound;
+    gme::SoundPlayer *lanzallamasFrase_sound;
+    gme::SoundPlayer *escopetaFrase_sound;
+    gme::SoundPlayer *nuevaVidaFrase_sound;
+    gme::SoundPlayer *HPFrase_sound;
+    
+    gme::SoundPlayer *cajaRota_sound;
+    
+    
+    
     
 };
 

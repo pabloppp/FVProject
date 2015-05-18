@@ -18,6 +18,7 @@ void SoundPlayer::update(){
 void SoundPlayer::setSound(const std::string& s){
     Sound *snd = Game::getSound(s);
     if(snd != NULL){
+        //std::cout<<"todo okay";
         sound = new sf::Sound();
         sound->setBuffer(snd->getSoundBuffer());
     }

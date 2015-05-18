@@ -1,6 +1,7 @@
 #include "metralletaBehavior.hpp"
 #include "metralletaBullet.hpp"
 #include "PlayerMovement.hpp"
+#include "mainGame.hpp"
 
 void metralletaBehavior::setup() {
    
@@ -10,11 +11,11 @@ void metralletaBehavior::setup() {
     numBullets = 100;
     recargando = false;
     
-     metralletaShot_sound = new gme::MusicPlayer();
-    metralletaShot_sound->setMusic("metralletaShot");
+     metralletaShot_sound = new gme::SoundPlayer();
+    metralletaShot_sound->setSound("metralletaShot");
     
-    metralletaReload_sound = new gme::MusicPlayer();
-    metralletaReload_sound->setMusic("metralletaReload");
+    metralletaReload_sound = new gme::SoundPlayer();
+    metralletaReload_sound->setSound("metralletaReload");
     
     
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
@@ -45,7 +46,7 @@ void metralletaBehavior::update() {
     if(!isActive()) return;
     
     if(numBullets <= 0 && !recargando){
-        metralletaReload_sound->play();
+        if(mainGame::sound) metralletaReload_sound->play();
         recargando = true;
         return;
     }
@@ -79,7 +80,7 @@ void metralletaBehavior::update() {
         animator.animate();
         if(tlkClock.currentTime().asSeconds() > 0.275){
                
-             metralletaShot_sound->play();
+            if(mainGame::sound) metralletaShot_sound->play();
              tlkClock.restart();
         }
         if(verticalDirection != -1) shoot(verticalDirection);

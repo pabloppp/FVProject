@@ -108,6 +108,18 @@
             <itemPath>source/weapon.cpp</itemPath>
             <itemPath>source/weapon.hpp</itemPath>
           </logicalFolder>
+          <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
+            <itemPath>source/enemy.cpp</itemPath>
+            <itemPath>source/enemy.hpp</itemPath>
+            <itemPath>source/enemy_boss.cpp</itemPath>
+            <itemPath>source/enemy_boss.hpp</itemPath>
+            <itemPath>source/enemy_explosive.cpp</itemPath>
+            <itemPath>source/enemy_explosive.hpp</itemPath>
+            <itemPath>source/enemy_fast.cpp</itemPath>
+            <itemPath>source/enemy_fast.hpp</itemPath>
+            <itemPath>source/enemy_fly.cpp</itemPath>
+            <itemPath>source/enemy_fly.hpp</itemPath>
+          </logicalFolder>
           <itemPath>source/Animator.cpp</itemPath>
           <itemPath>source/Animator.hpp</itemPath>
           <itemPath>source/GameManager.cpp</itemPath>
@@ -120,12 +132,6 @@
           <itemPath>source/defaultParticle.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
-          <itemPath>source/enemy.cpp</itemPath>
-          <itemPath>source/enemy.hpp</itemPath>
-          <itemPath>source/enemy_boss.cpp</itemPath>
-          <itemPath>source/enemy_boss.hpp</itemPath>
-          <itemPath>source/enemy_fast.cpp</itemPath>
-          <itemPath>source/enemy_fast.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
           <itemPath>source/myMenu.cpp</itemPath>
@@ -186,6 +192,16 @@
             <itemPath>source/smallExplosion.cpp</itemPath>
             <itemPath>source/smallExplosion.hpp</itemPath>
           </logicalFolder>
+          <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
+            <itemPath>source/IABoss.cpp</itemPath>
+            <itemPath>source/IABoss.hpp</itemPath>
+            <itemPath>source/IAMovement.cpp</itemPath>
+            <itemPath>source/IAMovement.hpp</itemPath>
+            <itemPath>source/IAexplosive.cpp</itemPath>
+            <itemPath>source/IAexplosive.hpp</itemPath>
+            <itemPath>source/IAfly.cpp</itemPath>
+            <itemPath>source/IAfly.hpp</itemPath>
+          </logicalFolder>
           <itemPath>source/BackgroundParallax.cpp</itemPath>
           <itemPath>source/BackgroundParallax.hpp</itemPath>
           <itemPath>source/CameraFollowPlayer.cpp</itemPath>
@@ -194,10 +210,6 @@
           <itemPath>source/ColectableScript.hpp</itemPath>
           <itemPath>source/GlobalStateManager.cpp</itemPath>
           <itemPath>source/GlobalStateManager.hpp</itemPath>
-          <itemPath>source/IABoss.cpp</itemPath>
-          <itemPath>source/IABoss.hpp</itemPath>
-          <itemPath>source/IAMovement.cpp</itemPath>
-          <itemPath>source/IAMovement.hpp</itemPath>
           <itemPath>source/IntroS1Manager.cpp</itemPath>
           <itemPath>source/IntroS1Manager.hpp</itemPath>
           <itemPath>source/LifeManager.cpp</itemPath>
@@ -474,6 +486,14 @@
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/IAexplosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAexplosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAfly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAfly.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
@@ -530,9 +550,17 @@
       </item>
       <item path="source/enemy_boss.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/enemy_explosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_explosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -925,6 +953,14 @@
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/IAexplosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAexplosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAfly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAfly.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
@@ -981,9 +1017,17 @@
       </item>
       <item path="source/enemy_boss.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/enemy_explosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_explosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>

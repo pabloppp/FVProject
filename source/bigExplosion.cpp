@@ -24,7 +24,7 @@ void bigExplosion::onCollision(gme::Collider* c) {
     if(framecount < 2){
         if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam", whoami);
         c->gameObject()->sendMessage("damage", 99);
-        //std::cout << "hitting "+c->gameObject()->getName() << std::endl;
+        std::cout << "hitting "+c->gameObject()->getName() << std::endl;
     }
 }
 

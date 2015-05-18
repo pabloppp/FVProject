@@ -27,7 +27,7 @@ private:
     bool izq, dre, entered, continueLevel;    
     gme::Clock reloj_fondo;
     gme::Clock apretar;
-    gme::MusicPlayer *button_sound;
+    gme::SoundPlayer *button_sound;
     void loadLevel();
    // gme::MusicPlayer *music_jungle;
 };
