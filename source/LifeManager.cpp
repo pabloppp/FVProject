@@ -8,6 +8,9 @@ void LifeManager::setup() {
     
     danyoJugador_sound = new gme::SoundPlayer();
     danyoJugador_sound->setSound("danyo1");
+    
+    malditasea_sound = new gme::SoundPlayer();
+    malditasea_sound->setSound("malditasea");
 }
 
 void LifeManager::update() {
@@ -60,6 +63,11 @@ void LifeManager::onMessage(std::string m, float v) {
         if(waitClock.currentTime().asSeconds() < waitTime) return;
         
         if(gameObject()->hasTag("player")){
+            contDanyo++;
+            if(contDanyo==10){
+                if(mainGame::sound) malditasea_sound->play();
+                contDanyo=0;
+            }
             if(mainGame::sound) danyoJugador_sound->play();
         }
         

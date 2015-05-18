@@ -31,6 +31,8 @@ private:
     gme::MusicPlayer *music;
     gme::SoundPlayer *button_sound;
     gme::SoundPlayer *change_sound;
+    gme::SoundPlayer *ohyeah_sound;
+    
     bool sonando, izq, dre, apretado, music_pausa;
     int x=1, largo=280, ancho=30, num_apre, num_apre_ini, menu, posX, pausa_visible;
     bool pausa, menudejuego, juegoNuevo1p, juegoNuevo2p, showGameOver, showLevelSuccess;

@@ -137,8 +137,6 @@ void GlobalStateManager::update(){
     if(gameOver){
         //mainGame::sound = false;
         isGameOver();
-        
-        
     }
     
     if(goToMenu) gme::Game::setCurrentScene("mainmenu");

@@ -22,7 +22,9 @@ private:
     bool gonnaExplode, exploded;
     gme::Clock countdownClock;
     int iam;
-    
+    gme::SoundPlayer *granada_sound;
+    gme::SoundPlayer *danyoEnemigo_sound;
+    gme::SoundPlayer *explosionEnemigo_sound;
 };
 
 #endif	/* IAEXPLOSIVE_HPP */

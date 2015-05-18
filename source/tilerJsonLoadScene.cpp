@@ -152,10 +152,10 @@ void tilerJsonLoadScene::setupScenario() {
     g->addPosition(802, -300);
     g->setEnemi(true);
     g->setColectionable(true);
-    g->ene4 = 100; //0;
+    g->ene4 = 0;
     g->ene3 = 0;
-    g->ene2 = 0; //25;
-    g->ene1 = 0;//75;
+    g->ene2 = 0;
+    g->ene1 = 100;
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
