@@ -118,6 +118,10 @@ private:
     gme::GameObject *player,*player2;
     GlobalStateManager *stateManager;
     
+    gme::SoundPlayer *fly_sound;
+    gme::SoundPlayer *explosionEnemigo_sound;
+    gme::SoundPlayer *danyoEnemigo_sound;
+    
     void explode(int min, int max, float forcemin, float forcemax);
 };
 

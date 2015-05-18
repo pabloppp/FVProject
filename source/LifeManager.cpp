@@ -1,9 +1,16 @@
 
 #include "LifeManager.hpp"
+#include "mainGame.hpp"
 
 void LifeManager::setup() {
     lives = maxLives;
     hp = maxHp;
+    
+    danyoJugador_sound = new gme::SoundPlayer();
+    danyoJugador_sound->setSound("danyo1");
+    
+    malditasea_sound = new gme::SoundPlayer();
+    malditasea_sound->setSound("malditasea");
 }
 
 void LifeManager::update() {
@@ -53,11 +60,17 @@ float LifeManager::getHpPercent() {
 
 void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
-        
-        
-        
         if(waitClock.currentTime().asSeconds() < waitTime && v < 20) return;
-                
+        
+        if(gameObject()->hasTag("player")){
+            contDanyo++;
+            if(contDanyo==10){
+                if(mainGame::sound) malditasea_sound->play();
+                contDanyo=0;
+            }
+            if(mainGame::sound) danyoJugador_sound->play();
+        }
+        
         waitClock.restart();
         hp -= v;
         if(hp <= 0){

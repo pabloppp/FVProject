@@ -5,6 +5,9 @@
 void tileDestroyManager::setup() {
     isHit = false;
     isHitTemp = false;
+    bloque_sound = new gme::SoundPlayer();   
+    bloque_sound->setSound("bloque");
+    
 }
 
 void tileDestroyManager::update() {
@@ -22,6 +25,7 @@ void tileDestroyManager::onMessage(std::string m, float v) {
         isHitTemp = true;
         hp -= v;
         if(hp <= 0){
+           if(mainGame::sound) bloque_sound->play();
             mainGame::brokentiles += 1;
             mainGame::saveProfile();
             explode(10,20,50,100);
@@ -29,6 +33,7 @@ void tileDestroyManager::onMessage(std::string m, float v) {
         }
         else{
             explode(3,10,25,50);
+           if(mainGame::sound) bloque_sound->play();
         }
     }
 }

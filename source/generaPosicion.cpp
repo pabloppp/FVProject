@@ -45,13 +45,27 @@ void generaPosicion::update() {
     if(enemi == true){
         if(clkE.currentTime().asSeconds() > rat){
            clkE.restart();
-           gme::Vector2 randomPos = posiciones.at(rand() % posiciones.size());
-           generaEnemigo(randomPos.x, randomPos.y);
+           int cuantos = maxEnemigos;
+           while(cuantos > 0){
+                gme::Vector2 randomPos = posiciones.at(rand() % posiciones.size());
+                generaEnemigo(randomPos.x, randomPos.y);
+                cuantos--;
+           }
            //std::cout << "genera enemigo: " << enemi << std::endl;
         }
     }
     
 }
+
+void generaPosicion::fuerzaGeneracion(int n) {
+    int cuantos = n;
+    while(cuantos > 0){
+         gme::Vector2 randomPos = posiciones.at(rand() % posiciones.size());
+         generaEnemigo(randomPos.x, randomPos.y);
+         cuantos--;
+    }
+}
+
 
 void generaPosicion::generaColeccionable(){
     int finalpos = colMinX + (int)rand() % (int)(v.x-colMinX) ;
@@ -126,6 +140,7 @@ generaPosicion::generaPosicion(int x, int y,float ratio) : gme::Script(){
     colectionable = false;
     enemi = false;
     ene1 = ene2 = ene3 = ene4 = 25;
+    maxEnemigos = 1;
 }
 
 void generaPosicion::setCollectableLimits(int xmin, int xmax) {

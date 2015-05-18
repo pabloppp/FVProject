@@ -156,7 +156,7 @@ void oleada8::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave5.json";
+            gen->mapFile = "resources/maps/wave8.json";
         }
     });
 }

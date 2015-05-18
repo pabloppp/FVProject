@@ -7,6 +7,7 @@
 void GameManager::setup() {
     
     GlobalStateManager *stateManager = new GlobalStateManager();
+    stateManager->anim = anim;
     //SaveManager *saveManager = new SaveManager();
     MenuManager *menuManager = new MenuManager();
     

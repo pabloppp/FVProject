@@ -91,6 +91,42 @@ void tilerJsonLoadScene::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+    
+    Animator anim;
+    
+    anim.at(0, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    
+    anim.at(6, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->fuerzaGeneracion(3);
+    }, this);
+    anim.at(8, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 3;
+    }, this);
+    anim.at(15, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+   anim.at(16, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 2;
+        q->g->rat = 0.25;
+    }, this);
+    anim.at(17, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    
+    gm->anim = anim;
+    
+    
+    
+    
 }
 
 
@@ -147,15 +183,15 @@ void tilerJsonLoadScene::setupBg() {
 void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(-1, 280, 1.5);
+    g =  new generaPosicion(-1, 280, 1.5);
     g->addPosition(1520, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);
     g->setColectionable(true);
-    g->ene4 = 100; //0;
+    g->ene4 = 0;
     g->ene3 = 0;
-    g->ene2 = 0; //25;
-    g->ene1 = 0;//75;
+    g->ene2 = 0;
+    g->ene1 = 100;
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

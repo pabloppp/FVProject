@@ -59,6 +59,9 @@ void MenuManager::setup(){
     if(mainGame::brokentiles >= 500) brokentiles_500 = true;
     
     manager = (GlobalStateManager*)(gameObject()->getComponent<GlobalStateManager*>());
+    
+    ohyeah_sound = new gme::SoundPlayer();
+    ohyeah_sound->setSound("ohyeah");
 }
 
 void MenuManager::update(){
@@ -68,6 +71,7 @@ void MenuManager::update(){
     } 
     if(!pausa && !ready_player->isPlaying() && mainGame::music) musicMain->play();    
     if(!kills_10 && !showNotification && mainGame::kills >= 10){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_10 = true;
         showNotification = true;
         notificationClock.restart();
@@ -77,6 +81,7 @@ void MenuManager::update(){
         mainGame::saveProfile();
     }    
     if(!kills_100 && !showNotification && mainGame::kills >= 100){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_100 = true;
         showNotification = true;
         notificationClock.restart();
@@ -86,6 +91,7 @@ void MenuManager::update(){
         mainGame::saveProfile();
     }
     if(!kills_200 && !showNotification && mainGame::kills >= 200){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_200 = true;
         showNotification = true;
         notificationClock.restart();
@@ -93,6 +99,7 @@ void MenuManager::update(){
         notificationText = "Ya llevas 200 dinosaurios.\nNo te dan pena?";
     }
     if(!kills_300 && !showNotification && mainGame::kills >= 300){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_300 = true;
         showNotification = true;
         notificationClock.restart();
@@ -101,6 +108,7 @@ void MenuManager::update(){
     
     }
     if(!kills_400 && !showNotification && mainGame::kills >= 400){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_400 = true;
         showNotification = true;
         notificationClock.restart();
@@ -109,6 +117,7 @@ void MenuManager::update(){
    
     }
     if(!kills_500 && !showNotification && mainGame::kills >= 500){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_500 = true;
         showNotification = true;
         notificationClock.restart();
@@ -117,6 +126,7 @@ void MenuManager::update(){
  
     }
     if(!kills_600 && !showNotification && mainGame::kills >= 600){
+        if(mainGame::sound) ohyeah_sound->play();
         kills_600 = true;
         showNotification = true;
         notificationClock.restart();
@@ -125,6 +135,7 @@ void MenuManager::update(){
 
     }
     if(!brokentiles_30 && !showNotification && mainGame::brokentiles >= 30){
+        if(mainGame::sound) ohyeah_sound->play();
         brokentiles_30= true;
         showNotification = true;
         notificationClock.restart();
@@ -134,6 +145,7 @@ void MenuManager::update(){
         mainGame::saveProfile();
     }
     if(!brokentiles_100 && !showNotification && mainGame::brokentiles >= 100){
+        if(mainGame::sound) ohyeah_sound->play();
         brokentiles_100= true;
         showNotification = true;
         notificationClock.restart();
@@ -141,6 +153,7 @@ void MenuManager::update(){
         notificationText = "Destruir 100 bloques de tierra causa que se derritan los polos?";
     }
     if(!brokentiles_300 && !showNotification && mainGame::brokentiles >= 300){
+        if(mainGame::sound) ohyeah_sound->play();
         brokentiles_300= true;
         showNotification = true;
         notificationClock.restart();
@@ -148,6 +161,7 @@ void MenuManager::update(){
         notificationText = "Has destruido 300 bloques... \nTienes algo que comentarle a nuestros diseñadores?";
     }
     if(!brokentiles_500 && !showNotification && mainGame::brokentiles >= 500){
+        if(mainGame::sound) ohyeah_sound->play();
         brokentiles_500= true;
         showNotification = true;
         notificationClock.restart();
@@ -258,6 +272,7 @@ void MenuManager::onGui() {
   }
   //NOTIFICATIONS  
   if(showNotification){
+   
     int desfase = 0;
     if(notificationClock.currentTime().asSeconds() < 1){
         desfase = 500 - notificationClock.currentTime().asSeconds()*500;

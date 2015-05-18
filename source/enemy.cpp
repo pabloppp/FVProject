@@ -39,9 +39,6 @@ void enemy::setup(){
    
 }
 
-void enemy::update(){
-    
-}
 
 
 

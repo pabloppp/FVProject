@@ -12,8 +12,7 @@ void PlayerMovement::setup() {
     jump_sound = new gme::SoundPlayer();
     jump_sound->setSound("jump");
     
-    danyoJugador_sound = new gme::SoundPlayer();
-    danyoJugador_sound->setSound("danyo1");
+    
     
     dead = false;
     points = 0;
@@ -51,7 +50,7 @@ void PlayerMovement::onMessage(std::string m, float v) {
 
 void PlayerMovement::update() {
     
-    //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
+    if(gme::Keyboard::isKeyPressed(gme::Keyboard::H)) std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
     if(manager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
@@ -105,8 +104,7 @@ void PlayerMovement::update() {
         animGraceTimeClock.restart();
     }
     
-    if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
-        
+    if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){        
          //if(GlobalStateManager.gameover)   
          if(tlkClock.currentTime().asSeconds() > 0.9){
             
@@ -114,7 +112,6 @@ void PlayerMovement::update() {
              tlkClock.restart();
             
         }
-        
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
         else 
@@ -185,7 +182,7 @@ void PlayerMovement::onCollision(gme::Collider* c) {
     }
     else if(relativePosition.x == -1 && relativePosition.y == 0){
         hitWallRight = true;
-        if(mainGame::sound)danyoJugador_sound->play();
+        
     }
     
     if(relativePosition.y == 1 && relativePosition.x == 0){
@@ -347,7 +344,6 @@ void PlayerMovement::onGui() {
         
         gme::GUI::fontSize = 16;
         gme::GUI::label(gme::Vector2(10+disp,38), "HP", gme::GUI::Origin::TopLeft);
-        gme::GUI::label(gme::Vector2(10+disp,58), std::to_string(points), gme::GUI::Origin::TopLeft);
         
         gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
         gme::GUI::outlineThickness = 3;

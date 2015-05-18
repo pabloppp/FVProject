@@ -3,6 +3,7 @@
 #define	GLOBALSTATEMANAGER_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "Animator.hpp"
 
 class GlobalStateManager : public gme::Script{
 public:
@@ -39,6 +40,7 @@ public:
     gme::Clock gameClock;
     std::string nextScene;
     static int pointsp1, pointsp2, maxpoints;
+    Animator anim;
     
 private:
     bool paused;

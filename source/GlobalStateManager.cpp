@@ -25,12 +25,14 @@ void GlobalStateManager::pause(){
     if(!canpause) return; 
     std::cout << "Pausando juego desde el State Manager" << std::endl;
     paused = true;
+    anim.pause();
 }
 
 void GlobalStateManager::resume(){
     if(!canpause) return; 
     std::cout << "Volviendo al juego desde el State Manager" << std::endl;
-    paused = false;   
+    paused = false;
+    anim.resume();
 }
 
 void GlobalStateManager::setup(){    
@@ -46,6 +48,8 @@ bool GlobalStateManager::isPaused() {
 
 
 void GlobalStateManager::update(){
+    
+    anim.animate();
     // El jugador pausa el juego
     if(paused && !startready){
         sendMessage("readygo", 0); 
@@ -239,6 +243,8 @@ void GlobalStateManager::isGameOver() {
             }
 
             gameObject()->sendMessage("reset", 0);
+            
+            anim.restart();
 
             gameOver = false;
             canpause = true;

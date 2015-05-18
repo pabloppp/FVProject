@@ -2,6 +2,8 @@
 #define	TILERJSONLOADSCENE_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "generaPosicion.hpp"
+#include "Animator.hpp"
 
 class tilerJsonLoadScene : public gme::Scene {
 public:
@@ -10,13 +12,12 @@ public:
     };
 
     virtual void setup();
-    
     void setupBg();
     
     void setupScenario();
 
 private:
-    
+    generaPosicion *g;
     bool reseting;
 
 };

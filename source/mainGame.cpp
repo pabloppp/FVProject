@@ -74,13 +74,16 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
     gme::Game::newTexture("resources/sprites/player1_spr/player1_sheet.png", "player1Texture");
     
+    gme::Game::newTexture("resources/sprites/chica.png", "chicaJetpack");
+    
     //BALAS
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     gme::Game::newTexture("resources/Bullets/grenade.png", "grenade");
     
     gme::Game::newTexture("resources/Effects/smallExplosion.png", "explosion_small");
-     gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");
+    gme::Game::newTexture("resources/Effects/Noisy Cricket Ball.png", "explosion_teleport");
+    gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");
     
     //SONIDOS
     
@@ -105,6 +108,9 @@ void mainGame::setup() {
     
     gme::Game::newSound("resources/Sounds/escopeta.wav", "escopetaShot");
     gme::Game::newSound("resources/Sounds/escopetaReload.wav", "escopetaReload");
+    
+    gme::Game::newSound("resources/Sounds/granada.wav", "granada");
+    
     
         //NOMBRES COLAIDERS
     
@@ -131,10 +137,26 @@ void mainGame::setup() {
     gme::Game::newSound("resources/Sounds/footsteps.wav","footsteps");
     gme::Game::newSound("resources/Sounds/salto.wav","jump");
     gme::Game::newSound("resources/Sounds/danyo1.wav","danyo1");
+    gme::Game::newSound("resources/Sounds/malditasea.wav","malditasea");
+    gme::Game::newSound("resources/Sounds/ohyeah.wav","ohyeah");
+    gme::Game::newSound("resources/Sounds/frase1.wav","frase1");
     
         //ENEMIGOS
     gme::Game::newSound("resources/Sounds/danyo2.wav","danyo2");
+    gme::Game::newSound("resources/Sounds/explosiondino.wav","explosionEnemigo");
+    gme::Game::newSound("resources/Sounds/flySound.wav","flySound");
     
+       //CHICA
+    
+    gme::Game::newSound("resources/Sounds/laserShot.wav","laserShot");
+    gme::Game::newSound("resources/Sounds/laserCarga.wav","laserCarga");
+    gme::Game::newSound("resources/Sounds/jetpack.wav","jetpack");
+    gme::Game::newSound("resources/Sounds/teletransport.wav","teletransport");
+    
+    
+    
+            
+            
     jungleFondo_sound = new gme::MusicPlayer();
     jungleFondo_sound->setMusic("jungle");
     

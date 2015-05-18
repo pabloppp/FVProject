@@ -70,7 +70,7 @@ private:
     
     gme::SoundPlayer *footsteps_sound;
     gme::SoundPlayer *jump_sound;
-    gme::SoundPlayer *danyoJugador_sound;
+    
     
     bool grenadeLaunched;
     int grenades;
