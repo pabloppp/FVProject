@@ -59,6 +59,11 @@ void IAMovement::setup() {
    danyoEnemigo_sound = new gme::SoundPlayer();
    danyoEnemigo_sound->setSound("danyo2");
    danyoEnemigo_sound->setVolume(30.0);
+   
+   explosionEnemigo_sound = new gme::SoundPlayer();
+   explosionEnemigo_sound->setSound("explosionEnemigo");
+   
+          
 }
 
 void IAMovement::update() { 
@@ -311,6 +316,7 @@ void IAMovement::onCollision(gme::Collider* c) {
 void IAMovement::onMessage(std::string m, float v) {
 
     if(m.compare("kill")==0 && !dead){
+        if(mainGame::sound)explosionEnemigo_sound->play();
         std::cout << "muerte" << std::endl;
         dead = true;
         explode(20, 50, 50, 250);

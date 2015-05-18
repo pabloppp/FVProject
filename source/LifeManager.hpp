@@ -32,7 +32,7 @@ public:
 private:
     int hp;
     int lives;
-    
+    gme::SoundPlayer *danyoJugador_sound;
 };
 
 #endif	/* LIFEMANAGER_HPP */

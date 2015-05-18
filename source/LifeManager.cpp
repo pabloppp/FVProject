@@ -6,12 +6,14 @@
  */
 
 #include "LifeManager.hpp"
+#include "mainGame.hpp"
 
 void LifeManager::setup() {
     lives = maxLives;
     hp = maxHp;
     
-    
+    danyoJugador_sound = new gme::SoundPlayer();
+    danyoJugador_sound->setSound("danyo1");
 }
 
 void LifeManager::update() {
@@ -68,6 +70,10 @@ void LifeManager::onMessage(std::string m, float v) {
         
         if(waitClock.currentTime().asSeconds() < waitTime) return;
         
+        if(gameObject()->hasTag("player")){
+            if(mainGame::sound) danyoJugador_sound->play();
+        }
+        
         waitClock.restart();
         hp -= v;
         if(hp <= 0){
@@ -78,7 +84,7 @@ void LifeManager::onMessage(std::string m, float v) {
                 hp = 0;
                 sendMessage("gameover", 0);
                 if(gameObject()->hasTag("player")){
-                  
+                    
                     std::vector<gme::GameObject*> managerList = gme::GameObject::find("manager");
                     if(managerList.size() > 0){
                         managerList.at(0)->sendMessage("gameover",0);

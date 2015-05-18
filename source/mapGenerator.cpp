@@ -99,8 +99,9 @@ void mapGenerator::setup() {
 
                         if(tileNumber != 0){
                             tile *t = new tile("tile"); 
-                            instantiate(t);
                             tileDestroyManager *tdm = new tileDestroyManager();
+                            tdm->setup();
+                            instantiate(t);
                             //tdm->hp = 100;
                             json_object *tileAttrs = json_object_object_get(tileAttributes, std::to_string(tileNumber).c_str() );
                             if(tileAttrs){
@@ -122,6 +123,8 @@ void mapGenerator::setup() {
                             t->getTransform()->setPosition(gme::Vector2(origin.x+(tileSizeFixed/2.f)+k*tileSizeFixed, origin.y+(tileSizeFixed/2.f)+j*tileSizeFixed));
                             t->addTag("floor");
                             tRowV.push_back(t);
+                            
+                            
                         }
                         if(tRowV.size() > 0 && (tileNumber == 0 || k == mapwidth-1) ){
                             int cx = (tRowV.at(0)->getTransform()->getPosition().x+tRowV.at(tRowV.size()-1)->getTransform()->getPosition().x)/2.0;

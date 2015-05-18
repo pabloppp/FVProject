@@ -5,38 +5,38 @@
 void tileDestroyManager::setup() {
     isHit = false;
     isHitTemp = false;
-    
-   /* bloque_sound = new gme::SoundPlayer();
-    bloque_sound->setSound("bloque");*/
+    bloque_sound = new gme::SoundPlayer();   
+    bloque_sound->setSound("bloque");
     
 }
 
 void tileDestroyManager::update() {
-    if(isHitTemp == false) isHit = false;
+    if(isHitTemp == false){
+        isHit = false;
+    }
     isHitTemp = false;
 }
 
 tileDestroyManager::~tileDestroyManager() {
-
+    
+    
 }
 
 void tileDestroyManager::onMessage(std::string m, float v) {
-    
-    
-    
     if(m.compare("damage") == 0 && isHit == false){
         
         isHit = true;
         isHitTemp = true;
         hp -= v;
         if(hp <= 0){
-            //bloque_sound->play();
+           if(mainGame::sound) bloque_sound->play();
             explode(10,20,50,100);
             destroyGameObject(gameObject());
             
         }
         else{
             explode(3,10,25,50);
+           if(mainGame::sound) bloque_sound->play();
         }
     }
 }

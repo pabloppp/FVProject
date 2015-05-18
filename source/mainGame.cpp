@@ -108,7 +108,9 @@ void mainGame::setup() {
     
         //ENEMIGOS
     gme::Game::newSound("resources/Sounds/danyo2.wav","danyo2");
-    
+    gme::Game::newSound("resources/Sounds/explosiondino.wav","explosionEnemigo");
+            
+            
     jungleFondo_sound = new gme::MusicPlayer();
     jungleFondo_sound->setMusic("jungle");
     
