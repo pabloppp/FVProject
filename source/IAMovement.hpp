@@ -47,6 +47,7 @@ private:
     bool acted;
     int lasthitby;
     gme::SoundPlayer *danyoEnemigo_sound;
+    gme::SoundPlayer *explosionEnemigo_sound;
     
     GlobalStateManager *stateManager;
     

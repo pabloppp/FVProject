@@ -28,11 +28,13 @@ public:
     gme::Clock waitClock;
     bool showDamage, startShowDamage;
     int r, g, b;
+    int contDanyo=0;
 
 private:
     int hp;
     int lives;
-    
+    gme::SoundPlayer *danyoJugador_sound;
+    gme::SoundPlayer *malditasea_sound;
 };
 
 #endif	/* LIFEMANAGER_HPP */

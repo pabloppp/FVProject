@@ -1,9 +1,14 @@
 #include "granadaBehavior.hpp"
 #include "bigExplosion.hpp"
 #include "emptyGameObject.hpp"
+#include "mainGame.hpp"
 
 void granadaBehavior::setup() {
     timeToExplode = 1.4;
+    
+    granada_sound = new gme::SoundPlayer();
+    granada_sound->setSound("granada");
+    
 }
 
 void granadaBehavior::update() {
@@ -20,6 +25,7 @@ void granadaBehavior::update() {
         
         emptyGameObject *explosion = new emptyGameObject("bigboom");
         bigExplosion *be = new bigExplosion();
+        if(mainGame::sound)granada_sound->play();
         be->whoami = whoami;
         explosion->addComponent(be);
         explosion->getTransform()->setPosition(getTransform()->getPosition());

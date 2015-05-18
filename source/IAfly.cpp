@@ -8,6 +8,7 @@
 #include "IAfly.hpp"
 #include "defaultParticle.hpp"
 #include "sprayParticleScript.hpp"
+#include "mainGame.hpp"
 
 void IAfly::setup() {
     findPlayer();
@@ -38,6 +39,17 @@ void IAfly::setup() {
      wavePositions.push_back(gme::Vector2(200,50));
      wavePositions.push_back(gme::Vector2(1300,50));
      
+     
+     fly_sound = new gme::SoundPlayer();
+     fly_sound->setSound("flySound");
+     
+     danyoEnemigo_sound = new gme::SoundPlayer();
+    danyoEnemigo_sound->setSound("danyo2");
+    danyoEnemigo_sound->setVolume(30.0);
+   
+    explosionEnemigo_sound = new gme::SoundPlayer();
+    explosionEnemigo_sound->setSound("explosionEnemigo");
+
     
 }
 
@@ -117,7 +129,10 @@ void IAfly::update() {
                 }
                 
                 if(wait && clkW.currentTime().asSeconds() < 2) dist = 0;
-                if(wait && clkW.currentTime().asSeconds() >= 2) wait = false;
+                if(wait && clkW.currentTime().asSeconds() >= 2){
+                    wait = false;
+                    if(mainGame::sound)fly_sound->play();
+                }
                 if(grounded && !wait && !caida) desp.y = -1;
                 
             }
@@ -345,6 +360,7 @@ void IAfly::bossAttack() {
             wave = false;
         }
         else if(fallDown){
+            
             std::cout << "cambio falldown" << std::endl;
             if(rnd != 2) chase = true;
             else{
@@ -450,12 +466,14 @@ void IAfly::onCollision(gme::Collider* c) {
 
 void IAfly::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
+        if(mainGame::sound)explosionEnemigo_sound->play();
         std::cout << "muerte" << std::endl;
         dead = true;
         explode(20, 50, 50, 250);
     }
     
     if(m.compare("damage")==0 && !dead){
+        if(mainGame::sound)danyoEnemigo_sound->play();
         explode(3,10, 50, 150);
     }
 }

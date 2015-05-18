@@ -20,7 +20,8 @@ private:
     gme::Clock timerClock;
     float timeToExplode;
     bool forceExplode;
-
+        
+    gme::SoundPlayer *granada_sound;
 };
 
 #endif	/* GRANADABEHAVIOR_HPP */
