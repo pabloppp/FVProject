@@ -76,6 +76,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/GlobalStateManager.o \
 	${OBJECTDIR}/source/IABoss.o \
 	${OBJECTDIR}/source/IAMovement.o \
+	${OBJECTDIR}/source/IAexplosive.o \
+	${OBJECTDIR}/source/IAfly.o \
 	${OBJECTDIR}/source/IntroS1Manager.o \
 	${OBJECTDIR}/source/LifeManager.o \
 	${OBJECTDIR}/source/MainMenuSetup.o \
@@ -84,15 +86,20 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/SaveManager.o \
 	${OBJECTDIR}/source/TileRowGenerator.o \
 	${OBJECTDIR}/source/backgroundLayer.o \
+	${OBJECTDIR}/source/bigExplosion.o \
 	${OBJECTDIR}/source/colectableGameObject.o \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
 	${OBJECTDIR}/source/enemy_boss.o \
+	${OBJECTDIR}/source/enemy_explosive.o \
 	${OBJECTDIR}/source/enemy_fast.o \
+	${OBJECTDIR}/source/enemy_fly.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
+	${OBJECTDIR}/source/granada.o \
+	${OBJECTDIR}/source/granadaBehavior.o \
 	${OBJECTDIR}/source/limit.o \
 	${OBJECTDIR}/source/llamasBullet.o \
 	${OBJECTDIR}/source/llbBehavior.o \
@@ -105,7 +112,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/moveClouds.o \
 	${OBJECTDIR}/source/moveToTop.o \
 	${OBJECTDIR}/source/myMenu.o \
+	${OBJECTDIR}/source/oleada10.o \
 	${OBJECTDIR}/source/oleada2.o \
+	${OBJECTDIR}/source/oleada3.o \
+	${OBJECTDIR}/source/oleada4.o \
+	${OBJECTDIR}/source/oleada5.o \
+	${OBJECTDIR}/source/oleada6.o \
+	${OBJECTDIR}/source/oleada7.o \
+	${OBJECTDIR}/source/oleada8.o \
+	${OBJECTDIR}/source/oleada9.o \
 	${OBJECTDIR}/source/pbBehavior.o \
 	${OBJECTDIR}/source/pistolaBehavior.o \
 	${OBJECTDIR}/source/pistolaBullet.o \
@@ -113,6 +128,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/sbBehavior.o \
 	${OBJECTDIR}/source/sceneMenu.o \
 	${OBJECTDIR}/source/sceneSplash.o \
+	${OBJECTDIR}/source/smallExplosion.o \
 	${OBJECTDIR}/source/splash.o \
 	${OBJECTDIR}/source/sprayParticleScript.o \
 	${OBJECTDIR}/source/staticObject.o \
@@ -142,11 +158,11 @@ LDLIBSOPTIONS=-Llibs/SFML-2.1/lib -Llibs/Box2D/lib -Llibs/json-c/.libs -lsfml-gr
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/demo/Asteroid.o: demo/Asteroid.cpp 
 	${MKDIR} -p ${OBJECTDIR}/demo
@@ -353,6 +369,16 @@ ${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAMovement.o source/IAMovement.cpp
 
+${OBJECTDIR}/source/IAexplosive.o: source/IAexplosive.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAexplosive.o source/IAexplosive.cpp
+
+${OBJECTDIR}/source/IAfly.o: source/IAfly.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAfly.o source/IAfly.cpp
+
 ${OBJECTDIR}/source/IntroS1Manager.o: source/IntroS1Manager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -393,6 +419,11 @@ ${OBJECTDIR}/source/backgroundLayer.o: source/backgroundLayer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/backgroundLayer.o source/backgroundLayer.cpp
 
+${OBJECTDIR}/source/bigExplosion.o: source/bigExplosion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/bigExplosion.o source/bigExplosion.cpp
+
 ${OBJECTDIR}/source/colectableGameObject.o: source/colectableGameObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -418,10 +449,20 @@ ${OBJECTDIR}/source/enemy_boss.o: source/enemy_boss.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_boss.o source/enemy_boss.cpp
 
+${OBJECTDIR}/source/enemy_explosive.o: source/enemy_explosive.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_explosive.o source/enemy_explosive.cpp
+
 ${OBJECTDIR}/source/enemy_fast.o: source/enemy_fast.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_fast.o source/enemy_fast.cpp
+
+${OBJECTDIR}/source/enemy_fly.o: source/enemy_fly.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_fly.o source/enemy_fly.cpp
 
 ${OBJECTDIR}/source/escopetaBehavior.o: source/escopetaBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -437,6 +478,16 @@ ${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/generaPosicion.o source/generaPosicion.cpp
+
+${OBJECTDIR}/source/granada.o: source/granada.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/granada.o source/granada.cpp
+
+${OBJECTDIR}/source/granadaBehavior.o: source/granadaBehavior.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/granadaBehavior.o source/granadaBehavior.cpp
 
 ${OBJECTDIR}/source/limit.o: source/limit.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -498,10 +549,50 @@ ${OBJECTDIR}/source/myMenu.o: source/myMenu.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/myMenu.o source/myMenu.cpp
 
+${OBJECTDIR}/source/oleada10.o: source/oleada10.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada10.o source/oleada10.cpp
+
 ${OBJECTDIR}/source/oleada2.o: source/oleada2.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada2.o source/oleada2.cpp
+
+${OBJECTDIR}/source/oleada3.o: source/oleada3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada3.o source/oleada3.cpp
+
+${OBJECTDIR}/source/oleada4.o: source/oleada4.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada4.o source/oleada4.cpp
+
+${OBJECTDIR}/source/oleada5.o: source/oleada5.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada5.o source/oleada5.cpp
+
+${OBJECTDIR}/source/oleada6.o: source/oleada6.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada6.o source/oleada6.cpp
+
+${OBJECTDIR}/source/oleada7.o: source/oleada7.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada7.o source/oleada7.cpp
+
+${OBJECTDIR}/source/oleada8.o: source/oleada8.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada8.o source/oleada8.cpp
+
+${OBJECTDIR}/source/oleada9.o: source/oleada9.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/oleada9.o source/oleada9.cpp
 
 ${OBJECTDIR}/source/pbBehavior.o: source/pbBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -537,6 +628,11 @@ ${OBJECTDIR}/source/sceneSplash.o: source/sceneSplash.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/sceneSplash.o source/sceneSplash.cpp
+
+${OBJECTDIR}/source/smallExplosion.o: source/smallExplosion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/smallExplosion.o source/smallExplosion.cpp
 
 ${OBJECTDIR}/source/splash.o: source/splash.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -589,7 +685,7 @@ ${OBJECTDIR}/source/weapon.o: source/weapon.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fv
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/fvproject
 
 # Subprojects
 .clean-subprojects:

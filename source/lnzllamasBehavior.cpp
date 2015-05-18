@@ -118,7 +118,8 @@ void lnzllamasBehavior::shoot(int d) {
    
     animator.at(timePassed, [](void* ctx) {
        lnzllamasBehavior *q = static_cast<lnzllamasBehavior*> (ctx);
-       gme::GameObject *bulletx = new llamasBullet("bullet");
+       llamasBullet *bulletx = new llamasBullet("bullet");
+       if(q->gameObject()->getParent()->getName().compare("p2") == 0) bulletx->whoshoots = 2;
        q->instantiate(bulletx);
        q->numBullets--;
        int v1 = rand() % 7+0;

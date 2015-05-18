@@ -6,8 +6,9 @@
 
 class llamasBullet: public gme::GameObject {
 public:
-    llamasBullet(std::string n): gme::GameObject(n){};
+    llamasBullet(std::string n): gme::GameObject(n){whoshoots=1;};
     void setup();
+    int whoshoots;    
 private:
 
 };

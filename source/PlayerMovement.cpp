@@ -1,6 +1,7 @@
 #include "PlayerMovement.hpp"
 #include "LifeManager.hpp"
 #include "tile.hpp"
+#include "granada.hpp"
 #include "mainGame.hpp"
 
 void PlayerMovement::setup() {
@@ -14,6 +15,7 @@ void PlayerMovement::setup() {
     
     
     dead = false;
+    points = 0;
     for(int i=0;i<gameObject()->getChildren().size();i++){
         gameObject()->getChildren().at(i)->setActive(true);
     }
@@ -30,6 +32,7 @@ void PlayerMovement::setup() {
         //flipped = false;
     }
     flipped = false;
+    grenades = maxGrenades;
 }
 
 void PlayerMovement::onMessage(std::string m, float v) {
@@ -38,6 +41,9 @@ void PlayerMovement::onMessage(std::string m, float v) {
         for(int i=0;i<gameObject()->getChildren().size();i++){
             gameObject()->getChildren().at(i)->setActive(false);
         }
+    }
+    if(m.compare("givePoints") == 0){
+        points+=v;
     }
 }
 
@@ -54,7 +60,11 @@ void PlayerMovement::update() {
     }
     else getRigidBody()->setActive(true);
     
-    if(dead) return;
+    if(dead){
+        footsteps_sound->stop();
+        jump_sound->stop();
+        return;
+    }
     
         
     float deltaTime = gme::Game::deltaTime.asSeconds();
@@ -64,6 +74,22 @@ void PlayerMovement::update() {
     
     float speedX = getRigidBody()->getSpeed().x;
     float speedY = getRigidBody()->getSpeed().y;
+    
+    if(grenades > 0 && !grenadeLaunched && gme::Keyboard::isKeyPressed(actionKey)){
+        
+        granada *gr = new granada("granada");
+        gme::Vector2 pos = getTransform()->getPosition();
+        if(gameObject()->getName().compare("p2") == 0) gr->whoshoots = 2;
+        pos.y -= 8*3;
+        gr->getTransform()->setPosition(pos);
+        if(flipped) gr->direction = 1;
+        instantiate(gr);
+        grenades -= 1;
+        grenadeLaunched = true;
+    }
+    else if(grenadeLaunched && !gme::Keyboard::isKeyPressed(actionKey)){
+        grenadeLaunched = false;
+    }
     
     if(!down && grounded && gme::Keyboard::isKeyPressed(downKey)){
         ((gme::BoxCollider*)getCollider())->setSize(10*3, 13*3);
@@ -80,9 +106,11 @@ void PlayerMovement::update() {
     
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){        
          //if(GlobalStateManager.gameover)   
-         if(tlkClock.currentTime().asSeconds() > 0.9){            
-             if(mainGame::sound && grounded)footsteps_sound->play();
-             tlkClock.restart();            
+         if(tlkClock.currentTime().asSeconds() > 0.9){
+            
+             if(mainGame::sound && grounded && !dead)footsteps_sound->play();
+             tlkClock.restart();
+            
         }
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->setSpeed(-(walkingSpeed/2.f)*deltaTime, speedY);
@@ -93,9 +121,12 @@ void PlayerMovement::update() {
             flipped = true;
         }
     }
-    else if(gme::Keyboard::isKeyPressed(rightKey) && !hitWallRight){        
-          if(tlkClock.currentTime().asSeconds() > 0.9){              
-             if(mainGame::sound && grounded)footsteps_sound->play();
+    else if(gme::Keyboard::isKeyPressed(rightKey) && !hitWallRight){
+         
+        
+          if(tlkClock.currentTime().asSeconds() > 0.9){
+              
+             if(mainGame::sound && grounded && !dead)footsteps_sound->play();
              tlkClock.restart();
         }
         
@@ -222,8 +253,6 @@ void PlayerMovement::onGui() {
     }
     
     LifeManager *stats = (LifeManager*)(gameObject()->getComponent<LifeManager*>());
-    //gme::GUI::backgroundColor = gme::GUI::Color(255,255,255,50)
-    //gme::GUI::box(getTransform()->getPosition().worldToScreen(), gme::Vector2(50,50), gme::GUI::Origin::Center);
     gme::GUI::fontSize = 12;
     gme::GUI::contentColor = gme::GUI::Color(255,255,255,70);
     gme::Vector2 pos = getTransform()->getPosition().worldToScreen();
@@ -231,7 +260,6 @@ void PlayerMovement::onGui() {
     gme::GUI::label(pos, gameObject()->getName(), gme::GUI::Origin::BottomCenter);
     gme::GUI::contentColor = gme::GUI::white;
     if(stats != NULL){
-        
         gme::GUI::drawTexture(
             gme::Vector2(10+disp, 5),
             gme::Vector2(8*3, 8*3),
@@ -246,6 +274,7 @@ void PlayerMovement::onGui() {
         
         gme::GUI::fontSize = 16;
         gme::GUI::label(gme::Vector2(10+disp,38), "HP", gme::GUI::Origin::TopLeft);
+        gme::GUI::label(gme::Vector2(10+disp,58), std::to_string(points), gme::GUI::Origin::TopLeft);
         
         gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
         gme::GUI::outlineThickness = 3;
@@ -261,8 +290,28 @@ void PlayerMovement::onGui() {
         for(int i=0;i<bars;i++){
             gme::GUI::box(gme::Vector2(46+i*6+disp, 35+6), gme::Vector2(3, 3*2));
         }
-        
-        
+        //BOTTOM STATS    
+        gme::GUI::drawTexture(
+            gme::Vector2(0, 576),
+            gme::Vector2(64*3, 64*3),
+            gme::GUI::TextureName("interface_p1"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
+        gme::GUI::drawTexture(
+            gme::Vector2(20, 530),
+            gme::Vector2(27*3, 37*3),
+            gme::GUI::TextureName("max-willis"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
+        gme::GUI::drawTexture(
+            gme::Vector2(103, 525),
+            gme::Vector2(15*3, 7*3),
+            gme::GUI::TextureName("pistola-inter"),
+            gme::GUI::Origin::BottomLeft,
+            gme::GUI::ScaleToFit
+        );
     }
     //std::cout << "ENTERING HERE" << std::endl;
 }

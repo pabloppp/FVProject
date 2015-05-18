@@ -67,10 +67,7 @@ void ColectableScript::onCollision(gme::Collider* c) {
     if(c->gameObject()->hasTag("floor")){
         if(relativePosition.y == -1)   grounded = true;
     }    
-    if(c->gameObject()->hasTag("player")){
-        
-        
-        
+    if(c->gameObject()->hasTag("player")){ 
         std::cout << "objectType = " << objectType << std::endl;
         if(objectType <=1){
             if(objectType == 0){ 
@@ -142,10 +139,14 @@ void ColectableScript::onMessage(std::string m, float v) {
     isHit = false;
 }
 
-void ColectableScript::explode(int min, int max, float forcemin, float forcemax) { //CUANDO SE DESTRUYE
+void ColectableScript::explode(int min, int max, float forcemin, float forcemax) {
     
-    
-    if(mainGame::sound) cajaRota_sound->play();
+	if(mainGame::sound) cajaRota_sound->play();
+    if(mainGame::particles == 0) return;
+    else if(mainGame::particles == 1){
+        max /= 4.0;
+        min /= 4.0;
+    } 
     
     int cantidad = (rand() % (max-min)) + min;
     
@@ -164,7 +165,6 @@ void ColectableScript::explode(int min, int max, float forcemin, float forcemax)
         
         if(rand() % 10 == 1){
             particle->getRenderer()->setColor(33,51,32);
-            
         }
         else{
             particle->getRenderer()->setColor(103,64,40);

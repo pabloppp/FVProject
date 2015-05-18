@@ -27,7 +27,7 @@ void IABoss::setup() {
     if(gm.size() > 0){
         GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
         if(gsm != NULL){
-            manager = gsm;
+            stateManager = gsm;
         }
     }
    
@@ -45,10 +45,12 @@ void IABoss::findPlayer() {
 
 
 void IABoss::update() {
-    if(manager->isPaused()){
+    if(stateManager->isPaused()){
         getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
         return;
     }
+    else getRigidBody()->setActive(true);
     
     if(player){
        gme::Vector2 playerpos = player->getTransform()->getPosition();
@@ -86,6 +88,7 @@ void IABoss::update() {
              sprint =true;
              clkS.restart();
         }
+        //std::cout << enemypos.x << " " << enemypos.y <<std::endl;
         
         if(sprint && clkS.currentTime().asSeconds() > 1){
             dist *= 4;
@@ -126,21 +129,34 @@ void IABoss::vectorDirector(gme::Vector2 player, gme::Vector2 enemy) {
     //std::cout << "enemy: " << enemy.y << std::endl;
     //std::cout << "player: " << player.y << std::endl;
     
-    if(enemy.x < 16*3 && !right){
-        dir.x = -dir.x;        
-        clk.restart();
-        right = true;
-        side = true;
-        sprint = false;
-        getTransform()->resize(gme::Vector2(-1,1));
+    float deltatime = gme::Game::deltaTime.asSeconds();
+    
+    if(enemy.x < 615 && !right){
+        if(sprint ){
+            std::cout << "Llega con sprint Izquierda" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(4,-1), 19000*deltatime);
+            
+        }
+            dir.x = -dir.x;        
+            clk.restart();
+            right = true;
+            side = true;
+            getTransform()->resize(gme::Vector2(-1,1));
+       
     }
     
     if(enemy.x > 1526-16*3 && right){
+        if(sprint){
+            std::cout << "Llega con sprint Derecha" << std::endl;
+            sprint = false;
+            getRigidBody()->pushImmediate(gme::Vector2(-4,-1), 19000*deltatime);
+        }
+        
         dir.x = -dir.x;        
         clk.restart();
         right = false;
         side = true;
-        sprint =false;
         getTransform()->resize(gme::Vector2(-1,1));
     }
     
@@ -172,9 +188,7 @@ void IABoss::onCollision(gme::Collider* c) {
 }
 
 void IABoss::onMessage(std::string m, float v) {
-
     if(m.compare("kill")==0 && !dead){
-        std::cout << "muerte" << std::endl;
         dead = true;
         explode(5, 15, 20, 200);
     }

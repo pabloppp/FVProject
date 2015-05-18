@@ -15,11 +15,19 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
+#include "oleada3.hpp"
 
 void oleada2::setup() {
     
+    mainGame::continueLevel = 2;
+    mainGame::saveProfile();
+    
     mainGame::removeScene("oleada1");
     //addGameObject(gme::Game::mainCamera);
+    gme::Scene *s = mainGame::getScene("oleada3");
+    if(!s || s == NULL){
+        gme::Scene *ol3 = new oleada3("oleada3");
+    }  
     
     if(reseting){
         setupScenario();
@@ -31,7 +39,8 @@ void oleada2::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 75;
+        gsm->winCondition = 60;
+        gsm->nextScene = "oleada3";
     });
     
     setupBg(); 
@@ -154,15 +163,20 @@ void oleada2::setupScenario() {
     g->addPosition(829, 95);
     g->setEnemi(true);
     g->setColectionable(true);
+    
+    g->ene4 = 0;
+    g->ene3 = 25;
+    g->ene2 = 37;
+    g->ene1 = 38;
+    
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());
     
-    
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave5.json";
+            gen->mapFile = "resources/maps/wave2.json";
         }
     });
 }

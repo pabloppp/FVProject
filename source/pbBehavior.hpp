@@ -7,11 +7,13 @@
 
 class pbBehavior: public gme::Script  {
 public:
-    pbBehavior() : gme::Script(){};
+    pbBehavior() : gme::Script(){
+        whoami = 1;
+    };
     virtual ~pbBehavior();
     void setup();
     void update();
-
+    int whoami;
     virtual void onCollision(gme::Collider* c);
 
 private:

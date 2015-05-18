@@ -98,7 +98,8 @@ void metralletaBehavior::shoot(int d){
     directionSp = d;
     animator.at(timePassed, [](void* ctx) {
        metralletaBehavior *q = static_cast<metralletaBehavior*> (ctx);
-       gme::GameObject *bulletx = new metralletaBullet("bullet");
+       metralletaBullet *bulletx = new metralletaBullet("bullet");
+       if(q->gameObject()->getParent()->getName().compare("p2") == 0) bulletx->whoshoots = 2;
        q->instantiate(bulletx);
        q->numBullets--;
       

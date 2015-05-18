@@ -45,6 +45,7 @@ private:
     int walkFPS;
     int cornered;
     bool acted;
+    int lasthitby;
     gme::SoundPlayer *danyoEnemigo_sound;
     gme::SoundPlayer *explosionEnemigo_sound;
     

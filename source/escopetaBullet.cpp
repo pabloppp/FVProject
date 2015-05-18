@@ -21,6 +21,7 @@ void escopetaBullet::setup() {
    addComponent(col);
    
    sbBehavior *bB = new sbBehavior;
+   bB->whoami = whoshoots;
    addComponent(bB);
 }
 

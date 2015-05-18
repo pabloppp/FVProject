@@ -1,9 +1,3 @@
-/* 
- * File:   LifeManager.cpp
- * Author: pablopernias
- * 
- * Created on 18 de marzo de 2015, 11:23
- */
 
 #include "LifeManager.hpp"
 #include "mainGame.hpp"
@@ -31,7 +25,6 @@ void LifeManager::update() {
         }
         else{
             getRenderer()->setColor(255,0,0);
-            
         }
     }
     else{
@@ -62,12 +55,8 @@ float LifeManager::getHpPercent() {
     return (1.0f*hp/maxHp)*100;
 }
 
-
-
 void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
-        
-        
         if(waitClock.currentTime().asSeconds() < waitTime) return;
         
         if(gameObject()->hasTag("player")){
@@ -84,11 +73,9 @@ void LifeManager::onMessage(std::string m, float v) {
                 hp = 0;
                 sendMessage("gameover", 0);
                 if(gameObject()->hasTag("player")){
-                    
                     std::vector<gme::GameObject*> managerList = gme::GameObject::find("manager");
                     if(managerList.size() > 0){
                         managerList.at(0)->sendMessage("gameover",0);
-                         
                     }
                 }
             }
@@ -104,8 +91,7 @@ void LifeManager::onMessage(std::string m, float v) {
         }
     }
     if(m.compare("kill") == 0){
-        destroyGameObject(gameObject());
-       
+        destroyGameObject(gameObject());        
     }
     if(m.compare("oneup") == 0){
         lives += v;

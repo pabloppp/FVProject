@@ -85,12 +85,15 @@ void escopetaBehavior::update() {
 
 void escopetaBehavior::shoot(int d) {
     if(clock.currentTime().asSeconds()>1){
-        
-        if(mainGame::sound)escopetaShot_sound->play();
-        
-        gme::GameObject *bulletx = new escopetaBullet("bullet");
-        gme::GameObject *bullety = new escopetaBullet("bullet");
-        gme::GameObject *bulletz = new escopetaBullet("bullet");
+		if(mainGame::sound)escopetaShot_sound->play();
+        escopetaBullet *bulletx = new escopetaBullet("bullet");
+        escopetaBullet *bullety = new escopetaBullet("bullet");
+        escopetaBullet *bulletz = new escopetaBullet("bullet");
+        if(gameObject()->getParent()->getName().compare("p2") == 0){
+            bulletx->whoshoots = 2;
+            bullety->whoshoots = 2;
+            bulletz->whoshoots = 2;
+        }
         instantiate(bulletx);   
         instantiate(bullety); 
         instantiate(bulletz); 

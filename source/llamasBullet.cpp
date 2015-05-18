@@ -2,7 +2,7 @@
 #include "llbBehavior.hpp"
 
 void llamasBullet::setup() {
-    addTag("bullet"); 
+   addTag("bullet"); 
    
    getRenderer()->setTexture("fthrower_bullet");
    getRenderer()->setSize(gme::Vector2(16,16));
@@ -21,6 +21,7 @@ void llamasBullet::setup() {
    addComponent(col);
    
    llbBehavior *bB = new llbBehavior;
+   bB->whoami = whoshoots;
    addComponent(bB);
 }
 

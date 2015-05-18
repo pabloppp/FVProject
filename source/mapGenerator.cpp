@@ -138,6 +138,12 @@ void mapGenerator::setup() {
         }
     }
     
+    //DO PLAYER POSITION ON TOP
+    std::vector<gme::GameObject*> players = gme::GameObject::findWithTag("player");
+    for(int i=0;i<players.size();i++){
+        if(players.at(i) && players.at(i) != NULL) players.at(i)->broadcastMessage("movetotop", 0);
+    }
+    
 }
 
 void mapGenerator::update() {

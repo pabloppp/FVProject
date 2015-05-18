@@ -6,11 +6,15 @@
 
 class sbBehavior: public gme::Script {
 public:
-    sbBehavior() : gme::Script(){};
+    sbBehavior() : gme::Script(){
+        whoami = 1;
+    };
     void setup();
     void update();
     virtual ~sbBehavior();
     virtual void onCollision(gme::Collider* c);
+    
+    int whoami;
 private:
     gme::Vector2 winSize;
     bool destroy;

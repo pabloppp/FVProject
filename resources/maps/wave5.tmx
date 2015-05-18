@@ -1,106 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="33" height="18" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="Tileset" tilewidth="16" tileheight="16">
-  <image source="Tileset.png" width="256" height="384"/>
-  <tile id="6">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="8">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="10">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="11">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="12">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="13">
-   <properties>
-    <property name="HP" value="15"/>
-   </properties>
-  </tile>
-  <tile id="15">
-   <properties>
-    <property name="HP" value="30"/>
-   </properties>
-  </tile>
-  <tile id="16">
-   <properties>
-    <property name="HP" value="30"/>
-   </properties>
-  </tile>
-  <tile id="17">
-   <properties>
-    <property name="HP" value="30"/>
-   </properties>
-  </tile>
-  <tile id="18">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="19">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="20">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="21">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="22">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="23">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="24">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
-  <tile id="25">
-   <properties>
-    <property name="HP" value="8"/>
-   </properties>
-  </tile>
+  <image source="Tileset.png" width="256" height="208"/>
  </tileset>
  <layer name="bg" width="33" height="18">
   <data encoding="base64" compression="zlib">
-   eJztVVsOgjAQ3HABL+CPxmg8Az4AqXpCb2DUW9om3biQfUnQLyaZkNCyMzssBWDCUDwjX5EF4b9witwRtsK9X2Ju8Jqv32BhrJfw6a1kNGvBizeXZeTK8BAUnZDrH4R15Fmpv47cGB4QFVO7zT40/cZRewvd3PbKXqtfb//9GaZzZOVm9ezNX6ujPYfweihAPzs4H5I+fhc0Nw/x3Ejv9iLUpvM+Vv4c6159Lpeg6CPSLN4G6HO9pWy482Im7Kc+PZp0to9KP9xa0k//oAfhnXl2jAw0fxMA3hOIKgM=
+   eJxjYBgFgwUwIeGBAh5ALAPFLiToUwRiJSq5QQYJuxGpRxWIVYBYmYpuAIWFPQl61IBYHYg1qOgGRyB2IkItctrRZMCdhkhNX/jC35oBkkacGVDjjFjswYA7jRGbnuzItBsZY4tjUtITpW6YhsMNsPREDMDmBjeouAsJbgSpXQHEKxkw0xOhdENJOEhjcQeudEUvN+DDuAC5eYEUN8DK6GVAvByIlzIg4odY+2H52pVG4TDSAACqaCBQ
   </data>
  </layer>
  <layer name="fg" width="33" height="18">
@@ -110,12 +15,12 @@
  </layer>
  <layer name="detalles" width="33" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF5AImKB4Fo2AUjIJRMAoIgcVAvGQA7Z8PxAuAeCEQLxpAdww3AADRowPO
+   eJxjYBgFo2AUDCfANNAOGAVDCjAx4E8zo+lpZAJs6YIJh/hIBwAyoAAT
   </data>
  </layer>
  <layer name="fgd" width="33" height="18">
   <data encoding="base64" compression="zlib">
-   eJztlNsKgCAMQIWKil66mfn/P9oCB3NEarWiaHCeNHbcJaX+eGNkQB6gEHYogWoHC9QX52yBjoAOZuPu7M5q9k1/sdPqMO2cS9QhxWEAmoMOKXXjDoNjdPljHHh/U3vFHXAGKE/2wgo48JrRvdABB8m9MMrfTToPZ3qR4rzmo73At8fOQxuRIxQ4g9r5YF6j/H+UZGy9G9E3OXw5FkHEBuI=
+   eJxjYBgFowABBIBYEIqFBtgto2BwA+S0goyFoBibPLr4aBobBSCAnibQ05AAw2h6GQWDFwAAzbsCNA==
   </data>
  </layer>
 </map>

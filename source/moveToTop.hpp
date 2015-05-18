@@ -8,12 +8,15 @@ public:
     moveToTop() : gme::Script(){
         orderpostion = -1;
         automove = false;
+        triggerMove = false;
     };
     void setOrder(int o);
     void setup();
+    virtual void onMessage(std::string m, float v);
     void update();
     void move();
     bool automove;
+    bool triggerMove;
 private:
     gme::Clock doClock;
     int orderpostion;

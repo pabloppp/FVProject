@@ -97,6 +97,8 @@
           <logicalFolder name="f1" displayName="Ataque" projectFiles="true">
             <itemPath>source/escopetaBullet.cpp</itemPath>
             <itemPath>source/escopetaBullet.hpp</itemPath>
+            <itemPath>source/granada.cpp</itemPath>
+            <itemPath>source/granada.hpp</itemPath>
             <itemPath>source/llamasBullet.cpp</itemPath>
             <itemPath>source/llamasBullet.hpp</itemPath>
             <itemPath>source/metralletaBullet.cpp</itemPath>
@@ -105,6 +107,18 @@
             <itemPath>source/pistolaBullet.hpp</itemPath>
             <itemPath>source/weapon.cpp</itemPath>
             <itemPath>source/weapon.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
+            <itemPath>source/enemy.cpp</itemPath>
+            <itemPath>source/enemy.hpp</itemPath>
+            <itemPath>source/enemy_boss.cpp</itemPath>
+            <itemPath>source/enemy_boss.hpp</itemPath>
+            <itemPath>source/enemy_explosive.cpp</itemPath>
+            <itemPath>source/enemy_explosive.hpp</itemPath>
+            <itemPath>source/enemy_fast.cpp</itemPath>
+            <itemPath>source/enemy_fast.hpp</itemPath>
+            <itemPath>source/enemy_fly.cpp</itemPath>
+            <itemPath>source/enemy_fly.hpp</itemPath>
           </logicalFolder>
           <itemPath>source/Animator.cpp</itemPath>
           <itemPath>source/Animator.hpp</itemPath>
@@ -118,12 +132,6 @@
           <itemPath>source/defaultParticle.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
-          <itemPath>source/enemy.cpp</itemPath>
-          <itemPath>source/enemy.hpp</itemPath>
-          <itemPath>source/enemy_boss.cpp</itemPath>
-          <itemPath>source/enemy_boss.hpp</itemPath>
-          <itemPath>source/enemy_fast.cpp</itemPath>
-          <itemPath>source/enemy_fast.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
           <itemPath>source/myMenu.cpp</itemPath>
@@ -140,6 +148,8 @@
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
           <itemPath>source/oleada2.cpp</itemPath>
           <itemPath>source/oleada2.hpp</itemPath>
+          <itemPath>source/oleada3.cpp</itemPath>
+          <itemPath>source/oleada3.hpp</itemPath>
           <itemPath>source/sceneMenu.cpp</itemPath>
           <itemPath>source/sceneMenu.hpp</itemPath>
           <itemPath>source/sceneSplash.cpp</itemPath>
@@ -175,6 +185,22 @@
               <itemPath>source/pistolaBehavior.cpp</itemPath>
               <itemPath>source/pistolaBehavior.hpp</itemPath>
             </logicalFolder>
+            <itemPath>source/bigExplosion.cpp</itemPath>
+            <itemPath>source/bigExplosion.hpp</itemPath>
+            <itemPath>source/granadaBehavior.cpp</itemPath>
+            <itemPath>source/granadaBehavior.hpp</itemPath>
+            <itemPath>source/smallExplosion.cpp</itemPath>
+            <itemPath>source/smallExplosion.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
+            <itemPath>source/IABoss.cpp</itemPath>
+            <itemPath>source/IABoss.hpp</itemPath>
+            <itemPath>source/IAMovement.cpp</itemPath>
+            <itemPath>source/IAMovement.hpp</itemPath>
+            <itemPath>source/IAexplosive.cpp</itemPath>
+            <itemPath>source/IAexplosive.hpp</itemPath>
+            <itemPath>source/IAfly.cpp</itemPath>
+            <itemPath>source/IAfly.hpp</itemPath>
           </logicalFolder>
           <itemPath>source/BackgroundParallax.cpp</itemPath>
           <itemPath>source/BackgroundParallax.hpp</itemPath>
@@ -184,10 +210,6 @@
           <itemPath>source/ColectableScript.hpp</itemPath>
           <itemPath>source/GlobalStateManager.cpp</itemPath>
           <itemPath>source/GlobalStateManager.hpp</itemPath>
-          <itemPath>source/IABoss.cpp</itemPath>
-          <itemPath>source/IABoss.hpp</itemPath>
-          <itemPath>source/IAMovement.cpp</itemPath>
-          <itemPath>source/IAMovement.hpp</itemPath>
           <itemPath>source/IntroS1Manager.cpp</itemPath>
           <itemPath>source/IntroS1Manager.hpp</itemPath>
           <itemPath>source/LifeManager.cpp</itemPath>
@@ -464,6 +486,14 @@
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/IAexplosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAexplosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAfly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAfly.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
@@ -496,6 +526,10 @@
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/bigExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/bigExplosion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
@@ -516,9 +550,17 @@
       </item>
       <item path="source/enemy_boss.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/enemy_explosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_explosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -531,6 +573,14 @@
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granada.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -580,9 +630,41 @@
       </item>
       <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/oleada10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada10.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada5.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada6.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada6.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada7.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada7.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada8.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada8.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada9.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada9.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -611,6 +693,10 @@
       <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -867,6 +953,14 @@
       </item>
       <item path="source/IAMovement.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/IAexplosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAexplosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/IAfly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/IAfly.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/IntroS1Manager.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/IntroS1Manager.hpp" ex="false" tool="3" flavor2="0">
@@ -899,6 +993,10 @@
       </item>
       <item path="source/backgroundLayer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/bigExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/bigExplosion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/colectableGameObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/colectableGameObject.hpp" ex="false" tool="3" flavor2="0">
@@ -919,9 +1017,17 @@
       </item>
       <item path="source/enemy_boss.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/enemy_explosive.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_explosive.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/enemy_fast.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/enemy_fast.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/enemy_fly.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/escopetaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -934,6 +1040,14 @@
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granada.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granada.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -983,9 +1097,41 @@
       </item>
       <item path="source/myMenu.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/oleada10.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada10.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/oleada2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/oleada2.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada3.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada4.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada4.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada5.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada5.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada6.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada6.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada7.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada7.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada8.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada8.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/oleada9.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/oleada9.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/pbBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1014,6 +1160,10 @@
       <item path="source/sceneSplash.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/sceneSplash.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/smallExplosion.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/splash.cpp" ex="false" tool="1" flavor2="0">
       </item>

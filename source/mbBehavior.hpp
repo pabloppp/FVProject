@@ -6,11 +6,14 @@
 
 class mbBehavior: public gme::Script {
 public:
-    mbBehavior() : gme::Script(){};
+    mbBehavior() : gme::Script(){
+         whoami = 1;
+    };
     void setup();
     void update();
     virtual ~mbBehavior();
     virtual void onCollision(gme::Collider* c);
+    int whoami;
     
 private:
     gme::Vector2 winSize;

@@ -5,15 +5,27 @@
 
 class mainGame : public gme::Game{
 public:
-    mainGame(gme::Vector2 windowSize, std::string name) : gme::Game(windowSize, name){};
+    mainGame(gme::Vector2 windowSize, std::string name) : gme::Game(windowSize, name){
+      
+    };
     void setup();
     static bool coop;
     static bool music;
     static bool sound;
     static int particles;
     static bool fullscreen;
+    static bool machinegun, shotgun, flamethrower, bazooka, snipper;
+    static bool will, marty, drwho;
     static void saveOpts();
     static void loadOpts();
+    static void loadProfile();
+    static void saveProfile();
+    static void loadPoints();
+    static void savePoints();
+    static int continueLevel;
+    static int kills, newgames, brokentiles, victories, levelspassed, deaths;
+    static int maxpoints[];
+    
     static gme::MusicPlayer *jungleFondo_sound;
 private:
     
