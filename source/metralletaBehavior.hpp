@@ -13,6 +13,7 @@ public:
     virtual ~metralletaBehavior();
     void setup();
     void update();
+    virtual void onGui(); 
     virtual void shoot(int d);
     //virtual void onCollision(gme::Collider *c);
     gme::Keyboard::Key ShotKey;

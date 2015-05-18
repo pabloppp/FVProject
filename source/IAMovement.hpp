@@ -18,6 +18,7 @@ public:
         walkFrameCount = 0;
         speed = 7;
         damage = 5;
+        first = true;
     };
     void setup();
     void update();
@@ -62,6 +63,7 @@ private:
     void explode(int min, int max, float forcemin, float forcemax);
     
     bool fixPos;
+    bool first;
     
     
 };

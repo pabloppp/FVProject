@@ -50,8 +50,7 @@ void metralletaBehavior::update() {
         recargando = true;
         return;
     }
-    if(recargando){
-        
+    if(recargando){        
         if(clock.currentTime().asSeconds() > 0.05){
             clock.restart();
             numBullets = numBullets + 4;
@@ -78,8 +77,7 @@ void metralletaBehavior::update() {
     
     if(gme::Keyboard::isKeyPressed(ShotKey) && !recargando){
         animator.animate();
-        if(tlkClock.currentTime().asSeconds() > 0.275){
-               
+        if(tlkClock.currentTime().asSeconds() > 0.275){               
             if(mainGame::sound) metralletaShot_sound->play();
              tlkClock.restart();
         }
@@ -91,6 +89,25 @@ void metralletaBehavior::update() {
         animator.restart();
     }
 }
+
+void metralletaBehavior::onGui() {    
+    gme::GUI::fontSize = 16;
+    gme::GUI::label(gme::Vector2(10,58), "WP", gme::GUI::Origin::TopLeft);
+
+    gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
+    gme::GUI::outlineThickness = 3;
+    gme::GUI::outlineColor = gme::GUI::white;
+
+    gme::GUI::box(gme::Vector2(40,55), gme::Vector2(117, 3*6));
+    //1.0f*numBullets/maxHp)*100
+    int bars = (int)( 1.0f*numBullets/ 5.555); 
+    gme::GUI::backgroundColor = gme::GUI::Color(255, 142, 110);
+    gme::GUI::outlineThickness = 0;
+    for(int i=0;i<bars;i++){
+        gme::GUI::box(gme::Vector2(46+i*6, 55+6), gme::Vector2(3, 3*2));
+    }    
+}
+
 
 void metralletaBehavior::shoot(int d){
     

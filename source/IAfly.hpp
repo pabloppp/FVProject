@@ -19,11 +19,11 @@ public:
         walkFrameCount = 0;
         position = 0;
         if(!enemy_boss){
-            damage = 5;
+            damage = 10;
             speed = 6;
         }
         else{
-            damage = 15;
+            damage = 20;
             speed = 6;
         }
         first = true;

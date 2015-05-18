@@ -17,6 +17,19 @@ void IAGirl::setup() {
             manager = gsm;
         }
     }
+    
+    laserShot_sound = new gme::SoundPlayer();
+    laserShot_sound->setSound("laserShot");
+    
+    laserCarga_sound = new gme::SoundPlayer();
+    laserCarga_sound->setSound("laserCarga");
+    
+    jetpack_sound = new gme::SoundPlayer();
+    jetpack_sound->setSound("jetpack");
+    jetpack_sound->setVolume(30.0);
+    
+    teletransport_sound = new gme::SoundPlayer();
+    teletransport_sound->setSound("teletransport");
 }
 
 void IAGirl::update() {
@@ -136,10 +149,13 @@ void IAGirl::update() {
            cargando = true;
            std::cout << "cargando"<< std::endl;
            //SONIDO DE CARGA
+           if(mainGame::sound)laserCarga_sound->play();
+           laserCarga_sound->setVolume(100.0);
         }
         
         if(disparando){
             if(shootClock.currentTime().asSeconds() > 0.1){
+                if(mainGame::sound)laserShot_sound->play();
                 std::cout << "bang " << disparos << std::endl;
                 if(flipped) shoot(2);
                 else shoot(0);
@@ -220,6 +236,8 @@ void IAGirl::shoot(int dir) {
 void IAGirl::teleport() {
     
     //SONIDO TELETRANSPORTE
+    
+    if(mainGame::sound)teletransport_sound->play();
     
     emptyGameObject *explosion = new emptyGameObject("smallboom");
     explosion->addComponent(new teleportExplosion());

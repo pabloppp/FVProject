@@ -53,7 +53,7 @@ void oleada6::setup() {
     arma->addComponent(lb);
     
     player *p1 = new player("p1");
-    p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
+    p1->getTransform()->setPosition(gme::Vector2(16*3, 116-16*9));
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
