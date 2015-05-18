@@ -104,8 +104,7 @@ void IAMovement::update() {
             sendMessage("detected", 0);
         }
         
-        vectorDirector(playerpos, enemypos);
-        
+        vectorDirector(playerpos, enemypos);       
         
         if(grounded && getRigidBody()->getSpeed().y >= 0) getRigidBody()->setSpeed(dir, dist);
         
@@ -117,6 +116,7 @@ void IAMovement::update() {
     
     grounded = false;
     cornered = 0;
+    
     
 }
 

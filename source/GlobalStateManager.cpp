@@ -142,10 +142,7 @@ void GlobalStateManager::update(){
     }
     //Si perdemos...
     if(gameOver){
-        //mainGame::sound = false;
-        isGameOver();
-        
-        
+        isGameOver();        
     }
     
     if(goToMenu) gme::Game::setCurrentScene("mainmenu");
