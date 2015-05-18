@@ -18,7 +18,7 @@
 
 void mainGame::setup() {
     
-    debugColliders = true;
+    //debugColliders = true;
     
     loadOpts();
     loadProfile();

@@ -111,6 +111,8 @@
           <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
             <itemPath>source/enemy.cpp</itemPath>
             <itemPath>source/enemy.hpp</itemPath>
+            <itemPath>source/enemy_Final.cpp</itemPath>
+            <itemPath>source/enemy_Final.hpp</itemPath>
             <itemPath>source/enemy_boss.cpp</itemPath>
             <itemPath>source/enemy_boss.hpp</itemPath>
             <itemPath>source/enemy_explosive.cpp</itemPath>
@@ -205,10 +207,14 @@
             <itemPath>source/granadaBehavior.hpp</itemPath>
             <itemPath>source/smallExplosion.cpp</itemPath>
             <itemPath>source/smallExplosion.hpp</itemPath>
+            <itemPath>source/teleportExplosion.cpp</itemPath>
+            <itemPath>source/teleportExplosion.hpp</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="Enemigos" projectFiles="true">
             <itemPath>source/IABoss.cpp</itemPath>
             <itemPath>source/IABoss.hpp</itemPath>
+            <itemPath>source/IAGirl.cpp</itemPath>
+            <itemPath>source/IAGirl.hpp</itemPath>
             <itemPath>source/IAMovement.cpp</itemPath>
             <itemPath>source/IAMovement.hpp</itemPath>
             <itemPath>source/IAexplosive.cpp</itemPath>
