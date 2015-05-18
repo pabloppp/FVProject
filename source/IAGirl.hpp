@@ -13,7 +13,7 @@ public:
         damage = 0;
         disparos = 0;
         cargando = false;
-        maxLife = 500;
+        maxLife = 200;
         life = maxLife;
         
     };
