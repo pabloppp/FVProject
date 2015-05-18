@@ -13,6 +13,7 @@ void pistolaBehavior::setup() {
 
     gunShot_sound = new gme::SoundPlayer();
     gunShot_sound->setSound("gunShot");
+    gunShot_sound->setVolume(60.0);
     
     ShotKey = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->weaponKey;
     keyUp = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->upKey;

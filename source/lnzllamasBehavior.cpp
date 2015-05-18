@@ -14,6 +14,7 @@ void lnzllamasBehavior::setup() {
     
     lanzallamasShot_sound = new gme::SoundPlayer();
     lanzallamasShot_sound->setSound("lanzallamasShot");
+    lanzallamasShot_sound->setVolume(60.0);
     
     lanzallamasReload_sound = new gme::SoundPlayer();
     lanzallamasReload_sound->setSound("lanzallamasReload");

@@ -163,7 +163,7 @@ void mainGame::setup() {
     jungleFondo_sound->play();
     jungleFondo_sound->loop(true);
     
-    if(music)jungleFondo_sound->setVolume(20.0);
+    if(music)jungleFondo_sound->setVolume(5.0);
     else jungleFondo_sound->setVolume(0.0);
     
     //PRE ESCENAS

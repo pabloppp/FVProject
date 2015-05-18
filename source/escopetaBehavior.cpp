@@ -11,6 +11,7 @@ void escopetaBehavior::setup() {
     
     escopetaShot_sound = new gme::SoundPlayer();
     escopetaShot_sound->setSound("escopetaShot");
+    escopetaShot_sound->setVolume(60.0);
     
     escopetaReload_sound = new gme::SoundPlayer();
     escopetaReload_sound->setSound("escopetaReload");
