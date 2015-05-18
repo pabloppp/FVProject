@@ -45,6 +45,7 @@ void enemy_fly::setup() {
     else stats->maxHp = 40;
     stats->waitTime = 0.8;
    
+    std::cout << stats->maxHp << std::endl;
     addComponent(stats);
     
     IAfly *ia = new IAfly(enemy_boss);

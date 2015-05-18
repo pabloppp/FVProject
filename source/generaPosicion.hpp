@@ -26,7 +26,8 @@ public:
     void addPosition(int x, int y);
 
     virtual void onMessage(std::string m, float v);
-
+    void setCollectableLimits(int xmin, int xmax);
+    int ene1, ene2, ene3, ene4; //embestidor, rapido, volador, explosivo
     
 private:
     gme::Vector2 v;
@@ -43,6 +44,7 @@ private:
     int objects;
     int randomtime;
     int lObjectType;
+    int colMinX;
     GlobalStateManager *manager;
 };
 

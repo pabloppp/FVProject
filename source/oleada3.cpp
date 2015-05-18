@@ -146,6 +146,7 @@ void oleada3::setupScenario() {
     g->addPosition(829, 95);
     g->setEnemi(false);
     g->setColectionable(true);
+    g->setCollectableLimits(615, 1584);
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

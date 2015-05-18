@@ -13,7 +13,7 @@ void MainMenuSetup::setup() {
     reloj_fondo.restart();
     entered = true;
     izq=false; dre=false;
-    button_sound = new gme::MusicPlayer();
+    button_sound = new gme::SoundPlayer();
     //music_jungle=new gme::MusicPlayer();
     //music_jungle->setMusic("jungle");
    // music_jungle->setVolume(15.0);

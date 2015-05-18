@@ -76,6 +76,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/GlobalStateManager.o \
 	${OBJECTDIR}/source/IABoss.o \
 	${OBJECTDIR}/source/IAMovement.o \
+	${OBJECTDIR}/source/IAexplosive.o \
+	${OBJECTDIR}/source/IAfly.o \
 	${OBJECTDIR}/source/IntroS1Manager.o \
 	${OBJECTDIR}/source/LifeManager.o \
 	${OBJECTDIR}/source/MainMenuSetup.o \
@@ -90,7 +92,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
 	${OBJECTDIR}/source/enemy_boss.o \
+	${OBJECTDIR}/source/enemy_explosive.o \
 	${OBJECTDIR}/source/enemy_fast.o \
+	${OBJECTDIR}/source/enemy_fly.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
 	${OBJECTDIR}/source/generaPosicion.o \
@@ -358,6 +362,16 @@ ${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAMovement.o source/IAMovement.cpp
 
+${OBJECTDIR}/source/IAexplosive.o: source/IAexplosive.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAexplosive.o source/IAexplosive.cpp
+
+${OBJECTDIR}/source/IAfly.o: source/IAfly.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAfly.o source/IAfly.cpp
+
 ${OBJECTDIR}/source/IntroS1Manager.o: source/IntroS1Manager.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -428,10 +442,20 @@ ${OBJECTDIR}/source/enemy_boss.o: source/enemy_boss.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_boss.o source/enemy_boss.cpp
 
+${OBJECTDIR}/source/enemy_explosive.o: source/enemy_explosive.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_explosive.o source/enemy_explosive.cpp
+
 ${OBJECTDIR}/source/enemy_fast.o: source/enemy_fast.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_fast.o source/enemy_fast.cpp
+
+${OBJECTDIR}/source/enemy_fly.o: source/enemy_fly.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_fly.o source/enemy_fly.cpp
 
 ${OBJECTDIR}/source/escopetaBehavior.o: source/escopetaBehavior.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

@@ -61,7 +61,11 @@ void PlayerMovement::update() {
     }
     else getRigidBody()->setActive(true);
     
-    if(dead) return;
+    if(dead){
+        footsteps_sound->stop();
+        jump_sound->stop();
+        return;
+    }
     
         
     float deltaTime = gme::Game::deltaTime.asSeconds();
@@ -106,7 +110,7 @@ void PlayerMovement::update() {
          //if(GlobalStateManager.gameover)   
          if(tlkClock.currentTime().asSeconds() > 0.9){
             
-             if(mainGame::sound && grounded)footsteps_sound->play();
+             if(mainGame::sound && grounded && !dead)footsteps_sound->play();
              tlkClock.restart();
             
         }
@@ -125,7 +129,7 @@ void PlayerMovement::update() {
         
           if(tlkClock.currentTime().asSeconds() > 0.9){
               
-             if(mainGame::sound && grounded)footsteps_sound->play();
+             if(mainGame::sound && grounded && !dead)footsteps_sound->play();
              tlkClock.restart();
         }
         

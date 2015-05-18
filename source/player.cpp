@@ -43,8 +43,8 @@ void player::setup() {
     }
     
     LifeManager *stats = new LifeManager();
-    stats->maxHp = 50;
-    stats->maxLives = 1;
+    stats->maxHp = 100;
+    stats->maxLives = 3;
     
     addComponent(playerMovement);
     addComponent(stats);
