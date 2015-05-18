@@ -13,7 +13,7 @@
 
 void mainGame::setup() {
     
-    //debugColliders = true;
+    debugColliders = true;
     
     loadOpts();
     loadProfile();
@@ -69,13 +69,16 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/sprites/player_spr/player_sheet.png", "playerTexture");
     gme::Game::newTexture("resources/sprites/player1_spr/player1_sheet.png", "player1Texture");
     
+    gme::Game::newTexture("resources/sprites/chica.png", "chicaJetpack");
+    
     //BALAS
     gme::Game::newTexture("resources/Bullets/fthrower.png", "fthrower_bullet");
     gme::Game::newTexture("resources/Bullets/shotgun.png", "escopeta_bullet");
     gme::Game::newTexture("resources/Bullets/grenade.png", "grenade");
     
     gme::Game::newTexture("resources/Effects/smallExplosion.png", "explosion_small");
-     gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");
+    gme::Game::newTexture("resources/Effects/Noisy Cricket Ball.png", "explosion_teleport");
+    gme::Game::newTexture("resources/Effects/ExplosionBallFlame.png", "explosion_big");
     
     //SONIDOS
     

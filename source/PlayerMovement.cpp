@@ -51,7 +51,7 @@ void PlayerMovement::onMessage(std::string m, float v) {
 
 void PlayerMovement::update() {
     
-    //std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
+    if(gme::Keyboard::isKeyPressed(gme::Keyboard::H)) std::cout << getTransform()->getPosition().x << ":" << getTransform()->getPosition().y << std::endl;
     
     if(manager->isPaused()){
         getRigidBody()->setSpeed(0, 0);

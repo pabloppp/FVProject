@@ -50,7 +50,7 @@ void IAexplosive::explode() {
     exploded = true;
     emptyGameObject *explosion = new emptyGameObject("bigboom");
     bigExplosion *be = new bigExplosion();
-    be->whoami = 1;
+    be->whoami = iam;
     explosion->addComponent(be);
     explosion->getTransform()->setPosition(getTransform()->getPosition());
 

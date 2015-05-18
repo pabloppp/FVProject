@@ -24,11 +24,14 @@ public:
     void generaColeccionable();
     void generaEnemigo(int x, int y);
     void addPosition(int x, int y);
+    
+    void fuerzaGeneracion(int n);
 
     virtual void onMessage(std::string m, float v);
     void setCollectableLimits(int xmin, int xmax);
     int ene1, ene2, ene3, ene4; //embestidor, rapido, volador, explosivo
-    
+    int maxEnemigos;
+    float rat;
 private:
     gme::Vector2 v;
     gme::Window *w;
@@ -39,7 +42,7 @@ private:
     gme::Clock clkE;
     int posX;
     int posY;
-    int rat;
+    
     std::vector<gme::Vector2> posiciones;
     int objects;
     int randomtime;

@@ -75,6 +75,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/GameManager.o \
 	${OBJECTDIR}/source/GlobalStateManager.o \
 	${OBJECTDIR}/source/IABoss.o \
+	${OBJECTDIR}/source/IAGirl.o \
 	${OBJECTDIR}/source/IAMovement.o \
 	${OBJECTDIR}/source/IAexplosive.o \
 	${OBJECTDIR}/source/IAfly.o \
@@ -91,6 +92,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/defaultParticle.o \
 	${OBJECTDIR}/source/emptyGameObject.o \
 	${OBJECTDIR}/source/enemy.o \
+	${OBJECTDIR}/source/enemy_Final.o \
 	${OBJECTDIR}/source/enemy_boss.o \
 	${OBJECTDIR}/source/enemy_explosive.o \
 	${OBJECTDIR}/source/enemy_fast.o \
@@ -132,6 +134,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/splash.o \
 	${OBJECTDIR}/source/sprayParticleScript.o \
 	${OBJECTDIR}/source/staticObject.o \
+	${OBJECTDIR}/source/teleportExplosion.o \
 	${OBJECTDIR}/source/tile.o \
 	${OBJECTDIR}/source/tileDestroyManager.o \
 	${OBJECTDIR}/source/tileRow.o \
@@ -364,6 +367,11 @@ ${OBJECTDIR}/source/IABoss.o: source/IABoss.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IABoss.o source/IABoss.cpp
 
+${OBJECTDIR}/source/IAGirl.o: source/IAGirl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/IAGirl.o source/IAGirl.cpp
+
 ${OBJECTDIR}/source/IAMovement.o: source/IAMovement.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -443,6 +451,11 @@ ${OBJECTDIR}/source/enemy.o: source/enemy.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy.o source/enemy.cpp
+
+${OBJECTDIR}/source/enemy_Final.o: source/enemy_Final.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/enemy_Final.o source/enemy_Final.cpp
 
 ${OBJECTDIR}/source/enemy_boss.o: source/enemy_boss.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source
@@ -648,6 +661,11 @@ ${OBJECTDIR}/source/staticObject.o: source/staticObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/staticObject.o source/staticObject.cpp
+
+${OBJECTDIR}/source/teleportExplosion.o: source/teleportExplosion.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/teleportExplosion.o source/teleportExplosion.cpp
 
 ${OBJECTDIR}/source/tile.o: source/tile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

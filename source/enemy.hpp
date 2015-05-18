@@ -9,7 +9,6 @@ class enemy : public gme::GameObject {
 public:
     enemy(std::string n) : gme::GameObject(n){};
     void setup();
-    void update();
 private:
 };
 

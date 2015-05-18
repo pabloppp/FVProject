@@ -16,6 +16,7 @@
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
 #include "enemy_boss.hpp"
+#include "enemy_Final.hpp"
 
 void oleada10::setup() {
     
@@ -53,13 +54,13 @@ void oleada10::setup() {
     arma->addComponent(lb);
     
     player *p1 = new player("p1");
-    p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
+    p1->getTransform()->setPosition(gme::Vector2(43, 287));
     
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
+    enemy_Final *finalEnemy = new enemy_Final("boss");
+    finalEnemy->getTransform()->setPosition(gme::Vector2(1024-200, 576-(16*9) ));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -155,7 +156,7 @@ void oleada10::setupScenario() {
     sceneLoaderObject->customize([](gme::GameObject* obj) {
         mapGenerator *gen = (mapGenerator*)(obj->getComponent<mapGenerator*>());
         if(gen){
-            gen->mapFile = "resources/maps/wave5.json";
+            gen->mapFile = "resources/maps/wave10_boss.json";
         }
     });
 }
