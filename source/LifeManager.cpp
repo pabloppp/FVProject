@@ -53,8 +53,11 @@ float LifeManager::getHpPercent() {
 
 void LifeManager::onMessage(std::string m, float v) {
     if(m.compare("damage") == 0){ //recibe daño
-        if(waitClock.currentTime().asSeconds() < waitTime) return;
         
+        
+        
+        if(waitClock.currentTime().asSeconds() < waitTime && v < 20) return;
+                
         waitClock.restart();
         hp -= v;
         if(hp <= 0){

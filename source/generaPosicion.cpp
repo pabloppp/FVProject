@@ -118,7 +118,7 @@ bool generaPosicion::getEnemi(){
 void generaPosicion::onGui() {
 }
 
-generaPosicion::generaPosicion(int x, int y,int ratio) : gme::Script(){
+generaPosicion::generaPosicion(int x, int y,float ratio) : gme::Script(){
     v = gme::Vector2(1584, 576);
     colMinX = 0;
     posiciones.push_back(gme::Vector2(x, y));

@@ -13,7 +13,7 @@
 
 class generaPosicion : public gme::Script {
 public:
-    generaPosicion(int x,int y,int ratio);
+    generaPosicion(int x,int y,float ratio);
     void setup();
     void update();
     bool getColectionable();
