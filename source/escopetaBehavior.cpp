@@ -1,6 +1,7 @@
 #include "escopetaBehavior.hpp"
 #include "escopetaBullet.hpp"
 #include "PlayerMovement.hpp"
+#include "mainGame.hpp"
 
 void escopetaBehavior::setup() {
     getRenderer()->setTexture("gun");
@@ -8,11 +9,11 @@ void escopetaBehavior::setup() {
     shooting = false;
     direction = 1;
     
-    escopetaShot_sound = new gme::MusicPlayer();
-    escopetaShot_sound->setMusic("escopetaShot");
+    escopetaShot_sound = new gme::SoundPlayer();
+    escopetaShot_sound->setSound("escopetaShot");
     
-    escopetaReload_sound = new gme::MusicPlayer();
-    escopetaReload_sound->setMusic("escopetaReload");
+    escopetaReload_sound = new gme::SoundPlayer();
+    escopetaReload_sound->setSound("escopetaReload");
     
     
     std::vector<gme::GameObject*> *objects = gme::Game::getCurrentScene()->getGameObjects();
@@ -60,31 +61,31 @@ void escopetaBehavior::update() {
     }
     
        
-    if(tlkClock.currentTime().asSeconds() > 0.5){
+    //if(tlkClock.currentTime().asSeconds() > 0.4){
         if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting ){
             shooting = true;
             escopetaReload_sound->stop();
 
-                escopetaShot_sound->play();
-
+              
             if(verticalDirection != -1) shoot(verticalDirection);
             else shoot(direction);
         } 
         else if(!gme::Keyboard::isKeyPressed(ShotKey) && shooting){ 
             shooting = false;
-            escopetaReload_sound->play();
-            escopetaShot_sound->stop();
+            if(mainGame::sound)escopetaReload_sound->play();
+           // escopetaShot_sound->stop();
 
         }
      
-     tlkClock.restart();   
+   //  tlkClock.restart();   
         
-    }    
+    //}    
 
 }
 
 void escopetaBehavior::shoot(int d) {
     if(clock.currentTime().asSeconds()>1){
+		if(mainGame::sound)escopetaShot_sound->play();
         escopetaBullet *bulletx = new escopetaBullet("bullet");
         escopetaBullet *bullety = new escopetaBullet("bullet");
         escopetaBullet *bulletz = new escopetaBullet("bullet");

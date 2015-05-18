@@ -20,8 +20,10 @@ private:
     bool isHit;
     bool isHitTemp;
     gme::Clock hitclock;
-    
+    //gme::SoundPlayer *bloque_sound;
     void explode(int min, int max, float forcemin, float forcemax);
+    
+    
 
 };
 

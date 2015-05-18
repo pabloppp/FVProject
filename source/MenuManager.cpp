@@ -6,12 +6,12 @@ void MenuManager::setup(){
     w = gme::Game::getWindow();
     /* MUSIC DEFINITION */
     music = new gme::MusicPlayer();
-    button_sound = new gme::MusicPlayer();
-    change_sound= new gme::MusicPlayer();
+    button_sound = new gme::SoundPlayer();
+    change_sound= new gme::SoundPlayer();
     
     music->setMusic("sound");
-    button_sound->setMusic("boton");
-    change_sound->setMusic("desplazamiento");
+    button_sound->setSound("boton");
+    change_sound->setSound("desplazamiento");
     
     button_sound->setVolume(30.0);
     change_sound->setVolume(20.0);

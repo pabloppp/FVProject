@@ -82,8 +82,6 @@ void LifeManager::onMessage(std::string m, float v) {
             hp = maxHp;
         }
     }
-    
-    
     if(m.compare("kill") == 0){
         destroyGameObject(gameObject());        
     }

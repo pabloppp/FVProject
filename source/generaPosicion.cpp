@@ -70,7 +70,7 @@ void generaPosicion::generaColeccionable(){
         objecType = rand() % randSet;
     }
     lObjectType = objecType;
-    colectableGameObject *col =  new colectableGameObject("colectable",objecType);
+    colectableGameObject *col =  new colectableGameObject("colectable",objecType);//objecType
     col->getTransform()->setPosition(gme::Vector2(finalpos,-288+16*3));
     instantiate(col);
     

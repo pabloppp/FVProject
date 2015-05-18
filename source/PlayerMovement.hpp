@@ -68,8 +68,9 @@ private:
     bool dead;
     GlobalStateManager *manager;
     
-    gme::MusicPlayer *footsteps_sound;
-    gme::MusicPlayer *jump_sound;
+    gme::SoundPlayer *footsteps_sound;
+    gme::SoundPlayer *jump_sound;
+    gme::SoundPlayer *danyoJugador_sound;
     
     bool grenadeLaunched;
     int grenades;

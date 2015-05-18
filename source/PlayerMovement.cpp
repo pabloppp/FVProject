@@ -2,14 +2,18 @@
 #include "LifeManager.hpp"
 #include "tile.hpp"
 #include "granada.hpp"
+#include "mainGame.hpp"
 
 void PlayerMovement::setup() {
     
-    footsteps_sound = new gme::MusicPlayer();
-    footsteps_sound->setMusic("footsteps");
+    footsteps_sound = new gme::SoundPlayer();
+    footsteps_sound->setSound("footsteps");
     
-    jump_sound = new gme::MusicPlayer();
-    jump_sound->setMusic("jump");
+    jump_sound = new gme::SoundPlayer();
+    jump_sound->setSound("jump");
+    
+    danyoJugador_sound = new gme::SoundPlayer();
+    danyoJugador_sound->setSound("danyo1");
     
     dead = false;
     points = 0;
@@ -99,15 +103,10 @@ void PlayerMovement::update() {
     
     if(gme::Keyboard::isKeyPressed(leftKey) && !hitWallLeft){
         
-        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07 && sonidoSalto==0){
-            jump_sound->play();
-            salto=false;
-            sonidoSalto++;
-        }
-        
+         //if(GlobalStateManager.gameover)   
          if(tlkClock.currentTime().asSeconds() > 0.9){
             
-             footsteps_sound->play();
+             if(mainGame::sound && grounded)footsteps_sound->play();
              tlkClock.restart();
             
         }
@@ -123,15 +122,10 @@ void PlayerMovement::update() {
     }
     else if(gme::Keyboard::isKeyPressed(rightKey) && !hitWallRight){
          
-        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07 && sonidoSalto==0){
-            jump_sound->play();
-            salto=false;
-            sonidoSalto++;
-        }
         
           if(tlkClock.currentTime().asSeconds() > 0.9){
               
-             footsteps_sound->play();
+             if(mainGame::sound && grounded)footsteps_sound->play();
              tlkClock.restart();
         }
         
@@ -154,12 +148,7 @@ void PlayerMovement::update() {
     if(gme::Keyboard::isKeyPressed(jumpKey) && grounded && !jumped){
         
         footsteps_sound->pause();
-        salto=true;
-        
-        if(salto==true && tlkClock2.currentTime().asSeconds() > 0.07){
-            jump_sound->play();
-            salto=false;
-        }
+        if(mainGame::sound)jump_sound->play();
         
         if(gme::Keyboard::isKeyPressed(downKey))
             getRigidBody()->pushImmediate(gme::Vector2(0,-1), (jumpForce/2.f)*deltaTime);
@@ -169,7 +158,6 @@ void PlayerMovement::update() {
     }
     else if(jumped && !gme::Keyboard::isKeyPressed(jumpKey)){
         jumped = false;
-        salto=true;
         footsteps_sound->pause();
     }
     
@@ -193,6 +181,7 @@ void PlayerMovement::onCollision(gme::Collider* c) {
     }
     else if(relativePosition.x == -1 && relativePosition.y == 0){
         hitWallRight = true;
+        if(mainGame::sound)danyoJugador_sound->play();
     }
     
     if(relativePosition.y == 1 && relativePosition.x == 0){

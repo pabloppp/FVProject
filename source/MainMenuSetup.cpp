@@ -18,7 +18,7 @@ void MainMenuSetup::setup() {
     //music_jungle->setMusic("jungle");
    // music_jungle->setVolume(15.0);
     //music_jungle->loop(true);
-    button_sound->setMusic("boton");
+    button_sound->setSound("boton");
     button_sound->setVolume(50.0);
    // music_jungle->play();
    // if(!mainGame::music) music_jungle->setVolume(0.0);
@@ -66,15 +66,13 @@ void MainMenuSetup::movement() {
        entered = true;
        num_apre=0;
     } 
-    
-    
     /* ENTRAR EN NUEVA PARTIDA */
     if(menu==1 && num_apre_ini==0 && gme::Keyboard::isKeyPressed(introKey)){
        continueLevel = false;
        izq=true;
        menu=3;
        entered = true;
-       num_apre=0;      
+       num_apre=0;
     }
     //OPCIONES - OPCION SOUND
     if(menu==2 && (num_apre==0 && gme::Keyboard::isKeyPressed(introKey)) && !entered){ 
@@ -88,7 +86,7 @@ void MainMenuSetup::movement() {
        if(mainGame::sound) button_sound->play();
        mainGame::music = !mainGame::music;  
        
-       if(mainGame::music) mainGame::jungleFondo_sound->setVolume(50.0);
+       if(mainGame::music) mainGame::jungleFondo_sound->setVolume(20.0);
        else if(!mainGame::music) mainGame::jungleFondo_sound->setVolume(0.0);
        entered = true;
        mainGame::saveOpts();
@@ -155,8 +153,6 @@ void MainMenuSetup::loadLevel() {
     }
     else mainGame::setCurrentScene(lvl_s);
 }
-
-
 
 void MainMenuSetup::onGui() {
     gme::GUI::fontSize = 28;

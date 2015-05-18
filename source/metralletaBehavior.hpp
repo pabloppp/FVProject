@@ -33,8 +33,8 @@ private:
     bool recargando;
     GlobalStateManager *manager;
     
-    gme::MusicPlayer *metralletaShot_sound;
-    gme::MusicPlayer *metralletaReload_sound;
+    gme::SoundPlayer *metralletaShot_sound;
+    gme::SoundPlayer *metralletaReload_sound;
 };
 
 #endif	/* METRALLETABEHAVIOR_HPP */

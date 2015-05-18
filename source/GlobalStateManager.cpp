@@ -90,6 +90,7 @@ void GlobalStateManager::update(){
         }
         if(levelSuccess && gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
             //Se abre una nueva escena 
+            //mainGame::sound = true;
             if(nextScene.length() != 0){
                 gme::Scene *olds = gme::Game::removeScene(gme::Game::getCurrentScene());
                 gme::Scene *olds2 = gme::Game::removeScene(nextScene);
@@ -106,7 +107,10 @@ void GlobalStateManager::update(){
     }
     //Si perdemos...
     if(gameOver){
+        //mainGame::sound = false;
         isGameOver();
+        
+        
     }
     
     if(goToMenu) gme::Game::setCurrentScene("mainmenu");

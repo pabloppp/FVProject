@@ -1,6 +1,7 @@
 #include "pistolaBehavior.hpp"
 #include "pistolaBullet.hpp"
 #include "PlayerMovement.hpp"
+#include "mainGame.hpp"
 
 
 void pistolaBehavior::setup() {
@@ -10,8 +11,8 @@ void pistolaBehavior::setup() {
     
     direction = 1;
 
-    gunShot_sound = new gme::MusicPlayer();
-    gunShot_sound->setMusic("gunShot");
+    gunShot_sound = new gme::SoundPlayer();
+    gunShot_sound->setSound("gunShot");
     
     ShotKey = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->weaponKey;
     keyUp = ((PlayerMovement*)(gameObject()->getParent()->getComponent<PlayerMovement*>()))->upKey;
@@ -51,7 +52,7 @@ void pistolaBehavior::update() {
             
     if(gme::Keyboard::isKeyPressed(ShotKey) && !shooting){
         shooting = true;
-          gunShot_sound->play(); 
+           
         if(verticalDirection != -1) shoot(verticalDirection);
         else shoot(direction);
     } 
@@ -63,8 +64,13 @@ void pistolaBehavior::update() {
 
 void pistolaBehavior::shoot(int d){
     if(clock.currentTime().asSeconds()>0.2){
+<<<<<<< HEAD
         pistolaBullet *bulletx = new pistolaBullet("bullet");
         if(gameObject()->getParent()->getName().compare("p2") == 0) bulletx->whoshoots = 2;
+=======
+        if(mainGame::sound) gunShot_sound->play();
+        gme::GameObject *bulletx = new pistolaBullet("bullet");
+>>>>>>> 8572dbc652791163ea41903f2d965c030f18d946
         instantiate(bulletx);   
 
         bulletx->getTransform()->setPosition(gme::Vector2(getTransform()->getPosition().x,getTransform()->getPosition().y-30));    
