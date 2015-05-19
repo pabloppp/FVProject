@@ -15,7 +15,7 @@ void enemyBullet::update() {
 
 void enemyBullet::onCollision(gme::Collider* c) {
     if(c->gameObject()->hasTag("player")){
-        c->gameObject()->sendMessage("damage", 25);
+        c->gameObject()->sendMessage("damage", 15);
     }
 }
 

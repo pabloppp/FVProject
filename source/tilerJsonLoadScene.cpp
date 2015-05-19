@@ -81,7 +81,7 @@ void tilerJsonLoadScene::setup() {
     limit *lr = new limit("limit_right");
     lr->width = 3;
     lr->height = 864;
-    lr->position = gme::Vector2(1584-16*3, 144);
+    lr->position = gme::Vector2(1584, 144);
     
     setupScenario();
     
@@ -215,7 +215,7 @@ void tilerJsonLoadScene::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
     g =  new generaPosicion(-1, 280, 1.5);
-    g->addPosition(1520, 280);
+    g->addPosition(1520-8*3, 280);
     g->addPosition(802, -300);
     g->setEnemi(true);
     g->setColectionable(true);

@@ -187,7 +187,8 @@ void GlobalStateManager::spawnP2() {
     p2->weaponKey = gme::Keyboard::G;
     p2->actionKey = gme::Keyboard::H;
 
-    p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+    if(mainGame::getCurrentScene()->getName().compare("oleada6")==0) p2->getTransform()->setPosition(gme::Vector2(16*3*2, 116-16*9)); 
+    else p2->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
     p2->customize([](gme::GameObject* obj) {
         obj->getRenderer()->setTexture("player1Texture");
     });
@@ -252,8 +253,14 @@ void GlobalStateManager::isGameOver() {
                 if(eb != NULL) eb->setActive(false);
                 if(lb != NULL) lb->setActive(false);
 
-                if(i==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
-                else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+                if(i==0){
+                    if(mainGame::getCurrentScene()->getName().compare("oleada6")==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 116-16*9));
+                    else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
+                }
+                else{
+                    if(mainGame::getCurrentScene()->getName().compare("oleada6")==0) players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 116-16*9));
+                    else players.at(i)->getTransform()->setPosition(gme::Vector2(16*3*2, 576-16*9));
+                }
 
                 players.at(i)->getComponent<PlayerMovement*>()->setup();
                 ((gme::GameObject*)(players.at(i)))->getComponent<moveToTop*>()->setup();

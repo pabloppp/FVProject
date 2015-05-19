@@ -51,6 +51,12 @@ void IAMovement::setup() {
         }
     }
     
+    if(getTransform()->getPosition().x > 1584/2.0f){
+        right = false;
+        getTransform()->resize(gme::Vector2(-1,1));
+        dir.x = -dir.x;
+    }
+    
    danyoEnemigo_sound = new gme::SoundPlayer();
    danyoEnemigo_sound->setSound("danyo2");
    danyoEnemigo_sound->setVolume(30.0);
@@ -88,7 +94,7 @@ void IAMovement::update() {
             }
         }
         
-        if(enemypos.x < -16*3 || enemypos.x > 1584-16*3){
+        if(enemypos.x < -16*3 || enemypos.x > 1584){
             if(random()%3 == 1){
                 getTransform()->setPosition(spawn);
                 enemypos = spawn;
