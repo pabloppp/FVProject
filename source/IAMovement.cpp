@@ -59,7 +59,7 @@ void IAMovement::setup() {
     
    danyoEnemigo_sound = new gme::SoundPlayer();
    danyoEnemigo_sound->setSound("danyo2");
-   danyoEnemigo_sound->setVolume(30.0);
+   danyoEnemigo_sound->setVolume(10.0);
    
    explosionEnemigo_sound = new gme::SoundPlayer();
    explosionEnemigo_sound->setSound("explosionEnemigo");

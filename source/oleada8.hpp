@@ -2,6 +2,7 @@
 #define	OLEADA8_HPP
 
 #include "../engine/GMEngine.hpp"
+#include "generaPosicion.hpp"
 
 class oleada8: public gme::Scene {
 public:
@@ -16,7 +17,7 @@ public:
     void setupScenario();
 
 private:
-    
+    generaPosicion *g;
     bool reseting;
 
 };

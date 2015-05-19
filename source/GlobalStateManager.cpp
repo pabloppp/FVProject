@@ -22,6 +22,7 @@
 #include "MenuManager.hpp"
 #include "enemy_Final.hpp"
 #include "enemy_boss.hpp"
+#include "enemy_fly.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -271,6 +272,11 @@ void GlobalStateManager::isGameOver() {
                     enemy_Final *finalEnemy = new enemy_Final("boss");
                     finalEnemy->getTransform()->setPosition(gme::Vector2(1024-200, 576-(16*9) ));
                     instantiate(finalEnemy);
+                }
+                if(mainGame::getCurrentScene()->getName().compare("oleada6")==0){
+                    enemy_fly *boss = new enemy_fly("boss", true);
+                    boss->getTransform()->setPosition(gme::Vector2(512, 176));
+                    instantiate(boss);
                 }
                 if(mainGame::getCurrentScene()->getName().compare("oleada3")==0){
                     enemy_boss *boss = new enemy_boss("boss");

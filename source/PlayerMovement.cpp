@@ -233,15 +233,6 @@ void PlayerMovement::animate() {
 }
 
 void PlayerMovement::onGui() {
-    //BOTTOM STATS           
-    /*gme::GUI::drawTexture(
-        gme::Vector2(103, 525),
-        gme::Vector2(15*3, 7*3),
-        gme::GUI::TextureName("pistola-inter"),
-        gme::GUI::Origin::BottomLeft,
-        gme::GUI::ScaleToFit
-    );*/
-    
     int disp = 0;
     if(gameObject()->getName().compare("p2")==0){
         disp = 1024 - 170;

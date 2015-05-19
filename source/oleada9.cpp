@@ -15,14 +15,14 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
-#include "enemy_boss.hpp"
 
 void oleada9::setup() {
     
     mainGame::continueLevel = 9;
     mainGame::saveProfile();
     
-    mainGame::removeScene("oleada8");    
+    mainGame::removeScene("oleada8"); 
+    mainGame::weaponMultiplier = 4;
     if(reseting){
         setupScenario();
         return;
@@ -32,8 +32,8 @@ void oleada9::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 75;
+        gsm->gameType = 3;
+        gsm->winCondition = 65;
         gsm->nextScene = "oleada10";
     });
     
@@ -59,8 +59,6 @@ void oleada9::setup() {
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -86,6 +84,24 @@ void oleada9::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+    Animator anim;
+    
+    anim.at(6, [](void* ctx) {
+        oleada9 *q = static_cast<oleada9*> (ctx);  
+        q->g->maxEnemigos = 2;
+        q->g->rat = 3;
+    }, this);
+    anim.at(45, [](void* ctx) {
+        oleada9 *q = static_cast<oleada9*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(55, [](void* ctx) {
+        oleada9 *q = static_cast<oleada9*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 1.7;
+    }, this);
+    
+    gm->anim = anim;
 
 }
 
@@ -143,12 +159,18 @@ void oleada9::setupBg() {
 void oleada9::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(33,95,3);
-    g->addPosition(766, -144);
-    g->addPosition(1490, 95);
-    g->addPosition(829, 95);
-    g->setEnemi(false);
+    g =  new generaPosicion(33,95,2.2);
+    g->addPosition(96, 479);
+    g->addPosition(160, -158);
+    g->addPosition(760, 40);
+    g->setEnemi(true);
     g->setColectionable(true);
+    
+    g->ene4 = 0;
+    g->ene3 = 85;
+    g->ene2 = 0;
+    g->ene1 = 15;
+    
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

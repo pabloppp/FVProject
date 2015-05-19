@@ -23,8 +23,8 @@ public:
             speed = 6;
         }
         else{
-            damage = 20;
-            speed = 6;
+            damage = 10;
+            speed = 8;
         }
         first = true;
         down = true;

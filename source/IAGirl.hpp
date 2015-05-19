@@ -13,7 +13,7 @@ public:
         damage = 0;
         disparos = 0;
         cargando = false;
-        maxLife = 200;
+        maxLife = 225;
         life = maxLife;
         
     };
@@ -30,6 +30,7 @@ private:
     GlobalStateManager *manager;
     int estado;
     gme::Clock movementClock;
+    GlobalStateManager *stateManager;
     gme::Clock stateClock;
     gme::Clock shootClock;
     gme::Vector2 objectivePosition;

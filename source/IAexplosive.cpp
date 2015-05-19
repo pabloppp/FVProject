@@ -16,7 +16,7 @@ void IAexplosive::setup() {
     
     danyoEnemigo_sound = new gme::SoundPlayer();
     danyoEnemigo_sound->setSound("danyo2");
-    danyoEnemigo_sound->setVolume(30.0);
+    danyoEnemigo_sound->setVolume(10.0);
    
     explosionEnemigo_sound = new gme::SoundPlayer();
     explosionEnemigo_sound->setSound("explosionEnemigo");
@@ -62,6 +62,7 @@ void IAexplosive::onMessage(std::string m, float v) {
         countdownClock.restart();
     }
     if(m.compare("kill") == 0 && !exploded){
+        mainGame::kills += 1;
         explode();
     }
     if(m.compare("detected")==0 && !gonnaExplode){

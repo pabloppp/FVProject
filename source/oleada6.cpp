@@ -15,13 +15,14 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
-#include "enemy_boss.hpp"
+#include "enemy_fly.hpp"
 void oleada6::setup() {
     
     mainGame::continueLevel = 6;
     mainGame::saveProfile();
     
-    mainGame::removeScene("oleada5");    
+    mainGame::removeScene("oleada5");  
+    mainGame::weaponMultiplier = 1;
     if(reseting){
         setupScenario();
         return;
@@ -31,8 +32,7 @@ void oleada6::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 15;
+        gsm->gameType = 4;
         gsm->nextScene = "oleada7";
     });
     
@@ -58,8 +58,8 @@ void oleada6::setup() {
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
+    enemy_fly *bossFly = new enemy_fly("boss", true);
+    bossFly->getTransform()->setPosition(gme::Vector2(512, 176));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -147,6 +147,7 @@ void oleada6::setupScenario() {
     g->addPosition(829, 95);
     g->setEnemi(false);
     g->setColectionable(true);
+    g->setCollectableLimits(615, 1584-16*3*2);
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

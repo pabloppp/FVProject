@@ -23,6 +23,7 @@ void oleada7::setup() {
     mainGame::saveProfile();
     
     mainGame::removeScene("oleada6");    
+    mainGame::weaponMultiplier = 1;
     if(reseting){
         setupScenario();
         return;
@@ -33,7 +34,7 @@ void oleada7::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 75;
+        gsm->winCondition = 170;
         gsm->nextScene = "oleada8";
     });
     
@@ -59,8 +60,6 @@ void oleada7::setup() {
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -86,6 +85,78 @@ void oleada7::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+    
+     Animator anim;
+    
+    anim.at(0, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    
+    anim.at(6, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->fuerzaGeneracion(3);
+    }, this);
+    anim.at(10, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 2.5;
+    }, this);
+    anim.at(30, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+   anim.at(35, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 3;
+        q->g->rat = 5;
+    }, this);
+    anim.at(50, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(60, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 3;
+        q->g->rat = 4;
+    }, this);
+    anim.at(70, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(75, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->fuerzaGeneracion(7);
+    }, this);
+    anim.at(90, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 3;
+    }, this);
+    anim.at(105, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(110, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->fuerzaGeneracion(5);
+    }, this);
+    anim.at(120, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 2;
+        q->g->rat = 3.5;
+    }, this);
+    anim.at(150, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(160, [](void* ctx) {
+        oleada7 *q = static_cast<oleada7*> (ctx);  
+        q->g->fuerzaGeneracion(8);
+    }, this);
+    
+    
+    gm->anim = anim;
 
 }
 
@@ -143,12 +214,17 @@ void oleada7::setupBg() {
 void oleada7::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(33,95,3);
-    g->addPosition(766, -144);
-    g->addPosition(1490, 95);
-    g->addPosition(829, 95);
-    g->setEnemi(false);
+    g =  new generaPosicion(-1, 280, 1.5);
+    g->addPosition(801, 239);
+    g->addPosition(1450, 479);
+    g->addPosition(1473, 239);
+    g->addPosition(72, 239);
+    g->setEnemi(true);
     g->setColectionable(true);
+    g->ene4 = 20;
+    g->ene3 = 30;
+    g->ene2 = 20;
+    g->ene1 = 30;
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

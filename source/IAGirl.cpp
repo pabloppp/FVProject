@@ -30,11 +30,18 @@ void IAGirl::setup() {
     
     teletransport_sound = new gme::SoundPlayer();
     teletransport_sound->setSound("teletransport");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            stateManager = gsm;
+        }
+    }
 }
 
 void IAGirl::update() {
     if(manager->isPaused()) return;
     animate();
+    if(life <= 0) stateManager->bossKilled = true;
     
     if(player && player->getTransform()->getPosition().x < getTransform()->getPosition().x){
         if(!flipped) getTransform()->setScale(gme::Vector2(-3, 3));
@@ -283,6 +290,7 @@ void IAGirl::onMessage(std::string m, float v) {
         life -= v;
         explode(3,10, 50, 150);
     }
+    
 }
 
 void IAGirl::explode(int min, int max, float forcemin, float forcemax) {

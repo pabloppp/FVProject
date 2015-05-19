@@ -21,7 +21,8 @@ void oleada4::setup() {
     mainGame::continueLevel = 4;
     mainGame::saveProfile();
     
-    mainGame::removeScene("oleada3");    
+    mainGame::removeScene("oleada3"); 
+    mainGame::weaponMultiplier = 1;
     if(reseting){
         setupScenario();
         return;

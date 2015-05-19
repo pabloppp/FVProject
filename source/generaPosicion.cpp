@@ -34,7 +34,6 @@ void generaPosicion::update() {
     
     if(colectionable == true){
         if(clkC.currentTime().asSeconds() > 10){
-            std::cout << "hey" << std::endl;
             clkC.restart();
             generaColeccionable();
             randomtime = (rand()%5) + 8;

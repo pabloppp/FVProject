@@ -39,7 +39,7 @@ void IAfly::setup() {
      
      danyoEnemigo_sound = new gme::SoundPlayer();
     danyoEnemigo_sound->setSound("danyo2");
-    danyoEnemigo_sound->setVolume(30.0);
+    danyoEnemigo_sound->setVolume(10.0);
    
     explosionEnemigo_sound = new gme::SoundPlayer();
     explosionEnemigo_sound->setSound("explosionEnemigo");
@@ -107,11 +107,8 @@ void IAfly::update() {
         }
         else{
             bossAttack(); 
-             
-            
             if(chase) {
                 vectorDirector(playerpos,enemypos);
-                std::cout << "CHASE" <<std::endl;
             }
             
             if(fallDown){
@@ -159,12 +156,6 @@ void IAfly::update() {
                     vectorDirector(finalpos,enemypos);
                 }
                if(fDist < 10 && !wait && back){
-                   
-                   std::cout <<"init: " << init.x << " " <<init.y << std::endl;
-                std::cout <<"final: " << finalpos.x << " " <<finalpos.y << std::endl;
-                
-                std::cout <<"wait: " << wait  << " crash" << crash << std::endl;
-                //std::cout <<"final: " << finalpos.x << " " <<finalpos.y << std::endl;
                    
                    
                      wait = true;
@@ -473,6 +464,7 @@ void IAfly::onCollision(gme::Collider* c) {
 void IAfly::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         if(mainGame::sound)explosionEnemigo_sound->play();
+        mainGame::kills += 1;
         if(lasthitby == 1){
             if(player->getName().compare("p1") == 0){
                 player->sendMessage("givePoints", 300);
@@ -486,7 +478,8 @@ void IAfly::onMessage(std::string m, float v) {
             else if(player2 != NULL ){
                 player2->sendMessage("givePoints", 300);
             }
-        }       
+        }      
+        if(enemy_boss) stateManager->bossKilled = true;
         dead = true;
         explode(20, 50, 50, 250);
     }

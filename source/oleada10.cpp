@@ -24,6 +24,7 @@ void oleada10::setup() {
     mainGame::saveProfile();
     
     mainGame::removeScene("oleada9");    
+    mainGame::weaponMultiplier = 1;
     if(reseting){
         setupScenario();
         return;
@@ -33,8 +34,7 @@ void oleada10::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 75;
+        gsm->gameType = 4;
     });
     
     setupBg(); 

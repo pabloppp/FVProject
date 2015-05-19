@@ -92,20 +92,21 @@ void metralletaBehavior::update() {
 }
 
 void metralletaBehavior::onGui() {    
+    int disp = 0;
+    if(gameObject()->getParent()->getName().compare("p2") == 0) disp = 1024 - 170;
     gme::GUI::fontSize = 16;
-    gme::GUI::label(gme::Vector2(10,58), "WP", gme::GUI::Origin::TopLeft);
+    gme::GUI::label(gme::Vector2(10+disp,58), "WP", gme::GUI::Origin::TopLeft);
 
     gme::GUI::backgroundColor = gme::GUI::Color(0,0,0,50);
     gme::GUI::outlineThickness = 3;
     gme::GUI::outlineColor = gme::GUI::white;
 
-    gme::GUI::box(gme::Vector2(40,55), gme::Vector2(117, 3*6));
-    //1.0f*numBullets/maxHp)*100
+    gme::GUI::box(gme::Vector2(40+disp,55), gme::Vector2(117, 3*6));
     int bars = (int)( 1.0f*numBullets/ 5.555); 
     gme::GUI::backgroundColor = gme::GUI::Color(255, 142, 110);
     gme::GUI::outlineThickness = 0;
     for(int i=0;i<bars;i++){
-        gme::GUI::box(gme::Vector2(46+i*6, 55+6), gme::Vector2(3, 3*2));
+        gme::GUI::box(gme::Vector2(46+i*6+disp, 55+6), gme::Vector2(3, 3*2));
     }    
 }
 
