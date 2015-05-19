@@ -38,6 +38,7 @@ void enemy_explosive::setup() {
     addComponent(stats);
     
     IAMovement *ia =  new IAMovement();
+    ia->givenpoints = 250;
     addComponent(ia);
     
     IAexplosive *iae = new IAexplosive();

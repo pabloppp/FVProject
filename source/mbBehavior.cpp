@@ -2,6 +2,7 @@
 #include "mbBehavior.hpp"
 #include "emptyGameObject.hpp"
 #include "smallExplosion.hpp"
+#include "mainGame.hpp"
 
 void mbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize(); 
@@ -45,7 +46,7 @@ void mbBehavior::onCollision(gme::Collider* c) {
         if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam", whoami);
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
-            c->gameObject()->sendMessageUpward("damage", 1);
+            c->gameObject()->sendMessageUpward("damage", 1*mainGame::weaponMultiplier);
             destroy = true;
         }
     }

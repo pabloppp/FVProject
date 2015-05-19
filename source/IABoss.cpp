@@ -103,7 +103,7 @@ void IABoss::update() {
         
         
         
-        if(side && clk.currentTime().asSeconds() < 5){
+        if(side && clk.currentTime().asSeconds() < 3){
             dist =0;
         }
         if(side && clk.currentTime().asSeconds() > 15){
@@ -190,6 +190,7 @@ void IABoss::onCollision(gme::Collider* c) {
 void IABoss::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         dead = true;
+        stateManager->bossKilled = true;
         explode(5, 15, 20, 200);
     }
     

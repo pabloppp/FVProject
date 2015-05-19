@@ -20,9 +20,24 @@ void IAexplosive::setup() {
    
     explosionEnemigo_sound = new gme::SoundPlayer();
     explosionEnemigo_sound->setSound("explosionEnemigo");
+    
+    std::vector<gme::GameObject*> gm = gme::GameObject::find("manager");
+    if(gm.size() > 0){
+        GlobalStateManager *gsm = (GlobalStateManager*)(gm.at(0)->getComponent<GlobalStateManager*>());
+        if(gsm != NULL){
+            stateManager = gsm;
+        }
+    }
 }
+    
 
 void IAexplosive::update() {
+    if(stateManager->isPaused()){
+        getRigidBody()->setSpeed(0, 0);
+        getRigidBody()->setActive(false);
+        return;
+    }
+    else getRigidBody()->setActive(true);
     if(gonnaExplode){
         float glow = 255*(countdownClock.currentTime().asSeconds()/1.0);
         getRenderer()->setColor(255,255-glow,255-glow);
@@ -40,23 +55,21 @@ void IAexplosive::update() {
     }
 }
 
-void IAexplosive::onMessage(std::string m, float v) {
+void IAexplosive::onMessage(std::string m, float v) {    
     if(m.compare("damage") == 0 && !gonnaExplode){
         if(mainGame::sound)danyoEnemigo_sound->play();
         gonnaExplode = true;
         countdownClock.restart();
     }
     if(m.compare("kill") == 0 && !exploded){
-        
-       // if(mainGame::sound)explosionEnemigo_sound->play();
         explode();
-    }
-    if(m.compare("iam")==0){
-        iam = v;
     }
     if(m.compare("detected")==0 && !gonnaExplode){
         gonnaExplode = true;
         countdownClock.restart();
+    }
+    if(m.compare("iam")==0){
+        iam = v;
     }
 }
 

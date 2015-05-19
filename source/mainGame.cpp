@@ -47,7 +47,8 @@ void mainGame::setup() {
     //INTERFAZ
     gme::Game::newTexture("resources/Interface/interfaz_P1.png", "interface_p1");
     gme::Game::newTexture("resources/Interface/interfaz_P2.png", "interface_p2");
-    gme::Game::newTexture("resources/Interface/max-willis-2.png", "max-willis");
+    gme::Game::newTexture("resources/Interface/max-willis.png", "max-willis");
+    gme::Game::newTexture("resources/Interface/max-willis-2.png", "max-willis-2");
     gme::Game::newTexture("resources/Interface/pistola-inter.png", "pistola-inter");
     gme::Game::newTexture("resources/Interface/pistola-inter.png", "metralleta-inter");
     gme::Game::newTexture("resources/Interface/pistola-inter.png", "escopeta-inter");
@@ -437,5 +438,7 @@ int mainGame::levelspassed = 0;
 int mainGame::deaths = 0;
 
 int mainGame::maxpoints[] = {0,0,0,0,0,0,0,0,0,0};
+
+float mainGame::weaponMultiplier = 1;
 
 gme::MusicPlayer *mainGame::jungleFondo_sound;

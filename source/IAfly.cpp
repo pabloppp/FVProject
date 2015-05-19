@@ -1,9 +1,3 @@
-/* 
- * File:   IAfly.cpp
- * Author: albertomartinezmartinez
- * 
- * Created on 15 de mayo de 2015, 14:58
- */
 
 #include "IAfly.hpp"
 #include "defaultParticle.hpp"
@@ -237,12 +231,24 @@ void IAfly::update() {
 }
 
 void IAfly::findPlayer() {
-     player = gme::GameObject::find("p1").at(0);
-   if(gme::GameObject::find("p2").size() > 0){
-        player2 = gme::GameObject::find("p2").at(0);
+   int rnd = int(rand() % 100);
+   if(!mainGame::coop || rnd < 50){
+        player = gme::GameObject::find("p1").at(0);
+        if(gme::GameObject::find("p2").size() > 0){
+             player2 = gme::GameObject::find("p2").at(0);
+        }
+        else{
+             player2 = NULL;
+        }
    }
    else{
-        player2 = NULL;
+        player = gme::GameObject::find("p2").at(0);
+        if(gme::GameObject::find("p1").size() > 0){
+             player2 = gme::GameObject::find("p1").at(0);
+        }
+        else{
+             player2 = NULL;
+        }
    }
 }
 
@@ -454,20 +460,33 @@ void IAfly::onCollision(gme::Collider* c) {
     gme::Vector2 rP = getCollider()->getRelativePosition(c);
    
     if(c->gameObject()->hasTag("floor")){
-        std::cout << "suelo" << std::endl;
+        //std::cout << "suelo" << std::endl;
         grounded =  true;
         gdir = rP;
     }
     if(c->gameObject()->hasTag("corner")){
         corner = true;
-        std::cout << "corner" << std::endl;
+        //std::cout << "corner" << std::endl;
     }
 }
 
 void IAfly::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         if(mainGame::sound)explosionEnemigo_sound->play();
-        std::cout << "muerte" << std::endl;
+        if(lasthitby == 1){
+            if(player->getName().compare("p1") == 0){
+                player->sendMessage("givePoints", 300);
+            }
+            else if(player2 != NULL ){
+                player2->sendMessage("givePoints", 300);
+            }
+        }
+        else if(lasthitby == 2){
+            if(player->getName().compare("p2") == 0) player->sendMessage("givePoints", 300);
+            else if(player2 != NULL ){
+                player2->sendMessage("givePoints", 300);
+            }
+        }       
         dead = true;
         explode(20, 50, 50, 250);
     }
@@ -475,6 +494,9 @@ void IAfly::onMessage(std::string m, float v) {
     if(m.compare("damage")==0 && !dead){
         if(mainGame::sound)danyoEnemigo_sound->play();
         explode(3,10, 50, 150);
+    }
+    if(m.compare("iam")==0){
+        lasthitby = v;
     }
 }
 

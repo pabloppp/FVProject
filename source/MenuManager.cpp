@@ -325,6 +325,39 @@ void MenuManager::onGui() {
       );
       gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(minutes)+":"+secondsString, gme::GUI::Origin::Center);
   }  
+  else if(manager->gameType==3){
+      int kills = mainGame::kills - manager->prevkills;
+      int enemiesLeft = (int)(manager->winCondition-kills);
+      gme::GUI::fontSize = 38;
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 100);      
+      gme::GUI::box(
+        gme::Vector2(512, 30), 
+        gme::Vector2(230, 50), "",
+        gme::GUI::Origin::Center
+      );
+      gme::GUI::label(gme::Vector2(1024/2, 30), "KILL "+std::to_string(enemiesLeft), gme::GUI::Origin::Center);
+  }
+  else if(manager->gameType==2){
+      int pointsto = (int)(manager->winCondition);
+      gme::GUI::fontSize = 30;
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 100);      
+      gme::GUI::box(
+        gme::Vector2(512, 30), 
+        gme::Vector2(260, 50), "",
+        gme::GUI::Origin::Center
+      );
+      gme::GUI::label(gme::Vector2(1024/2, 30), std::to_string(pointsto)+" POINTS", gme::GUI::Origin::Center);
+  }
+  else if(manager->gameType==4){
+      gme::GUI::fontSize = 45;
+      gme::GUI::backgroundColor = gme::GUI::Color(0,0,0, 100);      
+      gme::GUI::box(
+        gme::Vector2(512, 30), 
+        gme::Vector2(230, 50), "",
+        gme::GUI::Origin::Center
+      );
+      gme::GUI::label(gme::Vector2(1024/2, 30),"BOSS", gme::GUI::Origin::Center);
+  }
   if(showLevelSuccess){
       gme::GUI::drawTexture(
         gme::Vector2(512,288), 

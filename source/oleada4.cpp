@@ -15,7 +15,6 @@
 #include "limit.hpp"
 #include "GlobalStateManager.hpp"
 #include "mainGame.hpp"
-#include "enemy_boss.hpp"
 
 void oleada4::setup() {
     
@@ -32,8 +31,8 @@ void oleada4::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 15;
+        gsm->gameType = 2;
+        gsm->winCondition = 2000;
         gsm->nextScene = "oleada5";
     });
     
@@ -59,8 +58,6 @@ void oleada4::setup() {
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
     
-    enemy_boss *boss = new enemy_boss("boss");
-    boss->getTransform()->setPosition(gme::Vector2(1024, 576-(16*9) ));
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -86,6 +83,16 @@ void oleada4::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+    
+    Animator anim;
+    
+    anim.at(6, [](void* ctx) {
+        oleada4 *q = static_cast<oleada4*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 4;
+    }, this);
+    
+    gm->anim = anim;
 
 }
 
@@ -143,12 +150,19 @@ void oleada4::setupBg() {
 void oleada4::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(33,95,3);
-    g->addPosition(766, -144);
-    g->addPosition(1490, 95);
-    g->addPosition(829, 95);
-    g->setEnemi(false);
+    g =  new generaPosicion(33,95,3);
+    g->addPosition(67, 479);
+    g->addPosition(574, -96);
+    g->addPosition(1335, 95);
+    g->addPosition(121, 95);
+    g->setEnemi(true);
     g->setColectionable(true);
+    
+    g->ene4 = 10;
+    g->ene3 = 15;
+    g->ene2 = 35;
+    g->ene1 = 40;
+    
     sceneLoaderObject->addComponent(g);
     
     sceneLoaderObject->addComponent(new mapGenerator());

@@ -32,7 +32,7 @@ void enemy_boss::setup(){
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
-    stats->maxHp = 60;
+    stats->maxHp = 100;
     stats->waitTime = 0.8;
     addComponent(stats);
     

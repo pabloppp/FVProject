@@ -21,6 +21,7 @@ public:
         gameClock.restart();
         startready = false;
         nextScene = "";
+        bossKilled = false;
     };
     virtual ~GlobalStateManager();
     void pause();
@@ -31,6 +32,7 @@ public:
     void spawnP2();
     gme::Keyboard::Key pauseKey;
     gme::Keyboard::Key escKey;
+    int prevkills;
 
     virtual void onMessage(std::string m, float v);
     bool isPaused();
@@ -40,7 +42,8 @@ public:
     gme::Clock gameClock;
     std::string nextScene;
     static int pointsp1, pointsp2, maxpoints;
-    Animator anim;
+    Animator anim; 
+    bool bossKilled;
     
 private:
     bool paused;
@@ -49,7 +52,7 @@ private:
     bool gameOver;
     bool player2_exists;
     bool levelSuccess;
-    bool startready;   
+    bool startready;  
     gme::SoundPlayer *ready_player;
     gme::Clock apretar;
     

@@ -1,4 +1,5 @@
 #include "llbBehavior.hpp"
+#include "mainGame.hpp"
 
 void llbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize();
@@ -48,7 +49,7 @@ void llbBehavior::onCollision(gme::Collider* c) {
         if(c->gameObject()->hasTag("enemy")) c->gameObject()->sendMessageUpward("iam",whoami);
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
-            c->gameObject()->sendMessageUpward("damage", 0.5);
+            c->gameObject()->sendMessageUpward("damage", 0.5f*mainGame::weaponMultiplier);
             destroy = true;
         }
     }

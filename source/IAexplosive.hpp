@@ -25,6 +25,7 @@ private:
     gme::SoundPlayer *granada_sound;
     gme::SoundPlayer *danyoEnemigo_sound;
     gme::SoundPlayer *explosionEnemigo_sound;
+    GlobalStateManager *stateManager;
 };
 
 #endif	/* IAEXPLOSIVE_HPP */

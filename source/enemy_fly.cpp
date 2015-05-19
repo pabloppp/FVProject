@@ -1,9 +1,3 @@
-/* 
- * File:   enemy_fly.cpp
- * Author: albertomartinezmartinez
- * 
- * Created on 12 de mayo de 2015, 18:39
- */
 
 #include "enemy_fly.hpp"
 #include "LifeManager.hpp"
@@ -41,7 +35,7 @@ void enemy_fly::setup() {
     addComponent(bc);
   
     LifeManager *stats = new LifeManager();
-    if(!enemy_boss) stats->maxHp = 35;
+    if(!enemy_boss) stats->maxHp = 20;
     else stats->maxHp = 80;
     stats->waitTime = 0.8;
    

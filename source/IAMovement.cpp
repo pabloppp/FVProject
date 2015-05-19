@@ -36,6 +36,7 @@ void IAMovement::setup() {
     dead = false;
     destroyed = false;
     
+    
     fixPos = true;
     
     spawn = getTransform()->getPosition();
@@ -295,23 +296,21 @@ void IAMovement::onCollision(gme::Collider* c) {
 void IAMovement::onMessage(std::string m, float v) {
     if(m.compare("kill")==0 && !dead){
         if(mainGame::sound)explosionEnemigo_sound->play();
-        std::cout << "muerte" << std::endl;
-        
         mainGame::kills += 1;
         mainGame::saveProfile();
         
         if(lasthitby == 1){
             if(player->getName().compare("p1") == 0){
-                player->sendMessage("givePoints", 150);
+                player->sendMessage("givePoints", givenpoints);
             }
             else if(player2 != NULL ){
-                player2->sendMessage("givePoints", 150);
+                player2->sendMessage("givePoints", givenpoints);
             }
         }
         else if(lasthitby == 2){
-            if(player->getName().compare("p2") == 0) player->sendMessage("givePoints", 150);
+            if(player->getName().compare("p2") == 0) player->sendMessage("givePoints", givenpoints);
             else if(player2 != NULL ){
-                player2->sendMessage("givePoints", 150);
+                player2->sendMessage("givePoints", givenpoints);
             }
         }       
         dead = true;
@@ -327,7 +326,6 @@ void IAMovement::onMessage(std::string m, float v) {
     }
     if(m.compare("iam")==0){
         lasthitby = v;
-        std::cout << "esp: " << v << std::endl;
     }
 }
 

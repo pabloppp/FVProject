@@ -18,6 +18,7 @@ public:
         walkFrameCount = 0;
         speed = 7;
         damage = 5;
+        givenpoints = 150;
         first = true;
     };
     void setup();
@@ -31,6 +32,7 @@ public:
     virtual void onGui();
     float speed;
     float damage;
+    int givenpoints;
 
 private:
     gme::GameObject *player, *player2;
@@ -39,6 +41,7 @@ private:
     bool right,left, jumping;
     float timepas;
     int check;
+    
     float deltatime,elapsetime;
     bool grounded;
     void animate();

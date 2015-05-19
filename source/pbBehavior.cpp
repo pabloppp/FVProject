@@ -2,6 +2,7 @@
 #include "pbBehavior.hpp"
 #include "emptyGameObject.hpp"
 #include "smallExplosion.hpp"
+#include "mainGame.hpp"
 
 void pbBehavior::setup() {
     winSize = gme::Game::getWindow()->getSize();
@@ -50,7 +51,7 @@ void pbBehavior::onCollision(gme::Collider* c) {
         
         if(c->gameObject()->hasTag("enemy") || c->gameObject()->hasTag("floor") || 
                 c->gameObject()->hasTag("colectable")){
-            c->gameObject()->sendMessageUpward("damage", 3);
+            c->gameObject()->sendMessageUpward("damage", 3*mainGame::weaponMultiplier);
             
             destroy = true;
         }   

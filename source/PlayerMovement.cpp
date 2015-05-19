@@ -306,6 +306,14 @@ void PlayerMovement::onGui() {
              gme::GUI::label(gme::Vector2(833, 555), puntosp1, gme::GUI::Origin::Center);
              gme::GUI::contentColor = gme::GUI::white;
              
+             gme::GUI::drawTexture(
+                gme::Vector2(940, 580),
+                gme::Vector2(27*3, 37*3),
+                gme::GUI::TextureName("max-willis-2"),
+                gme::GUI::Origin::BottomLeft,
+                gme::GUI::ScaleToFit
+            );
+             
              for(int i=0; i<grenades; i++){
                 gme::GUI::drawTexture(
                     gme::Vector2(865+8*3*i, 530),

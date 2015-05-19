@@ -38,6 +38,7 @@ void enemy_fast::setup(){
     
     IAMovement *ia = new IAMovement();
     ia->speed = 12;
+    ia->givenpoints = 200;
     addComponent(ia);
 }
 

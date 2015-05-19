@@ -20,6 +20,7 @@ void oleada3::setup() {
     
     mainGame::continueLevel = 3;
     mainGame::saveProfile();
+    mainGame::weaponMultiplier = 1;
     
     mainGame::removeScene("oleada2");    
     if(reseting){
@@ -31,8 +32,8 @@ void oleada3::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 15;
+        gsm->gameType = 4;
+        gsm->winCondition = 25;
         gsm->nextScene = "oleada4";
     });
     

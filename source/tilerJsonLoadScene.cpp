@@ -22,6 +22,7 @@ void tilerJsonLoadScene::setup() {
     
     mainGame::continueLevel = 1;
     mainGame::saveProfile();
+    mainGame::weaponMultiplier = 1;
     
     gme::Scene *s = mainGame::getScene("oleada2");
     if(!s || s == NULL){
@@ -39,7 +40,7 @@ void tilerJsonLoadScene::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 1;
-        gsm->winCondition = 60;
+        gsm->winCondition = 120;
         gsm->nextScene = "oleada2";
     });
     
@@ -103,24 +104,54 @@ void tilerJsonLoadScene::setup() {
         tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
         q->g->fuerzaGeneracion(3);
     }, this);
-    anim.at(8, [](void* ctx) {
+    anim.at(10, [](void* ctx) {
         tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
         q->g->maxEnemigos = 1;
-        q->g->rat = 3;
+        q->g->rat = 2;
+        std::cout<<"segundo 10--" << std::endl;
     }, this);
-    anim.at(15, [](void* ctx) {
+    anim.at(30, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 0;
+        std::cout<<"segundo 30--" << std::endl;
+    }, this);
+   anim.at(35, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 3;
+        q->g->rat = 5;
+        std::cout<<"segundo 35--" << std::endl;
+    }, this);
+    anim.at(50, [](void* ctx) {
         tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
         q->g->maxEnemigos = 0;
     }, this);
-   anim.at(16, [](void* ctx) {
+    anim.at(60, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 5;
+        q->g->rat = 4;
+    }, this);
+    anim.at(70, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->maxEnemigos = 0;
+    }, this);
+    anim.at(75, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->fuerzaGeneracion(7);
+    }, this);
+    anim.at(90, [](void* ctx) {
         tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
         q->g->maxEnemigos = 2;
-        q->g->rat = 0.25;
+        q->g->rat = 3;
     }, this);
-    anim.at(17, [](void* ctx) {
+    anim.at(105, [](void* ctx) {
         tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
         q->g->maxEnemigos = 0;
     }, this);
+    anim.at(110, [](void* ctx) {
+        tilerJsonLoadScene *q = static_cast<tilerJsonLoadScene*> (ctx);  
+        q->g->fuerzaGeneracion(5);
+    }, this);
+    
     
     gm->anim = anim;
     

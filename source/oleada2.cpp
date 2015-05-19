@@ -21,8 +21,9 @@ void oleada2::setup() {
     
     mainGame::continueLevel = 2;
     mainGame::saveProfile();
-    
+        
     mainGame::removeScene("oleada1");
+    mainGame::weaponMultiplier = 4;
     //addGameObject(gme::Game::mainCamera);
     gme::Scene *s = mainGame::getScene("oleada3");
     if(!s || s == NULL){
@@ -38,8 +39,8 @@ void oleada2::setup() {
     
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
-        gsm->gameType = 1;
-        gsm->winCondition = 60;
+        gsm->gameType = 3;
+        gsm->winCondition = 50;
         gsm->nextScene = "oleada3";
     });
     
@@ -58,7 +59,8 @@ void oleada2::setup() {
     lnzllamasBehavior *lb =  new lnzllamasBehavior();
     lb->setActive(false);
     arma->addComponent(lb);
-
+    
+    
     
     player *p1 = new player("p1");
     p1->getTransform()->setPosition(gme::Vector2(16*3, 576-16*9));
@@ -66,16 +68,6 @@ void oleada2::setup() {
     p1->addChild(arma);
     arma->getTransform()->setPosition(gme::Vector2(0,0));
 
-    
-    /*enemy *e = new enemy("dino");
-    e->getTransform()->setPosition(gme::Vector2(150, 50));
-    enemy *e2 = new enemy("dino");
-    e2->getTransform()->setPosition(gme::Vector2(250, 50));*/
-    
-    /*for(int i=0;i<10;i++){
-        enemy *e = new enemy("dino");
-        e->getTransform()->setPosition(gme::Vector2(rand() % 1584, 0));
-    }*/
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
@@ -101,6 +93,16 @@ void oleada2::setup() {
     gme::Game::mainCamera->addComponent(cameraFollow);
 
     reseting = true;
+    
+    Animator anim;
+    
+    anim.at(6, [](void* ctx) {
+        oleada2 *q = static_cast<oleada2*> (ctx);  
+        q->g->maxEnemigos = 1;
+        q->g->rat = 1.2;
+    }, this);
+    
+    gm->anim = anim;
 }
 
 
@@ -157,7 +159,7 @@ void oleada2::setupBg() {
 void oleada2::setupScenario() {
     emptyGameObject *sceneLoaderObject = new emptyGameObject("sceneLoader");
     
-    generaPosicion *g =  new generaPosicion(33,95,3);
+    g =  new generaPosicion(33,95,3);
     g->addPosition(766, -144);
     g->addPosition(1490, 95);
     g->addPosition(829, 95);
@@ -165,9 +167,9 @@ void oleada2::setupScenario() {
     g->setColectionable(true);
     
     g->ene4 = 0;
-    g->ene3 = 25;
-    g->ene2 = 37;
-    g->ene1 = 38;
+    g->ene3 = 5;
+    g->ene2 = 45;
+    g->ene1 = 50;
     
     sceneLoaderObject->addComponent(g);
     

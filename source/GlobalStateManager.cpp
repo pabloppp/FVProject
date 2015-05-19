@@ -42,6 +42,8 @@ void GlobalStateManager::setup(){
     ready_player->setSound("ready_sound");   
     if(mainGame::coop) spawnP2();
     pause();
+    
+    prevkills = mainGame::kills;
 }
 
 bool GlobalStateManager::isPaused() {
@@ -66,8 +68,23 @@ void GlobalStateManager::update(){
         apretar.restart();
     }
     
+    int kills = mainGame::kills - prevkills;
+    
+    int points = 0;
+    
+    std::vector<gme::GameObject*> players = gme::GameObject::findWithTag("player");
+    for(int i=0;i<players.size();i++){
+
+        points += ((PlayerMovement*)(players.at(i)->getComponent<PlayerMovement*>()))->points;
+
+    }
+    
+    
     // Tipo de juego por tiempo ganado
-    if(gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver){
+    if((gameType == 1 && gameClock.currentTime().asSeconds()+lastScore >= winCondition && !gameOver) 
+            || (gameType == 3 && kills >= winCondition && !gameOver)
+            || (gameType == 4 && bossKilled && !gameOver)
+            || (gameType == 2 && points >= winCondition && !gameOver)){
         if(!paused && !levelSuccess){
             mainGame::levelspassed += 1;
             mainGame::saveProfile();
@@ -108,6 +125,7 @@ void GlobalStateManager::update(){
             canpause = false;
             paused = true;
         }
+        
         if(levelSuccess && gme::Keyboard::isKeyPressed(gme::Keyboard::Return)){
             //Se abre una nueva escena 
             //mainGame::sound = true;
@@ -143,7 +161,7 @@ void GlobalStateManager::update(){
                 }
                 gme::Game::setCurrentScene(nextScene);
             }
-            
+            bossKilled = false;
         }
     }
     //Si perdemos...
@@ -263,6 +281,8 @@ void GlobalStateManager::isGameOver() {
             canpause = true;
             gameClock.restart();
             lastScore = 0;
+            prevkills = mainGame::kills;
+            
         }
     }
 }

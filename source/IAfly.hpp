@@ -66,6 +66,7 @@ public:
     virtual void onMessage(std::string m, float v);
     virtual void onGui();
     void anmate();
+    int lasthitby;
  
 private:
     
