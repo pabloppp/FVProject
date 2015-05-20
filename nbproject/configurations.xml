@@ -148,6 +148,8 @@
           <itemPath>source/tileRow.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
+          <itemPath>source/finDelJuego.cpp</itemPath>
+          <itemPath>source/finDelJuego.hpp</itemPath>
           <itemPath>source/oleada10.cpp</itemPath>
           <itemPath>source/oleada10.hpp</itemPath>
           <itemPath>source/oleada2.cpp</itemPath>
@@ -246,6 +248,8 @@
           <itemPath>source/SaveManager.hpp</itemPath>
           <itemPath>source/TileRowGenerator.cpp</itemPath>
           <itemPath>source/TileRowGenerator.hpp</itemPath>
+          <itemPath>source/finDelJuegoScript.cpp</itemPath>
+          <itemPath>source/finDelJuegoScript.hpp</itemPath>
           <itemPath>source/generaPosicion.cpp</itemPath>
           <itemPath>source/generaPosicion.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
@@ -603,6 +607,14 @@
       <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1086,6 +1098,14 @@
       <item path="source/escopetaBullet.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>

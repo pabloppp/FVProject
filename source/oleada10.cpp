@@ -35,6 +35,7 @@ void oleada10::setup() {
     gm->customize([](gme::GameObject* obj) {
         GlobalStateManager *gsm = (GlobalStateManager*)(obj->getComponent<GlobalStateManager*>());
         gsm->gameType = 4;
+        gsm->nextScene = "gameover";
     });
     
     setupBg(); 

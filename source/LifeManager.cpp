@@ -8,7 +8,7 @@ void LifeManager::setup() {
     
     danyoJugador_sound = new gme::SoundPlayer();
     danyoJugador_sound->setSound("danyo1");
-    danyoJugador_sound->setVolume(80.0);
+    danyoJugador_sound->setVolume(80.0);
     
     malditasea_sound = new gme::SoundPlayer();
     malditasea_sound->setSound("malditasea");

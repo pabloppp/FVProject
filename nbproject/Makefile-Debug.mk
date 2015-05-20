@@ -100,6 +100,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/enemy_fly.o \
 	${OBJECTDIR}/source/escopetaBehavior.o \
 	${OBJECTDIR}/source/escopetaBullet.o \
+	${OBJECTDIR}/source/finDelJuego.o \
+	${OBJECTDIR}/source/finDelJuegoScript.o \
 	${OBJECTDIR}/source/generaPosicion.o \
 	${OBJECTDIR}/source/granada.o \
 	${OBJECTDIR}/source/granadaBehavior.o \
@@ -492,6 +494,16 @@ ${OBJECTDIR}/source/escopetaBullet.o: source/escopetaBullet.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/escopetaBullet.o source/escopetaBullet.cpp
+
+${OBJECTDIR}/source/finDelJuego.o: source/finDelJuego.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/finDelJuego.o source/finDelJuego.cpp
+
+${OBJECTDIR}/source/finDelJuegoScript.o: source/finDelJuegoScript.cpp 
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Ilibs/SFML-2.1/include -Ilibs/Box2D/include -Ilibs/json-c -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/finDelJuegoScript.o source/finDelJuegoScript.cpp
 
 ${OBJECTDIR}/source/generaPosicion.o: source/generaPosicion.cpp 
 	${MKDIR} -p ${OBJECTDIR}/source

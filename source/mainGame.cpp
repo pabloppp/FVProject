@@ -13,6 +13,7 @@
 #include "oleada8.hpp"
 #include "oleada9.hpp"
 #include "oleada10.hpp"
+#include "finDelJuego.hpp"
 
 #include <fstream>
 
@@ -188,7 +189,9 @@ void mainGame::setup() {
     gme::Scene *scene_oleada9 = new oleada9("oleada9");   
     gme::Scene *scene_oleada10 = new oleada10("oleada10");
     
-    gme::Game::setCurrentScene("mainmenu");
+    gme::Scene *scene_finDelJuego = new finDelJuego("gameover");
+    
+    gme::Game::setCurrentScene("splash");
 }
 
 void mainGame::saveOpts() {

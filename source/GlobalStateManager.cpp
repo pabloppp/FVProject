@@ -23,6 +23,7 @@
 #include "enemy_Final.hpp"
 #include "enemy_boss.hpp"
 #include "enemy_fly.hpp"
+#include "finDelJuego.hpp"
 
 void GlobalStateManager::pause(){
     if(!canpause) return; 
@@ -159,6 +160,9 @@ void GlobalStateManager::update(){
                 }
                 if(nextScene.compare("oleada10") == 0){
                     gme::Scene *news = new oleada10("oleada10");
+                }
+                if(nextScene.compare("gameover") == 0){
+                    gme::Scene *news = new finDelJuego("gameover");
                 }
                 gme::Game::setCurrentScene(nextScene);
             }
