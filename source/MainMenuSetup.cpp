@@ -17,6 +17,9 @@ void MainMenuSetup::setup() {
     posX = 512;
     num_apre = 0;
     num_apre_ini = 0;
+    
+    if(mainGame::continueLevel > 1) num_apre_ini = 1; 
+        
     reloj_fondo.restart();
     entered = true;
     izq=false; dre=false;

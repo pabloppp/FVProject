@@ -41,7 +41,10 @@ void IAGirl::setup() {
 void IAGirl::update() {
     if(manager->isPaused()) return;
     animate();
-    if(life <= 0) stateManager->bossKilled = true;
+    if(life <= 0){
+        stateManager->bossKilled = true;
+        life = 0;
+    }
     
     if(player && player->getTransform()->getPosition().x < getTransform()->getPosition().x){
         if(!flipped) getTransform()->setScale(gme::Vector2(-3, 3));

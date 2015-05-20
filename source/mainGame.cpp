@@ -13,6 +13,7 @@
 #include "oleada8.hpp"
 #include "oleada9.hpp"
 #include "oleada10.hpp"
+#include "finDelJuego.hpp"
 
 #include <fstream>
 
@@ -34,6 +35,8 @@ void mainGame::setup() {
     gme::Game::newTexture("resources/BGs/cartel_win.png", "cartel_win");
     gme::Game::newTexture("resources/BGs/Ready.png", "ready");
     gme::Game::newTexture("resources/BGs/Go.png", "go");
+    
+    gme::Game::newTexture("resources/Others/jaula/sprites.png", "jaula");
 
     //BACKGROUND
     gme::Game::newTexture("resources/BGs/jungle_sky.png", "skyTexture");
@@ -188,7 +191,9 @@ void mainGame::setup() {
     gme::Scene *scene_oleada9 = new oleada9("oleada9");   
     gme::Scene *scene_oleada10 = new oleada10("oleada10");
     
-    gme::Game::setCurrentScene("mainmenu");
+    gme::Scene *scene_finDelJuego = new finDelJuego("gameover");
+    
+    gme::Game::setCurrentScene("splash");
 }
 
 void mainGame::saveOpts() {

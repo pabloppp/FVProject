@@ -134,6 +134,8 @@
           <itemPath>source/defaultParticle.hpp</itemPath>
           <itemPath>source/emptyGameObject.cpp</itemPath>
           <itemPath>source/emptyGameObject.hpp</itemPath>
+          <itemPath>source/jaula.cpp</itemPath>
+          <itemPath>source/jaula.hpp</itemPath>
           <itemPath>source/limit.cpp</itemPath>
           <itemPath>source/limit.hpp</itemPath>
           <itemPath>source/myMenu.cpp</itemPath>
@@ -148,6 +150,8 @@
           <itemPath>source/tileRow.hpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="scenes" projectFiles="true">
+          <itemPath>source/finDelJuego.cpp</itemPath>
+          <itemPath>source/finDelJuego.hpp</itemPath>
           <itemPath>source/oleada10.cpp</itemPath>
           <itemPath>source/oleada10.hpp</itemPath>
           <itemPath>source/oleada2.cpp</itemPath>
@@ -246,8 +250,12 @@
           <itemPath>source/SaveManager.hpp</itemPath>
           <itemPath>source/TileRowGenerator.cpp</itemPath>
           <itemPath>source/TileRowGenerator.hpp</itemPath>
+          <itemPath>source/finDelJuegoScript.cpp</itemPath>
+          <itemPath>source/finDelJuegoScript.hpp</itemPath>
           <itemPath>source/generaPosicion.cpp</itemPath>
           <itemPath>source/generaPosicion.hpp</itemPath>
+          <itemPath>source/jaulaScript.cpp</itemPath>
+          <itemPath>source/jaulaScript.hpp</itemPath>
           <itemPath>source/mapGenerator.cpp</itemPath>
           <itemPath>source/mapGenerator.hpp</itemPath>
           <itemPath>source/moveClouds.cpp</itemPath>
@@ -604,6 +612,14 @@
       </item>
       <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/finDelJuego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -615,6 +631,14 @@
       <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/jaula.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/jaula.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/jaulaScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/jaulaScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -1087,6 +1111,14 @@
       </item>
       <item path="source/escopetaBullet.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/finDelJuego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuego.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/finDelJuegoScript.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/generaPosicion.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/generaPosicion.hpp" ex="false" tool="3" flavor2="0">
@@ -1098,6 +1130,14 @@
       <item path="source/granadaBehavior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/granadaBehavior.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/jaula.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/jaula.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/jaulaScript.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/jaulaScript.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/limit.cpp" ex="false" tool="1" flavor2="0">
       </item>
