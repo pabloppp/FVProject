@@ -17,6 +17,9 @@
 #include "mainGame.hpp"
 #include "enemy_boss.hpp"
 #include "enemy_Final.hpp"
+#include "moveToTop.hpp"
+#include "jaulaScript.hpp"
+#include "jaula.hpp"
 
 void oleada10::setup() {
     
@@ -62,6 +65,8 @@ void oleada10::setup() {
     
     enemy_Final *finalEnemy = new enemy_Final("boss");
     finalEnemy->getTransform()->setPosition(gme::Vector2(1024-200, 576-(16*9) ));
+    
+    jaula *jaula_ob = new jaula("jaula");
     
     limit *lu = new limit("limit_up");
     lu->width = 1584;
